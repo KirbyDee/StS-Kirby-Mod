@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -30,9 +31,11 @@ import theSorcerer.relics.PlaceholderRelic;
 import theSorcerer.relics.PlaceholderRelic2;
 import theSorcerer.util.IDCheckDontTouchPls;
 import theSorcerer.util.TextureLoader;
+import theSorcerer.variables.CostVariable;
 import theSorcerer.variables.DefaultCustomVariable;
 import theSorcerer.variables.DefaultSecondMagicNumber;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -75,6 +78,7 @@ public class KirbyDeeMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber {
+
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(KirbyDeeMod.class.getName());
@@ -87,6 +91,8 @@ public class KirbyDeeMod implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "KirbyDee Mod";
+
+    private static final String MOD_ID = "KirbyDeeMod";
     private static final String AUTHOR = "KirbyDee"; // And pretty soon - You!
     private static final String DESCRIPTION = "A mod for Slay the Spire feat. the Sorcerer.";
     
@@ -94,7 +100,7 @@ public class KirbyDeeMod implements
     
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color SORCERER_ORANGE = CardHelper.getColor(255.0f, 191.0f, 0.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -136,7 +142,16 @@ public class KirbyDeeMod implements
     public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/defaultCharacter/skeleton.json";
     
     // =============== MAKE IMAGE PATHS =================
-    
+
+    public static String makeCardPath(AbstractCard.CardType cardType, String name) {
+        String cardImagePath = makeCardPath(cardType.name().toLowerCase() + "/" + name + ".png");
+        if (!new File(cardImagePath).exists()) {
+            logger.warn("Couldn't find image: " + cardImagePath + ". Taking default one.");
+            cardImagePath = makeCardPath( cardType.name().toLowerCase() + "/Default.png");
+        }
+        return cardImagePath;
+    }
+
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
@@ -202,10 +217,10 @@ public class KirbyDeeMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheSorcerer.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + TheSorcerer.Enums.COLOR_ORANGE.toString());
         
-        BaseMod.addColor(TheSorcerer.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(TheSorcerer.Enums.COLOR_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE,
+                SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -291,7 +306,7 @@ public class KirbyDeeMod implements
     public void receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + TheSorcerer.Enums.THE_SORCERER.toString());
         
-        BaseMod.addCharacter(new TheSorcerer("the Default", TheSorcerer.Enums.THE_SORCERER),
+        BaseMod.addCharacter(new TheSorcerer("the Sorcerer", TheSorcerer.Enums.THE_SORCERER),
                 THE_SORCERER_BUTTON, THE_SORCERER_PORTRAIT, TheSorcerer.Enums.THE_SORCERER);
         
         receiveEditPotions();
@@ -396,9 +411,9 @@ public class KirbyDeeMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheSorcerer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheSorcerer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheSorcerer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheSorcerer.Enums.COLOR_ORANGE);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -423,6 +438,7 @@ public class KirbyDeeMod implements
         // Add the Custom Dynamic Variables
         logger.info("Add variables");
         // Add the Custom Dynamic variables
+        BaseMod.addDynamicVariable(new CostVariable());
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         
@@ -440,7 +456,7 @@ public class KirbyDeeMod implements
 
         //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
-        new AutoAdd("KirbyDeeMod") // ${project.artifactId}
+        new AutoAdd(MOD_ID) // ${project.artifactId}
             .packageFilter(AbstractDefaultCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
             .setDefaultSeen(true)
             .cards();

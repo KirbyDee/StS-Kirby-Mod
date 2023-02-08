@@ -23,6 +23,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
+import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.ice.Ice;
 import theSorcerer.relics.DefaultClickableRelic;
 import theSorcerer.relics.PlaceholderRelic;
 import theSorcerer.relics.PlaceholderRelic2;
@@ -30,7 +32,7 @@ import theSorcerer.relics.PlaceholderRelic2;
 import java.util.ArrayList;
 
 import static theSorcerer.KirbyDeeMod.*;
-import static theSorcerer.characters.TheSorcerer.Enums.COLOR_GRAY;
+import static theSorcerer.characters.TheSorcerer.Enums.COLOR_ORANGE;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -49,9 +51,9 @@ public class TheSorcerer extends CustomPlayer {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_SORCERER;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_GRAY;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "SORCERER_ORANGE_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor COLOR_ORANGE;
+        @SpireEnum(name = "SORCERER_ORANGE_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -156,21 +158,18 @@ public class TheSorcerer extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultUncommonAttack.ID);
-        retVal.add(DefaultRareAttack.ID);
+        retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Ice.class));
+        retVal.add(SorcererCard.getId(Ice.class));
+        retVal.add(SorcererCard.getId(Ice.class));
+        retVal.add(SorcererCard.getId(Ice.class));
 
         retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultUncommonSkill.ID);
-        retVal.add(DefaultRareSkill.ID);
-
         retVal.add(DefaultCommonPower.ID);
-        retVal.add(DefaultUncommonPower.ID);
-        retVal.add(DefaultRarePower.ID);
 
-        retVal.add(DefaultAttackWithVariable.ID);
-        retVal.add(DefaultSecondMagicNumberSkill.ID);
-        retVal.add(OrbSkill.ID);
         return retVal;
     }
 
@@ -215,13 +214,13 @@ public class TheSorcerer extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return COLOR_ORANGE;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return KirbyDeeMod.DEFAULT_GRAY;
+        return KirbyDeeMod.SORCERER_ORANGE;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -258,14 +257,14 @@ public class TheSorcerer extends CustomPlayer {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return KirbyDeeMod.DEFAULT_GRAY;
+        return KirbyDeeMod.SORCERER_ORANGE;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return KirbyDeeMod.DEFAULT_GRAY;
+        return KirbyDeeMod.SORCERER_ORANGE;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

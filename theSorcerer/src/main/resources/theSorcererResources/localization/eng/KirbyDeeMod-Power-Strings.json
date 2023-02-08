@@ -1,10 +1,34 @@
 {
-"theSorcerer:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"theSorcerer:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+  "theSorcerer:FireAffinityPower": {
+    "NAME": "Fire Affinity",
+    "DESCRIPTIONS": ["Upon reaching #b", " #yFire #yAffinity or more become #yHeated"]
+  },
+  "theSorcerer:IceAffinityPower": {
+    "NAME": "Ice Affinity",
+    "DESCRIPTIONS": ["Upon reaching #b", " #yIce #yAffinity or more become #yChilled"]
+  },
+  "theSorcerer:HeatedPower": {
+    "NAME": "Heated",
+    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your #yFire attacks apply #b", " #yAblaze."]
+  },
+  "theSorcerer:ChilledPower": {
+    "NAME": "Chilled",
+    "DESCRIPTIONS": ["Gain #b", " #yDexterity. Whenever you fully #yBlock an attack, apply #b", " #yFrozen."]
+  },
+  "theSorcerer:AblazePower": {
+    "NAME": "Ablaze",
+    "DESCRIPTIONS": ["Target takes #b", " damage whenever they attack."]
+  },
+  "theSorcerer:FrozenPower": {
+    "NAME": "Ablaze",
+    "DESCRIPTIONS": ["Target takes #b", " damage whenever they get attacked."]
+  },
+  "theSorcerer:CommonPower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+  },
+  "theSorcerer:RarePower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
+  }
 }
