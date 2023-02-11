@@ -9,7 +9,7 @@
   },
   "theSorcerer:HeatedPower": {
     "NAME": "Heated",
-    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your #yFire attacks apply #b", " #yAblaze."]
+    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your unblocked attacks apply #b", " #yAblaze."]
   },
   "theSorcerer:ChilledPower": {
     "NAME": "Chilled",
@@ -20,7 +20,7 @@
     "DESCRIPTIONS": ["Target takes #b", " damage whenever they attack."]
   },
   "theSorcerer:FrozenPower": {
-    "NAME": "Ablaze",
+    "NAME": "Frozen",
     "DESCRIPTIONS": ["Target takes #b", " damage whenever they get attacked."]
   },
   "theSorcerer:CommonPower": {

@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import theSorcerer.cards.SorcererCard;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.cards.SorcererElementCard;
-import theSorcerer.powers.IceAffinityPower;
+import theSorcerer.powers.buff.IceAffinityPower;
 
 public abstract class SorcererIceCard extends SorcererElementCard<IceAffinityPower> {
 

@@ -1,12 +1,10 @@
 package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.SorcererCard;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.cards.SorcererElementCard;
-import theSorcerer.powers.FireAffinityPower;
-import theSorcerer.powers.IceAffinityPower;
+import theSorcerer.powers.buff.FireAffinityPower;
 
 public abstract class SorcererFireCard extends SorcererElementCard<FireAffinityPower> {
 

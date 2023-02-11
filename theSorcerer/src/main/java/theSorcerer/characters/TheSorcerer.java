@@ -162,6 +162,8 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(SorcererCard.getId(Scorch.class));
         retVal.add(SorcererCard.getId(Scorch.class));
         retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Scorch.class));
+        retVal.add(SorcererCard.getId(Ice.class));
         retVal.add(SorcererCard.getId(Ice.class));
         retVal.add(SorcererCard.getId(Ice.class));
         retVal.add(SorcererCard.getId(Ice.class));

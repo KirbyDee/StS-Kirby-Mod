@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.powers.AffinityPower;
+import theSorcerer.powers.buff.ElementAffinityPower;
 
-public abstract class SorcererElementCard<A extends AffinityPower> extends SorcererCard {
+public abstract class SorcererElementCard<A extends ElementAffinityPower> extends SorcererCard {
 
     public SorcererElementCard(
             Class<? extends SorcererCard> thisClazz,

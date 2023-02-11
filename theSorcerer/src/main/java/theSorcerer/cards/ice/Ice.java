@@ -3,6 +3,7 @@ package theSorcerer.cards.ice;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -16,7 +17,7 @@ public class Ice extends SorcererIceCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final int COST = 1;
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 2;
     // --- VALUES END ---
 
@@ -50,6 +51,12 @@ public class Ice extends SorcererIceCard {
                         m,
                         new DamageInfo(p, this.damage, this.damageTypeForTurn),
                         AbstractGameAction.AttackEffect.LIGHTNING
+                )
+        );
+        addToBot(
+                new GainBlockAction(
+                        p,
+                        2
                 )
         );
     }
