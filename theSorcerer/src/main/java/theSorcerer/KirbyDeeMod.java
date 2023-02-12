@@ -2,6 +2,7 @@ package theSorcerer;
 
 import basemod.*;
 import basemod.eventUtil.AddEventParams;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -24,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.cards.*;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
+import theSorcerer.glows.ElementCardGlow;
 import theSorcerer.potions.PlaceholderPotion;
 import theSorcerer.relics.BottledPlaceholderRelic;
 import theSorcerer.relics.DefaultClickableRelic;
@@ -374,6 +376,9 @@ public class KirbyDeeMod implements
 
         // Add the event
         BaseMod.addEvent(eventParams);
+
+        // =============== Glow =================
+        CardBorderGlowManager.addGlowInfo(new ElementCardGlow());
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");

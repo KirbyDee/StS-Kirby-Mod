@@ -158,16 +158,14 @@ public class TheSorcerer extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(SorcererCard.getId(Scorch.class));
-        retVal.add(SorcererCard.getId(Scorch.class));
-        retVal.add(SorcererCard.getId(Scorch.class));
-        retVal.add(SorcererCard.getId(Scorch.class));
-        retVal.add(SorcererCard.getId(Scorch.class));
-        retVal.add(SorcererCard.getId(Ice.class));
-        retVal.add(SorcererCard.getId(Ice.class));
-        retVal.add(SorcererCard.getId(Ice.class));
-        retVal.add(SorcererCard.getId(Ice.class));
-        retVal.add(SorcererCard.getId(Ice.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Ice.class));
+        retVal.add(DynamicCard.getID(Ice.class));
+        retVal.add(DynamicCard.getID(Elementmorphose.class));
+        retVal.add(DynamicCard.getID(Elementmorphose.class));
 
         retVal.add(DefaultCommonSkill.ID);
         retVal.add(DefaultCommonPower.ID);

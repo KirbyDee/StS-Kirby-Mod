@@ -58,6 +58,13 @@
     "DESCRIPTION": "Target takes damage equal to their #yFrozen amount whenever they get attacked."
   },
   {
+    "PROPER_NAME": "Flashback",
+    "NAMES": [
+      "flashback"
+    ],
+    "DESCRIPTION": "This card can be played from the discard pile. #yExhaust this card afterwards."
+  },
+  {
     "NAMES": [
       "keyword",
       "keywords"

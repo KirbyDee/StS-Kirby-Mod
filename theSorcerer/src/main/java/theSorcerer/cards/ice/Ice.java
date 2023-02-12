@@ -9,32 +9,33 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
-import theSorcerer.cards.fire.SorcererFireCard;
+import theSorcerer.cards.DynamicCard;
 
 public class Ice extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 2;
     // --- VALUES END ---
 
     public Ice() {
         super(
-                Ice.class,
-                COST,
-                CardType.ATTACK,
-                RARITY,
-                TARGET
+
+                DynamicCard.InfoBuilder(Ice.class)
+                        .cost(COST)
+                        .type(CardType.ATTACK)
+                        .rarity(RARITY)
+                        .target(TARGET)
         );
 
         baseDamage = DAMAGE;
     }
 
     @Override
-    public void onCardUse(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         // effect
         if (m != null) {
             if (Settings.FAST_MODE) {

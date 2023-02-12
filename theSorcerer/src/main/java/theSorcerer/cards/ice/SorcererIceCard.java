@@ -1,36 +1,19 @@
 package theSorcerer.cards.ice;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCard;
 import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.cards.SorcererElementCard;
-import theSorcerer.powers.buff.IceAffinityPower;
 
-public abstract class SorcererIceCard extends SorcererElementCard<IceAffinityPower> {
+public abstract class SorcererIceCard extends SorcererCard {
+
+    private static final String ICE_CARD_PREFIX = "thesorcerer:Ice NL ";
 
     public SorcererIceCard(
-            Class<? extends SorcererCard> thisClazz,
-            int cost,
-            CardType cardType,
-            CardRarity rarity,
-            CardTarget target
+            DynamicCard.InfoBuilder infoBuilder
     ) {
         super(
-                thisClazz,
-                cost,
-                cardType,
-                rarity,
-                target
+                infoBuilder
+                        .tags(SorcererCardTags.ICE)
         );
-    }
-
-    @Override
-    protected CardTags getElement() {
-        return SorcererCardTags.ICE;
-    }
-
-    @Override
-    protected IceAffinityPower getAffinityPower(AbstractPlayer p, int amount) {
-        return new IceAffinityPower(p, amount);
     }
 }

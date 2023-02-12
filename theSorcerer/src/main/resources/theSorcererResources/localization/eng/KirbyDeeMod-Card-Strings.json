@@ -9,7 +9,23 @@
   },
   "theSorcerer:Scorch": {
     "NAME": "Scorch",
-    "DESCRIPTION": "thesorcerer:Fire NL Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "theSorcerer:Ice": {
+    "NAME": "Some Ice Name",
+    "DESCRIPTION": "TODO."
+  },
+  "theSorcerer:Elementmorphose": {
+    "NAME": "Elementmorphose",
+    "DESCRIPTION": "TODO."
+  },
+  "theSorcerer:BaptismOfFire": {
+    "NAME": "Baptism of Fire",
+    "DESCRIPTION": "Metamorphose a card in your hand to become thesorcerer:Fire for the rest of combat."
+  },
+  "theSorcerer:ColdShower": {
+    "NAME": "Cold Shower",
+    "DESCRIPTION": "Metamorphose a card in your hand to become thesorcerer:Ice for the rest of combat."
   },
   "theSorcerer:DefaultCommonAttack": {
     "NAME": "Strike",

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
+import theSorcerer.cards.DynamicCard;
 
 public class Scorch extends SorcererFireCard {
 
@@ -21,18 +22,18 @@ public class Scorch extends SorcererFireCard {
 
     public Scorch() {
         super(
-                Scorch.class,
-                COST,
-                CardType.ATTACK,
-                RARITY,
-                TARGET
+                DynamicCard.InfoBuilder(Scorch.class)
+                        .cost(COST)
+                        .type(CardType.ATTACK)
+                        .rarity(RARITY)
+                        .target(TARGET)
         );
 
         baseDamage = DAMAGE;
     }
 
     @Override
-    public void onCardUse(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         // effect
         if (m != null) {
             if (Settings.FAST_MODE) {

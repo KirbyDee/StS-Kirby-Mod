@@ -1,41 +1,24 @@
 package theSorcerer.cards;
 
-import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import theSorcerer.KirbyDeeMod;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.characters.TheSorcerer;
 
-import static theSorcerer.KirbyDeeMod.makeCardPath;
-
-public abstract class SorcererCard extends CustomCard {
-
-    public static String getId(Class<? extends SorcererCard> thisClazz) {
-        return KirbyDeeMod.makeID(thisClazz.getSimpleName());
-    }
-
-    private static CardStrings getCardStrings(Class<? extends SorcererCard> thisClazz) {
-        return CardCrawlGame.languagePack.getCardStrings(getId(thisClazz));
-    }
+public abstract class SorcererCard extends DynamicCard {
 
     public SorcererCard(
-            Class<? extends SorcererCard> thisClazz,
-            int cost,
-            CardType cardType,
-            CardRarity rarity,
-            CardTarget target
+           DynamicCard.InfoBuilder infoBuilder
     ) {
         super(
-                getId(thisClazz),
-                getCardStrings(thisClazz).NAME,
-                makeCardPath(cardType, getCardStrings(thisClazz).NAME),
-                cost,
-                getCardStrings(thisClazz).DESCRIPTION,
-                cardType,
-                TheSorcerer.Enums.COLOR_ORANGE,
-                rarity,
-                target
+                infoBuilder
+                        .color(TheSorcerer.Enums.COLOR_ORANGE)
+                        .build()
         );
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return !this.unplayable && super.canUse(p, m);
     }
 
     @Override
