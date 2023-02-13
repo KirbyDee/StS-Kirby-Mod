@@ -7,31 +7,44 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.KirbyDeeMod;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class DynamicCard extends CustomCard {
 
+    public static String MOD_PREFIX = "thesorcerer:";
+
     public static final String NEW_LINE = " NL ";
 
-    public static final String MOD_PREFIX = "thesorcerer:";
+    public static final String PERIOD = ".";
 
-    public static final String ICE_CARD_PREFIX = "Ice";
+    public enum CardAbilityFix {
 
-    public static final String FIRE_CARD_PREFIX = "Fire";
+        PREFIX,
+        POSTFIX
+    }
 
-    public static final String UNPLAYABLE_PREFIX = "Unplayable.";
 
-    public static final String ETHEREAL_PREFIX = "Ethereal.";
+    public enum CardAbility {
+        FIRE(MOD_PREFIX + "Fire", CardAbilityFix.PREFIX),
+        ICE(MOD_PREFIX + "Ice", CardAbilityFix.PREFIX),
+        UNPLAYABLE("Unplayable", CardAbilityFix.PREFIX),
+        ETHEREAL("Ethereal", CardAbilityFix.PREFIX),
+        RETAIN("Retain", CardAbilityFix.PREFIX),
+        INNATE("Innate", CardAbilityFix.PREFIX),
+        EXHAUST("Exhaust", CardAbilityFix.POSTFIX),
+        FLASHBACK(MOD_PREFIX + "Flashback", CardAbilityFix.POSTFIX);
 
-    public static final String INNATE_PREFIX = "Innate.";
+        public final String text;
 
-    public static final String RETAIN_PREFIX = "Retain.";
+        public final CardAbilityFix fix;
 
-    public static final String FLASHBACK_POSTFIX = "Flashback.";
+        CardAbility(final String text, final CardAbilityFix fix) {
+            this.text = text;
+            this.fix = fix;
+        }
+    }
 
-    public static final String EXHAUST_POSTFIX = "Exhaust.";
+    protected final List<CardAbility> abilities = new ArrayList<>();
 
     protected boolean unplayable;
 
@@ -49,7 +62,9 @@ public abstract class DynamicCard extends CustomCard {
 
         private final Class<? extends DynamicCard> thisClazz;
 
-        private final List<CardTags> tags = new ArrayList<>();
+        private final Set<CardTags> tags = new HashSet<>();
+
+        private final Set<CardAbility> abilities = new HashSet<>();
 
         private CardType type = CardType.STATUS;
 
@@ -60,18 +75,6 @@ public abstract class DynamicCard extends CustomCard {
         private CardColor color = CardColor.COLORLESS;
 
         private int cost = -2;
-
-        private boolean unplayable = false;
-
-        private boolean ethereal = false;
-
-        private boolean innate = false;
-
-        private boolean retain = false;
-
-        private boolean flashback = false;
-
-        private boolean exhaust = false;
 
         public InfoBuilder(
                 Class<? extends DynamicCard> thisClazz
@@ -101,41 +104,28 @@ public abstract class DynamicCard extends CustomCard {
 
         public InfoBuilder tags(final CardTags... tags) {
             this.tags.addAll(Arrays.asList(tags));
+            if (this.tags.contains(SorcererCardTags.FIRE)) {
+                this.abilities.add(CardAbility.FIRE);
+            }
+            if (this.tags.contains(SorcererCardTags.ICE)) {
+                this.abilities.add(CardAbility.ICE);
+            }
+            return this;
+        }
+
+        public InfoBuilder abilities(final CardAbility... abilities) {
+            this.abilities.addAll(Arrays.asList(abilities));
+            if (this.abilities.contains(CardAbility.FIRE)) {
+                this.tags.add(SorcererCardTags.FIRE);
+            }
+            if (this.abilities.contains(CardAbility.ICE)) {
+                this.tags.add(SorcererCardTags.ICE);
+            }
             return this;
         }
 
         public InfoBuilder cost(final int cost) {
             this.cost = cost;
-            return this;
-        }
-
-        public InfoBuilder unplayable(final boolean unplayable) {
-            this.unplayable = unplayable;
-            return this;
-        }
-
-        public InfoBuilder ethereal(final boolean ethereal) {
-            this.ethereal = ethereal;
-            return this;
-        }
-
-        public InfoBuilder innate(final boolean innate) {
-            this.innate = innate;
-            return this;
-        }
-
-        public InfoBuilder retain(final boolean retain) {
-            this.retain = retain;
-            return this;
-        }
-
-        public InfoBuilder flashback(final boolean flashback) {
-            this.flashback = flashback;
-            return this;
-        }
-
-        public InfoBuilder exhaust(final boolean exhaust) {
-            this.exhaust = exhaust;
             return this;
         }
 
@@ -157,7 +147,9 @@ public abstract class DynamicCard extends CustomCard {
 
         public final Class<? extends DynamicCard> thisClazz;
 
-        public final List<CardTags> tags;
+        public final Set<CardTags> tags;
+
+        public final Set<CardAbility> abilities;
 
         public final CardType type;
 
@@ -168,18 +160,6 @@ public abstract class DynamicCard extends CustomCard {
         private final CardColor color;
 
         public final int cost;
-
-        public final boolean unplayable;
-
-        public final boolean ethereal;
-
-        public final boolean innate;
-
-        public final boolean retain;
-
-        public final boolean flashback;
-
-        public final boolean exhaust;
 
         public Info(
                 final String id,
@@ -192,17 +172,12 @@ public abstract class DynamicCard extends CustomCard {
             this.img = img;
             this.thisClazz = builder.thisClazz;
             this.tags = builder.tags;
+            this.abilities = builder.abilities;
             this.type = builder.type;
             this.rarity = builder.rarity;
             this.target = builder.target;
             this.color = builder.color;
             this.cost = builder.cost;
-            this.unplayable = builder.unplayable;
-            this.ethereal = builder.ethereal;
-            this.innate = builder.innate;
-            this.retain = builder.retain;
-            this.flashback = builder.flashback;
-            this.exhaust = builder.exhaust;
         }
     }
 
@@ -221,49 +196,28 @@ public abstract class DynamicCard extends CustomCard {
                 info.target
         );
         this.tags.addAll(info.tags);
-        this.unplayable = info.unplayable;
-        this.isEthereal = info.ethereal;
-        this.isInnate = info.innate;
-        this.retain = info.retain;
-        this.flashback = info.flashback;
-        this.exhaust = info.exhaust;
+        this.abilities.addAll(info.abilities);
+        this.unplayable = info.abilities.contains(CardAbility.UNPLAYABLE);
+        this.isEthereal = info.abilities.contains(CardAbility.ETHEREAL);
+        this.isInnate = info.abilities.contains(CardAbility.INNATE);
+        this.retain = info.abilities.contains(CardAbility.RETAIN);
+        this.flashback = info.abilities.contains(CardAbility.FLASHBACK);
+        this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
 
         updateDescription();
     }
 
     private void updateDescription() {
-        if (this.hasTag(SorcererCardTags.FIRE)) {
-            addPrefixDescription(MOD_PREFIX + FIRE_CARD_PREFIX);
-        }
-        else if (this.hasTag(SorcererCardTags.ICE)) {
-            addPrefixDescription(MOD_PREFIX + ICE_CARD_PREFIX);
-        }
-        if (this.unplayable) {
-            addPrefixDescription(UNPLAYABLE_PREFIX);
-        }
-        if (this.isEthereal) {
-            addPrefixDescription(ETHEREAL_PREFIX);
-        }
-        if (this.isInnate) {
-            addPrefixDescription(INNATE_PREFIX);
-        }
-        if (this.retain) {
-            addPrefixDescription(RETAIN_PREFIX);
-        }
-        if (this.flashback) {
-            addPostfixDescription(FLASHBACK_POSTFIX);
-        }
-        if (this.exhaust) {
-            addPostfixDescription(EXHAUST_POSTFIX);
-        }
+        this.abilities.forEach(this::computeDescription);
     }
 
-    private void addPrefixDescription(final String prefix) {
-        this.rawDescription = prefix + NEW_LINE + this.rawDescription;
-    }
-
-    private void addPostfixDescription(final String postfix) {
-        this.rawDescription = this.rawDescription + NEW_LINE + postfix;
+    private void computeDescription(final CardAbility ability) {
+        if (ability.fix == CardAbilityFix.PREFIX) {
+            this.rawDescription = ability.text + PERIOD + NEW_LINE + this.rawDescription;
+        }
+        else {
+            this.rawDescription = this.rawDescription + NEW_LINE + ability.text + PERIOD;
+        }
     }
 
     @Override

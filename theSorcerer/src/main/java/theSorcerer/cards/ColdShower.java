@@ -6,17 +6,12 @@ import theSorcerer.actions.ColdShowerAction;
 
 public class ColdShower extends DynamicCard {
 
-    // --- VALUES START ---
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardType CARD_TYPE = CardType.POWER;
-    // --- VALUES END ---
-
     public ColdShower() {
         super(
 
                 DynamicCard.InfoBuilder(ColdShower.class)
-                        .type(CARD_TYPE)
-                        .rarity(RARITY)
+                        .type(CardType.POWER)
+                        .rarity(CardRarity.SPECIAL)
                         .build()
         );
     }

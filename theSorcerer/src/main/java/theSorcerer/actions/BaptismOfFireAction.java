@@ -10,9 +10,9 @@ public class BaptismOfFireAction extends ElementmorphoseAction {
     ) {
         super(
                 SorcererCardTags.FIRE,
-                DynamicCard.FIRE_CARD_PREFIX,
+                DynamicCard.CardAbility.FIRE,
                 SorcererCardTags.ICE,
-                DynamicCard.ICE_CARD_PREFIX,
+                DynamicCard.CardAbility.ICE,
                 upgraded
         );
     }

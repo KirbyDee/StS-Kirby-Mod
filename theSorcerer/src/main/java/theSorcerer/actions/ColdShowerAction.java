@@ -10,9 +10,9 @@ public class ColdShowerAction extends ElementmorphoseAction {
     ) {
         super(
                 SorcererCardTags.ICE,
-                DynamicCard.ICE_CARD_PREFIX,
+                DynamicCard.CardAbility.ICE,
                 SorcererCardTags.FIRE,
-                DynamicCard.FIRE_CARD_PREFIX,
+                DynamicCard.CardAbility.FIRE,
                 upgraded
         );
     }

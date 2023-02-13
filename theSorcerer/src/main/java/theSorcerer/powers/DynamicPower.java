@@ -13,9 +13,9 @@ import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makePowerPath;
 
-public abstract class CustomPower extends AbstractPower implements CloneablePowerInterface {
+public abstract class DynamicPower extends AbstractPower implements CloneablePowerInterface {
 
-    private static final Logger LOG = LogManager.getLogger(CustomPower.class.getName());
+    private static final Logger LOG = LogManager.getLogger(DynamicPower.class.getName());
 
     private static Texture TEX_84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
 
@@ -23,7 +23,7 @@ public abstract class CustomPower extends AbstractPower implements CloneablePowe
 
     protected final String[] descriptions;
 
-    public CustomPower(
+    public DynamicPower(
             final AbstractCreature owner,
             final String powerID
     ) {

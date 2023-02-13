@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public abstract class SelfRemovablePower extends CustomPower {
+public abstract class SelfRemovablePower extends DynamicPower {
 
     private static final Logger LOG = LogManager.getLogger(SelfRemovablePower.class.getName());
 

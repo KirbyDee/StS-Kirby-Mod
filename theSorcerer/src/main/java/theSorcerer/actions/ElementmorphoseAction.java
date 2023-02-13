@@ -12,20 +12,21 @@ import java.util.ArrayList;
 public abstract class ElementmorphoseAction extends AbstractGameAction {
 
     // --- VALUES START ---
+    private final static String TEXT = "metamorphose to ";
     private final AbstractPlayer player;
     private final ArrayList<AbstractCard> cannotBecomeElement = new ArrayList<>();
     private final AbstractCard.CardTags elementToMetamorph;
-    private final String elementToMetamorphPrefix;
+    private final DynamicCard.CardAbility elementToMetamorphPrefix;
     private final AbstractCard.CardTags oppositeElement;
-    private final String oppositeElementPrefix;
+    private final DynamicCard.CardAbility oppositeElementPrefix;
     private final boolean upgraded;
     // --- VALUES END ---
 
     public ElementmorphoseAction(
             final AbstractCard.CardTags elementToMetamorph,
-            final String elementToMetamorphPrefix,
+            final DynamicCard.CardAbility elementToMetamorphPrefix,
             final AbstractCard.CardTags oppositeElement,
-            final String oppositeElementPrefix,
+            final DynamicCard.CardAbility oppositeElementPrefix,
             final boolean upgraded
     ) {
         this.actionType = ActionType.CARD_MANIPULATION;
@@ -83,7 +84,7 @@ public abstract class ElementmorphoseAction extends AbstractGameAction {
         card.tags.add(this.elementToMetamorph);
         if (card.hasTag(this.oppositeElement)) {
             card.tags.remove(this.oppositeElement);
-            card.rawDescription = card.rawDescription.replace(this.oppositeElementPrefix, this.elementToMetamorphPrefix);
+            card.rawDescription = card.rawDescription.replace(this.oppositeElementPrefix.text, this.elementToMetamorphPrefix.text);
         }
         else {
             card.rawDescription = DynamicCard.MOD_PREFIX + this.elementToMetamorphPrefix + DynamicCard.NEW_LINE + card.rawDescription;
@@ -113,7 +114,7 @@ public abstract class ElementmorphoseAction extends AbstractGameAction {
 
     private void showCardSelectionScreen() {
         this.player.hand.group.removeAll(this.cannotBecomeElement);
-        AbstractDungeon.handCardSelectScreen.open("HELLO!!", 1, false, false); // TODO
+        AbstractDungeon.handCardSelectScreen.open(TEXT + elementToMetamorphPrefix, 1, false, false); // TODO
         tickDuration();
     }
 

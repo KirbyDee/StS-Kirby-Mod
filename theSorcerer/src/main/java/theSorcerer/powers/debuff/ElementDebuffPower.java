@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theSorcerer.powers.CustomPower;
+import theSorcerer.powers.DynamicPower;
 
-public abstract class ElementDebuffPower extends CustomPower {
+public abstract class ElementDebuffPower extends DynamicPower {
 
     protected final boolean isSourceMonster;
 

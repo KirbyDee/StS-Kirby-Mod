@@ -14,8 +14,6 @@ import theSorcerer.cards.DynamicCard;
 public class Ice extends SorcererIceCard {
 
     // --- VALUES START ---
-    private static final CardRarity RARITY = CardRarity.BASIC;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final int COST = 2;
     private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 2;
@@ -27,8 +25,8 @@ public class Ice extends SorcererIceCard {
                 DynamicCard.InfoBuilder(Ice.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(RARITY)
-                        .target(TARGET)
+                        .rarity(CardRarity.BASIC)
+                        .target(CardTarget.ENEMY)
         );
 
         baseDamage = DAMAGE;

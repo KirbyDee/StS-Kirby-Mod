@@ -33,7 +33,7 @@
     "NAMES": [
       "ice"
     ],
-    "DESCRIPTION": "Upon playing a #yIce card, increase your #yIce #yAffinity by the amount of the cost of the card played."
+    "DESCRIPTION": "Upon playing an #yIce card, increase your #yIce #yAffinity by the amount of the cost of the card played."
   },
   {
     "PROPER_NAME": "Ice Affinity",

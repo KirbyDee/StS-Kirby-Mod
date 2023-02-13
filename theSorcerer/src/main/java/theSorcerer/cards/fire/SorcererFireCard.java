@@ -10,8 +10,7 @@ public abstract class SorcererFireCard extends SorcererCard {
             DynamicCard.InfoBuilder infoBuilder
     ) {
         super(
-                infoBuilder
-                        .tags(SorcererCardTags.FIRE)
+                infoBuilder.tags(SorcererCardTags.FIRE)
         );
     }
 }

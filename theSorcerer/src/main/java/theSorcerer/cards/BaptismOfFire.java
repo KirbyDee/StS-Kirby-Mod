@@ -6,17 +6,12 @@ import theSorcerer.actions.BaptismOfFireAction;
 
 public class BaptismOfFire extends DynamicCard {
 
-    // --- VALUES START ---
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardType CARD_TYPE = CardType.POWER;
-    // --- VALUES END ---
-
     public BaptismOfFire() {
         super(
 
                 DynamicCard.InfoBuilder(BaptismOfFire.class)
-                        .type(CARD_TYPE)
-                        .rarity(RARITY)
+                        .type(CardType.POWER)
+                        .rarity(CardRarity.SPECIAL)
                         .build()
         );
     }
