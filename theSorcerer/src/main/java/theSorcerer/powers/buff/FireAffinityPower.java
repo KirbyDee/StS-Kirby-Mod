@@ -14,7 +14,12 @@ public class FireAffinityPower extends ElementAffinityPower<HeatedPower> {
             final AbstractCreature owner,
             final int amount
     ) {
-        super(owner, amount, POWER_ID, IceAffinityPower.POWER_ID);
+        super(
+                owner,
+                amount,
+                POWER_ID,
+                IceAffinityPower.POWER_ID
+        );
     }
 
     @Override

@@ -162,10 +162,15 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Ice.class));
         retVal.add(DynamicCard.getID(Ice.class));
         retVal.add(DynamicCard.getID(Elementmorphose.class));
         retVal.add(DynamicCard.getID(Elementmorphose.class));
+        retVal.add(DynamicCard.getID(Tradeoff.class));
+        retVal.add(DynamicCard.getID(Tradeoff.class));
+        retVal.add(DynamicCard.getID(Tradeoff.class));
 
         retVal.add(DefaultCommonSkill.ID);
         retVal.add(DefaultCommonPower.ID);

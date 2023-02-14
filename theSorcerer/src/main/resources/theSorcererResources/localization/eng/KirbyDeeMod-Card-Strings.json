@@ -21,11 +21,15 @@
   },
   "theSorcerer:BaptismOfFire": {
     "NAME": "Baptism of Fire",
-    "DESCRIPTION": "Metamorphose a card in your hand to become thesorcerer:Fire for the rest of combat."
+    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Fire for the rest of combat."
   },
   "theSorcerer:ColdShower": {
     "NAME": "Cold Shower",
-    "DESCRIPTION": "Metamorphose a card in your hand to become thesorcerer:Ice for the rest of combat."
+    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Ice for the rest of combat."
+  },
+  "theSorcerer:Tradeoff": {
+    "NAME": "Tradeoff",
+    "DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:M2!. NL Gain [E]."
   },
   "theSorcerer:DefaultCommonAttack": {
     "NAME": "Strike",

@@ -23,6 +23,6 @@ public class ColdShower extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new ColdShowerAction(this.upgraded));
+        addToBot(new ColdShowerAction());
     }
 }

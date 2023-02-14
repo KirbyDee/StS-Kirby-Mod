@@ -29,14 +29,18 @@ public class ElementAffinityPatch {
                 LOG.debug("Checked cards are not the same -> NOP");
                 return;
             }
+            if (c.costForTurn <= 0) {
+                LOG.debug("Cost of card is 0 or less -> NOP");
+                return;
+            }
 
             AbstractPlayer player = AbstractDungeon.player;
-            LOG.info("Card: " + self.name + " - " + self.tags);
+            LOG.debug("Card: " + self.name + " - " + self.tags);
             if (self.hasTag(SorcererCardTags.FIRE)) {
-                increaseElementAffinity(self, player, new FireAffinityPower(player, self.cost));
+                increaseElementAffinity(self, player, new FireAffinityPower(player, self.costForTurn));
             }
             else if (self.hasTag(SorcererCardTags.ICE)) {
-                increaseElementAffinity(self, player, new IceAffinityPower(player, self.cost));
+                increaseElementAffinity(self, player, new IceAffinityPower(player, self.costForTurn));
             }
         }
 
@@ -46,7 +50,7 @@ public class ElementAffinityPatch {
                             p,
                             p,
                             elementAffinityPower,
-                            self.cost
+                            self.costForTurn
                     )
             );
         }

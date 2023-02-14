@@ -23,6 +23,6 @@ public class BaptismOfFire extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new BaptismOfFireAction(this.upgraded));
+        addToBot(new BaptismOfFireAction());
     }
 }

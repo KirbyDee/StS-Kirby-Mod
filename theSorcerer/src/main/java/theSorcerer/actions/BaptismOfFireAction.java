@@ -5,15 +5,12 @@ import theSorcerer.cards.SorcererCardTags;
 
 public class BaptismOfFireAction extends ElementmorphoseAction {
 
-    public BaptismOfFireAction(
-            boolean upgraded
-    ) {
+    public BaptismOfFireAction() {
         super(
                 SorcererCardTags.FIRE,
                 DynamicCard.CardAbility.FIRE,
                 SorcererCardTags.ICE,
-                DynamicCard.CardAbility.ICE,
-                upgraded
+                DynamicCard.CardAbility.ICE
         );
     }
 }

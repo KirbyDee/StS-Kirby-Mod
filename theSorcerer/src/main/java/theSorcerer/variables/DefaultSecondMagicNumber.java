@@ -7,7 +7,6 @@ import theSorcerer.cards.AbstractDefaultCard;
 import static theSorcerer.KirbyDeeMod.makeID;
 
 public class DefaultSecondMagicNumber extends DynamicVariable {
-
     //For in-depth comments, check the other variable(DefaultCustomVariable). It's nearly identical.
 
     @Override

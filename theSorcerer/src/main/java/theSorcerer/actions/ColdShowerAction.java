@@ -5,15 +5,12 @@ import theSorcerer.cards.SorcererCardTags;
 
 public class ColdShowerAction extends ElementmorphoseAction {
 
-    public ColdShowerAction(
-            boolean upgraded
-    ) {
+    public ColdShowerAction() {
         super(
                 SorcererCardTags.ICE,
                 DynamicCard.CardAbility.ICE,
                 SorcererCardTags.FIRE,
-                DynamicCard.CardAbility.FIRE,
-                upgraded
+                DynamicCard.CardAbility.FIRE
         );
     }
 }

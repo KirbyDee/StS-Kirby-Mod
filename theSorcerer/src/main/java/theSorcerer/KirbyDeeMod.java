@@ -36,6 +36,7 @@ import theSorcerer.util.TextureLoader;
 import theSorcerer.variables.CostVariable;
 import theSorcerer.variables.DefaultCustomVariable;
 import theSorcerer.variables.DefaultSecondMagicNumber;
+import theSorcerer.variables.SecondMagicNumber;
 
 import java.io.File;
 import java.io.InputStream;
@@ -446,6 +447,7 @@ public class KirbyDeeMod implements
         BaseMod.addDynamicVariable(new CostVariable());
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new SecondMagicNumber());
         
         logger.info("Adding cards");
         // Add the cards

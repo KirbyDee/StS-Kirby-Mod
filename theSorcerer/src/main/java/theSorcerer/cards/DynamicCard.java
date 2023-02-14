@@ -46,9 +46,17 @@ public abstract class DynamicCard extends CustomCard {
 
     protected final List<CardAbility> abilities = new ArrayList<>();
 
-    protected boolean unplayable;
+    public int baseSecondMagicNumber;
 
-    protected boolean flashback;
+    public int secondMagicNumber;
+
+    public boolean upgradedSecondMagicNumber;
+
+    public boolean isSecondMagicNumberModified;
+
+    public boolean unplayable;
+
+    public boolean flashback;
 
     public static String getID(Class<? extends DynamicCard> thisClazz) {
         return KirbyDeeMod.makeID(thisClazz.getSimpleName());
@@ -205,6 +213,21 @@ public abstract class DynamicCard extends CustomCard {
         this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
 
         updateDescription();
+    }
+
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if (this.upgradedSecondMagicNumber) {
+            this.secondMagicNumber = this.baseSecondMagicNumber;
+            this.isSecondMagicNumberModified = true;
+        }
+
+    }
+
+    public void upgradeSecondMagicNumber(int amount) {
+        this.baseSecondMagicNumber += amount;
+        this.secondMagicNumber =  this.baseSecondMagicNumber;
+        this.upgradedSecondMagicNumber = true;
     }
 
     private void updateDescription() {

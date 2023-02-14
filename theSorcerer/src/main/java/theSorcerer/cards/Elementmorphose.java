@@ -16,7 +16,6 @@ public class Elementmorphose extends SorcererCard {
 
     public Elementmorphose() {
         super(
-
                 DynamicCard.InfoBuilder(Elementmorphose.class)
                         .cost(COST)
                         .type(CardType.SKILL)
@@ -35,7 +34,7 @@ public class Elementmorphose extends SorcererCard {
             choices.forEach(AbstractCard::upgrade);
         }
 
-        this.addToBot(new ChooseOneAction(choices));
+        addToBot(new ChooseOneAction(choices));
     }
 
     protected void upgradeValues() {
