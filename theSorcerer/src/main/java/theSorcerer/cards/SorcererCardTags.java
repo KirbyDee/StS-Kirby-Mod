@@ -7,5 +7,8 @@ public class SorcererCardTags {
 
     @SpireEnum public static AbstractCard.CardTags FIRE;
     @SpireEnum public static AbstractCard.CardTags ICE;
-    @SpireEnum public static AbstractCard.CardTags ARCANE;
+
+    @SpireEnum public static AbstractCard.CardTags FLASHBACK;
+
+    @SpireEnum public static AbstractCard.CardTags FUTURITY;
 }

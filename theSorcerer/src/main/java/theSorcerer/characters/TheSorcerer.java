@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
 import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.WellPrepared;
 import theSorcerer.cards.ice.Ice;
 import theSorcerer.relics.DefaultClickableRelic;
 import theSorcerer.relics.PlaceholderRelic;
@@ -66,8 +67,8 @@ public class TheSorcerer extends CustomPlayer {
     public static final int STARTING_HP = 75;
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
-    public static final int CARD_DRAW = 9;
-    public static final int ORB_SLOTS = 3;
+    public static final int CARD_DRAW = 5;
+    public static final int ORB_SLOTS = 0;
 
     // =============== /BASE STATS/ =================
 
@@ -146,9 +147,19 @@ public class TheSorcerer extends CustomPlayer {
     // Starting description and loadout
     @Override
     public CharSelectInfo getLoadout() {
-        return new CharSelectInfo(NAMES[0], TEXT[0],
-                STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
-                getStartingDeck(), false);
+        return new CharSelectInfo(
+                NAMES[0],
+                TEXT[0],
+                STARTING_HP,
+                MAX_HP,
+                ORB_SLOTS,
+                STARTING_GOLD,
+                CARD_DRAW,
+                this,
+                getStartingRelics(),
+                getStartingDeck(),
+                false
+        );
     }
 
     // Starting Deck
@@ -162,8 +173,6 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Ice.class));
         retVal.add(DynamicCard.getID(Ice.class));
         retVal.add(DynamicCard.getID(Elementmorphose.class));
@@ -171,6 +180,7 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(Tradeoff.class));
         retVal.add(DynamicCard.getID(Tradeoff.class));
         retVal.add(DynamicCard.getID(Tradeoff.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
 
         retVal.add(DefaultCommonSkill.ID);
         retVal.add(DefaultCommonPower.ID);

@@ -25,22 +25,21 @@ public class Tradeoff extends SorcererCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
-                        .abilities(CardAbility.FLASHBACK)
+                        .magicNumber(CARD_AMOUNT_DRAW)
+                        .secondMagicNumber(CARD_COST_INCREASE)
         );
-        this.baseMagicNumber = CARD_AMOUNT_DRAW;
-        this.baseSecondMagicNumber = CARD_COST_INCREASE;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // draw cards
-        addToBot(new DrawCardAction(this.upgraded ? UPGRADE_CARD_AMOUNT_DRAW : CARD_AMOUNT_DRAW));
+        addToBot(new DrawCardAction(this.magicNumber));
 
         // increase cost this turn of a card in hand
-        addToBot(new CardCostIncreaseAction(CARD_AMOUNT_TO_INCREASE, this.upgraded ? UPGRADE_CARD_COST_INCREASE : CARD_COST_INCREASE));
+        addToBot(new CardCostIncreaseAction(CARD_AMOUNT_TO_INCREASE, this.baseSecondMagicNumber));
 
         // increase energy
-        addToBot(new GainEnergyAction(this.upgraded ? UPGRADE_ENERGY_GAIN : ENERGY_GAIN)); // TODO in strings
+        addToBot(new GainEnergyAction(this.upgraded ? UPGRADE_ENERGY_GAIN : ENERGY_GAIN)); // TODO in strings: AbstractCard.getEnergyFont()
     }
 
     protected void upgradeValues() {

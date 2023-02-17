@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theSorcerer.cards.SorcererCardTags;
 
-public class ElementCardGlow extends CardBorderGlowManager.GlowInfo {
+public class ElementGlow extends CardBorderGlowManager.GlowInfo {
 
     public static final String GLOW_ID = "theSorcerer:ElementGlow";
 

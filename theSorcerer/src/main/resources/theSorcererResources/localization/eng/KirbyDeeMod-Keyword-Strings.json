@@ -15,20 +15,6 @@
     "DESCRIPTION": "Upon reaching 3 #yFire #yAffinity or more become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your turn."
   },
   {
-    "PROPER_NAME": "Heated",
-    "NAMES": [
-      "heated"
-    ],
-    "DESCRIPTION": "Gain #yStrength the amount of #yFire #yAffinity you have. Your #yFire attacks also apply the same amount of #yAblaze."
-  },
-  {
-    "PROPER_NAME": "Ablaze",
-    "NAMES": [
-      "ablaze"
-    ],
-    "DESCRIPTION": "Target takes damage equal to their #yAblaze amount whenever they attack."
-  },
-  {
     "PROPER_NAME": "Ice",
     "NAMES": [
       "ice"
@@ -44,42 +30,17 @@
     "DESCRIPTION": "Upon reaching 3 #yIce #yAffinity or more become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your turn."
   },
   {
-    "PROPER_NAME": "Chilled",
-    "NAMES": [
-      "chilled"
-    ],
-    "DESCRIPTION": "Gain #yDexterity the amount of #yIce #yAffinity you have. Also, whenever you fully #yBlock an attack, apply the same amount of #yFrozen."
-  },
-  {
-    "PROPER_NAME": "Frozen",
-    "NAMES": [
-      "frozen"
-    ],
-    "DESCRIPTION": "Target takes damage equal to their #yFrozen amount whenever they get attacked."
-  },
-  {
     "PROPER_NAME": "Flashback",
     "NAMES": [
       "flashback"
     ],
-    "DESCRIPTION": "This card can be played from the discard pile. #yExhaust this card afterwards."
+    "DESCRIPTION": "Clicking on this card in the #yDiscard #yPile will put it in your hand. This card then becomes #yEthereal and #yExhaust"
   },
   {
+    "PROPER_NAME": "Futurity",
     "NAMES": [
-      "keyword",
-      "keywords"
+      "futurity"
     ],
-    "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
-  },
-  {
-    "PROPER_NAME": "Multiword Keyword",
-    "NAMES": [
-      "Multiword Keyword",
-      "multiword_keyword",
-      "multiword_keywords",
-      "multikey",
-      "multikeyword"
-    ],
-    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+    "DESCRIPTION": "Clicking on this card in the #yDraw #yPile will put it in your hand. This card then becomes #yEthereal and #yExhaust"
   }
 ]

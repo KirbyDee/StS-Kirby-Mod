@@ -31,6 +31,10 @@
     "NAME": "Tradeoff",
     "DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:M2!. NL Gain [E]."
   },
+  "theSorcerer:WellPrepared": {
+    "NAME": "Well Prepared",
+    "DESCRIPTION": "Draw !M! cards."
+  },
   "theSorcerer:DefaultCommonAttack": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
