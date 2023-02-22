@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.patches.cards.CardAbility;
 
 import java.util.ArrayList;
 

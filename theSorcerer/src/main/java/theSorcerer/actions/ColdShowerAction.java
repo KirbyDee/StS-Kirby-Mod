@@ -1,16 +1,16 @@
 package theSorcerer.actions;
 
-import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public class ColdShowerAction extends ElementmorphoseAction {
 
     public ColdShowerAction() {
         super(
                 SorcererCardTags.ICE,
-                DynamicCard.CardAbility.ICE,
+                CardAbility.ICE,
                 SorcererCardTags.FIRE,
-                DynamicCard.CardAbility.FIRE
+                CardAbility.FIRE
         );
     }
 }

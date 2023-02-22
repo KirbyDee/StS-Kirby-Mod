@@ -2,7 +2,9 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import org.apache.commons.lang3.StringUtils;
-import theSorcerer.cards.DynamicCard;
+import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.patches.cards.CardUtil;
 
 public abstract class ElementmorphoseAction extends CardChooseAction {
 
@@ -11,16 +13,16 @@ public abstract class ElementmorphoseAction extends CardChooseAction {
     private final static String TEXT_2 = " for the rest of the Combat";
     private final static int CARDS_TO_CHOOSE = 1;
     private final AbstractCard.CardTags elementToMetamorph;
-    private final DynamicCard.CardAbility elementToMetamorphPrefix;
+    private final CardAbility elementToMetamorphPrefix;
     private final AbstractCard.CardTags oppositeElement;
-    private final DynamicCard.CardAbility oppositeElementPrefix;
+    private final CardAbility oppositeElementPrefix;
     // --- VALUES END ---
 
     public ElementmorphoseAction(
             final AbstractCard.CardTags elementToMetamorph,
-            final DynamicCard.CardAbility elementToMetamorphPrefix,
+            final CardAbility elementToMetamorphPrefix,
             final AbstractCard.CardTags oppositeElement,
-            final DynamicCard.CardAbility oppositeElementPrefix
+            final CardAbility oppositeElementPrefix
     ) {
         super(CARDS_TO_CHOOSE);
         this.elementToMetamorph = elementToMetamorph;
@@ -38,14 +40,19 @@ public abstract class ElementmorphoseAction extends CardChooseAction {
 
     @Override
     protected void onCardChosen(AbstractCard card) {
+        // reset raw description to remove added abilities
+        card.rawDescription = AbstractCardPatch.baseRawDescription.get(card);
+
+        // add/remove element to/from tags & abilities
         card.tags.add(this.elementToMetamorph);
-        if (card.hasTag(this.oppositeElement)) {
-            card.tags.remove(this.oppositeElement);
-            card.rawDescription = card.rawDescription.replace(this.oppositeElementPrefix.text, this.elementToMetamorphPrefix.text);
-        }
-        else {
-            card.rawDescription = this.elementToMetamorphPrefix.text + DynamicCard.NEW_LINE + card.rawDescription;
-        }
+        card.tags.remove(this.oppositeElement);
+        AbstractCardPatch.abilities.get(card).add(CardAbility.from(this.elementToMetamorph));
+        AbstractCardPatch.abilities.get(card).remove(CardAbility.from(this.oppositeElement));
+
+        // add all correct abilities again to description
+        AbstractCardPatch.abilities.get(card).forEach(a -> a.addDescription(card));
+
+        // apply flash, powers and init shown description
         card.superFlash();
         card.applyPowers();
         card.initializeDescription();

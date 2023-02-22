@@ -9,12 +9,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.SorcererCardTags;
 
 public class Scorch extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DMG = 2;
     // --- VALUES END ---
 
@@ -25,9 +26,9 @@ public class Scorch extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.BASIC)
                         .target(CardTarget.ENEMY)
+                        .tags(SorcererCardTags.FLASHBACK)
+                        .damage(DAMAGE)
         );
-
-        baseDamage = DAMAGE;
     }
 
     @Override

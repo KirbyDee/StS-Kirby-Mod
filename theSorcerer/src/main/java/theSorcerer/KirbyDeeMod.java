@@ -26,7 +26,6 @@ import theSorcerer.cards.*;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
 import theSorcerer.glows.ElementGlow;
-import theSorcerer.glows.FlashbackGlow;
 import theSorcerer.potions.PlaceholderPotion;
 import theSorcerer.relics.BottledPlaceholderRelic;
 import theSorcerer.relics.DefaultClickableRelic;
@@ -381,7 +380,6 @@ public class KirbyDeeMod implements
 
         // =============== Glow =================
         CardBorderGlowManager.addGlowInfo(new ElementGlow());
-        CardBorderGlowManager.addGlowInfo(new FlashbackGlow());
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");

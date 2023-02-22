@@ -2,7 +2,9 @@ package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,20 +16,16 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
 
     private final String thisElementID;
 
-    private final String otherElementID;
-
     protected int affinityAmount;
 
     public ElementEvolvePower(
             final AbstractCreature owner,
             final int affinityAmount,
             final String thisEvolvedPowerID,
-            final String thisElementID,
-            final String otherElementID
+            final String thisElementID
     ) {
         super(owner, thisEvolvedPowerID);
         this.thisElementID = thisElementID;
-        this.otherElementID = otherElementID;
         this.type = PowerType.BUFF;
         this.affinityAmount = affinityAmount;
         this.isTurnBased = true;
@@ -75,13 +73,19 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
     protected abstract String getExtraPowerId();
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.ID.equals(this.otherElementID)) {
-            LOG.info(this.otherElementID + " applied, but " + this.ID + " already existing -> remove " + this.ID);
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        AbstractCard.CardTags tag = getAffinityLoseTag();
+        if (card.tags.contains(tag)) {
+            LOG.info(tag + " applied, but " + this.ID + " already existing -> remove " + this.ID);
             removeSelf();
             reduceExtraPower();
         }
+    }
 
+    protected abstract AbstractCard.CardTags getAffinityLoseTag();
+
+    @Override
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power.ID.equals(this.thisElementID)) {
             int stackAmount = power.amount;
             this.affinityAmount += stackAmount;

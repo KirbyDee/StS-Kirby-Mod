@@ -2,69 +2,16 @@ package theSorcerer.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.KirbyDeeMod;
+import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.patches.cards.CardAbility;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public abstract class DynamicCard extends CustomCard {
-
-    public static String MOD_PREFIX = "thesorcerer:";
-
-    public static final String NEW_LINE = " NL ";
-
-    public static final String PERIOD = ".";
-
-    public enum CardAbilityFix {
-
-        PREFIX,
-        POSTFIX
-    }
-
-
-    public enum CardAbility {
-        FIRE(MOD_PREFIX + "Fire", CardAbilityFix.PREFIX),
-        ICE(MOD_PREFIX + "Ice", CardAbilityFix.PREFIX),
-        UNPLAYABLE("Unplayable", CardAbilityFix.PREFIX),
-        ETHEREAL("Ethereal", CardAbilityFix.PREFIX),
-        RETAIN("Retain", CardAbilityFix.PREFIX),
-        INNATE("Innate", CardAbilityFix.PREFIX),
-        EXHAUST("Exhaust", CardAbilityFix.POSTFIX),
-        FUTURITY(MOD_PREFIX + "Futurity", CardAbilityFix.POSTFIX),
-        FLASHBACK(MOD_PREFIX + "Flashback", CardAbilityFix.POSTFIX);
-
-        public final String text;
-
-        public final CardAbilityFix fix;
-
-        CardAbility(final String text, final CardAbilityFix fix) {
-            this.text = text;
-            this.fix = fix;
-        }
-
-        public void addDescription(AbstractCard card) {
-            if (fix == CardAbilityFix.PREFIX) {
-                card.rawDescription = text + PERIOD + NEW_LINE + card.rawDescription;
-            }
-            else {
-                card.rawDescription = card.rawDescription + NEW_LINE + text + PERIOD;
-            }
-        }
-
-        public void removeDescription(AbstractCard card) {
-            if (fix == CardAbilityFix.PREFIX) {
-                card.rawDescription = card.rawDescription.replace(text + PERIOD + NEW_LINE, "");
-            }
-            else {
-                card.rawDescription = card.rawDescription.replace(NEW_LINE + text + PERIOD, "");
-            }
-        }
-    }
-
-    protected final List<CardAbility> abilities = new ArrayList<>();
 
     public int baseSecondMagicNumber;
 
@@ -73,10 +20,6 @@ public abstract class DynamicCard extends CustomCard {
     public boolean upgradedSecondMagicNumber;
 
     public boolean isSecondMagicNumberModified;
-
-    public boolean unplayable;
-
-    public boolean flashback;
 
     public static String getID(Class<? extends DynamicCard> thisClazz) {
         return KirbyDeeMod.makeID(thisClazz.getSimpleName());
@@ -103,6 +46,10 @@ public abstract class DynamicCard extends CustomCard {
         private CardColor color = CardColor.COLORLESS;
 
         private int cost = -2;
+
+        private int damage = -1;
+
+        private int block = -1;
 
         private int magicNumber = -1;
 
@@ -135,43 +82,37 @@ public abstract class DynamicCard extends CustomCard {
         }
 
         public InfoBuilder tags(final CardTags... tags) {
-            this.tags.addAll(Arrays.asList(tags));
-
-            // TODO better?
-            if (this.tags.contains(SorcererCardTags.FIRE)) {
-                this.abilities.add(CardAbility.FIRE);
-            }
-            if (this.tags.contains(SorcererCardTags.ICE)) {
-                this.abilities.add(CardAbility.ICE);
-            }
-            if (this.tags.contains(SorcererCardTags.FLASHBACK)) {
-                this.abilities.add(CardAbility.FLASHBACK);
-            }
-            if (this.tags.contains(SorcererCardTags.FUTURITY)) {
-                this.abilities.add(CardAbility.FUTURITY);
-            }
+            final List<CardTags> tagsList = Arrays.asList(tags);
+            this.tags.addAll(tagsList);
+            this.tags.stream()
+                    .map(CardAbility::from)
+                    .filter(CardAbility::isNotEmpty)
+                    .forEach(this.abilities::add);
             return this;
         }
 
         public InfoBuilder abilities(final CardAbility... abilities) {
-            this.abilities.addAll(Arrays.asList(abilities));
-            if (this.abilities.contains(CardAbility.FIRE)) {
-                this.tags.add(SorcererCardTags.FIRE);
-            }
-            if (this.abilities.contains(CardAbility.ICE)) {
-                this.tags.add(SorcererCardTags.ICE);
-            }
-            if (this.abilities.contains(CardAbility.FLASHBACK)) {
-                this.tags.add(SorcererCardTags.FLASHBACK);
-            }
-            if (this.abilities.contains(CardAbility.FUTURITY)) {
-                this.tags.add(SorcererCardTags.FUTURITY);
-            }
+            final List<CardAbility> abilityList = Arrays.asList(abilities);
+            this.abilities.addAll(abilityList);
+            abilityList.stream()
+                    .map(a -> a.tag)
+                    .filter(t -> t != CardTags.EMPTY)
+                    .forEach(this.tags::add);
             return this;
         }
 
         public InfoBuilder cost(final int cost) {
             this.cost = cost;
+            return this;
+        }
+
+        public InfoBuilder damage(final int damage) {
+            this.damage = damage;
+            return this;
+        }
+
+        public InfoBuilder block(final int block) {
+            this.block = block;
             return this;
         }
 
@@ -217,6 +158,10 @@ public abstract class DynamicCard extends CustomCard {
 
         public final int cost;
 
+        public final int damage;
+
+        public final int block;
+
         public final int magicNumber;
 
         public final int secondMagicNumber;
@@ -238,6 +183,8 @@ public abstract class DynamicCard extends CustomCard {
             this.target = builder.target;
             this.color = builder.color;
             this.cost = builder.cost;
+            this.damage = builder.damage;
+            this.block = builder.block;
             this.magicNumber = builder.magicNumber;
             this.secondMagicNumber = builder.secondMagicNumber;
         }
@@ -258,13 +205,16 @@ public abstract class DynamicCard extends CustomCard {
                 info.target
         );
         this.tags.addAll(info.tags);
-        this.abilities.addAll(info.abilities);
-        this.unplayable = info.abilities.contains(CardAbility.UNPLAYABLE);
         this.isEthereal = info.abilities.contains(CardAbility.ETHEREAL);
         this.isInnate = info.abilities.contains(CardAbility.INNATE);
         this.retain = info.abilities.contains(CardAbility.RETAIN);
-        this.flashback = info.abilities.contains(CardAbility.FLASHBACK);
         this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
+        AbstractCardPatch.unplayable.set(this, info.abilities.contains(CardAbility.UNPLAYABLE));
+        AbstractCardPatch.flashback.set(this, info.abilities.contains(CardAbility.FLASHBACK));
+        AbstractCardPatch.futurity.set(this, info.abilities.contains(CardAbility.FUTURITY));
+        AbstractCardPatch.abilities.get(this).addAll(info.abilities);
+        this.baseDamage = info.damage;
+        this.baseBlock = info.block;
         this.baseMagicNumber = info.magicNumber;
         this.baseSecondMagicNumber = info.secondMagicNumber;
 
@@ -287,13 +237,20 @@ public abstract class DynamicCard extends CustomCard {
         this.upgradedSecondMagicNumber = true;
     }
 
+    @Override
+    public void resetAttributes() {
+        super.resetAttributes();
+        this.secondMagicNumber = this.baseSecondMagicNumber;
+        this.isSecondMagicNumberModified = false;
+    }
+
     private void updateDescription() {
-        this.abilities.forEach(a -> a.addDescription(this));
+        AbstractCardPatch.abilities.get(this).forEach(a -> a.addDescription(this));
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return !this.unplayable && super.canUse(p, m);
+    public boolean canPlay(AbstractCard card) {
+        return !AbstractCardPatch.unplayable.get(card) && super.canPlay(card);
     }
 
     @Override
@@ -301,9 +258,16 @@ public abstract class DynamicCard extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeValues();
-            initializeDescription();
         }
     }
 
     protected void upgradeValues() {}
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        DynamicCard card = (DynamicCard) super.makeStatEquivalentCopy();
+
+        card.baseSecondMagicNumber = this.baseSecondMagicNumber;
+        return card;
+    }
 }

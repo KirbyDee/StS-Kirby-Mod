@@ -9,6 +9,8 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.Armaments;
+import com.megacrit.cardcrawl.cards.red.Exhume;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -170,13 +172,13 @@ public class TheSorcerer extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Ice.class));
-        retVal.add(DynamicCard.getID(Ice.class));
         retVal.add(DynamicCard.getID(Elementmorphose.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
         retVal.add(DynamicCard.getID(Elementmorphose.class));
+        retVal.add(Armaments.ID);
+        retVal.add(Exhume.ID);
+        retVal.add(Exhume.ID);
+        retVal.add(Exhume.ID);
         retVal.add(DynamicCard.getID(Tradeoff.class));
         retVal.add(DynamicCard.getID(Tradeoff.class));
         retVal.add(DynamicCard.getID(Tradeoff.class));

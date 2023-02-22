@@ -12,7 +12,7 @@
       "fire affinity",
       "fire_affinity"
     ],
-    "DESCRIPTION": "Upon reaching 3 #yFire #yAffinity or more become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your turn."
+    "DESCRIPTION": "Upon reaching 3 #yFire #yAffinity or more become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your next turn."
   },
   {
     "PROPER_NAME": "Ice",
@@ -27,7 +27,7 @@
       "ice affinity",
       "ice_affinity"
     ],
-    "DESCRIPTION": "Upon reaching 3 #yIce #yAffinity or more become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your turn."
+    "DESCRIPTION": "Upon reaching 3 #yIce #yAffinity or more become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your next turn."
   },
   {
     "PROPER_NAME": "Flashback",

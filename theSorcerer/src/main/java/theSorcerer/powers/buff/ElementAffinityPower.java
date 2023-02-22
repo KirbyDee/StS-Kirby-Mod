@@ -2,8 +2,9 @@ package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.powers.SelfRemovablePower;
@@ -12,18 +13,14 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
 
     private static final Logger LOG = LogManager.getLogger(ElementAffinityPower.class.getName());
 
-    private final String otherElementID;
-
     private boolean hasEvolved;
 
     public ElementAffinityPower(
             final AbstractCreature owner,
             final int amount,
-            final String thisElementID,
-            final String otherElementID
+            final String id
     ) {
-        super(owner, thisElementID);
-        this.otherElementID = otherElementID;
+        super(owner, id);
         this.type = PowerType.BUFF;
         this.hasEvolved = false;
         this.isTurnBased = true;
@@ -35,6 +32,7 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
         }
 
         updateDescription();
+        checkForEvolve();
     }
 
     @Override
@@ -61,13 +59,16 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.ID.equals(otherElementID)) {
-            LOG.info(this.otherElementID + " applied, but " + this.ID + " already existing -> remove " + this.ID);
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        AbstractCard.CardTags tag = getAffinityLoseTag();
+        if (card.tags.contains(tag)) {
+            LOG.info(tag + " applied, but " + this.ID + " already existing -> remove " + this.ID);
             reducePowerToZero();
             removeSelf();
         }
     }
+
+    protected abstract AbstractCard.CardTags getAffinityLoseTag();
 
     @Override
     public void stackPower(int stackAmount) {

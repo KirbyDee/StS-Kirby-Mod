@@ -10,26 +10,26 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.SorcererCardTags;
 
 public class Ice extends SorcererIceCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int DAMAGE = 1;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int COST = 0;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
     // --- VALUES END ---
 
     public Ice() {
         super(
-
                 DynamicCard.InfoBuilder(Ice.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.BASIC)
                         .target(CardTarget.ENEMY)
+                        .tags(SorcererCardTags.FLASHBACK)
+                        .block(BLOCK)
         );
-
-        baseDamage = DAMAGE;
     }
 
     @Override
@@ -62,6 +62,6 @@ public class Ice extends SorcererIceCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeDamage(UPGRADE_PLUS_DMG);
+        upgradeBlock(UPGRADE_PLUS_BLOCK);
     }
 }

@@ -1,6 +1,7 @@
 package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
+import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.debuff.FrozenPower;
 
 public class ChilledPower extends ElementEvolvePower<DexterityPower> {
@@ -22,7 +24,7 @@ public class ChilledPower extends ElementEvolvePower<DexterityPower> {
             final AbstractCreature owner,
             final int affinityAmount
     ) {
-        super(owner, affinityAmount, POWER_ID, IceAffinityPower.POWER_ID, FireAffinityPower.POWER_ID);
+        super(owner, affinityAmount, POWER_ID, IceAffinityPower.POWER_ID);
     }
 
     protected DexterityPower createExtraPower(final int amount) {
@@ -32,6 +34,11 @@ public class ChilledPower extends ElementEvolvePower<DexterityPower> {
     @Override
     protected String getExtraPowerId() {
         return DexterityPower.POWER_ID;
+    }
+
+    @Override
+    protected AbstractCard.CardTags getAffinityLoseTag() {
+        return SorcererCardTags.FIRE;
     }
 
     @Override

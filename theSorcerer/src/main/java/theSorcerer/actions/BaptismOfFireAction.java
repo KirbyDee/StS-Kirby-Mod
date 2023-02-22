@@ -1,16 +1,16 @@
 package theSorcerer.actions;
 
-import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public class BaptismOfFireAction extends ElementmorphoseAction {
 
     public BaptismOfFireAction() {
         super(
                 SorcererCardTags.FIRE,
-                DynamicCard.CardAbility.FIRE,
+                CardAbility.FIRE,
                 SorcererCardTags.ICE,
-                DynamicCard.CardAbility.ICE
+                CardAbility.ICE
         );
     }
 }
