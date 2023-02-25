@@ -49,7 +49,7 @@ public class ChilledPower extends ElementEvolvePower<DexterityPower> {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         // have to fully block an attack (currentBlock is the block after the attack happened)
-        if (this.owner.currentBlock > 0) {
+        if (this.owner.currentBlock > 0 && this.affinityAmount > 0) {
             LOG.info("Fully blocked attack, apply Frozen amount " + this.affinityAmount);
             addToBot(
                     new ApplyPowerAction(
