@@ -12,7 +12,7 @@ public class Elementmorphose extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int UPGRADE_COST = -1;
     // --- VALUES END ---
 
     public Elementmorphose() {

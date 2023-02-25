@@ -1,4 +1,25 @@
 {
+  "theSorcerer:ElementalConstruct": {
+    "NAME": "Elemental Construct",
+    "FLAVOR": "TODO",
+    "DESCRIPTIONS": [
+      "At the start of each combat, add either a #yScorch or #yTODO into your hand."
+    ]
+  },
+  "theSorcerer:BurningSoul": {
+    "NAME": "Burning Soul",
+    "FLAVOR": "The intrinsic heat inside of you starts to burn.",
+    "DESCRIPTIONS": [
+      "Start each turn #yHeated."
+    ]
+  },
+  "theSorcerer:FreezingSoul": {
+    "NAME": "Freezing Soul",
+    "FLAVOR": "The intrinsic cold inside of you starts to freeze.",
+    "DESCRIPTIONS": [
+      "Start each turn #yChilled."
+    ]
+  },
   "theSorcerer:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

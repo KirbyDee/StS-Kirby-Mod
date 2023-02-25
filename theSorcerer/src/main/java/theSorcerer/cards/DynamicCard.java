@@ -8,8 +8,10 @@ import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 
-import java.util.*;
-import java.util.function.Predicate;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public abstract class DynamicCard extends CustomCard {
 
@@ -218,8 +220,9 @@ public abstract class DynamicCard extends CustomCard {
         this.baseMagicNumber = info.magicNumber;
         this.baseSecondMagicNumber = info.secondMagicNumber;
 
-        updateDescription();
         resetAttributes();
+        updateDescription();
+        initializeDescription();
     }
 
     public void displayUpgrades() {
@@ -228,7 +231,6 @@ public abstract class DynamicCard extends CustomCard {
             this.secondMagicNumber = this.baseSecondMagicNumber;
             this.isSecondMagicNumberModified = true;
         }
-
     }
 
     public void upgradeSecondMagicNumber(int amount) {

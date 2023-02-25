@@ -11,9 +11,17 @@
     "NAME": "Scorch",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "theSorcerer:Ice": {
-    "NAME": "Some Ice Name",
+  "theSorcerer:FrostArmor": {
+    "NAME": "Frost Armor",
     "DESCRIPTION": "Gain !B! Block."
+  },
+  "theSorcerer:FireConstruct": {
+    "NAME": "Fire Construct",
+    "DESCRIPTION": "Add 1 thesorcerer:Fire card into your hand."
+  },
+  "theSorcerer:IceConstruct": {
+    "NAME": "Ice Construct",
+    "DESCRIPTION": "Add 1 thesorcerer:Ice card into your hand."
   },
   "theSorcerer:Elementmorphose": {
     "NAME": "Elementmorphose",

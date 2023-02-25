@@ -40,14 +40,16 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
     }
 
     private void applyExtraPower(final int amount) {
-        LOG.info("Apply Extra Power: " + amount);
-        addToBot(
-                new ApplyPowerAction(
-                        this.owner,
-                        this.owner,
-                        createExtraPower(amount)
-                )
-        );
+        if (amount > 0) {
+            LOG.info("Apply Extra Power: " + amount);
+            addToBot(
+                    new ApplyPowerAction(
+                            this.owner,
+                            this.owner,
+                            createExtraPower(amount)
+                    )
+            );
+        }
     }
 
     protected abstract E createExtraPower(final int amount);

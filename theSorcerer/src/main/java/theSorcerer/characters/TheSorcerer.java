@@ -9,8 +9,6 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.red.Armaments;
-import com.megacrit.cardcrawl.cards.red.Exhume;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -20,17 +18,12 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
 import theSorcerer.cards.fire.Scorch;
-import theSorcerer.cards.WellPrepared;
-import theSorcerer.cards.ice.Ice;
-import theSorcerer.relics.DefaultClickableRelic;
-import theSorcerer.relics.PlaceholderRelic;
-import theSorcerer.relics.PlaceholderRelic2;
+import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
 
@@ -170,22 +163,27 @@ public class TheSorcerer extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         logger.info("Begin loading starter Deck Strings");
+        // 4 strikes
+        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
+        // 4 defends
+        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
+        // 1 common attack
+//        retVal.add(DefaultCommonAttack.ID); // TODO: 1 attack
+        // 1 common skill
+//        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
 
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Elementmorphose.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Elementmorphose.class));
-        retVal.add(Armaments.ID);
-        retVal.add(Exhume.ID);
-        retVal.add(Exhume.ID);
-        retVal.add(Exhume.ID);
-        retVal.add(DynamicCard.getID(Tradeoff.class));
-        retVal.add(DynamicCard.getID(Tradeoff.class));
-        retVal.add(DynamicCard.getID(Tradeoff.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
 
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultCommonPower.ID);
+//        retVal.add(DynamicCard.getID(Scorch.class));
+//        retVal.add(DynamicCard.getID(Ice.class));
+//        retVal.add(DynamicCard.getID(Elementmorphose.class));
+//        retVal.add(DynamicCard.getID(Tradeoff.class));
+//        retVal.add(DynamicCard.getID(WellPrepared.class));
 
         return retVal;
     }
@@ -194,15 +192,8 @@ public class TheSorcerer extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
-
-        // Mark relics as seen - makes it visible in the compendium immediately
-        // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        // TODO
+        retVal.add(ElementalConstruct.ID);
 
         return retVal;
     }

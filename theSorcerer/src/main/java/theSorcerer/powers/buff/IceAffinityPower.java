@@ -33,4 +33,9 @@ public class IceAffinityPower extends ElementAffinityPower<ChilledPower> {
     protected ChilledPower createEvolvePower() {
         return new ChilledPower(this.owner, this.amount);
     }
+
+    @Override
+    protected String getEvolvedPowerId() {
+        return ChilledPower.POWER_ID;
+    }
 }

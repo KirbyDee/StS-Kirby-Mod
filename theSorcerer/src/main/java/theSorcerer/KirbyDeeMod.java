@@ -1,6 +1,9 @@
 package theSorcerer;
 
-import basemod.*;
+import basemod.AutoAdd;
+import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.eventUtil.AddEventParams;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.helpers.RelicType;
@@ -22,14 +25,14 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.cards.*;
+import theSorcerer.cards.AbstractDefaultCard;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
 import theSorcerer.glows.ElementGlow;
 import theSorcerer.potions.PlaceholderPotion;
-import theSorcerer.relics.BottledPlaceholderRelic;
-import theSorcerer.relics.DefaultClickableRelic;
-import theSorcerer.relics.PlaceholderRelic;
+import theSorcerer.relics.BurningSoul;
+import theSorcerer.relics.ElementalConstruct;
+import theSorcerer.relics.FreezingSoul;
 import theSorcerer.relics.PlaceholderRelic2;
 import theSorcerer.util.IDCheckDontTouchPls;
 import theSorcerer.util.TextureLoader;
@@ -417,17 +420,18 @@ public class KirbyDeeMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheSorcerer.Enums.COLOR_ORANGE);
-        
+        BaseMod.addRelicToCustomPool(new ElementalConstruct(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new BurningSoul(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_ORANGE);
+
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
         
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(ElementalConstruct.ID);
+        UnlockTracker.markRelicAsSeen(BurningSoul.ID);
         logger.info("Done adding relics!");
     }
     

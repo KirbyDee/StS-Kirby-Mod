@@ -38,6 +38,8 @@ public class AbstractCardPatch {
     @SpirePatch(clz = AbstractCard.class, method = "initializeDescription")
     public static class InitializeDescriptionPatch {
 
+        // TODO: for some reason the description is NOT correct anymore... doesn't have the abilities on the card, but they are there
+        // TODO: it WAS working, check if it works when stashing everything
         public static void Prefix(AbstractCard self) {
             if (!AbstractCardPatch.hasInitializedBaseRawDescription.get(self)) {
                 AbstractCardPatch.hasInitializedBaseRawDescription.set(self, true);

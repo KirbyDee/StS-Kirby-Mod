@@ -37,4 +37,9 @@ public class FireAffinityPower extends ElementAffinityPower<HeatedPower> {
     protected HeatedPower createEvolvePower() {
         return new HeatedPower(this.owner, this.amount);
     }
+
+    @Override
+    protected String getEvolvedPowerId() {
+        return HeatedPower.POWER_ID;
+    }
 }

@@ -51,6 +51,7 @@ public class HeatedPower extends ElementEvolvePower<StrengthPower> {
         if (target != info.owner &&
                 info.owner == this.owner &&
                 info.type == DamageInfo.DamageType.NORMAL &&
+                this.affinityAmount > 0 &&
                 damageAmount > 0 &&
                 target.currentBlock < damageAmount) {
             LOG.info("Inflicting damage to target with attack, apply Ablaze amount " + this.affinityAmount);

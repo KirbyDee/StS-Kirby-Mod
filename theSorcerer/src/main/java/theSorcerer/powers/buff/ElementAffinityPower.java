@@ -13,8 +13,6 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
 
     private static final Logger LOG = LogManager.getLogger(ElementAffinityPower.class.getName());
 
-    private boolean hasEvolved;
-
     public ElementAffinityPower(
             final AbstractCreature owner,
             final int amount,
@@ -22,7 +20,6 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
     ) {
         super(owner, id);
         this.type = PowerType.BUFF;
-        this.hasEvolved = false;
         this.isTurnBased = true;
         this.canGoNegative = false;
 
@@ -90,14 +87,13 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
 
     private void checkForEvolve() {
         LOG.info(this.ID + " amount: " + this.amount);
-        if (!this.hasEvolved && this.amount >= 3) { // TODO
+        if (!this.owner.hasPower(getEvolvedPowerId()) && this.amount >= 3) { // TODO
             applyElementEvolve();
         }
     }
 
     private void applyElementEvolve() {
         LOG.info("Apply evolve power");
-        this.hasEvolved = true;
         addToBot(
                 new ApplyPowerAction(
                         this.owner,
@@ -108,4 +104,6 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
     }
 
     protected abstract E createEvolvePower();
+
+    protected abstract String getEvolvedPowerId();
 }
