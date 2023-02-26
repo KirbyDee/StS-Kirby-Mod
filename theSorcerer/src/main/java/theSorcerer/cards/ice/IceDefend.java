@@ -1,27 +1,31 @@
 package theSorcerer.cards.ice;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
 
-public class FrostArmor extends SorcererIceCard {
+public class IceDefend extends SorcererIceCard {
 
     // --- VALUES START ---
-    private static final int COST = 0;
-    private static final int BLOCK = 4;
+    private static final int COST = 1;
+    private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 
-    public FrostArmor() {
+    public IceDefend() {
         super(
-                DynamicCard.InfoBuilder(FrostArmor.class)
+                DynamicCard.InfoBuilder(IceDefend.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.COMMON)
+                        .rarity(CardRarity.SPECIAL)
                         .target(CardTarget.SELF)
-                        .tags(SorcererCardTags.FLASHBACK)
+                        .tags(CardTags.STARTER_DEFEND)
                         .block(BLOCK)
         );
     }
@@ -35,6 +39,8 @@ public class FrostArmor extends SorcererIceCard {
                         this.block
                 )
         );
+
+        CardCrawlGame.sound.play("ORB_FROST_CHANNEL", 0.1F);
     }
 
     @Override

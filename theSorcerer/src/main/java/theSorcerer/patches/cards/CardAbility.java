@@ -13,6 +13,7 @@ public enum CardAbility {
     ETHEREAL("Ethereal", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     RETAIN("Retain", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     INNATE("Innate", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
+    ENTOMB(CardUtil.MOD_PREFIX + "Entomb", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     EXHAUST("Exhaust", AbstractCard.CardTags.EMPTY, CardAbilityFix.POSTFIX),
     FUTURITY(CardUtil.MOD_PREFIX + "Futurity", SorcererCardTags.FUTURITY, CardAbilityFix.POSTFIX),
     FLASHBACK(CardUtil.MOD_PREFIX + "Flashback", SorcererCardTags.FLASHBACK, CardAbilityFix.POSTFIX);

@@ -214,6 +214,7 @@ public abstract class DynamicCard extends CustomCard {
         AbstractCardPatch.unplayable.set(this, info.abilities.contains(CardAbility.UNPLAYABLE));
         AbstractCardPatch.flashback.set(this, info.abilities.contains(CardAbility.FLASHBACK));
         AbstractCardPatch.futurity.set(this, info.abilities.contains(CardAbility.FUTURITY));
+        AbstractCardPatch.entomb.set(this, info.abilities.contains(CardAbility.ENTOMB));
         AbstractCardPatch.abilities.get(this).addAll(info.abilities);
         this.baseDamage = info.damage;
         this.baseBlock = info.block;

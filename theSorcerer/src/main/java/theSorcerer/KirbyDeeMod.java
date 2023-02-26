@@ -432,6 +432,7 @@ public class KirbyDeeMod implements
         // (the others are all starters so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(ElementalConstruct.ID);
         UnlockTracker.markRelicAsSeen(BurningSoul.ID);
+        UnlockTracker.markRelicAsSeen(FreezingSoul.ID);
         logger.info("Done adding relics!");
     }
     

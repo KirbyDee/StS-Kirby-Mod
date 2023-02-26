@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.ice.FrostArmor;
+import theSorcerer.cards.ice.IceDefend;
 
 public class IceConstruct extends DynamicCard {
 
@@ -23,6 +23,6 @@ public class IceConstruct extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new MakeTempCardInHandAction(new FrostArmor(), 1, false));
+        addToBot(new MakeTempCardInHandAction(new IceDefend(), 1, false));
     }
 }

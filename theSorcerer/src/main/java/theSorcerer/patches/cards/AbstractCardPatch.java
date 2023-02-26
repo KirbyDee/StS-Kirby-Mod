@@ -33,13 +33,13 @@ public class AbstractCardPatch {
 
     public static SpireField<Boolean> unplayable = new SpireField<>(() -> false);
 
+    public static SpireField<Boolean> entomb = new SpireField<>(() -> false);
+
     public static SpireField<List<CardAbility>> abilities = new SpireField<>(ArrayList::new);
 
     @SpirePatch(clz = AbstractCard.class, method = "initializeDescription")
     public static class InitializeDescriptionPatch {
 
-        // TODO: for some reason the description is NOT correct anymore... doesn't have the abilities on the card, but they are there
-        // TODO: it WAS working, check if it works when stashing everything
         public static void Prefix(AbstractCard self) {
             if (!AbstractCardPatch.hasInitializedBaseRawDescription.get(self)) {
                 AbstractCardPatch.hasInitializedBaseRawDescription.set(self, true);
@@ -65,6 +65,7 @@ public class AbstractCardPatch {
             AbstractCardPatch.unplayable.set(result, AbstractCardPatch.unplayable.get(self));
             AbstractCardPatch.flashback.set(result, AbstractCardPatch.flashback.get(self));
             AbstractCardPatch.futurity.set(result, AbstractCardPatch.futurity.get(self));
+            AbstractCardPatch.entomb.set(result, AbstractCardPatch.entomb.get(self));
             AbstractCardPatch.abilities.set(result, AbstractCardPatch.abilities.get(self));
 
             return result;

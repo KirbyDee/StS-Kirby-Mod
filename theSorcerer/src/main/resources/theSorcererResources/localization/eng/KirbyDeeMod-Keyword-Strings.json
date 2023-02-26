@@ -42,5 +42,12 @@
       "futurity"
     ],
     "DESCRIPTION": "Clicking on this card in the #yDraw #yPile will put it in your hand. This card then becomes #yEthereal and #yExhaust"
+  },
+  {
+    "PROPER_NAME": "Entomb",
+    "NAMES": [
+      "entomb"
+    ],
+    "DESCRIPTION": "Start each combat with this card in your discard pile."
   }
 ]

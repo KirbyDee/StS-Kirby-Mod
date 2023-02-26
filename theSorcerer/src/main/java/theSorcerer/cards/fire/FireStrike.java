@@ -9,48 +9,48 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.effect.FireParticleEffect;
 
-public class Scorch extends SorcererFireCard {
+public class FireStrike extends SorcererFireCard {
 
     // --- VALUES START ---
-    private static final int COST = 0;
-    private static final int DAMAGE = 5;
+    private static final int COST = 1;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
     // --- VALUES END ---
 
-    public Scorch() {
+    public FireStrike() {
         super(
-                DynamicCard.InfoBuilder(Scorch.class)
+                DynamicCard.InfoBuilder(FireStrike.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(CardRarity.COMMON)
+                        .rarity(CardRarity.SPECIAL)
                         .target(CardTarget.ENEMY)
-                        .tags(SorcererCardTags.FLASHBACK)
+                        .tags(CardTags.STARTER_STRIKE, CardTags.STRIKE)
                         .damage(DAMAGE)
         );
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // effect
-        if (m != null) {
-            if (Settings.FAST_MODE) {
-                addToBot(new VFXAction(new FireBurstParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.1F));
-            }
-            else {
-                addToBot(new VFXAction(new FireBurstParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.3F));
-            }
-        }
-
         // damage
         addToBot(
                 new DamageAction(
                         m,
                         new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.FIRE
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
                 )
         );
+
+        // effect
+        if (m != null) {
+            if (Settings.FAST_MODE) {
+                addToBot(new VFXAction(new FireParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.1F));
+            }
+            else {
+                addToBot(new VFXAction(new FireParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.3F));
+            }
+        }
     }
 
     @Override

@@ -7,6 +7,14 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "theSorcerer:FireStrike": {
+    "NAME": "Fire Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "theSorcerer:IceDefend": {
+    "NAME": "Ice Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
   "theSorcerer:Scorch": {
     "NAME": "Scorch",
     "DESCRIPTION": "Deal !D! damage."
@@ -17,11 +25,19 @@
   },
   "theSorcerer:FireConstruct": {
     "NAME": "Fire Construct",
-    "DESCRIPTION": "Add 1 thesorcerer:Fire card into your hand."
+    "DESCRIPTION": "Add 1 thesorcerer:Fire Strike card into your hand."
   },
   "theSorcerer:IceConstruct": {
     "NAME": "Ice Construct",
-    "DESCRIPTION": "Add 1 thesorcerer:Ice card into your hand."
+    "DESCRIPTION": "Add 1 thesorcerer:Ice Defend card into your hand."
+  },
+  "theSorcerer:MagicalCloak": {
+    "NAME": "Magical Cloak",
+    "DESCRIPTION": "Gain !B! Block. NL Increase the Block of ALL Magical Cloak cards by 2 this combat."
+  },
+  "theSorcerer:UnseenHelper": {
+    "NAME": "Unseen Helper",
+    "DESCRIPTION": "If this card is in your discard pile at the start of your turn, gain 1 [E]."
   },
   "theSorcerer:Elementmorphose": {
     "NAME": "Elementmorphose",

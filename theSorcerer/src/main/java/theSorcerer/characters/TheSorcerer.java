@@ -22,7 +22,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
-import theSorcerer.cards.fire.Scorch;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -179,6 +178,13 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
 
 
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(UnseenHelper.class));
+        retVal.add(DynamicCard.getID(UnseenHelper.class));
 //        retVal.add(DynamicCard.getID(Scorch.class));
 //        retVal.add(DynamicCard.getID(Ice.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));

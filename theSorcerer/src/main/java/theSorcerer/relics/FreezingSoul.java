@@ -18,7 +18,7 @@ public class FreezingSoul extends CustomRelic {
     private static final Logger LOG = LogManager.getLogger(FreezingSoul.class.getName());
 
 
-    public static final String ID = KirbyDeeMod.makeID("ChilledSoul");
+    public static final String ID = KirbyDeeMod.makeID("FreezingSoul");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));

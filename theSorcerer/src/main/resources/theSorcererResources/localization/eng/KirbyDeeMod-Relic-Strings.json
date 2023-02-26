@@ -1,9 +1,9 @@
 {
   "theSorcerer:ElementalConstruct": {
     "NAME": "Elemental Construct",
-    "FLAVOR": "TODO",
+    "FLAVOR": "Constructing elemental cards out of thin air does not dissent with first law of thermodynamics!",
     "DESCRIPTIONS": [
-      "At the start of each combat, add either a #yScorch or #yTODO into your hand."
+      "At the start of each combat, add either 1 #yFire #yStrike or 1 #yIce #yDefend into your hand."
     ]
   },
   "theSorcerer:BurningSoul": {

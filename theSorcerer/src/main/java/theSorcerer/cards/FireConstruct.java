@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.fire.FireStrike;
 
 public class FireConstruct extends DynamicCard {
 
@@ -23,6 +23,6 @@ public class FireConstruct extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new MakeTempCardInHandAction(new Scorch(), 1, false));
+        addToBot(new MakeTempCardInHandAction(new FireStrike(), 1, false));
     }
 }
