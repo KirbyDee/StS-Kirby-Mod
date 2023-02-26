@@ -49,5 +49,19 @@
       "entomb"
     ],
     "DESCRIPTION": "Start each combat with this card in your discard pile."
+  },
+  {
+    "PROPER_NAME": "Firemorphose",
+    "NAMES": [
+      "firemorphose"
+    ],
+    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Fire."
+  },
+  {
+    "PROPER_NAME": "Icemorphose",
+    "NAMES": [
+      "icemorphose"
+    ],
+    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Ice."
   }
 ]

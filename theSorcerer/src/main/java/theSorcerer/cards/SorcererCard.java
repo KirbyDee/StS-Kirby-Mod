@@ -13,15 +13,4 @@ public abstract class SorcererCard extends DynamicCard {
                         .build()
         );
     }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeValues();
-            initializeDescription();
-        }
-    }
-
-    protected abstract void upgradeValues();
 }

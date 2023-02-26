@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 public class CardCostIncreaseAction extends CardChooseAction {
 
     // --- VALUES START ---
-    private final static String TEXT = "increase Energy Cost by ";
+    private final static String TEXT = "increase Energy Cost by "; // TODO
     private final int costIncrease;
     // --- VALUES END ---
 
@@ -25,11 +25,12 @@ public class CardCostIncreaseAction extends CardChooseAction {
 
     @Override
     protected void onCardChosen(AbstractCard card) {
-        card.setCostForTurn(card.costForTurn + this.costIncrease);
+        card.modifyCostForCombat(card.costForTurn + this.costIncrease);
+        this.player.hand.addToTop(card);
     }
 
     @Override
     protected String getChooseText() {
-        return TEXT + this.costIncrease;
+        return TEXT + this.costIncrease + ".";
     }
 }

@@ -1,15 +1,15 @@
-package theSorcerer.cards;
+package theSorcerer.cards.special;
 
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.ice.IceDefend;
+import theSorcerer.actions.BaptismOfFireAction;
+import theSorcerer.cards.DynamicCard;
 
-public class IceConstruct extends DynamicCard {
+public class BaptismOfFire extends DynamicCard {
 
-    public IceConstruct() {
+    public BaptismOfFire() {
         super(
-                DynamicCard.InfoBuilder(IceConstruct.class)
+                DynamicCard.InfoBuilder(BaptismOfFire.class)
                         .type(CardType.POWER)
                         .rarity(CardRarity.SPECIAL)
                         .build()
@@ -23,6 +23,6 @@ public class IceConstruct extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new MakeTempCardInHandAction(new IceDefend(), 1, false));
+        addToBot(new BaptismOfFireAction());
     }
 }

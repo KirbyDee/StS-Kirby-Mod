@@ -38,6 +38,6 @@ public class UnseenHelper extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.entomb.set(this, true);
+        AbstractCardPatch.abilities.get(this).add(CardAbility.ENTOMB);
     }
 }

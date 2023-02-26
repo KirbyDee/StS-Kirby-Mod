@@ -15,22 +15,40 @@ public abstract class CardChooseAction extends AbstractGameAction {
     private static final Logger LOG = LogManager.getLogger(CardChooseAction.class.getName());
 
     // --- VALUES START ---
-    private final AbstractPlayer player;
-    private final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
-    private final int cardAmount;
-    private final boolean canPickZero;
-    private final boolean forTransform;
-    private final boolean forUpgrade;
+    protected final AbstractPlayer player;
+    protected final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
+    protected final int cardAmount;
+    protected final boolean anyNumber;
+    protected final boolean canPickZero;
+    protected final boolean forTransform;
+    protected final boolean forUpgrade;
     // --- VALUES END ---
+
+
+
+    public CardChooseAction(
+            final boolean canPickZero
+    ) {
+        this(99, true, canPickZero);
+    }
 
     public CardChooseAction(
             final int cardAmount
     ) {
-        this(cardAmount, false, false, false);
+        this(cardAmount, false, false);
     }
 
     public CardChooseAction(
             final int cardAmount,
+            final boolean anyNumber,
+            final boolean canPickZero
+    ) {
+        this(cardAmount, anyNumber, canPickZero, false, false);
+    }
+
+    public CardChooseAction(
+            final int cardAmount,
+            final boolean anyNumber,
             final boolean canPickZero,
             final boolean forTransform,
             final boolean forUpgrade
@@ -39,11 +57,13 @@ public abstract class CardChooseAction extends AbstractGameAction {
         this.player = AbstractDungeon.player;
         this.duration = Settings.ACTION_DUR_FAST;
         this.cardAmount = cardAmount;
+        this.anyNumber = anyNumber;
         this.canPickZero = canPickZero;
         this.forTransform = forTransform;
         this.forUpgrade = forUpgrade;
     }
 
+    @Override
     public void update() {
         // init: either no card can be chosen, only 1 or the player chooses one
         if (this.duration == Settings.ACTION_DUR_FAST) {
@@ -116,7 +136,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
 
     private void showCardSelectionScreen() {
         this.player.hand.group.removeAll(this.cannotBeChosen);
-        AbstractDungeon.handCardSelectScreen.open(getChooseText(), this.cardAmount, false, this.canPickZero, this.forTransform, this.forUpgrade);
+        AbstractDungeon.handCardSelectScreen.open(getChooseText(), this.cardAmount, this.anyNumber, this.canPickZero, this.forTransform, this.forUpgrade);
         tickDuration();
     }
 
@@ -127,14 +147,16 @@ public abstract class CardChooseAction extends AbstractGameAction {
                 .forEach(c -> {
                     LOG.debug("Card chosen: " + c.name);
                     onCardChosen(c);
-                    this.player.hand.addToTop(c);
                 });
 
         returnCards();
         AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
         AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
+        onActionDone();
         this.isDone = true;
     }
+
+    protected void onActionDone() {}
 
     private void returnCards() {
         this.cannotBeChosen.forEach(this.player.hand::addToTop);

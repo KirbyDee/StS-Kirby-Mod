@@ -22,6 +22,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
+import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.ice.FrostArmor;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -164,32 +166,32 @@ public class TheSorcerer extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
         retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
+//        retVal.add(Strike_Sorcerer.ID);
+//        retVal.add(Strike_Sorcerer.ID);
+//        retVal.add(Strike_Sorcerer.ID);
         // 4 defends
         retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
+//        retVal.add(Defend_Sorcerer.ID);
+//        retVal.add(Defend_Sorcerer.ID);
+//        retVal.add(Defend_Sorcerer.ID);
         // 1 common attack
 //        retVal.add(DefaultCommonAttack.ID); // TODO: 1 attack
         // 1 common skill
 //        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
 
-
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        // all cards
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(FrostArmor.class));
+        retVal.add(DynamicCard.getID(Elementmorphose.class));
+        retVal.add(DynamicCard.getID(Tradeoff.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
         retVal.add(DynamicCard.getID(UnseenHelper.class));
-        retVal.add(DynamicCard.getID(UnseenHelper.class));
-//        retVal.add(DynamicCard.getID(Scorch.class));
-//        retVal.add(DynamicCard.getID(Ice.class));
-//        retVal.add(DynamicCard.getID(Elementmorphose.class));
-//        retVal.add(DynamicCard.getID(Tradeoff.class));
-//        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(DiscardedDefense.class));
+        retVal.add(DynamicCard.getID(MagicalCloak.class));
 
         return retVal;
     }

@@ -25,7 +25,7 @@ public class CardGroupPatch {
         CardGroup drawPileCopy = (CardGroup) copy[0];
         List<AbstractCard> entombCards = drawPileCopy.group
                 .stream()
-                .filter(c -> AbstractCardPatch.entomb.get(c))
+                .filter(c -> AbstractCardPatch.abilities.get(c).contains(CardAbility.ENTOMB))
                 .collect(Collectors.toList());
 
         // remove card from draw pile copy.

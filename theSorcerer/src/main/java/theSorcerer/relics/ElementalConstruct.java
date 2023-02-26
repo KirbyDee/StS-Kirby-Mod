@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.cards.FireConstruct;
-import theSorcerer.cards.IceConstruct;
+import theSorcerer.cards.special.FireConstruct;
+import theSorcerer.cards.special.IceConstruct;
 import theSorcerer.util.TextureLoader;
 
 import java.util.ArrayList;

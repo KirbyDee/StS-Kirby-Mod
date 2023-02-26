@@ -1,6 +1,5 @@
 package theSorcerer.patches.cards;
 
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -23,50 +22,18 @@ public class AbstractCardPatch {
 
     private static final Logger LOG = LogManager.getLogger(AbstractCardPatch.class.getName());
 
-    public static SpireField<Boolean> hasInitializedBaseRawDescription = new SpireField<>(() -> false);
-
-    public static SpireField<String> baseRawDescription = new SpireField<>(() -> "");
-
-    public static SpireField<Boolean> flashback = new SpireField<>(() -> false);
-
-    public static SpireField<Boolean> futurity = new SpireField<>(() -> false);
-
-    public static SpireField<Boolean> unplayable = new SpireField<>(() -> false);
-
-    public static SpireField<Boolean> entomb = new SpireField<>(() -> false);
-
     public static SpireField<List<CardAbility>> abilities = new SpireField<>(ArrayList::new);
-
-    @SpirePatch(clz = AbstractCard.class, method = "initializeDescription")
-    public static class InitializeDescriptionPatch {
-
-        public static void Prefix(AbstractCard self) {
-            if (!AbstractCardPatch.hasInitializedBaseRawDescription.get(self)) {
-                AbstractCardPatch.hasInitializedBaseRawDescription.set(self, true);
-                AbstractCardPatch.baseRawDescription.set(self, self.rawDescription);
-            }
-        }
-    }
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopyPatch {
 
         public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
-            result.rawDescription = self.rawDescription;
-            result.description = self.description;
-            result.keywords = self.keywords;
             result.isEthereal = self.isEthereal;
             result.isInnate = self.isInnate;
             result.retain = self.retain;
             result.exhaust = self.exhaust;
             result.tags = self.tags;
-            AbstractCardPatch.baseRawDescription.set(result, AbstractCardPatch.baseRawDescription.get(self));
-            AbstractCardPatch.hasInitializedBaseRawDescription.set(result, AbstractCardPatch.hasInitializedBaseRawDescription.get(self));
-            AbstractCardPatch.unplayable.set(result, AbstractCardPatch.unplayable.get(self));
-            AbstractCardPatch.flashback.set(result, AbstractCardPatch.flashback.get(self));
-            AbstractCardPatch.futurity.set(result, AbstractCardPatch.futurity.get(self));
-            AbstractCardPatch.entomb.set(result, AbstractCardPatch.entomb.get(self));
-            AbstractCardPatch.abilities.set(result, AbstractCardPatch.abilities.get(self));
+//            AbstractCardPatch.abilities.set(result, AbstractCardPatch.abilities.get(self)); // TODO: upgrade card will not have the same abilities as before?
 
             return result;
         }

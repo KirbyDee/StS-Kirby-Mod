@@ -4,6 +4,7 @@ import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import org.apache.commons.lang3.StringUtils;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
@@ -15,6 +16,10 @@ import java.util.Set;
 
 public abstract class DynamicCard extends CustomCard {
 
+    private String baseRawDescription;
+
+    private String baseUpgradeRawDescription;
+
     public int baseSecondMagicNumber;
 
     public int secondMagicNumber;
@@ -22,6 +27,14 @@ public abstract class DynamicCard extends CustomCard {
     public boolean upgradedSecondMagicNumber;
 
     public boolean isSecondMagicNumberModified;
+
+    public int baseThirdMagicNumber;
+
+    public int thirdMagicNumber;
+
+    public boolean upgradedThirdMagicNumber;
+
+    public boolean isThirdMagicNumberModified;
 
     public static String getID(Class<? extends DynamicCard> thisClazz) {
         return KirbyDeeMod.makeID(thisClazz.getSimpleName());
@@ -56,6 +69,8 @@ public abstract class DynamicCard extends CustomCard {
         private int magicNumber = -1;
 
         private int secondMagicNumber = -1;
+
+        private int thirdMagicNumber = -1;
 
         public InfoBuilder(
                 Class<? extends DynamicCard> thisClazz
@@ -128,6 +143,11 @@ public abstract class DynamicCard extends CustomCard {
             return this;
         }
 
+        public InfoBuilder thirdMagicNumber(final int thirdMagicNumber) {
+            this.thirdMagicNumber = thirdMagicNumber;
+            return this;
+        }
+
         public Info build() {
             String id = getID(this.thisClazz);
             CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
@@ -168,6 +188,8 @@ public abstract class DynamicCard extends CustomCard {
 
         public final int secondMagicNumber;
 
+        public final int thirdMagicNumber;
+
         public Info(
                 final String id,
                 final CardStrings cardStrings,
@@ -189,6 +211,7 @@ public abstract class DynamicCard extends CustomCard {
             this.block = builder.block;
             this.magicNumber = builder.magicNumber;
             this.secondMagicNumber = builder.secondMagicNumber;
+            this.thirdMagicNumber = builder.thirdMagicNumber;
         }
     }
 
@@ -206,24 +229,43 @@ public abstract class DynamicCard extends CustomCard {
                 info.rarity,
                 info.target
         );
-        this.tags.addAll(info.tags);
-        this.isEthereal = info.abilities.contains(CardAbility.ETHEREAL);
-        this.isInnate = info.abilities.contains(CardAbility.INNATE);
-        this.retain = info.abilities.contains(CardAbility.RETAIN);
-        this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
-        AbstractCardPatch.unplayable.set(this, info.abilities.contains(CardAbility.UNPLAYABLE));
-        AbstractCardPatch.flashback.set(this, info.abilities.contains(CardAbility.FLASHBACK));
-        AbstractCardPatch.futurity.set(this, info.abilities.contains(CardAbility.FUTURITY));
-        AbstractCardPatch.entomb.set(this, info.abilities.contains(CardAbility.ENTOMB));
-        AbstractCardPatch.abilities.get(this).addAll(info.abilities);
+        // base values
+        this.baseRawDescription = this.rawDescription;
+        this.baseUpgradeRawDescription = info.cardStrings.UPGRADE_DESCRIPTION;
         this.baseDamage = info.damage;
         this.baseBlock = info.block;
         this.baseMagicNumber = info.magicNumber;
         this.baseSecondMagicNumber = info.secondMagicNumber;
+        this.baseThirdMagicNumber = info.thirdMagicNumber;
+
+        // tags
+        this.tags.addAll(info.tags);
+
+        // abilities
+        this.isEthereal = info.abilities.contains(CardAbility.ETHEREAL);
+        this.isInnate = info.abilities.contains(CardAbility.INNATE);
+        this.retain = info.abilities.contains(CardAbility.RETAIN);
+        this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
+        AbstractCardPatch.abilities.get(this).addAll(info.abilities);
 
         resetAttributes();
-        updateDescription();
         initializeDescription();
+    }
+
+
+    @Override
+    public void initializeDescription() {
+        if (this.baseRawDescription != null) {
+            initRawDescriptionWithAbilities();
+        }
+        super.initializeDescription();
+    }
+
+    private void initRawDescriptionWithAbilities() {
+        this.rawDescription = this.upgraded && StringUtils.isNotBlank(this.baseUpgradeRawDescription) ?
+                this.baseUpgradeRawDescription :
+                this.baseRawDescription;
+        AbstractCardPatch.abilities.get(this).forEach(a -> a.addDescription(this));
     }
 
     public void displayUpgrades() {
@@ -231,6 +273,10 @@ public abstract class DynamicCard extends CustomCard {
         if (this.upgradedSecondMagicNumber) {
             this.secondMagicNumber = this.baseSecondMagicNumber;
             this.isSecondMagicNumberModified = true;
+        }
+        if (this.upgradedThirdMagicNumber) {
+            this.thirdMagicNumber = this.baseThirdMagicNumber;
+            this.isThirdMagicNumberModified = true;
         }
     }
 
@@ -240,20 +286,24 @@ public abstract class DynamicCard extends CustomCard {
         this.upgradedSecondMagicNumber = true;
     }
 
+    public void upgradeThirdMagicNumber(int amount) {
+        this.baseThirdMagicNumber += amount;
+        this.thirdMagicNumber = this.baseThirdMagicNumber;
+        this.upgradedThirdMagicNumber = true;
+    }
+
     @Override
     public void resetAttributes() {
         super.resetAttributes();
         this.secondMagicNumber = this.baseSecondMagicNumber;
         this.isSecondMagicNumberModified = false;
-    }
-
-    private void updateDescription() {
-        AbstractCardPatch.abilities.get(this).forEach(a -> a.addDescription(this));
+        this.thirdMagicNumber = this.baseThirdMagicNumber;
+        this.isThirdMagicNumberModified = false;
     }
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        return !AbstractCardPatch.unplayable.get(card) && super.canPlay(card);
+        return !AbstractCardPatch.abilities.get(card).contains(CardAbility.UNPLAYABLE) && super.canPlay(card);
     }
 
     @Override
@@ -261,6 +311,7 @@ public abstract class DynamicCard extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeValues();
+            initializeDescription();
         }
     }
 
@@ -270,7 +321,10 @@ public abstract class DynamicCard extends CustomCard {
     public AbstractCard makeStatEquivalentCopy() {
         DynamicCard card = (DynamicCard) super.makeStatEquivalentCopy();
 
+        card.baseRawDescription = this.baseRawDescription;
+        card.baseUpgradeRawDescription = this.baseUpgradeRawDescription;
         card.baseSecondMagicNumber = this.baseSecondMagicNumber;
+        card.baseThirdMagicNumber = this.baseThirdMagicNumber;
         return card;
     }
 }

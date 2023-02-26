@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
-import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
@@ -46,8 +46,6 @@ public class AbstractPileViewScreenPatch {
 
     public static void computeDescription(AbstractCard card) {
         // remove futurity / flashback
-        AbstractCardPatch.futurity.set(card, false);
-        AbstractCardPatch.flashback.set(card, false);
         AbstractCardPatch.abilities.get(card).remove(CardAbility.FLASHBACK);
         AbstractCardPatch.abilities.get(card).remove(CardAbility.FUTURITY);
         card.tags.remove(SorcererCardTags.FUTURITY);
@@ -61,15 +59,15 @@ public class AbstractPileViewScreenPatch {
         card.exhaust = true;
         AbstractCardPatch.abilities.get(card).add(CardAbility.EXHAUST);
 
-        // reset raw description to remove added abilities
-        card.rawDescription = AbstractCardPatch.baseRawDescription.get(card);
+        // in case of non-Dynamic Cards
+        if (!(card instanceof DynamicCard)) {
+            // we have to remove possible EXHAUST/ETHEREAL from raw description
+            CardAbility.EXHAUST.removeDescription(card);
+            CardAbility.ETHEREAL.removeDescription(card);
 
-        // in case of non-Dynamic Cards, we have to remove possible EXHAUST/ETHEREAL from raw description
-        CardAbility.EXHAUST.removeDescription(card);
-        CardAbility.ETHEREAL.removeDescription(card);
-
-        // add all correct abilities again
-        AbstractCardPatch.abilities.get(card).forEach(a -> a.addDescription(card));
+            // add all correct abilities again
+            AbstractCardPatch.abilities.get(card).forEach(a -> a.addDescription(card));
+        }
 
         // update shown description
         card.initializeDescription();

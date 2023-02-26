@@ -24,7 +24,6 @@ public class MagicalCloak extends SorcererCard {
                         .target(CardTarget.SELF)
                         .magicNumber(BLOCK_INCREASE_PER_USE)
                         .block(BLOCK)
-                        .abilities(CardAbility.INNATE)
         );
     }
 

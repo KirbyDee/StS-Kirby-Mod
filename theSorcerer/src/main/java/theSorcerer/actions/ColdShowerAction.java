@@ -9,8 +9,7 @@ public class ColdShowerAction extends ElementmorphoseAction {
         super(
                 SorcererCardTags.ICE,
                 CardAbility.ICE,
-                SorcererCardTags.FIRE,
-                CardAbility.FIRE
+                SorcererCardTags.FIRE
         );
     }
 }

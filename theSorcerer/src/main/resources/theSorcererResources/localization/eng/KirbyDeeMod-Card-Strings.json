@@ -8,11 +8,11 @@
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:FireStrike": {
-    "NAME": "Fire Strike",
+    "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
   "theSorcerer:IceDefend": {
-    "NAME": "Ice Defend",
+    "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:Scorch": {
@@ -41,24 +41,32 @@
   },
   "theSorcerer:Elementmorphose": {
     "NAME": "Elementmorphose",
-    "DESCRIPTION": "TODO."
+    "DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose a card in your hand for the rest of the combat."
   },
   "theSorcerer:BaptismOfFire": {
     "NAME": "Baptism of Fire",
-    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Fire for the rest of combat."
+    "DESCRIPTION": "thesorcerer:Firemorphose a card in your hand for the rest of combat."
   },
   "theSorcerer:ColdShower": {
     "NAME": "Cold Shower",
-    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Ice for the rest of combat."
+    "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat."
   },
   "theSorcerer:Tradeoff": {
     "NAME": "Tradeoff",
-    "DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:M2!. NL Gain [E]."
+    "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E].",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E] [E]."
+  },
+  "theSorcerer:DiscardedDefense": {
+    "NAME": "Discarded Defense",
+    "DESCRIPTION": "Draw !M! card. NL Discard any number of cards. NL Gain !B! Block for each discarded card this turn. NL (Discarded !theSorcerer:MM! cards.)"
   },
   "theSorcerer:WellPrepared": {
     "NAME": "Well Prepared",
     "DESCRIPTION": "Draw !M! cards."
   },
+
+
+
   "theSorcerer:DefaultCommonAttack": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"

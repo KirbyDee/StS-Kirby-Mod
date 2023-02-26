@@ -9,7 +9,7 @@ public class WellPrepared extends SorcererCard {
     // --- VALUES START ---
     private static final int COST = 0;
     private static final int CARD_AMOUNT_DRAW = 2;
-    private static final int UPGRADE_CARD_AMOUNT_DRAW = 3;
+    private static final int UPGRADE_CARD_AMOUNT_DRAW = 1;
     // --- VALUES END ---
 
     public WellPrepared() {
@@ -17,7 +17,7 @@ public class WellPrepared extends SorcererCard {
                 DynamicCard.InfoBuilder(WellPrepared.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.UNCOMMON)
+                        .rarity(CardRarity.RARE)
                         .tags(
                                 SorcererCardTags.FUTURITY,
                                 SorcererCardTags.FLASHBACK

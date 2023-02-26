@@ -6,30 +6,30 @@ import theSorcerer.cards.DynamicCard;
 
 import static theSorcerer.KirbyDeeMod.makeID;
 
-public class SecondMagicNumber extends DynamicVariable {
+public class ThirdMagicNumber extends DynamicVariable {
 
     @Override
     public String key() {
-        return makeID("MM");
+        return makeID("MMM");
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((DynamicCard) card).isSecondMagicNumberModified;
+        return ((DynamicCard) card).isThirdMagicNumberModified;
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((DynamicCard) card).secondMagicNumber;
+        return ((DynamicCard) card).thirdMagicNumber;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((DynamicCard) card).baseSecondMagicNumber;
+        return ((DynamicCard) card).baseThirdMagicNumber;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((DynamicCard) card).upgradedSecondMagicNumber;
+        return ((DynamicCard) card).upgradedThirdMagicNumber;
     }
 }

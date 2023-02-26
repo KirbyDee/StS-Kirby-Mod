@@ -1,8 +1,9 @@
-package theSorcerer.cards;
+package theSorcerer.cards.special;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.ColdShowerAction;
+import theSorcerer.cards.DynamicCard;
 
 public class ColdShower extends DynamicCard {
 

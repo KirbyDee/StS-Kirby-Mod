@@ -16,7 +16,7 @@ public class Tradeoff extends SorcererCard {
     private static final int CARD_COST_INCREASE = 1;
     private static final int UPGRADE_CARD_COST_INCREASE = 1;
     private static final int ENERGY_GAIN = 1;
-    private static final int UPGRADE_ENERGY_GAIN = 2;
+    private static final int UPGRADE_ENERGY_GAIN = 1;
     // --- VALUES END ---
 
     public Tradeoff() {
@@ -27,6 +27,7 @@ public class Tradeoff extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(CARD_AMOUNT_DRAW)
                         .secondMagicNumber(CARD_COST_INCREASE)
+                        .thirdMagicNumber(ENERGY_GAIN)
         );
     }
 
@@ -36,14 +37,16 @@ public class Tradeoff extends SorcererCard {
         addToBot(new DrawCardAction(this.magicNumber));
 
         // increase cost this turn of a card in hand
-        addToBot(new CardCostIncreaseAction(CARD_AMOUNT_TO_INCREASE, this.baseSecondMagicNumber));
+        addToBot(new CardCostIncreaseAction(CARD_AMOUNT_TO_INCREASE, this.secondMagicNumber));
 
         // increase energy
-        addToBot(new GainEnergyAction(this.upgraded ? UPGRADE_ENERGY_GAIN : ENERGY_GAIN)); // TODO in strings: AbstractCard.getEnergyFont()
+        addToBot(new GainEnergyAction(this.thirdMagicNumber));
     }
 
+    @Override
     protected void upgradeValues() {
         upgradeMagicNumber(UPGRADE_CARD_AMOUNT_DRAW);
         upgradeSecondMagicNumber(UPGRADE_CARD_COST_INCREASE);
+        upgradeThirdMagicNumber(UPGRADE_ENERGY_GAIN);
     }
 }

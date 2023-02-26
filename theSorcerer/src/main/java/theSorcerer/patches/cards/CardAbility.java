@@ -45,7 +45,7 @@ public enum CardAbility {
         return !isEmpty();
     }
 
-    public void addDescription(AbstractCard card) {
+    public void addDescription(final AbstractCard card) {
         if (fix == CardAbilityFix.PREFIX) {
             card.rawDescription = text + CardUtil.PERIOD + CardUtil.NEW_LINE + card.rawDescription;
         }
@@ -54,7 +54,7 @@ public enum CardAbility {
         }
     }
 
-    public void removeDescription(AbstractCard card) {
+    public void removeDescription(final AbstractCard card) {
         if (fix == CardAbilityFix.PREFIX) {
             card.rawDescription = card.rawDescription.replace(text + CardUtil.PERIOD + CardUtil.NEW_LINE, "");
         }

@@ -1,15 +1,16 @@
-package theSorcerer.cards;
+package theSorcerer.cards.special;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.fire.FireStrike;
+import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.ice.IceDefend;
 
-public class FireConstruct extends DynamicCard {
+public class IceConstruct extends DynamicCard {
 
-    public FireConstruct() {
+    public IceConstruct() {
         super(
-                DynamicCard.InfoBuilder(FireConstruct.class)
+                DynamicCard.InfoBuilder(IceConstruct.class)
                         .type(CardType.POWER)
                         .rarity(CardRarity.SPECIAL)
                         .build()
@@ -23,6 +24,6 @@ public class FireConstruct extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new MakeTempCardInHandAction(new FireStrike(), 1, false));
+        addToBot(new MakeTempCardInHandAction(new IceDefend(), 1, false));
     }
 }
