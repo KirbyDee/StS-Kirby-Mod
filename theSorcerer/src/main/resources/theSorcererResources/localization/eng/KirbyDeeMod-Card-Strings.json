@@ -64,6 +64,14 @@
     "NAME": "Well Prepared",
     "DESCRIPTION": "Draw !M! cards."
   },
+  "theSorcerer:PastEmbrace": {
+    "NAME": "Past Embrace",
+    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw 1 card."
+  },
+  "theSorcerer:PhoenixFeather": {
+    "NAME": "Phoenix Feather",
+    "DESCRIPTION": "At the start of your next turn, heal HP equal to the damage you take this turn. NL This power lasts 1 turn."
+  },
 
 
 

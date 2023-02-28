@@ -55,9 +55,11 @@ public class AbstractPileViewScreenPatch {
         card.isEthereal = true;
         AbstractCardPatch.abilities.get(card).add(CardAbility.ETHEREAL);
 
-        // add exhaust
-        card.exhaust = true;
-        AbstractCardPatch.abilities.get(card).add(CardAbility.EXHAUST);
+        // add exhaust (if not power, doesn't make sense to give exhaust to powers)
+        if (card.type != AbstractCard.CardType.POWER) {
+            card.exhaust = true;
+            AbstractCardPatch.abilities.get(card).add(CardAbility.EXHAUST);
+        }
 
         // in case of non-Dynamic Cards
         if (!(card instanceof DynamicCard)) {

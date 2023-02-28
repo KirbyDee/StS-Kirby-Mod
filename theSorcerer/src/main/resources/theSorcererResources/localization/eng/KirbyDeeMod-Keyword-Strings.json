@@ -32,7 +32,8 @@
   {
     "PROPER_NAME": "Flashback",
     "NAMES": [
-      "flashback"
+      "flashback",
+      "flashbacked"
     ],
     "DESCRIPTION": "Clicking on this card in the #yDiscard #yPile will put it in your hand. This card then becomes #yEthereal and #yExhaust"
   },
@@ -49,6 +50,13 @@
       "entomb"
     ],
     "DESCRIPTION": "Start each combat with this card in your discard pile."
+  },
+  {
+    "PROPER_NAME": "Auto",
+    "NAMES": [
+      "auto"
+    ],
+    "DESCRIPTION": "This card is automatically played when it is put into your hand."
   },
   {
     "PROPER_NAME": "Firemorphose",

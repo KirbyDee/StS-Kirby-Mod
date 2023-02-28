@@ -303,7 +303,8 @@ public abstract class DynamicCard extends CustomCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        return !AbstractCardPatch.abilities.get(card).contains(CardAbility.UNPLAYABLE) && super.canPlay(card);
+        return !AbstractCardPatch.abilities.get(card).contains(CardAbility.UNPLAYABLE) &&
+                super.canPlay(card);
     }
 
     @Override

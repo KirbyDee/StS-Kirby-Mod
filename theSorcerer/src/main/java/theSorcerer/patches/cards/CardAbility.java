@@ -9,6 +9,7 @@ public enum CardAbility {
     EMPTY("", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     FIRE(CardUtil.MOD_PREFIX + "Fire", SorcererCardTags.FIRE, CardAbilityFix.PREFIX),
     ICE(CardUtil.MOD_PREFIX + "Ice", SorcererCardTags.ICE, CardAbilityFix.PREFIX),
+    AUTO(CardUtil.MOD_PREFIX + "Auto", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     UNPLAYABLE("Unplayable", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     ETHEREAL("Ethereal", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
     RETAIN("Retain", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),

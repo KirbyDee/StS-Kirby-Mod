@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.powers.buff.PastEmbracePower;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -38,12 +39,16 @@ public class DiscardPileViewScreenPatch {
 
             AbstractPileViewScreenPatch.computeDescription(card);
 
-            // TODO does this count as drawing?
             AbstractDungeon.player.hand.addToHand(card);
             AbstractDungeon.player.discardPile.removeCard(card);
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.player.hand.applyPowers();
             AbstractDungeon.closeCurrentScreen();
+
+            // trigger PastEmbracePower
+            if (AbstractDungeon.player.hasPower(PastEmbracePower.POWER_ID)) {
+                AbstractDungeon.player.getPower(PastEmbracePower.POWER_ID).onSpecificTrigger();
+            }
         }
     }
 }

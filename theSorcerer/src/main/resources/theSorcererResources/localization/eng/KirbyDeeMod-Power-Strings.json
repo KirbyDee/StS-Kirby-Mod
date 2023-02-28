@@ -23,6 +23,17 @@
     "NAME": "Frozen",
     "DESCRIPTIONS": ["Target takes #b", " damage whenever they get attacked."]
   },
+  "theSorcerer:PastEmbracePower": {
+    "NAME": "Past Embrace",
+    "DESCRIPTIONS": ["Whenever a card is #yFlashbacked, draw #b", " card.", " cards."]
+  },
+  "theSorcerer:PhoenixFeatherPower": {
+    "NAME": "Phoenix Feather",
+    "DESCRIPTIONS": ["At the start of your next turn, heal #b", " HP."]
+  },
+
+
+
   "theSorcerer:CommonPower": {
     "NAME": "Placeholder Power",
     "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]

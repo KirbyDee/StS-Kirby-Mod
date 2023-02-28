@@ -38,7 +38,6 @@ public class DrawPileViewScreenPatch {
 
             AbstractPileViewScreenPatch.computeDescription(card);
 
-            // TODO does this count as drawing?
             AbstractDungeon.closeCurrentScreen();
             AbstractDungeon.player.hand.addToHand(card);
             AbstractDungeon.player.drawPile.removeCard(card);

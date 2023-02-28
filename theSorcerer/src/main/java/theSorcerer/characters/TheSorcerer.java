@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.Seek;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -179,19 +180,28 @@ public class TheSorcerer extends CustomPlayer {
         // 1 common skill
 //        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
 
+
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(Seek.ID);
+        retVal.add(DynamicCard.getID(PhoenixFeather.class));
+
         // all cards
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(FrostArmor.class));
-        retVal.add(DynamicCard.getID(Elementmorphose.class));
-        retVal.add(DynamicCard.getID(Tradeoff.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(UnseenHelper.class));
-        retVal.add(DynamicCard.getID(DiscardedDefense.class));
-        retVal.add(DynamicCard.getID(MagicalCloak.class));
+        retVal.add(DynamicCard.getID(PhoenixFeather.class));
+        retVal.add(DynamicCard.getID(PastEmbrace.class));
+//        retVal.add(DynamicCard.getID(Scorch.class));
+//        retVal.add(DynamicCard.getID(FrostArmor.class));
+//        retVal.add(DynamicCard.getID(Elementmorphose.class));
+//        retVal.add(DynamicCard.getID(Tradeoff.class));
+//        retVal.add(DynamicCard.getID(WellPrepared.class));
+//        retVal.add(DynamicCard.getID(UnseenHelper.class));
+//        retVal.add(DynamicCard.getID(DiscardedDefense.class));
+//        retVal.add(DynamicCard.getID(MagicalCloak.class));
 
         return retVal;
     }

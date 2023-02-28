@@ -1,44 +1,51 @@
 package theSorcerer.patches.cards;
 
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import javassist.CtBehavior;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.TipTracker;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.FtueTip;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.powers.buff.ElementAffinityPower;
+import theSorcerer.powers.buff.FireAffinityPower;
+import theSorcerer.powers.buff.IceAffinityPower;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@SpirePatch(clz = CardGroup.class, method = "initializeDeck")
+@SpirePatch(clz = CardGroup.class, method = SpirePatch.CLASS)
 public class CardGroupPatch {
 
-    private static final Logger LOG = LogManager.getLogger(CardGroupPatch.class.getName());
+    @SpirePatch(clz = CardGroup.class, method = "addToHand")
+    public static class AddToHandPatch {
 
-    @SpireInsertPatch(locator = Locator.class, localvars = {"copy"})
-    public static void initializeDeckPatch(
-            CardGroup self,
-            CardGroup masterDeck,
-            @ByRef(type="cards.CardGroup") Object[] copy
-    ) {
-        LOG.info("Checking if there are any entomb cards in the deck to put them NOT in the starting hand");
-        CardGroup drawPileCopy = (CardGroup) copy[0];
-        List<AbstractCard> entombCards = drawPileCopy.group
-                .stream()
-                .filter(c -> AbstractCardPatch.abilities.get(c).contains(CardAbility.ENTOMB))
-                .collect(Collectors.toList());
-
-        // remove card from draw pile copy.
-        // we have to do it in a separate loop, since we cannot remove items from the same list that we are looping in
-        entombCards
-                .forEach(c -> drawPileCopy.group.remove(c));
-    }
-
-    private static class Locator extends SpireInsertLocator {
-        @Override
-        public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-            Matcher finalMatcher = new Matcher.MethodCallMatcher(CardGroup.class, "shuffle");
-            return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
+        public static void Postfix(CardGroup self, AbstractCard c) {
+            AbstractPlayer player = AbstractDungeon.player;
+            if (AbstractCardPatch.abilities.get(c).contains(CardAbility.AUTO)) {
+                if (c.hasEnoughEnergy()) {
+                    player.useCard(c, AbstractDungeon.getRandomMonster(), c.energyOnUse);
+                }
+                else {
+                    AbstractDungeon.effectList.add(
+                            new ThoughtBubble(
+                                    player.dialogX,
+                                    player.dialogY,
+                                    3.0F,
+                                    c.cantUseMessage,
+                                    true)
+                    );
+                }
+            }
         }
     }
 }
