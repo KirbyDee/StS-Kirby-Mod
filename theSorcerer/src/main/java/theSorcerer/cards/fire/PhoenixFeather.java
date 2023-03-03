@@ -1,15 +1,14 @@
-package theSorcerer.cards;
+package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.buff.PhoenixFeatherPower;
 
-public class PhoenixFeather extends SorcererCard {
+public class PhoenixFeather extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
@@ -23,7 +22,7 @@ public class PhoenixFeather extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
                         .tags(CardTags.HEALING)
-                        .abilities(CardAbility.AUTO, CardAbility.FUTURITY, CardAbility.FIRE)
+                        .abilities(CardAbility.AUTO)
         );
     }
 

@@ -20,6 +20,8 @@ public abstract class DynamicCard extends CustomCard {
 
     private String baseUpgradeRawDescription;
 
+    protected String[] baseExtendedDescriptions;
+
     public int baseSecondMagicNumber;
 
     public int secondMagicNumber;
@@ -232,6 +234,7 @@ public abstract class DynamicCard extends CustomCard {
         // base values
         this.baseRawDescription = this.rawDescription;
         this.baseUpgradeRawDescription = info.cardStrings.UPGRADE_DESCRIPTION;
+        this.baseExtendedDescriptions = info.cardStrings.EXTENDED_DESCRIPTION;
         this.baseDamage = info.damage;
         this.baseBlock = info.block;
         this.baseMagicNumber = info.magicNumber;
@@ -317,6 +320,10 @@ public abstract class DynamicCard extends CustomCard {
     }
 
     protected void upgradeValues() {}
+
+    public void triggerOnFlashback() {}
+
+    public void triggerOnFuturity() {}
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.PastEmbracePower;
 
@@ -48,6 +49,11 @@ public class DiscardPileViewScreenPatch {
             // trigger PastEmbracePower
             if (AbstractDungeon.player.hasPower(PastEmbracePower.POWER_ID)) {
                 AbstractDungeon.player.getPower(PastEmbracePower.POWER_ID).onSpecificTrigger();
+            }
+
+            // trigger on flashback
+            if (card instanceof DynamicCard) {
+                ((DynamicCard) card).triggerOnFlashback();
             }
         }
     }

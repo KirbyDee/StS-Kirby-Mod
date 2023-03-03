@@ -2,7 +2,7 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class CardCostIncreaseAction extends CardChooseAction {
+public class CardCostIncreaseAction extends HandCardChooseAction {
 
     // --- VALUES START ---
     private final static String TEXT = "increase Energy Cost by "; // TODO
@@ -25,7 +25,7 @@ public class CardCostIncreaseAction extends CardChooseAction {
 
     @Override
     protected void onCardChosen(AbstractCard card) {
-        card.modifyCostForCombat(card.costForTurn + this.costIncrease);
+        card.modifyCostForCombat(this.costIncrease);
         this.player.hand.addToTop(card);
     }
 

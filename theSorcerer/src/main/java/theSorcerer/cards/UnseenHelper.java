@@ -19,7 +19,7 @@ public class UnseenHelper extends SorcererCard {
                 DynamicCard.InfoBuilder(UnseenHelper.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.UNCOMMON)
+                        .rarity(CardRarity.RARE)
                         .target(CardTarget.NONE)
                         .magicNumber(ENERGY_GAIN)
                         .abilities(CardAbility.UNPLAYABLE)

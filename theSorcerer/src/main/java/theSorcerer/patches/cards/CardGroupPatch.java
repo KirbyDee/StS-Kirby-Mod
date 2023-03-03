@@ -36,14 +36,7 @@ public class CardGroupPatch {
                     player.useCard(c, AbstractDungeon.getRandomMonster(), c.energyOnUse);
                 }
                 else {
-                    AbstractDungeon.effectList.add(
-                            new ThoughtBubble(
-                                    player.dialogX,
-                                    player.dialogY,
-                                    3.0F,
-                                    c.cantUseMessage,
-                                    true)
-                    );
+                    player.hand.moveToExhaustPile(c);
                 }
             }
         }

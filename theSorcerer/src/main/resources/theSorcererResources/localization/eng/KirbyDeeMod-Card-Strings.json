@@ -72,6 +72,31 @@
     "NAME": "Phoenix Feather",
     "DESCRIPTION": "At the start of your next turn, heal HP equal to the damage you take this turn. NL This power lasts 1 turn."
   },
+  "theSorcerer:ForgottenConduit": {
+    "NAME": "Forgotten Conduit",
+    "DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and 1 other card at random. NL Gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and 1 other card. NL Gain [E] [E]."
+  },
+  "theSorcerer:BuriedAlive": {
+    "NAME": "Buried Alive",
+    "DESCRIPTION": "Put 1 card from your draw pile into your discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      "My draw pile NL cannot be #rEmpty."
+    ]
+  },
+  "theSorcerer:UnfairExchange": {
+    "NAME": "Unfair Exchange",
+    "DESCRIPTION": "Exchange !M! cards from your discard pile with !theSorcerer:MM! card from your exhaust pile.",
+    "UPGRADE_DESCRIPTION": "Exchange !M! card from your discard pile with !theSorcerer:MM! card from your exhaust pile.",
+    "EXTENDED_DESCRIPTION": [
+      "My",
+      " discard ",
+      " exhaust ",
+      "pile needs at least #r",
+      " card.",
+      " cards."
+    ]
+  },
 
 
 

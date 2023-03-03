@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 
-public abstract class ElementmorphoseAction extends CardChooseAction {
+public abstract class ElementmorphoseAction extends HandCardChooseAction {
 
     // --- VALUES START ---
     private final static String TEXT_1 = "metamorphose to "; // TODO

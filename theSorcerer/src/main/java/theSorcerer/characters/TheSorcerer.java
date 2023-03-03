@@ -9,7 +9,6 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Seek;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -24,7 +23,6 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
 import theSorcerer.cards.fire.Scorch;
-import theSorcerer.cards.ice.FrostArmor;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -181,19 +179,21 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
 
 
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(Seek.ID);
-        retVal.add(DynamicCard.getID(PhoenixFeather.class));
+        retVal.add(DynamicCard.getID(BuriedAlive.class));
+        retVal.add(DynamicCard.getID(UnfairExchange.class));
+        retVal.add(DynamicCard.getID(BuriedAlive.class));
+        retVal.add(DynamicCard.getID(UnfairExchange.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
+        retVal.add(DynamicCard.getID(Scorch.class));
 
         // all cards
-        retVal.add(DynamicCard.getID(PhoenixFeather.class));
-        retVal.add(DynamicCard.getID(PastEmbrace.class));
+//        retVal.add(DynamicCard.getID(AbysmalPact.class));
+//        retVal.add(DynamicCard.getID(BuriedAlive.class));
+//        retVal.add(DynamicCard.getID(PastEmbrace.class));
+//        retVal.add(DynamicCard.getID(ForgottenConduit.class));
+//        retVal.add(DynamicCard.getID(PhoenixFeather.class));
 //        retVal.add(DynamicCard.getID(Scorch.class));
 //        retVal.add(DynamicCard.getID(FrostArmor.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));

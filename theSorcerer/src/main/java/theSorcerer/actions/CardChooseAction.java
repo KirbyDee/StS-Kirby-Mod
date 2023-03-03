@@ -2,6 +2,7 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,6 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class CardChooseAction extends AbstractGameAction {
 
@@ -17,77 +21,48 @@ public abstract class CardChooseAction extends AbstractGameAction {
     // --- VALUES START ---
     protected final AbstractPlayer player;
     protected final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
-    protected final int cardAmount;
-    protected final boolean anyNumber;
-    protected final boolean canPickZero;
-    protected final boolean forTransform;
-    protected final boolean forUpgrade;
+    protected final CardGroup cardGroup;
     // --- VALUES END ---
 
-
-
     public CardChooseAction(
-            final boolean canPickZero
+            final CardGroup cardGroup,
+            final int amount
     ) {
-        this(99, true, canPickZero);
-    }
-
-    public CardChooseAction(
-            final int cardAmount
-    ) {
-        this(cardAmount, false, false);
-    }
-
-    public CardChooseAction(
-            final int cardAmount,
-            final boolean anyNumber,
-            final boolean canPickZero
-    ) {
-        this(cardAmount, anyNumber, canPickZero, false, false);
-    }
-
-    public CardChooseAction(
-            final int cardAmount,
-            final boolean anyNumber,
-            final boolean canPickZero,
-            final boolean forTransform,
-            final boolean forUpgrade
-    ) {
+        this.amount = amount;
+        this.cardGroup = cardGroup;
         this.actionType = ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.duration = Settings.ACTION_DUR_FAST;
-        this.cardAmount = cardAmount;
-        this.anyNumber = anyNumber;
-        this.canPickZero = canPickZero;
-        this.forTransform = forTransform;
-        this.forUpgrade = forUpgrade;
     }
 
     @Override
     public void update() {
         // init: either no card can be chosen, only 1 or the player chooses one
         if (this.duration == Settings.ACTION_DUR_FAST) {
-            // get all the cards in hand which cannot be chosen
+            // get all the cards which cannot be chosen
             gatherCannotBeChosen();
 
             // if no cards are left -> nothing to do
-            if (this.cannotBeChosen.size() == this.player.hand.group.size()) {
+            if (this.cannotBeChosen.size() == this.cardGroup.group.size()) {
+                LOG.info("No cards to choose from -> nop");
                 this.isDone = true;
                 return;
             }
 
-            // if we have exactly 1 card that can be chosen
-            if (this.player.hand.group.size() - this.cannotBeChosen.size() == 1) {
-                choseOnlyCardInHand();
+            // if we less or equal this.amount cards, take them directly without choosing
+            if (this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount) {
+                choseOnlyCardsPossible();
                 return;
             }
 
+            prepareCardGroup();
             showCardSelectionScreen();
+            tickDuration();
             return;
         }
 
         // card has been chosen
-        if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
+        if (cardsHaveBeenChosen()) {
             onCardsChosen();
         }
 
@@ -105,6 +80,34 @@ public abstract class CardChooseAction extends AbstractGameAction {
                 (statusCanBeChosen() && card.type == AbstractCard.CardType.STATUS);
     }
 
+    private void gatherCannotBeChosen() {
+        this.cardGroup.group
+                .stream()
+                .filter(this::cannotBeChosen)
+                .forEach(this.cannotBeChosen::add);
+    }
+
+    private void choseOnlyCardsPossible() {
+        List<AbstractCard> cards = this.cardGroup.group
+                .stream()
+                .filter(this::canBeChosen)
+                .limit(this.amount)
+                .collect(Collectors.toList());
+        onCardsChosen(cards.stream());
+    }
+
+    private void onCardsChosen() {
+        onCardsChosen(getSelectedCards().stream());
+        onActionDone();
+    }
+
+    private void onCardsChosen(Stream<AbstractCard> cards) {
+        this.isDone = true;
+        cards
+                .peek(c -> LOG.debug("Card chosen: " + c.name))
+                .forEach(this::onCardChosen);
+    }
+
     protected boolean curseCanBeChosen() {
         return false;
     }
@@ -113,53 +116,17 @@ public abstract class CardChooseAction extends AbstractGameAction {
         return false;
     }
 
+    protected abstract void prepareCardGroup();
+
+    protected abstract boolean cardsHaveBeenChosen();
+
     protected abstract void onCardChosen(final AbstractCard card);
 
-    private void gatherCannotBeChosen() {
-        this.player.hand.group
-                .stream()
-                .filter(this::cannotBeChosen)
-                .forEach(this.cannotBeChosen::add);
-    }
-
-    private void choseOnlyCardInHand() {
-        this.player.hand.group
-                .stream()
-                .filter(this::canBeChosen)
-                .findAny()
-                .ifPresent(c -> {
-                    LOG.debug("Card chosen: " + c.name);
-                    onCardChosen(c);
-                    this.isDone = true;
-                });
-    }
-
-    private void showCardSelectionScreen() {
-        this.player.hand.group.removeAll(this.cannotBeChosen);
-        AbstractDungeon.handCardSelectScreen.open(getChooseText(), this.cardAmount, this.anyNumber, this.canPickZero, this.forTransform, this.forUpgrade);
-        tickDuration();
-    }
+    protected abstract void showCardSelectionScreen();
 
     protected abstract String getChooseText();
 
-    private void onCardsChosen() {
-        AbstractDungeon.handCardSelectScreen.selectedCards.group
-                .forEach(c -> {
-                    LOG.debug("Card chosen: " + c.name);
-                    onCardChosen(c);
-                });
-
-        returnCards();
-        AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
-        AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-        onActionDone();
-        this.isDone = true;
-    }
+    protected abstract ArrayList<AbstractCard> getSelectedCards();
 
     protected void onActionDone() {}
-
-    private void returnCards() {
-        this.cannotBeChosen.forEach(this.player.hand::addToTop);
-        this.player.hand.refreshHandLayout();
-    }
 }

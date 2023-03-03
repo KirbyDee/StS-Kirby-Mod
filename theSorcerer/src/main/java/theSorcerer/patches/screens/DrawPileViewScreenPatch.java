@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
 
 @SpirePatch(clz = DrawPileViewScreen.class, method = SpirePatch.CLASS)
@@ -43,6 +44,11 @@ public class DrawPileViewScreenPatch {
             AbstractDungeon.player.drawPile.removeCard(card);
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.player.hand.applyPowers();
+
+            // trigger on futurity
+            if (card instanceof DynamicCard) {
+                ((DynamicCard) card).triggerOnFuturity();
+            }
         }
     }
 }

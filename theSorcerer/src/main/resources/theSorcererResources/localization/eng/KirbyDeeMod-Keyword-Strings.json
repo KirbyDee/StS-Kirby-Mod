@@ -56,7 +56,7 @@
     "NAMES": [
       "auto"
     ],
-    "DESCRIPTION": "This card is automatically played when it is put into your hand."
+    "DESCRIPTION": "This card is automatically played when it is put into your hand. NL If you cannot play it, the card is #yExhausted instead."
   },
   {
     "PROPER_NAME": "Firemorphose",
