@@ -14,21 +14,32 @@ import theSorcerer.powers.buff.PastEmbracePower;
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
 
+    private static final Logger LOG = LogManager.getLogger(DiscardPileViewScreenPatch.class.getName());
+
+    private static boolean isFlashback(AbstractCard card) {
+        return card.hasTag(SorcererCardTags.FLASHBACK);
+    }
+
+    @SpirePatch(clz = DiscardPileViewScreen.class, method = "open")
+    public static class OpenPatch {
+
+        public static void Postfix(DiscardPileViewScreen self) {
+            AbstractPileViewScreenPatch.OpenPatch(
+                    AbstractDungeon.player.discardPile,
+                    DiscardPileViewScreenPatch::isFlashback
+            );
+        }
+    }
+
     @SpirePatch(clz = DiscardPileViewScreen.class, method = "update")
     public static class UpdatePatch {
 
-        private static final Logger LOG = LogManager.getLogger(UpdatePatch.class.getName());
-
         public static void Postfix(DiscardPileViewScreen self) {
-            AbstractPileViewScreenPatch.Postfix(
+            AbstractPileViewScreenPatch.UpdatePatch(
                     AbstractDungeon.player.discardPile,
-                    UpdatePatch::isFlashback,
+                    DiscardPileViewScreenPatch::isFlashback,
                     UpdatePatch::removeFromDiscardPileAndAddToHand
             );
-        }
-
-        private static boolean isFlashback(AbstractCard card) {
-            return card.hasTag(SorcererCardTags.FLASHBACK);
         }
 
         private static void removeFromDiscardPileAndAddToHand(AbstractCard card) {

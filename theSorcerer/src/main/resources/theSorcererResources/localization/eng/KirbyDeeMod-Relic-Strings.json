@@ -20,6 +20,16 @@
       "Start each turn #yChilled."
     ]
   },
+  "theSorcerer:ElementalMaster": {
+    "NAME": "Elemental Master",
+    "FLAVOR": "All the elements are belong to us.",
+    "DESCRIPTIONS": [
+      "You cannot become #yElementless."
+    ]
+  },
+
+
+
   "theSorcerer:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

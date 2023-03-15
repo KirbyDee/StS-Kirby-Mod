@@ -8,6 +8,7 @@ import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.buff.PhoenixFeatherPower;
 
+// TODO: ice variant needed
 public class PhoenixFeather extends SorcererFireCard {
 
     // --- VALUES START ---

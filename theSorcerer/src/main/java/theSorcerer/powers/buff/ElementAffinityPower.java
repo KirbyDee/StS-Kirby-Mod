@@ -4,10 +4,14 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.powers.debuff.ElementlessPower;
+import theSorcerer.relics.ElementalMaster;
 
 public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> extends SelfRemovablePower {
 
@@ -19,7 +23,6 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
             final String id
     ) {
         super(owner, id);
-        this.type = PowerType.BUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;
 
@@ -34,11 +37,20 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
 
     @Override
     public void atEndOfRound() {
-        flash();
         reducePowerToZero();
     }
 
-    protected void reducePowerToZero() {
+    @Override
+    public void removeSelf() {
+        reducePowerToZero();
+        super.removeSelf();
+    }
+
+    public void reducePowerToZero() {
+        if (this.amount <= 0) {
+            return;
+        }
+
         LOG.info("Reduce " + this.ID + " to zero");
         addToBot(
                 new ReducePowerAction(
@@ -59,9 +71,9 @@ public abstract class ElementAffinityPower<E extends ElementEvolvePower<?>> exte
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         AbstractCard.CardTags tag = getAffinityLoseTag();
         if (card.tags.contains(tag)) {
-            LOG.info(tag + " applied, but " + this.ID + " already existing -> remove " + this.ID);
-            reducePowerToZero();
+            LOG.info(tag + " applied, but " + this.ID + " already existing");
             removeSelf();
+            DynamicDungeon.applyElementless();
         }
     }
 

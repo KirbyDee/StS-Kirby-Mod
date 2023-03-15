@@ -13,21 +13,32 @@ import theSorcerer.cards.SorcererCardTags;
 @SpirePatch(clz = DrawPileViewScreen.class, method = SpirePatch.CLASS)
 public class DrawPileViewScreenPatch {
 
+    private static final Logger LOG = LogManager.getLogger(DrawPileViewScreenPatch.class.getName());
+
+    private static boolean isFuturity(AbstractCard card) {
+        return card.hasTag(SorcererCardTags.FUTURITY);
+    }
+
+    @SpirePatch(clz = DrawPileViewScreen.class, method = "open")
+    public static class OpenPatch {
+
+        public static void Postfix(DrawPileViewScreen self) {
+            AbstractPileViewScreenPatch.OpenPatch(
+                    AbstractDungeon.player.drawPile,
+                    DrawPileViewScreenPatch::isFuturity
+            );
+        }
+    }
+
     @SpirePatch(clz = DrawPileViewScreen.class, method = "update")
     public static class UpdatePatch {
 
-        private static final Logger LOG = LogManager.getLogger(UpdatePatch.class.getName());
-
         public static void Postfix(DrawPileViewScreen self) {
-            AbstractPileViewScreenPatch.Postfix(
+            AbstractPileViewScreenPatch.UpdatePatch(
                     AbstractDungeon.player.drawPile,
-                    UpdatePatch::isFuturity,
+                    DrawPileViewScreenPatch::isFuturity,
                     UpdatePatch::removeFromDrawPileAndAddToHand
             );
-        }
-
-        private static boolean isFuturity(AbstractCard card) {
-            return card.hasTag(SorcererCardTags.FUTURITY);
         }
 
         private static void removeFromDrawPileAndAddToHand(AbstractCard card) {

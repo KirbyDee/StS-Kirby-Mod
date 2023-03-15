@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public abstract class HandCardChooseAction extends CardChooseAction {
 
     // --- VALUES START ---
-    private final boolean anyNumber;
     private final boolean canPickZero;
     private final boolean forTransform;
     private final boolean forUpgrade;
@@ -55,8 +54,7 @@ public abstract class HandCardChooseAction extends CardChooseAction {
             final boolean forTransform,
             final boolean forUpgrade
     ) {
-        super(AbstractDungeon.player.hand, amount);
-        this.anyNumber = anyNumber;
+        super(AbstractDungeon.player.hand, amount, anyNumber);
         this.canPickZero = canPickZero;
         this.forTransform = forTransform;
         this.forUpgrade = forUpgrade;

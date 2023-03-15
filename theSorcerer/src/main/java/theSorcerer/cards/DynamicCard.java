@@ -251,6 +251,10 @@ public abstract class DynamicCard extends CustomCard {
         this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
         AbstractCardPatch.abilities.get(this).addAll(info.abilities);
 
+        // init values
+        this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;
+
+        // description
         resetAttributes();
         initializeDescription();
     }

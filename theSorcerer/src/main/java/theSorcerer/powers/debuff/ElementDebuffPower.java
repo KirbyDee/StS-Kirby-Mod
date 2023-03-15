@@ -5,8 +5,9 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.powers.DynamicPower;
+import theSorcerer.powers.SelfRemovablePower;
 
-public abstract class ElementDebuffPower extends DynamicPower {
+public abstract class ElementDebuffPower extends SelfRemovablePower {
 
     protected final boolean isSourceMonster;
 
@@ -40,13 +41,7 @@ public abstract class ElementDebuffPower extends DynamicPower {
             this.justApplied = false;
         } else {
             if (this.amount == 0) {
-                addToBot(
-                        new RemoveSpecificPowerAction(
-                                this.owner,
-                                this.owner,
-                                this.ID
-                        )
-                );
+                removeSelf();
             }
             else {
                 addToBot(

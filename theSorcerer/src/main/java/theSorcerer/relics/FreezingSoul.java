@@ -4,10 +4,12 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makeRelicOutlinePath;
@@ -29,7 +31,14 @@ public class FreezingSoul extends CustomRelic {
 
     @Override
     public void atTurnStart() {
+        if (AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID)) {
+            LOG.info("Cannot apply Chilled due to Elementless");
+            AbstractDungeon.player.getPower(ElementlessPower.POWER_ID).flash();
+            return;
+        }
+
         LOG.info("Apply Chilled power at turn start");
+        flash();
         addToBot(
                 new ApplyPowerAction(
                         AbstractDungeon.player,
@@ -46,6 +55,6 @@ public class FreezingSoul extends CustomRelic {
 
     @Override
     public boolean canSpawn() {
-        return !AbstractDungeon.player.hasRelic("BurningSoul");
+        return !AbstractDungeon.player.hasRelic(BurningSoul.ID);
     }
 }

@@ -26,7 +26,6 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
     ) {
         super(owner, thisEvolvedPowerID);
         this.thisElementID = thisElementID;
-        this.type = PowerType.BUFF;
         this.affinityAmount = affinityAmount;
         this.isTurnBased = true;
         this.canGoNegative = false;
@@ -57,10 +56,19 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
     @Override
     public void atEndOfRound() {
         removeSelf();
+    }
+
+    @Override
+    public void removeSelf() {
         reduceExtraPower();
+        super.removeSelf();
     }
 
     private void reduceExtraPower() {
+        if (this.affinityAmount <= 0) {
+            return;
+        }
+
         LOG.info("Reduce Extra Power by  " + this.affinityAmount);
         addToBot(
                 new ReducePowerAction(

@@ -14,7 +14,17 @@ import java.util.function.Predicate;
 
 public class AbstractPileViewScreenPatch {
 
-    public static void Postfix(
+    public static void OpenPatch(
+            CardGroup cardGroup,
+            Predicate<AbstractCard> filter
+    ) {
+        cardGroup.group
+                .stream()
+                .filter(filter)
+                .forEach(AbstractPileViewScreenPatch::startGlowing);
+    }
+
+    public static void UpdatePatch(
             CardGroup cardGroup,
             Predicate<AbstractCard> filter,
             Consumer<AbstractCard> consumer
@@ -27,14 +37,13 @@ public class AbstractPileViewScreenPatch {
         cardGroup.group
                 .stream()
                 .filter(filter)
-                .peek(AbstractPileViewScreenPatch::startGlowing)
                 .filter(AbstractPileViewScreenPatch::isHovered)
                 .filter(c -> InputHelper.justClickedLeft)
                 .findAny()
                 .ifPresent(consumer);
     }
 
-    private static void startGlowing(AbstractCard card) {
+    public static void startGlowing(AbstractCard card) {
         if (!card.isGlowing) {
             card.beginGlowing();
         }

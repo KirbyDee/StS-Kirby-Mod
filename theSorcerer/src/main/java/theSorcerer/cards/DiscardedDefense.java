@@ -39,6 +39,7 @@ public class DiscardedDefense extends SorcererCard {
     }
 
     public void applyPowers() {
+        super.applyPowers();
         this.baseSecondMagicNumber = GameActionManager.totalDiscardedThisTurn;
         initializeDescription();
     }

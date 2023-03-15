@@ -1,5 +1,14 @@
 [
   {
+    "PROPER_NAME": "Elemental Affinities",
+    "NAMES": [
+      "elemental affinities",
+      "elemental_affinities",
+      "Elemental_Affinities"
+    ],
+    "DESCRIPTION": "#yFire #yAffinity / #yIce #yAffinity and #yHeated / #yChilled."
+  },
+  {
     "PROPER_NAME": "Fire",
     "NAMES": [
       "fire"
@@ -10,9 +19,10 @@
     "PROPER_NAME": "Fire Affinity",
     "NAMES": [
       "fire affinity",
-      "fire_affinity"
+      "fire_affinity",
+      "Fire_Affinity"
     ],
-    "DESCRIPTION": "Upon reaching 3 #yFire #yAffinity or more become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your next turn."
+    "DESCRIPTION": "Upon reaching enough #yFire #yAffinity become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your next turn."
   },
   {
     "PROPER_NAME": "Ice",
@@ -25,9 +35,31 @@
     "PROPER_NAME": "Ice Affinity",
     "NAMES": [
       "ice affinity",
-      "ice_affinity"
+      "ice_affinity",
+      "Ice_Affinity"
     ],
-    "DESCRIPTION": "Upon reaching 3 #yIce #yAffinity or more become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your next turn."
+    "DESCRIPTION": "Upon reaching enough #yIce #yAffinity become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your next turn."
+  },
+  {
+    "PROPER_NAME": "Elementless",
+    "NAMES": [
+      "elementless"
+    ],
+    "DESCRIPTION": "You can no longer gain #yFire #yAffinity / #yIce #yAffinity or become #yHeated / #yChilled."
+  },
+  {
+    "PROPER_NAME": "Heated",
+    "NAMES": [
+      "heated"
+    ],
+    "DESCRIPTION": "Gain #yStrength equal to the amount of #yFire #yAffinity you have. Your #yFire attacks also apply the same amount of #yAblaze."
+  },
+  {
+    "PROPER_NAME": "Chilled",
+    "NAMES": [
+      "chilled"
+    ],
+    "DESCRIPTION": "Gain #yDexterity equal to the amount of #yIce #yAffinity you have. Whenever you fully #yBlock an attack, apply the same amount of #yFrozen."
   },
   {
     "PROPER_NAME": "Flashback",

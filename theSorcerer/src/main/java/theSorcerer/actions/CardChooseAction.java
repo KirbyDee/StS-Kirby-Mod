@@ -22,14 +22,24 @@ public abstract class CardChooseAction extends AbstractGameAction {
     protected final AbstractPlayer player;
     protected final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
     protected final CardGroup cardGroup;
+    protected  final boolean anyNumber;
     // --- VALUES END ---
 
     public CardChooseAction(
             final CardGroup cardGroup,
             final int amount
     ) {
-        this.amount = amount;
+        this(cardGroup, amount, false);
+    }
+
+    public CardChooseAction(
+            final CardGroup cardGroup,
+            final int amount,
+            final boolean anyNumber
+    ) {
         this.cardGroup = cardGroup;
+        this.amount = amount;
+        this.anyNumber = anyNumber;
         this.actionType = ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.duration = Settings.ACTION_DUR_FAST;
@@ -50,7 +60,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
             }
 
             // if we less or equal this.amount cards, take them directly without choosing
-            if (this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount) {
+            if (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount) {
                 choseOnlyCardsPossible();
                 return;
             }

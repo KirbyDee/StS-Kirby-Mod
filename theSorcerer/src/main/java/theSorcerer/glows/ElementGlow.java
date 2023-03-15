@@ -3,7 +3,9 @@ package theSorcerer.glows;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.powers.debuff.ElementlessPower;
 
 public class ElementGlow extends CardBorderGlowManager.GlowInfo {
 
@@ -11,7 +13,7 @@ public class ElementGlow extends CardBorderGlowManager.GlowInfo {
 
     @Override
     public boolean test(AbstractCard card) {
-        return card.hasTag(SorcererCardTags.FIRE) || card.hasTag(SorcererCardTags.ICE);
+        return !AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID) && (card.hasTag(SorcererCardTags.FIRE) || card.hasTag(SorcererCardTags.ICE));
     }
 
     @Override

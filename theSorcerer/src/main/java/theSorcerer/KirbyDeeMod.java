@@ -30,10 +30,7 @@ import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
 import theSorcerer.glows.ElementGlow;
 import theSorcerer.potions.PlaceholderPotion;
-import theSorcerer.relics.BurningSoul;
-import theSorcerer.relics.ElementalConstruct;
-import theSorcerer.relics.FreezingSoul;
-import theSorcerer.relics.PlaceholderRelic2;
+import theSorcerer.relics.*;
 import theSorcerer.util.IDCheckDontTouchPls;
 import theSorcerer.util.TextureLoader;
 import theSorcerer.variables.CostVariable;
@@ -150,12 +147,7 @@ public class KirbyDeeMod implements
     // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(AbstractCard.CardType cardType, String name) {
-        String cardImagePath = makeCardPath(cardType.name().toLowerCase() + "/" + name + ".png");
-        if (!new File(cardImagePath).exists()) {
-            logger.warn("Couldn't find image: " + cardImagePath + ". Taking default one.");
-            cardImagePath = makeCardPath( cardType.name().toLowerCase() + "/Default.png");
-        }
-        return cardImagePath;
+        return makeCardPath(cardType.name().toLowerCase() + "/" + name + ".png");
     }
 
     public static String makeCardPath(String resourcePath) {
@@ -423,6 +415,7 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new ElementalConstruct(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new BurningSoul(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_ORANGE);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);

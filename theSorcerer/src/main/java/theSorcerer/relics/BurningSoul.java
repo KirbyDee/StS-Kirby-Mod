@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makeRelicOutlinePath;
@@ -16,7 +17,6 @@ import static theSorcerer.KirbyDeeMod.makeRelicPath;
 public class BurningSoul extends CustomRelic {
 
     private static final Logger LOG = LogManager.getLogger(BurningSoul.class.getName());
-
 
     public static final String ID = KirbyDeeMod.makeID("BurningSoul");
 
@@ -29,7 +29,14 @@ public class BurningSoul extends CustomRelic {
 
     @Override
     public void atTurnStart() {
+        if (AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID)) {
+            LOG.info("Cannot apply Heated due to Elementless");
+            AbstractDungeon.player.getPower(ElementlessPower.POWER_ID).flash();
+            return;
+        }
+
         LOG.info("Apply Heated power at turn start");
+        flash();
         addToBot(
                 new ApplyPowerAction(
                         AbstractDungeon.player,
@@ -46,6 +53,6 @@ public class BurningSoul extends CustomRelic {
 
     @Override
     public boolean canSpawn() {
-        return !AbstractDungeon.player.hasRelic("FreezingSoul");
+        return !AbstractDungeon.player.hasRelic(FreezingSoul.ID);
     }
 }

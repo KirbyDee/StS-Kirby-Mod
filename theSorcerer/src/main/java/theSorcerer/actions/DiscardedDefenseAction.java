@@ -11,13 +11,13 @@ public class DiscardedDefenseAction extends HandCardChooseAction {
 
     // --- VALUES START ---
     private final static String TEXT = "discard."; // TODO
-    private final AbstractPlayer p;
+    private final AbstractPlayer player;
     private final int block;
     // --- VALUES END ---
 
-    public DiscardedDefenseAction(final AbstractPlayer p, final int block) {
+    public DiscardedDefenseAction(final AbstractPlayer player, final int block) {
         super(true);
-        this.p = p;
+        this.player = player;
         this.block = block;
     }
 
@@ -36,7 +36,7 @@ public class DiscardedDefenseAction extends HandCardChooseAction {
     @Override
     protected void onActionDone() {
         for (int i = 0; i < GameActionManager.totalDiscardedThisTurn; i++) {
-            addToBot(new GainBlockAction(p, p, this.block));
+            addToBot(new GainBlockAction(player, player, this.block));
             addToBot(new WaitAction(0.125F));
         }
     }

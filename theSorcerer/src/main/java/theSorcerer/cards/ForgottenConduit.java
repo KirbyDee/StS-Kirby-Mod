@@ -13,7 +13,6 @@ import theSorcerer.patches.cards.CardAbility;
 public class ForgottenConduit extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = -2;
     private static final int ENERGY_GAIN = 2;
     private static final int DISCARD_NUMBER = 1;
     // --- VALUES END ---
@@ -21,7 +20,6 @@ public class ForgottenConduit extends SorcererCard {
     public ForgottenConduit() {
         super(
                 DynamicCard.InfoBuilder(ForgottenConduit.class)
-                        .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.NONE)

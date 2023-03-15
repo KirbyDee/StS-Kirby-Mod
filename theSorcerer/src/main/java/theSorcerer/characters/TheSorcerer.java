@@ -22,7 +22,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
-import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.fire.*;
+import theSorcerer.cards.ice.*;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -174,34 +175,59 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(Defend_Sorcerer.ID);
         // 1 common attack
-//        retVal.add(DefaultCommonAttack.ID); // TODO: 1 attack
+//        retVal.add(DefaultCommonAttack.ID); // TODO: 1 basic attack
         // 1 common skill
-//        retVal.add(DefaultCommonPower.ID); // TODO: 1 skill
+//        retVal.add(DefaultCommonPower.ID); // TODO: 1 basic skill
+
+//        retVal.add(Armaments.ID);
 
 
-        retVal.add(DynamicCard.getID(BuriedAlive.class));
-        retVal.add(DynamicCard.getID(UnfairExchange.class));
-        retVal.add(DynamicCard.getID(BuriedAlive.class));
-        retVal.add(DynamicCard.getID(UnfairExchange.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
-        retVal.add(DynamicCard.getID(Scorch.class));
 
-        // all cards
-//        retVal.add(DynamicCard.getID(AbysmalPact.class));
-//        retVal.add(DynamicCard.getID(BuriedAlive.class));
-//        retVal.add(DynamicCard.getID(PastEmbrace.class));
-//        retVal.add(DynamicCard.getID(ForgottenConduit.class));
-//        retVal.add(DynamicCard.getID(PhoenixFeather.class));
+//        // common attack
+//        retVal.add(DynamicCard.getID(PillarOfFlame.class));
+//        retVal.add(DynamicCard.getID(FrozenTomb.class));
+//        retVal.add(DynamicCard.getID(Fireball.class));
+//        retVal.add(DynamicCard.getID(Thaw.class));
 //        retVal.add(DynamicCard.getID(Scorch.class));
+//        retVal.add(DynamicCard.getID(FrostArrow.class));
+//        retVal.add(DynamicCard.getID(LostKnowledge.class));
+//        retVal.add(DynamicCard.getID(SorcerersRaid.class));
+//        // common skill
+//        retVal.add(DynamicCard.getID(IceBlock.class));
+//        retVal.add(DynamicCard.getID(SparkingTendril.class));
+//        retVal.add(DynamicCard.getID(CrystalProtection.class));
+//        retVal.add(DynamicCard.getID(Congeal.class));
 //        retVal.add(DynamicCard.getID(FrostArmor.class));
-//        retVal.add(DynamicCard.getID(Elementmorphose.class));
+//        retVal.add(DynamicCard.getID(FireShield.class));
+//        retVal.add(DynamicCard.getID(MagicalCloak.class));
+//        retVal.add(DynamicCard.getID(DiscardedDefense.class));
+//        retVal.add(DynamicCard.getID(OneWithNothing.class));
+//        retVal.add(DynamicCard.getID(LastResort.class));
+//
+//        // uncommon attack
+//        retVal.add(DynamicCard.getID(MirrorForce.class));
+//        // TODO more uncommon attacks
+//        // uncommon spell
+//        retVal.add(DynamicCard.getID(Dispell.class));
+//        retVal.add(DynamicCard.getID(Cleanse.class));
+//        retVal.add(DynamicCard.getID(BuriedAlive.class));
+//        retVal.add(DynamicCard.getID(ForgottenConduit.class));
 //        retVal.add(DynamicCard.getID(Tradeoff.class));
+//        // uncommon power
+//        retVal.add(DynamicCard.getID(WallOfFire.class));
+//        retVal.add(DynamicCard.getID(PastEmbrace.class));
+//        retVal.add(DynamicCard.getID(FrostShock.class));
+//
+//        // rare attack
+//        // TODO: more rare attacks
+//        // rare skill
+//        retVal.add(DynamicCard.getID(Renounce.class));
+//        retVal.add(DynamicCard.getID(Elementmorphose.class));
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
-//        retVal.add(DynamicCard.getID(DiscardedDefense.class));
-//        retVal.add(DynamicCard.getID(MagicalCloak.class));
+//        // rare power
+//        retVal.add(DynamicCard.getID(PhoenixFeather.class));
+//        //TODO: ice power to phoenix
 
         return retVal;
     }
@@ -210,7 +236,6 @@ public class TheSorcerer extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        // TODO
         retVal.add(ElementalConstruct.ID);
 
         return retVal;

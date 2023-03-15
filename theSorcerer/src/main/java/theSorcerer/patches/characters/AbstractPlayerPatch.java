@@ -12,6 +12,8 @@ import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.ElementAffinityPower;
 import theSorcerer.powers.buff.FireAffinityPower;
 import theSorcerer.powers.buff.IceAffinityPower;
+import theSorcerer.powers.debuff.ElementlessPower;
+import theSorcerer.relics.ElementalMaster;
 
 @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
 public class AbstractPlayerPatch {
@@ -22,8 +24,7 @@ public class AbstractPlayerPatch {
     public static class UseCardPatch {
 
         public static void Prefix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
-            if (card.costForTurn <= 0) {
-                LOG.debug("Cost of card is 0 or less -> NOP");
+            if (hasNotEnoughCost(card) || hasElementlessPower(self, card) || doesInvalidElementSwitch(self, card)) {
                 return;
             }
 
@@ -46,6 +47,50 @@ public class AbstractPlayerPatch {
                             card.costForTurn
                     )
             );
+        }
+
+        private static boolean hasNotEnoughCost(AbstractCard card) {
+            if (card.costForTurn <= 0) {
+                LOG.debug("Cost of card is 0 or less -> NOP");
+                return true;
+            }
+            return false;
+        }
+
+        private static boolean hasElementlessPower(AbstractPlayer self, AbstractCard card) {
+            if (self.hasPower(ElementlessPower.POWER_ID)) {
+                if (card.hasTag(SorcererCardTags.FIRE) || card.hasTag(SorcererCardTags.ICE)) {
+                    self.getPower(ElementlessPower.POWER_ID).flash();
+                    LOG.debug("Player cannot gain any element affinity due to Elementless debuff -> NOP");
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private static boolean doesInvalidElementSwitch(AbstractPlayer self, AbstractCard card) {
+            return doesInvalidElementSwitch(self, card, FireAffinityPower.POWER_ID, SorcererCardTags.ICE) ||
+                    doesInvalidElementSwitch(self, card, IceAffinityPower.POWER_ID, SorcererCardTags.FIRE);
+        }
+
+        private static boolean doesInvalidElementSwitch(
+                final AbstractPlayer self,
+                final AbstractCard card,
+                final String selfHasPowerId,
+                final AbstractCard.CardTags cardHasTag
+        ) {
+            if (self.hasPower(selfHasPowerId) && card.hasTag(cardHasTag)) {
+                if (self.hasRelic(ElementalMaster.ID)) {
+                    LOG.debug("Player has ElementalMaster relic, so possible to switch elements");
+                    self.getRelic(ElementalMaster.ID).flash();
+                    return false;
+                }
+                else {
+                    LOG.debug("Player cannot gain any element affinity due to element switch -> NOP");
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
