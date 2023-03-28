@@ -1,4 +1,4 @@
-package theSorcerer.cards.fire;
+package theSorcerer.cards.ice;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -6,34 +6,32 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
-import theSorcerer.powers.buff.PhoenixFeatherPower;
+import theSorcerer.powers.buff.CryophoenixPower;
 
-// TODO: ice variant needed
-public class PhoenixFeather extends SorcererFireCard {
+public class Cryophoenix extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
     // --- VALUES END ---
 
-    public PhoenixFeather() {
+    public Cryophoenix() {
         super(
-                DynamicCard.InfoBuilder(PhoenixFeather.class)
+                DynamicCard.InfoBuilder(Cryophoenix.class)
                         .cost(COST)
                         .type(CardType.POWER)
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
-                        .tags(CardTags.HEALING)
                         .abilities(CardAbility.AUTO)
         );
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToTop(
+        addToBot(
                 new ApplyPowerAction(
                         p,
                         p,
-                        new PhoenixFeatherPower(p)
+                        new CryophoenixPower(p)
                 )
         );
     }

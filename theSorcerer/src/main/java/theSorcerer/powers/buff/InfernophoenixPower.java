@@ -6,13 +6,13 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.SelfRemovablePower;
 
-public class PhoenixFeatherPower extends SelfRemovablePower {
+public class InfernophoenixPower extends SelfRemovablePower {
 
-    public static final String POWER_NAME = "PhoenixFeatherPower";
+    public static final String POWER_NAME = "InfernophoenixPower";
 
     public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
 
-    public PhoenixFeatherPower(
+    public InfernophoenixPower(
             final AbstractCreature owner
     ) {
         super(owner, POWER_ID);
@@ -44,6 +44,6 @@ public class PhoenixFeatherPower extends SelfRemovablePower {
 
     @Override
     public AbstractPower makeCopy() {
-        return new PhoenixFeatherPower(this.owner);
+        return new InfernophoenixPower(this.owner);
     }
 }

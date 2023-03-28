@@ -166,12 +166,12 @@ public class TheSorcerer extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
         retVal.add(Strike_Sorcerer.ID);
-//        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
 //        retVal.add(Strike_Sorcerer.ID);
 //        retVal.add(Strike_Sorcerer.ID);
         // 4 defends
         retVal.add(Defend_Sorcerer.ID);
-//        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(Defend_Sorcerer.ID);
         // 1 common attack
@@ -226,8 +226,8 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
 //        // rare power
-//        retVal.add(DynamicCard.getID(PhoenixFeather.class));
-//        //TODO: ice power to phoenix
+        retVal.add(DynamicCard.getID(Infernophoenix.class));
+        retVal.add(DynamicCard.getID(Cryophoenix.class));
 
         return retVal;
     }

@@ -39,7 +39,7 @@ public class AbstractPlayerPatch {
 
         private static void increaseElementAffinity(AbstractCard card, AbstractPlayer player, ElementAffinityPower<?> elementAffinityPower) {
             LOG.info("Increase " + elementAffinityPower.ID);
-            AbstractDungeon.actionManager.addToBottom(
+            AbstractDungeon.actionManager.addToTop(
                     new ApplyPowerAction(
                             player,
                             player,

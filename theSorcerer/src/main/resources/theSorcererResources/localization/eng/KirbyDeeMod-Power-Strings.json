@@ -31,9 +31,13 @@
     "NAME": "Past Embrace",
     "DESCRIPTIONS": ["Whenever a card is #yFlashbacked, draw #b", " card.", " cards."]
   },
-  "theSorcerer:PhoenixFeatherPower": {
-    "NAME": "Phoenix Feather",
+  "theSorcerer:InfernophoenixPower": {
+    "NAME": "Infernophoenix",
     "DESCRIPTIONS": ["At the start of your next turn, heal #b", " HP."]
+  },
+  "theSorcerer:CryophoenixPower": {
+    "NAME": "Cryophoenix",
+    "DESCRIPTIONS": ["Reflect any combat damage."]
   },
   "theSorcerer:WallOfFirePower": {
     "NAME": "Wall Of Fire",
