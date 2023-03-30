@@ -47,6 +47,14 @@
     "NAME": "Frost Shock",
     "DESCRIPTIONS": ["At the end of your turn, if you are #yChilled, deal #b", " damage to a random enemy."]
   },
+  "theSorcerer:StrongFireAffinityPower": {
+    "NAME": "Strong Fire Affinity",
+    "DESCRIPTIONS": ["Gain #b", " #yFire #yAffinity at the start of your next turn."]
+  },
+  "theSorcerer:StrongIceAffinityPower": {
+    "NAME": "Strong Ice Affinity",
+    "DESCRIPTIONS": ["Gain #b", " #yIce #yAffinity at the start of your next turn."]
+  },
 
 
   "theSorcerer:CommonPower": {

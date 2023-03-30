@@ -188,6 +188,19 @@
     "NAME": "Ice Block",
     "DESCRIPTION": "Gain !B! Block. NL Next turn gain !M! Block."
   },
+  "theSorcerer:StrongAffinity": {
+    "NAME": "StrongAffinity",
+    "DESCRIPTION": "At the start of your next turn, choose to either gain X thesorcerer:Fire_Affinity or X thesorcerer:Ice_Affinity.",
+    "UPGRADE_DESCRIPTION": "At the start of your next turn, choose to either gain X+1 thesorcerer:Fire_Affinity or X+1 thesorcerer:Ice_Affinity."
+  },
+  "theSorcerer:StrongFireAffinity": {
+    "NAME": "Strong Fire Affinity",
+    "DESCRIPTION": "Gain !M! thesorcerer:Fire_Affinity at the start of your next turn."
+  },
+  "theSorcerer:StrongIceAffinity": {
+    "NAME": "Strong Ice Affinity",
+    "DESCRIPTION": "Gain !M! thesorcerer:Ice_Affinity at the start of your next turn."
+  },
 
 
 

@@ -30,23 +30,25 @@ public class AbstractPlayerPatch {
 
             LOG.debug("Card: " + self.name + " - " + card.tags);
             if (card.hasTag(SorcererCardTags.FIRE)) {
-                increaseElementAffinity(card, self, new FireAffinityPower(self, card.costForTurn));
+                increaseElementAffinity(card, self, new FireAffinityPower(self, 1));
             }
             else if (card.hasTag(SorcererCardTags.ICE)) {
-                increaseElementAffinity(card, self, new IceAffinityPower(self, card.costForTurn));
+                increaseElementAffinity(card, self, new IceAffinityPower(self, 1));
             }
         }
 
         private static void increaseElementAffinity(AbstractCard card, AbstractPlayer player, ElementAffinityPower<?> elementAffinityPower) {
             LOG.info("Increase " + elementAffinityPower.ID);
-            AbstractDungeon.actionManager.addToTop(
-                    new ApplyPowerAction(
-                            player,
-                            player,
-                            elementAffinityPower,
-                            card.costForTurn
-                    )
-            );
+            for (int i = 0; i < card.costForTurn; i++) {
+                AbstractDungeon.actionManager.addToTop(
+                        new ApplyPowerAction(
+                                player,
+                                player,
+                                elementAffinityPower,
+                                1
+                        )
+                );
+            }
         }
 
         private static boolean hasNotEnoughCost(AbstractCard card) {

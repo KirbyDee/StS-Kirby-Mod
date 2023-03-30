@@ -17,7 +17,7 @@ public class BaptismOfFire extends DynamicCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer player, AbstractMonster monster) {
         onChoseThisOption();
     }
 

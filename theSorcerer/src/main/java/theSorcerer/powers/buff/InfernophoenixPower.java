@@ -13,7 +13,7 @@ public class InfernophoenixPower extends SelfRemovablePower {
     public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
 
     public InfernophoenixPower(
-            final AbstractCreature owner
+            AbstractCreature owner
     ) {
         super(owner, POWER_ID);
         this.amount = 0;
@@ -21,6 +21,7 @@ public class InfernophoenixPower extends SelfRemovablePower {
         updateDescription();
     }
 
+    @Override
     public void atStartOfTurn() {
         if (this.amount > 0) {
             flash();

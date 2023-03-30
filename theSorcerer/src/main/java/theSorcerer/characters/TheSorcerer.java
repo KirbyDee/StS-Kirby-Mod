@@ -22,8 +22,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
-import theSorcerer.cards.fire.*;
-import theSorcerer.cards.ice.*;
+import theSorcerer.cards.fire.PillarOfFlame;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -180,11 +179,17 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DefaultCommonPower.ID); // TODO: 1 basic skill
 
 //        retVal.add(Armaments.ID);
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
+        retVal.add(DynamicCard.getID(WellPrepared.class));
 
 
 
 //        // common attack
-//        retVal.add(DynamicCard.getID(PillarOfFlame.class));
+        retVal.add(DynamicCard.getID(PillarOfFlame.class));
 //        retVal.add(DynamicCard.getID(FrozenTomb.class));
 //        retVal.add(DynamicCard.getID(Fireball.class));
 //        retVal.add(DynamicCard.getID(Thaw.class));
@@ -225,9 +230,10 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
+        retVal.add(DynamicCard.getID(StrongAffinity.class));
 //        // rare power
-        retVal.add(DynamicCard.getID(Infernophoenix.class));
-        retVal.add(DynamicCard.getID(Cryophoenix.class));
+//        retVal.add(DynamicCard.getID(Infernophoenix.class));
+//        retVal.add(DynamicCard.getID(Cryophoenix.class));
 
         return retVal;
     }
