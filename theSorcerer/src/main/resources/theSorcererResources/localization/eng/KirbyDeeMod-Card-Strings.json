@@ -201,6 +201,10 @@
     "NAME": "Strong Ice Affinity",
     "DESCRIPTION": "Gain !M! thesorcerer:Ice_Affinity at the start of your next turn."
   },
+  "theSorcerer:Decay": {
+    "NAME": "Decay",
+    "DESCRIPTION": "Deal !D! damage. NL If Fatal, add another Decay into your hand. It costs 0 this turn."
+  },
 
 
 

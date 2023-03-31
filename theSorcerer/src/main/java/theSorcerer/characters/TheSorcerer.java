@@ -189,7 +189,7 @@ public class TheSorcerer extends CustomPlayer {
 
 
 //        // common attack
-        retVal.add(DynamicCard.getID(PillarOfFlame.class));
+//        retVal.add(DynamicCard.getID(PillarOfFlame.class));
 //        retVal.add(DynamicCard.getID(FrozenTomb.class));
 //        retVal.add(DynamicCard.getID(Fireball.class));
 //        retVal.add(DynamicCard.getID(Thaw.class));
@@ -224,13 +224,13 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(FrostShock.class));
 //
 //        // rare attack
-//        // TODO: more rare attacks
+        retVal.add(DynamicCard.getID(Decay.class));
 //        // rare skill
 //        retVal.add(DynamicCard.getID(Renounce.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
-        retVal.add(DynamicCard.getID(StrongAffinity.class));
+//        retVal.add(DynamicCard.getID(StrongAffinity.class));
 //        // rare power
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
