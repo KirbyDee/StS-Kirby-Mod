@@ -27,6 +27,7 @@ public class BurningSoul extends CustomRelic {
         super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.MAGICAL);
     }
 
+    // TODO: what if we have elementless, race condition?
     @Override
     public void atTurnStart() {
         if (AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID)) {

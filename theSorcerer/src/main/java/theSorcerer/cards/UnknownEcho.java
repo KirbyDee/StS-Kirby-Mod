@@ -1,35 +1,38 @@
 package theSorcerer.cards;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.PutCardFromDrawPileToDiscardPileAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.DynamicDungeon;
+import theSorcerer.actions.UnknownEchoAction;
 
-public class BuriedAlive extends SorcererCard {
+public class UnknownEcho extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int CARDS_TO_CHOOSE = 1;
+    private static final int CARDS_TO_DRAW = 3;
+    private static final int UPGRADE_CARDS_TO_DRAW = 1;
+    private static final int CARDS_TO_PUT_ON_DECK = 1;
     // --- VALUES END ---
 
-    public BuriedAlive() {
+    public UnknownEcho() {
         super(
-                DynamicCard.InfoBuilder(BuriedAlive.class)
+                DynamicCard.InfoBuilder(UnknownEcho.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
-                        .target(CardTarget.NONE)
-                        .magicNumber(CARDS_TO_CHOOSE)
-                        .abilities(CardAbility.EXHAUST)
+                        .magicNumber(CARDS_TO_DRAW)
+                        .secondMagicNumber(CARDS_TO_PUT_ON_DECK)
         );
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new PutCardFromDrawPileToDiscardPileAction(this.magicNumber)
+                new DrawCardAction(player, this.magicNumber)
+        );
+        addToBot(
+                new UnknownEchoAction(this.secondMagicNumber)
         );
     }
 
@@ -39,7 +42,7 @@ public class BuriedAlive extends SorcererCard {
         if (!canUse) {
             return false;
         }
-        else if (AbstractDungeon.player.drawPile.group.size() < this.magicNumber) {
+        else if (!DynamicDungeon.hasElementless()) {
             this.cantUseMessage = baseExtendedDescriptions[0];
             return false;
         }
@@ -48,6 +51,6 @@ public class BuriedAlive extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADE_CARDS_TO_DRAW);
     }
 }

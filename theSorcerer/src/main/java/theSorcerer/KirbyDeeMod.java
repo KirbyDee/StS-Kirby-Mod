@@ -25,7 +25,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.cards.AbstractDefaultCard;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
 import theSorcerer.glows.ElementGlow;
@@ -33,9 +33,6 @@ import theSorcerer.potions.PlaceholderPotion;
 import theSorcerer.relics.*;
 import theSorcerer.util.IDCheckDontTouchPls;
 import theSorcerer.util.TextureLoader;
-import theSorcerer.variables.CostVariable;
-import theSorcerer.variables.DefaultCustomVariable;
-import theSorcerer.variables.DefaultSecondMagicNumber;
 import theSorcerer.variables.SecondMagicNumber;
 
 import java.io.File;
@@ -442,9 +439,6 @@ public class KirbyDeeMod implements
         // Add the Custom Dynamic Variables
         logger.info("Add variables");
         // Add the Custom Dynamic variables
-        BaseMod.addDynamicVariable(new CostVariable());
-        BaseMod.addDynamicVariable(new DefaultCustomVariable());
-        BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         
         logger.info("Adding cards");
@@ -462,7 +456,7 @@ public class KirbyDeeMod implements
         //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
         new AutoAdd(MOD_ID) // ${project.artifactId}
-            .packageFilter(AbstractDefaultCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
+            .packageFilter(DynamicCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
             .setDefaultSeen(true)
             .cards();
 

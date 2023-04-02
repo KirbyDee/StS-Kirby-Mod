@@ -22,7 +22,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
-import theSorcerer.cards.fire.PillarOfFlame;
+import theSorcerer.cards.fire.Scorch;
+import theSorcerer.cards.fire.UneducatedGuess;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -162,6 +163,77 @@ public class TheSorcerer extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
+        //ironclad 75 (23/36/16)
+        // 32 attacks
+        // - common: 16
+        // - uncommon: 11
+        // - rare: 5
+        // 14 power
+        // - common: 0
+        // - uncommon: 8
+        // - rare: 6
+        // 29 skills
+        // - common: 7
+        // - uncommon: 17
+        // - rare: 5
+
+        //silent 75 (23/33/19)
+        // 28 attacks
+        // - common: 11
+        // - uncommon: 13
+        // - rare: 4
+        // 11 power
+        // - common: 0
+        // - uncommon: 6
+        // - rare: 5
+        // 36 skills
+        // - common: 12
+        // - uncommon: 14
+        // - rare: 10
+
+        //defect 75 (22/36/17)
+        // 24 attacks
+        // - common: 11
+        // - uncommon: 8
+        // - rare: 5
+        // 14 power
+        // - common: 0
+        // - uncommon: 8
+        // - rare: 6
+        // 37 skills
+        // - common: 11
+        // - uncommon: 20
+        // - rare: 6
+
+        //watcher 75 (23/35/17)
+        // 27 attacks
+        // - common: 12
+        // - uncommon: 12
+        // - rare: 3
+        // 12 power
+        // - common: 0
+        // - uncommon: 8
+        // - rare: 4
+        // 36 skills
+        // - common: 11
+        // - uncommon: 15
+        // - rare: 10
+
+
+        //sorcerer 39 (20/10/9)
+        // 12 attacks
+        // - common: 10 -> ok?
+        // - uncommon: 1 -> more
+        // - rare: 1 -> more
+        // 6 power
+        // - common: 0 -> ok
+        // - uncommon: 4 -> more
+        // - rare: 2 -> more
+        // 21 skills
+        // - common: 10 -> ok?
+        // - uncommon: 5 -> more
+        // - rare: 6 -> more
+
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
         retVal.add(Strike_Sorcerer.ID);
@@ -186,51 +258,53 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(WellPrepared.class));
         retVal.add(DynamicCard.getID(WellPrepared.class));
 
-
-
 //        // common attack
+//        retVal.add(Strike_Sorcerer.ID);
 //        retVal.add(DynamicCard.getID(PillarOfFlame.class));
 //        retVal.add(DynamicCard.getID(FrozenTomb.class));
 //        retVal.add(DynamicCard.getID(Fireball.class));
 //        retVal.add(DynamicCard.getID(Thaw.class));
 //        retVal.add(DynamicCard.getID(Scorch.class));
-//        retVal.add(DynamicCard.getID(FrostArrow.class));
+//        retVal.add(DynamicCard.getID(FrostArrow.class)); // TODO
 //        retVal.add(DynamicCard.getID(LostKnowledge.class));
 //        retVal.add(DynamicCard.getID(SorcerersRaid.class));
+//        retVal.add(DynamicCard.getID(LastResort.class));
 //        // common skill
+//        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(DynamicCard.getID(IceBlock.class));
 //        retVal.add(DynamicCard.getID(SparkingTendril.class));
 //        retVal.add(DynamicCard.getID(CrystalProtection.class));
 //        retVal.add(DynamicCard.getID(Congeal.class));
 //        retVal.add(DynamicCard.getID(FrostArmor.class));
-//        retVal.add(DynamicCard.getID(FireShield.class));
+//        retVal.add(DynamicCard.getID(FireShield.class)); // TODO
 //        retVal.add(DynamicCard.getID(MagicalCloak.class));
 //        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 //        retVal.add(DynamicCard.getID(OneWithNothing.class));
-//        retVal.add(DynamicCard.getID(LastResort.class));
 //
 //        // uncommon attack
 //        retVal.add(DynamicCard.getID(MirrorForce.class));
-//        // TODO more uncommon attacks
-//        // uncommon spell
+//        // uncommon skill
 //        retVal.add(DynamicCard.getID(Dispell.class));
 //        retVal.add(DynamicCard.getID(Cleanse.class));
 //        retVal.add(DynamicCard.getID(BuriedAlive.class));
 //        retVal.add(DynamicCard.getID(ForgottenConduit.class));
 //        retVal.add(DynamicCard.getID(Tradeoff.class));
+//        retVal.add(DynamicCard.getID(UnknownEcho.class));
 //        // uncommon power
+//        retVal.add(DynamicCard.getID(UneducatedGuess.class));
 //        retVal.add(DynamicCard.getID(WallOfFire.class));
 //        retVal.add(DynamicCard.getID(PastEmbrace.class));
 //        retVal.add(DynamicCard.getID(FrostShock.class));
 //
 //        // rare attack
-        retVal.add(DynamicCard.getID(Decay.class));
+//        retVal.add(DynamicCard.getID(Decay.class));
 //        // rare skill
 //        retVal.add(DynamicCard.getID(Renounce.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
 //        retVal.add(DynamicCard.getID(StrongAffinity.class));
+//        retVal.add(DynamicCard.getID(Rethinking.class)); // TODO
 //        // rare power
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
@@ -296,7 +370,7 @@ public class TheSorcerer extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new DefaultCommonAttack();
+        return new Scorch(); // TODO
     }
 
     // The class name as it appears next to your player name in-game

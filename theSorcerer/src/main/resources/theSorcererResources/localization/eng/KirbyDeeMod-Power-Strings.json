@@ -9,7 +9,10 @@
   },
   "theSorcerer:ElementlessPower": {
     "NAME": "Elementless",
-    "DESCRIPTIONS": ["You can no longer gain #yFire #yAffinity or #yIce #yAffinity or become #yHeated or #yChilled."]
+    "DESCRIPTIONS": [
+      "You can no longer play any #yFire and #yIce cards, gain #yFire #yAffinity or #yIce #yAffinity or become #yHeated or #yChilled.",
+      "Cannot play this card. NL I am #rElementless"
+    ]
   },
   "theSorcerer:HeatedPower": {
     "NAME": "Heated",
@@ -42,6 +45,10 @@
   "theSorcerer:WallOfFirePower": {
     "NAME": "Wall Of Fire",
     "DESCRIPTIONS": ["At the end of your turn, if you are #yHeated, gain #b", " Block."]
+  },
+  "theSorcerer:UneducatedGuessPower": {
+    "NAME": "Uneducated Guess",
+    "DESCRIPTIONS": ["At the end of your turn, if you are #yElementless, draw #b", " additional card next turn."]
   },
   "theSorcerer:FrostShockPower": {
     "NAME": "Frost Shock",
