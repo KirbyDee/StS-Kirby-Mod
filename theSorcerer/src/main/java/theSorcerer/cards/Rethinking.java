@@ -2,7 +2,9 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.IncreaseMagicalCloakBlockAction;
+import theSorcerer.actions.RethinkingAction;
 import theSorcerer.patches.cards.CardAbility;
 
 public class Rethinking extends SorcererCard {
@@ -26,7 +28,7 @@ public class Rethinking extends SorcererCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new IncreaseMagicalCloakBlockAction(this, this.magicNumber)
+                new RethinkingAction(player)
         );
     }
 

@@ -5,7 +5,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
@@ -51,7 +50,7 @@ public class AbstractCardPatch {
             if (!result) {
                 return false;
             }
-            else if (DynamicDungeon.hasElementless() && DynamicDungeon.isElementCard(self)) {
+            else if (DynamicDungeon.isElementCard(self) && DynamicDungeon.hasElementless()) {
                 self.cantUseMessage = ELEMENTLESS_STRINGS.DESCRIPTIONS[1];
                 return false;
             }

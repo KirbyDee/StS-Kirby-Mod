@@ -12,8 +12,8 @@ public class AbstractPlayerUpdateSingleTargetInputPatch {
 
     @SpireInsertPatch(locator = Locator.class)
     public static void updateSingleTargetInputPatch(AbstractPlayer self) {
-        if (DynamicDungeon.hasElementless() && DynamicDungeon.isElementCard(self.hoveredCard)) {
-            self.getPower(ElementlessPower.POWER_ID).flash();
+        if (DynamicDungeon.isElementCard(self.hoveredCard) && DynamicDungeon.hasElementless()) {
+            DynamicDungeon.flashElementlessRelic();
         }
     }
 

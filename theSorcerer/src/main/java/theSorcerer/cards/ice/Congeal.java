@@ -40,7 +40,7 @@ public class Congeal extends SorcererIceCard {
 
     public void applyPowers() {
         super.applyPowers();
-        this.baseSecondMagicNumber = DynamicDungeon.getFireAffinityAmount() * this.magicNumber;
+        this.baseSecondMagicNumber = DynamicDungeon.getHeatedAmount() * this.magicNumber;
         this.secondMagicNumber = this.baseSecondMagicNumber;
         initializeDescription();
     }

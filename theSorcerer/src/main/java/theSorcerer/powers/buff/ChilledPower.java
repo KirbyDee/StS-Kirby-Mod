@@ -12,7 +12,7 @@ import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.debuff.FrozenPower;
 
-public class ChilledPower extends ElementEvolvePower<DexterityPower> {
+public class ChilledPower extends ElementPower<DexterityPower> {
 
     private static final Logger LOG = LogManager.getLogger(ChilledPower.class.getName());
 
@@ -22,9 +22,9 @@ public class ChilledPower extends ElementEvolvePower<DexterityPower> {
 
     public ChilledPower(
             final AbstractCreature owner,
-            final int affinityAmount
+            final int amount
     ) {
-        super(owner, affinityAmount, POWER_ID, IceAffinityPower.POWER_ID);
+        super(owner, amount, POWER_ID);
     }
 
     protected DexterityPower createExtraPower(final int amount) {
@@ -37,25 +37,25 @@ public class ChilledPower extends ElementEvolvePower<DexterityPower> {
     }
 
     @Override
-    protected AbstractCard.CardTags getAffinityLoseTag() {
+    protected AbstractCard.CardTags getElementLoseTag() {
         return SorcererCardTags.FIRE;
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new ChilledPower(this.owner, this.affinityAmount);
+        return new ChilledPower(this.owner, this.amount);
     }
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         // have to fully block an attack (currentBlock is the block after the attack happened)
-        if (this.owner.currentBlock > 0 && this.affinityAmount > 0) {
-            LOG.info("Fully blocked attack, apply Frozen amount " + this.affinityAmount);
-            addToBot(
+        if (this.owner.currentBlock > 0 && this.amount > 0) {
+            LOG.info("Fully blocked attack, apply Frozen amount " + this.amount);
+            addToTop(
                     new ApplyPowerAction(
                             info.owner,
                             this.owner,
-                            new FrozenPower(info.owner, this.affinityAmount, true)
+                            new FrozenPower(info.owner, this.amount, true)
                     )
             );
         }

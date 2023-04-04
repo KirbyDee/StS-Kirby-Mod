@@ -42,7 +42,7 @@ public class Thaw extends SorcererFireCard {
 
     public void applyPowers() {
         super.applyPowers();
-        this.baseSecondMagicNumber = DynamicDungeon.getIceAffinityAmount() * this.magicNumber;
+        this.baseSecondMagicNumber = DynamicDungeon.getChilledAmount() * this.magicNumber;
         this.secondMagicNumber = this.baseSecondMagicNumber;
         initializeDescription();
     }

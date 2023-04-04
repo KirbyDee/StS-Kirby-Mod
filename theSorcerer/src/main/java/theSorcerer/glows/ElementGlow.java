@@ -4,6 +4,7 @@ import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.debuff.ElementlessPower;
 
@@ -13,15 +14,15 @@ public class ElementGlow extends CardBorderGlowManager.GlowInfo {
 
     @Override
     public boolean test(AbstractCard card) {
-        return !AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID) && (card.hasTag(SorcererCardTags.FIRE) || card.hasTag(SorcererCardTags.ICE));
+        return !AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID) && (DynamicDungeon.isElementCard(card));
     }
 
     @Override
     public Color getColor(AbstractCard card) {
-        if (card.hasTag(SorcererCardTags.FIRE)) {
+        if (DynamicDungeon.isFireCard(card)) {
             return Color.SCARLET.cpy();
         }
-        else if (card.hasTag(SorcererCardTags.ICE)) {
+        else if (DynamicDungeon.isIceCard(card)) {
             return Color.ROYAL.cpy();
         }
         return Color.WHITE.cpy();

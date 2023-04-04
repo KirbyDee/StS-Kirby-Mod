@@ -13,7 +13,7 @@ public class AbstractPlayerClickAndDragCardsPatch {
     @SpireInsertPatch(locator = Locator.class)
     public static void clickAndDragCardsPatch(AbstractPlayer self) {
         if (self.hoveredCard.hasEnoughEnergy() && DynamicDungeon.hasElementless() && DynamicDungeon.isElementCard(self.hoveredCard)) {
-            self.getPower(ElementlessPower.POWER_ID).flash();
+            DynamicDungeon.flashElementlessRelic();
         }
     }
 

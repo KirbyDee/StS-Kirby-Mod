@@ -27,7 +27,7 @@ public class Renounce extends SorcererCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        int amount = DynamicDungeon.getElementAffinityAmount();
+        int amount = DynamicDungeon.getElementAmount();
 
         // draw cards
         DynamicDungeon.drawCard(this.magicNumber * amount);

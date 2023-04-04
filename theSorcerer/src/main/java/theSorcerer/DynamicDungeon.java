@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ElementLoseAction;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
-import theSorcerer.powers.buff.FireAffinityPower;
-import theSorcerer.powers.buff.IceAffinityPower;
+import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.buff.ElementPower;
+import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.relics.ElementalMaster;
 
@@ -27,19 +27,27 @@ public class DynamicDungeon {
     private DynamicDungeon() {}
 
     public static boolean isFireCard(final AbstractCard card) {
-        return isElementCard(card, CardAbility.FIRE);
+        return cardHasTag(card, SorcererCardTags.FIRE);
     }
 
     public static boolean isIceCard(final AbstractCard card) {
-        return isElementCard(card, CardAbility.ICE);
+        return cardHasTag(card, SorcererCardTags.ICE);
+    }
+
+    public static boolean isFuturityCard(final AbstractCard card) {
+        return cardHasTag(card, SorcererCardTags.FUTURITY);
+    }
+
+    public static boolean isFlashbackCard(final AbstractCard card) {
+        return cardHasTag(card, SorcererCardTags.FLASHBACK);
     }
 
     public static boolean isElementCard(final AbstractCard card) {
         return isFireCard(card) || isIceCard(card);
     }
 
-    public static boolean isElementCard(final AbstractCard card, final CardAbility cardAbility) {
-        return AbstractCardPatch.abilities.get(card).contains(cardAbility);
+    public static boolean cardHasTag(final AbstractCard card, final AbstractCard.CardTags tag) {
+        return card.hasTag(tag);
     }
 
     public static void applyElementless() {
@@ -60,46 +68,86 @@ public class DynamicDungeon {
         }
     }
 
+    public static void runIfNotElementless(Runnable runnable) {
+        if (hasElementless()) {
+            flashElementlessRelic();
+        }
+        else {
+            runnable.run();
+        }
+    }
+
     public static boolean hasElementless() {
         return AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID);
     }
 
-    public static int getFireAffinityAmount() {
-        return getAffinity(FireAffinityPower.POWER_ID);
+    public static void flashElementlessRelic() {
+        AbstractDungeon.player.getPower(ElementlessPower.POWER_ID).flash();
     }
 
-    public static void withFireAffinityAmount(Consumer<Integer> amountConsumer) {
-        amountConsumer.accept(getFireAffinityAmount());
+    public static void applyHeated(final int amount) {
+        increaseElementPower(new HeatedPower(AbstractDungeon.player, amount), amount);
     }
 
-    public static int getIceAffinityAmount() {
-        return getAffinity(IceAffinityPower.POWER_ID);
+    public static void applyChilled(final int amount) {
+        increaseElementPower(new ChilledPower(AbstractDungeon.player, amount), amount);
     }
 
-    public static void withIceAffinityAmount(Consumer<Integer> amountConsumer) {
-        amountConsumer.accept(getIceAffinityAmount());
+    public static void increaseElementPower(final ElementPower<?> elementPower, final int amount) {
+        addToBot(
+                new ApplyPowerAction(
+                        AbstractDungeon.player,
+                        AbstractDungeon.player,
+                        elementPower,
+                        amount
+                )
+        );
     }
 
-    private static int getAffinity(final String affinityPowerId) {
+    public static boolean isHeated() {
+        return getHeatedAmount() > 0;
+    }
+
+    public static boolean isChilled() {
+        return getChilledAmount() > 0;
+    }
+
+    public static int getHeatedAmount() {
+        return getElement(HeatedPower.POWER_ID);
+    }
+
+    public static void withHeatedAmount(Consumer<Integer> amountConsumer) {
+        amountConsumer.accept(getHeatedAmount());
+    }
+
+    public static int getChilledAmount() {
+        return getElement(ChilledPower.POWER_ID);
+    }
+
+    public static void withChilledAmount(Consumer<Integer> amountConsumer) {
+        amountConsumer.accept(getChilledAmount());
+    }
+
+    private static int getElement(final String elementPowerId) {
         int amount = 0;
         AbstractPlayer player = AbstractDungeon.player;
-        if (player.hasPower(affinityPowerId)) {
-            AbstractPower power = player.getPower(affinityPowerId);
+        if (player.hasPower(elementPowerId)) {
+            AbstractPower power = player.getPower(elementPowerId);
             amount = power.amount;
         }
         return amount;
     }
 
-    public static int getElementAffinityAmount() {
-        int amount = DynamicDungeon.getFireAffinityAmount();
+    public static int getElementAmount() {
+        int amount = DynamicDungeon.getHeatedAmount();
         if (amount <= 0) {
-            amount = DynamicDungeon.getIceAffinityAmount();
+            amount = DynamicDungeon.getChilledAmount();
         }
         return amount;
     }
 
     public static void loseAllElements() {
-        addToBot(
+        addToTop(
                 new ElementLoseAction(AbstractDungeon.player)
         );
     }

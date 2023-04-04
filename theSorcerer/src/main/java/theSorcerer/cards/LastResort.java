@@ -40,7 +40,7 @@ public class LastResort extends SorcererCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         int vulnerable = this.magicNumber;
-        if(DynamicDungeon.hasElementless()) {
+        if (DynamicDungeon.hasElementless()) {
             vulnerable = this.secondMagicNumber;
         }
 

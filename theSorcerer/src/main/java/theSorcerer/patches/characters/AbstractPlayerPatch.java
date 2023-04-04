@@ -4,15 +4,14 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.powers.buff.ElementAffinityPower;
-import theSorcerer.powers.buff.FireAffinityPower;
-import theSorcerer.powers.buff.IceAffinityPower;
-import theSorcerer.powers.debuff.ElementlessPower;
+import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.buff.ElementPower;
+import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.relics.ElementalMaster;
 
 @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
@@ -23,31 +22,17 @@ public class AbstractPlayerPatch {
     @SpirePatch(clz = AbstractPlayer.class, method = "useCard")
     public static class UseCardPatch {
 
-        public static void Prefix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
+        public static void Postfix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
             if (hasNotEnoughCost(card) || hasElementlessPower(self, card) || doesInvalidElementSwitch(self, card)) {
                 return;
             }
 
             LOG.debug("Card: " + self.name + " - " + card.tags);
-            if (card.hasTag(SorcererCardTags.FIRE)) {
-                increaseElementAffinity(card, self, new FireAffinityPower(self, 1));
+            if (DynamicDungeon.isFireCard(card)) {
+                DynamicDungeon.applyHeated(card.costForTurn);
             }
-            else if (card.hasTag(SorcererCardTags.ICE)) {
-                increaseElementAffinity(card, self, new IceAffinityPower(self, 1));
-            }
-        }
-
-        private static void increaseElementAffinity(AbstractCard card, AbstractPlayer player, ElementAffinityPower<?> elementAffinityPower) {
-            LOG.info("Increase " + elementAffinityPower.ID);
-            for (int i = 0; i < card.costForTurn; i++) {
-                AbstractDungeon.actionManager.addToTop(
-                        new ApplyPowerAction(
-                                player,
-                                player,
-                                elementAffinityPower,
-                                1
-                        )
-                );
+            else if (DynamicDungeon.isIceCard(card)) {
+                DynamicDungeon.applyChilled(card.costForTurn);
             }
         }
 
@@ -60,10 +45,10 @@ public class AbstractPlayerPatch {
         }
 
         private static boolean hasElementlessPower(AbstractPlayer self, AbstractCard card) {
-            if (self.hasPower(ElementlessPower.POWER_ID)) {
-                if (card.hasTag(SorcererCardTags.FIRE) || card.hasTag(SorcererCardTags.ICE)) {
-                    self.getPower(ElementlessPower.POWER_ID).flash();
-                    LOG.debug("Player cannot gain any element affinity due to Elementless debuff -> NOP");
+            if (DynamicDungeon.hasElementless()) {
+                if (DynamicDungeon.isElementCard(card)) {
+                    DynamicDungeon.flashElementlessRelic();
+                    LOG.debug("Player cannot gain any element due to Elementless debuff -> NOP");
                 }
                 return true;
             }
@@ -71,8 +56,8 @@ public class AbstractPlayerPatch {
         }
 
         private static boolean doesInvalidElementSwitch(AbstractPlayer self, AbstractCard card) {
-            return doesInvalidElementSwitch(self, card, FireAffinityPower.POWER_ID, SorcererCardTags.ICE) ||
-                    doesInvalidElementSwitch(self, card, IceAffinityPower.POWER_ID, SorcererCardTags.FIRE);
+            return doesInvalidElementSwitch(self, card, HeatedPower.POWER_ID, SorcererCardTags.ICE) ||
+                    doesInvalidElementSwitch(self, card, ChilledPower.POWER_ID, SorcererCardTags.FIRE);
         }
 
         private static boolean doesInvalidElementSwitch(
@@ -88,7 +73,7 @@ public class AbstractPlayerPatch {
                     return false;
                 }
                 else {
-                    LOG.debug("Player cannot gain any element affinity due to element switch -> NOP");
+                    LOG.debug("Player cannot gain any element due to element switch -> NOP");
                     return true;
                 }
             }

@@ -1,26 +1,18 @@
 {
-  "theSorcerer:FireAffinityPower": {
-    "NAME": "Fire Affinity",
-    "DESCRIPTIONS": ["Upon reaching #b", " #yFire #yAffinity or more become #yHeated. #yFire #yAffinity is reset when playing an #yIce card or at the start of your next turn. When playing an #yIce card become #yElementless."]
-  },
-  "theSorcerer:IceAffinityPower": {
-    "NAME": "Ice Affinity",
-    "DESCRIPTIONS": ["Upon reaching #b", " #yIce #yAffinity or more become #yChilled. #yIce #yAffinity is reset when playing an #yFire card or at the start of your next turn. When playing a #yFire card become #yElementless."]
-  },
   "theSorcerer:ElementlessPower": {
     "NAME": "Elementless",
     "DESCRIPTIONS": [
-      "You can no longer play any #yFire and #yIce cards, gain #yFire #yAffinity or #yIce #yAffinity or become #yHeated or #yChilled.",
+      "You can no longer play any #yFire / #yIce cards or become #yHeated / #yChilled.",
       "Cannot play this card. NL I am #rElementless"
     ]
   },
   "theSorcerer:HeatedPower": {
     "NAME": "Heated",
-    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your unblocked attacks apply #b", " #yAblaze. #yHeated is reset upon playing an #yIce card or at the start of your next turn."]
+    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your unblocked attacks apply #b", " #yAblaze. #yHeated is reset upon playing an #yIce card or at the start of your next turn. When playing an #yIce card become #yElementless."]
   },
   "theSorcerer:ChilledPower": {
     "NAME": "Chilled",
-    "DESCRIPTIONS": ["Gain #b", " #yDexterity. Whenever you fully #yBlock an attack, apply #b", " #yFrozen. #yChilled is reset upon playing an #yFire card or at the start of your next turn."]
+    "DESCRIPTIONS": ["Gain #b", " #yDexterity. Whenever you fully #yBlock an attack, apply #b", " #yFrozen. #yChilled is reset upon playing an #yFire card or at the start of your next turn. When playing an #yFire card become #yElementless."]
   },
   "theSorcerer:AblazePower": {
     "NAME": "Ablaze",
@@ -56,20 +48,10 @@
   },
   "theSorcerer:StrongFireAffinityPower": {
     "NAME": "Strong Fire Affinity",
-    "DESCRIPTIONS": ["Gain #b", " #yFire #yAffinity at the start of your next turn."]
+    "DESCRIPTIONS": ["Gain #b", " #yHeated at the start of your next turn."]
   },
   "theSorcerer:StrongIceAffinityPower": {
     "NAME": "Strong Ice Affinity",
-    "DESCRIPTIONS": ["Gain #b", " #yIce #yAffinity at the start of your next turn."]
-  },
-
-
-  "theSorcerer:CommonPower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-  },
-  "theSorcerer:RarePower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
+    "DESCRIPTIONS": ["Gain #b", " #yChilled at the start of your next turn."]
   }
 }

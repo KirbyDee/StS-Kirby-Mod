@@ -1,14 +1,9 @@
 package theSorcerer.powers.buff;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import theSorcerer.powers.SelfRemovablePower;
 
 public abstract class StrongAffinityPower extends SelfRemovablePower {
-
-    private static final Logger LOG = LogManager.getLogger(StrongAffinityPower.class.getName());
 
     public StrongAffinityPower(
             AbstractCreature owner,
@@ -33,26 +28,12 @@ public abstract class StrongAffinityPower extends SelfRemovablePower {
     public void atStartOfTurn() {
         if (this.amount > 0) {
             flash();
-            applyAffinity();
+            applyElementPower(this.amount);
         }
         removeSelf();
     }
 
-    private void applyAffinity() {
-        LOG.info("Apply affinity power: " + this.amount);
-        for (int i = 0; i < this.amount; i++) {
-            addToBot(
-                    new ApplyPowerAction(
-                            this.owner,
-                            this.owner,
-                            createAffinityPower(),
-                            1
-                    )
-            );
-        }
-    }
-
-    protected abstract ElementAffinityPower<?> createAffinityPower();
+    protected abstract void applyElementPower(final int amount);
 
     @Override
     public void updateDescription() {

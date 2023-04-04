@@ -158,11 +158,11 @@
   },
   "theSorcerer:Thaw": {
     "NAME": "Thaw",
-    "DESCRIPTION": "Deal damage equal to !M! times your thesorcerer:Ice_Affinity. NL (Deal !theSorcerer:MM! damage.)"
+    "DESCRIPTION": "Deal damage equal to !M! times your thesorcerer:Chilled. NL (Deal !theSorcerer:MM! damage.)"
   },
   "theSorcerer:Congeal": {
     "NAME": "Congeal",
-    "DESCRIPTION": "Gain Block equal to !M! times your thesorcerer:Fire_Affinity. NL (Gain !theSorcerer:MM! Block.)"
+    "DESCRIPTION": "Gain Block equal to !M! times your thesorcerer:Heated. NL (Gain !theSorcerer:MM! Block.)"
   },
   "theSorcerer:Fireball": {
     "NAME": "Fireball",
@@ -194,16 +194,16 @@
   },
   "theSorcerer:StrongAffinity": {
     "NAME": "StrongAffinity",
-    "DESCRIPTION": "At the start of your next turn, choose to either gain X thesorcerer:Fire_Affinity or X thesorcerer:Ice_Affinity.",
-    "UPGRADE_DESCRIPTION": "At the start of your next turn, choose to either gain X+1 thesorcerer:Fire_Affinity or X+1 thesorcerer:Ice_Affinity."
+    "DESCRIPTION": "At the start of your next turn, choose to either gain X thesorcerer:Heated or X thesorcerer:Chilled.",
+    "UPGRADE_DESCRIPTION": "At the start of your next turn, choose to either gain X+1 thesorcerer:Heated or X+1 thesorcerer:Chilled."
   },
   "theSorcerer:StrongFireAffinity": {
     "NAME": "Strong Fire Affinity",
-    "DESCRIPTION": "Gain !M! thesorcerer:Fire_Affinity at the start of your next turn."
+    "DESCRIPTION": "Gain !M! thesorcerer:Heated at the start of your next turn."
   },
   "theSorcerer:StrongIceAffinity": {
     "NAME": "Strong Ice Affinity",
-    "DESCRIPTION": "Gain !M! thesorcerer:Ice_Affinity at the start of your next turn."
+    "DESCRIPTION": "Gain !M! thesorcerer:Chilled at the start of your next turn."
   },
   "theSorcerer:Decay": {
     "NAME": "Decay",
@@ -216,10 +216,8 @@
       "I have to be NL #rElementless."
     ]
   },
-
-
   "theSorcerer:Rethinking": {
-    "NAME": "TODO: why should this card exist?",
-    "DESCRIPTION": "Switch your current thesorcerer:Elemental_Affinities to the opposite element."
+    "NAME": "Rethinking",
+    "DESCRIPTION": "Switch your current thesorcerer:Elemental_Affinities to the opposite thesorcerer:Elemental_Affinities."
   }
 }

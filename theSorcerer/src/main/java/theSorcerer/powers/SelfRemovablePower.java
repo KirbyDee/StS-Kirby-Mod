@@ -18,6 +18,7 @@ public abstract class SelfRemovablePower extends DynamicPower {
 
     public void removeSelf() {
         LOG.info("Remove " + this.ID);
+        flash();
         addToBot(
                 new RemoveSpecificPowerAction(
                         this.owner,

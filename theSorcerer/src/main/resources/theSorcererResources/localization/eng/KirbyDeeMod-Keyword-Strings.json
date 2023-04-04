@@ -6,60 +6,42 @@
       "elemental_affinities",
       "Elemental_Affinities"
     ],
-    "DESCRIPTION": "#yFire #yAffinity / #yIce #yAffinity and #yHeated / #yChilled."
+    "DESCRIPTION": "#yHeated or #yChilled."
   },
   {
     "PROPER_NAME": "Fire",
     "NAMES": [
       "fire"
     ],
-    "DESCRIPTION": "Upon playing a #yFire card, increase your #yFire #yAffinity by the amount of the cost of the card played."
-  },
-  {
-    "PROPER_NAME": "Fire Affinity",
-    "NAMES": [
-      "fire affinity",
-      "fire_affinity",
-      "Fire_Affinity"
-    ],
-    "DESCRIPTION": "Upon reaching enough #yFire #yAffinity become #yHeated. Your #yFire #yAffinity is reset upon playing an #yIce card or at the start of your next turn."
+    "DESCRIPTION": "Upon playing a #yFire card, become #yHeated by the amount of the cost of the card played."
   },
   {
     "PROPER_NAME": "Ice",
     "NAMES": [
       "ice"
     ],
-    "DESCRIPTION": "Upon playing an #yIce card, increase your #yIce #yAffinity by the amount of the cost of the card played."
-  },
-  {
-    "PROPER_NAME": "Ice Affinity",
-    "NAMES": [
-      "ice affinity",
-      "ice_affinity",
-      "Ice_Affinity"
-    ],
-    "DESCRIPTION": "Upon reaching enough #yIce #yAffinity become #yChilled. Your #yIce #yAffinity is reset upon playing a #yFire card or at the start of your next turn."
+    "DESCRIPTION": "Upon playing an #yIce card, become #yChilled by the amount of the cost of the card played."
   },
   {
     "PROPER_NAME": "Elementless",
     "NAMES": [
       "elementless"
     ],
-    "DESCRIPTION": "You can no longer play any #yFire and #yIce cards, gain #yFire #yAffinity / #yIce #yAffinity or become #yHeated / #yChilled."
+    "DESCRIPTION": "You can no longer play any #yFire / #yIce cards or become #yHeated / #yChilled."
   },
   {
     "PROPER_NAME": "Heated",
     "NAMES": [
       "heated"
     ],
-    "DESCRIPTION": "Gain #yStrength equal to the amount of #yFire #yAffinity you have. Your #yFire attacks also apply the same amount of #yAblaze."
+    "DESCRIPTION": "Gain #yStrength equal to how much #yHeated your are. Your unblocked attacks also apply the same amount of #yAblaze."
   },
   {
     "PROPER_NAME": "Chilled",
     "NAMES": [
       "chilled"
     ],
-    "DESCRIPTION": "Gain #yDexterity equal to the amount of #yIce #yAffinity you have. Whenever you fully #yBlock an attack, apply the same amount of #yFrozen."
+    "DESCRIPTION": "Gain #yDexterity equal to how much #yChilled your are. Whenever you fully #yBlock an attack, apply the same amount of #yFrozen."
   },
   {
     "PROPER_NAME": "Flashback",

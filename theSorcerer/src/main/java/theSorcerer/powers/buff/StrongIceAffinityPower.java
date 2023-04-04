@@ -2,6 +2,7 @@ package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
 
 public class StrongIceAffinityPower extends StrongAffinityPower {
@@ -18,12 +19,12 @@ public class StrongIceAffinityPower extends StrongAffinityPower {
     }
 
     @Override
-    protected ElementAffinityPower<?> createAffinityPower() {
-        return new IceAffinityPower(this.owner, 1);
+    public AbstractPower makeCopy() {
+        return new StrongIceAffinityPower(this.owner, this.amount);
     }
 
     @Override
-    public AbstractPower makeCopy() {
-        return new StrongIceAffinityPower(this.owner, this.amount);
+    protected void applyElementPower(final int amount) {
+        DynamicDungeon.applyChilled(amount);
     }
 }

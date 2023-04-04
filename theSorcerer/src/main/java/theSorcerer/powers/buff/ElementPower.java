@@ -8,40 +8,58 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.SelfRemovablePower;
 
-public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRemovablePower {
+public abstract class ElementPower<E extends AbstractPower> extends SelfRemovablePower {
 
-    private static final Logger LOG = LogManager.getLogger(ElementEvolvePower.class.getName());
+    private static final Logger LOG = LogManager.getLogger(ElementPower.class.getName());
 
-    private final String thisElementID;
-
-    protected int affinityAmount;
-
-    public ElementEvolvePower(
+    public ElementPower(
             final AbstractCreature owner,
-            final int affinityAmount,
-            final String thisEvolvedPowerID,
-            final String thisElementID
+            final int amount,
+            final String thisEvolvedPowerID
     ) {
         super(owner, thisEvolvedPowerID);
-        this.thisElementID = thisElementID;
-        this.affinityAmount = affinityAmount;
         this.isTurnBased = true;
         this.canGoNegative = false;
+
+        this.amount = amount;
+        if (this.amount >= 999) {
+            this.amount = 999;
+        }
 
         updateDescription();
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        stackAmount(stackAmount);
+        applyExtraPower(stackAmount);
+        updateDescription();
+    }
+
+    private void stackAmount(int stackAmount) {
+        this.fontScale = 8.0F;
+        this.amount += stackAmount;
+        if (this.amount == 0) {
+            removeSelf();
+        }
+
+        if (this.amount >= 999) {
+            this.amount = 999;
+        }
+    }
+
+    @Override
     public void onInitialApplication() {
-        applyExtraPower(this.affinityAmount);
+        applyExtraPower(this.amount);
     }
 
     private void applyExtraPower(final int amount) {
         if (amount > 0) {
             LOG.info("Apply Extra Power: " + amount);
-            addToBot(
+            addToTop(
                     new ApplyPowerAction(
                             this.owner,
                             this.owner,
@@ -55,27 +73,36 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
 
     @Override
     public void atEndOfRound() {
-        removeSelf();
+        reducePowerToZero();
     }
 
     @Override
     public void removeSelf() {
-        reduceExtraPower();
+        reducePowerToZero();
         super.removeSelf();
     }
 
+    public void reducePowerToZero() {
+        reducePower(this.ID);
+        reduceExtraPower();
+    }
+
     private void reduceExtraPower() {
-        if (this.affinityAmount <= 0) {
+        reducePower(getExtraPowerId());
+    }
+
+    private void reducePower(final String powerId) {
+        if (this.amount <= 0) {
             return;
         }
 
-        LOG.info("Reduce Extra Power by  " + this.affinityAmount);
+        LOG.info("Reduce " + powerId + " by  " + this.amount);
         addToBot(
                 new ReducePowerAction(
                         this.owner,
                         this.owner,
-                        getExtraPowerId(),
-                        this.affinityAmount
+                        powerId,
+                        this.amount
                 )
         );
     }
@@ -84,29 +111,18 @@ public abstract class ElementEvolvePower<E extends AbstractPower> extends SelfRe
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        AbstractCard.CardTags tag = getAffinityLoseTag();
+        AbstractCard.CardTags tag = getElementLoseTag();
         if (card.tags.contains(tag)) {
             LOG.info(tag + " applied, but " + this.ID + " already existing -> remove " + this.ID);
             removeSelf();
-            reduceExtraPower();
+            DynamicDungeon.applyElementless();
         }
     }
 
-    protected abstract AbstractCard.CardTags getAffinityLoseTag();
-
-    @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.ID.equals(this.thisElementID)) {
-            int stackAmount = power.amount;
-            this.affinityAmount += stackAmount;
-            LOG.info(this.thisElementID + " applied, and " + this.ID + " already existing -> apply extra power: " + stackAmount);
-            applyExtraPower(stackAmount);
-            updateDescription();
-        }
-    }
+    protected abstract AbstractCard.CardTags getElementLoseTag();
 
     @Override
     public void updateDescription() {
-        description = this.descriptions[0] + affinityAmount + this.descriptions[1] + affinityAmount + this.descriptions[2];
+        description = this.descriptions[0] + this.amount + this.descriptions[1] + this.amount + this.descriptions[2];
     }
 }

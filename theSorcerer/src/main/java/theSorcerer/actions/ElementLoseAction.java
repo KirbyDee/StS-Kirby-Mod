@@ -4,9 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import theSorcerer.powers.SelfRemovablePower;
 import theSorcerer.powers.buff.ChilledPower;
-import theSorcerer.powers.buff.FireAffinityPower;
 import theSorcerer.powers.buff.HeatedPower;
-import theSorcerer.powers.buff.IceAffinityPower;
 
 public class ElementLoseAction extends AbstractGameAction {
 
@@ -20,8 +18,6 @@ public class ElementLoseAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        removeElementPower(IceAffinityPower.POWER_ID);
-        removeElementPower(FireAffinityPower.POWER_ID);
         removeElementPower(HeatedPower.POWER_ID);
         removeElementPower(ChilledPower.POWER_ID);
         this.isDone = true;

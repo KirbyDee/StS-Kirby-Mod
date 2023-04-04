@@ -12,7 +12,7 @@ import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.debuff.AblazePower;
 
-public class HeatedPower extends ElementEvolvePower<StrengthPower> {
+public class HeatedPower extends ElementPower<StrengthPower> {
 
     private static final Logger LOG = LogManager.getLogger(HeatedPower.class.getName());
 
@@ -22,9 +22,9 @@ public class HeatedPower extends ElementEvolvePower<StrengthPower> {
 
     public HeatedPower(
             final AbstractCreature owner,
-            final int affinityAmount
+            final int amount
     ) {
-        super(owner, affinityAmount, POWER_ID, FireAffinityPower.POWER_ID);
+        super(owner, amount, POWER_ID);
     }
 
     protected StrengthPower createExtraPower(final int amount) {
@@ -37,13 +37,13 @@ public class HeatedPower extends ElementEvolvePower<StrengthPower> {
     }
 
     @Override
-    protected AbstractCard.CardTags getAffinityLoseTag() {
+    protected AbstractCard.CardTags getElementLoseTag() {
         return SorcererCardTags.ICE;
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new HeatedPower(this.owner, this.affinityAmount);
+        return new HeatedPower(this.owner, this.amount);
     }
 
     @Override
@@ -51,15 +51,15 @@ public class HeatedPower extends ElementEvolvePower<StrengthPower> {
         if (target != info.owner &&
                 info.owner == this.owner &&
                 info.type == DamageInfo.DamageType.NORMAL &&
-                this.affinityAmount > 0 &&
+                this.amount > 0 &&
                 damageAmount > 0 &&
                 target.currentBlock < damageAmount) {
-            LOG.info("Inflicting damage to target with attack, apply Ablaze amount " + this.affinityAmount);
-            addToBot(
+            LOG.info("Inflicting damage to target with attack, apply Ablaze amount " + this.amount);
+            addToTop(
                     new ApplyPowerAction(
                             target,
                             this.owner,
-                            new AblazePower(target, this.affinityAmount, true)
+                            new AblazePower(target, this.amount, true)
                     )
             );
         }

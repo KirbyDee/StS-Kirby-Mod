@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
 
@@ -16,7 +17,7 @@ public class DrawPileViewScreenPatch {
     private static final Logger LOG = LogManager.getLogger(DrawPileViewScreenPatch.class.getName());
 
     private static boolean isFuturity(AbstractCard card) {
-        return card.hasTag(SorcererCardTags.FUTURITY);
+        return DynamicDungeon.isFuturityCard(card);
     }
 
     @SpirePatch(clz = DrawPileViewScreen.class, method = "open")

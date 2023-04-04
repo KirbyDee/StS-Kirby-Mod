@@ -304,7 +304,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(WellPrepared.class));
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
 //        retVal.add(DynamicCard.getID(StrongAffinity.class));
-//        retVal.add(DynamicCard.getID(Rethinking.class)); // TODO
+//        retVal.add(DynamicCard.getID(Rethinking.class));
 //        // rare power
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
