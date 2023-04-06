@@ -219,5 +219,13 @@
   "theSorcerer:Rethinking": {
     "NAME": "Rethinking",
     "DESCRIPTION": "Switch your current thesorcerer:Elemental_Affinities to the opposite thesorcerer:Elemental_Affinities."
+  },
+  "theSorcerer:Explosion": {
+    "NAME": "Explosion",
+    "DESCRIPTION": "Deal damage equal to targets thesorcerer:Ablaze stacks to all enemies."
+  },
+  "theSorcerer:Implosion": {
+    "NAME": "Implosion",
+    "DESCRIPTION": "Apply weak equal to targets thesorcerer:Frozen stacks to all enemies."
   }
 }

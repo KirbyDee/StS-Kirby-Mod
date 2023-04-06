@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +16,9 @@ import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.powers.debuff.AblazePower;
 import theSorcerer.powers.debuff.ElementlessPower;
+import theSorcerer.powers.debuff.FrozenPower;
 import theSorcerer.relics.ElementalMaster;
 
 import java.util.function.Consumer;
@@ -116,17 +119,28 @@ public class DynamicDungeon {
         return getElement(HeatedPower.POWER_ID);
     }
 
-    public static void withHeatedAmount(Consumer<Integer> amountConsumer) {
-        amountConsumer.accept(getHeatedAmount());
-    }
-
     public static int getChilledAmount() {
         return getElement(ChilledPower.POWER_ID);
     }
 
-    public static void withChilledAmount(Consumer<Integer> amountConsumer) {
-        amountConsumer.accept(getChilledAmount());
+    public static void withAblaze(
+            final AbstractMonster monster,
+            Consumer<AblazePower> ablazePowerConsumer
+    ) {
+        if (monster.hasPower(AblazePower.POWER_ID)) {
+            ablazePowerConsumer.accept((AblazePower) monster.getPower(AblazePower.POWER_ID));
+        }
     }
+
+    public static void withFrozen(
+            final AbstractMonster monster,
+            Consumer<FrozenPower> frozenPowerConsumer
+    ) {
+        if (monster.hasPower(FrozenPower.POWER_ID)) {
+            frozenPowerConsumer.accept((FrozenPower) monster.getPower(FrozenPower.POWER_ID));
+        }
+    }
+
 
     private static int getElement(final String elementPowerId) {
         int amount = 0;
@@ -168,4 +182,8 @@ public class DynamicDungeon {
         addToBot(new GainEnergyAction(amount));
     }
 
+    public static void withAllMonsters(final Consumer<AbstractMonster> monsterConsumer) {
+        AbstractDungeon.getCurrRoom().monsters.monsters
+                .forEach(monsterConsumer);
+    }
 }

@@ -85,5 +85,19 @@
       "icemorphose"
     ],
     "DESCRIPTION": "Metamorphose a card to become thesorcerer:Ice."
+  },
+  {
+    "PROPER_NAME": "Ablaze",
+    "NAMES": [
+      "ablaze"
+    ],
+    "DESCRIPTION": "Whenever the enemy attacks, they take damage equal to the number of Ablaze stacks they have."
+  },
+  {
+    "PROPER_NAME": "Frozen",
+    "NAMES": [
+      "frozen"
+    ],
+    "DESCRIPTION": "Whenever the enemy gets attacked, they take damage equal to the number of Frozen stacks they have."
   }
 ]

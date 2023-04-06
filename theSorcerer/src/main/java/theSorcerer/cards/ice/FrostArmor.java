@@ -10,7 +10,7 @@ public class FrostArmor extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
-    private static final int BLOCK = 3;
+    private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 
@@ -19,7 +19,7 @@ public class FrostArmor extends SorcererIceCard {
                 DynamicCard.InfoBuilder(FrostArmor.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.COMMON)
+                        .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
                         .tags(SorcererCardTags.FLASHBACK)
                         .block(BLOCK)

@@ -15,7 +15,7 @@ public class Scorch extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
     // --- VALUES END ---
 
@@ -24,7 +24,7 @@ public class Scorch extends SorcererFireCard {
                 DynamicCard.InfoBuilder(Scorch.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(CardRarity.COMMON)
+                        .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
                         .tags(SorcererCardTags.FLASHBACK)
                         .damage(DAMAGE)
