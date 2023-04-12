@@ -16,11 +16,14 @@ import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.powers.buff.PresenceOfMindPower;
 import theSorcerer.powers.debuff.AblazePower;
 import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.powers.debuff.FrozenPower;
 import theSorcerer.relics.ElementalMaster;
 
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public class DynamicDungeon {
@@ -30,11 +33,15 @@ public class DynamicDungeon {
     private DynamicDungeon() {}
 
     public static boolean isFireCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.FIRE);
+        return cardHasTag(card, SorcererCardTags.FIRE) || (isHeated() && isArcaneCard(card));
     }
 
     public static boolean isIceCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.ICE);
+        return cardHasTag(card, SorcererCardTags.ICE) || (isChilled() && isArcaneCard(card));
+    }
+
+    public static boolean isArcaneCard(final AbstractCard card) {
+        return cardHasTag(card, SorcererCardTags.ARCANE);
     }
 
     public static boolean isFuturityCard(final AbstractCard card) {
@@ -46,7 +53,7 @@ public class DynamicDungeon {
     }
 
     public static boolean isElementCard(final AbstractCard card) {
-        return isFireCard(card) || isIceCard(card);
+        return isFireCard(card) || isIceCard(card) || isArcaneCard(card);
     }
 
     public static boolean cardHasTag(final AbstractCard card, final AbstractCard.CardTags tag) {
@@ -96,13 +103,33 @@ public class DynamicDungeon {
         increaseElementPower(new ChilledPower(AbstractDungeon.player, amount), amount);
     }
 
+    public static void applyPresenceOfMind() {
+        runIfNotElementless(() -> {
+            if (!hasPresenceOfMind()) {
+                addToBot(
+                        new ApplyPowerAction(
+                                AbstractDungeon.player,
+                                AbstractDungeon.player,
+                                new PresenceOfMindPower(AbstractDungeon.player)
+                        )
+                );
+            }
+        });
+    }
+
+    public static boolean hasPresenceOfMind() {
+        return AbstractDungeon.player.hasPower(PresenceOfMindPower.POWER_ID);
+    }
+
     public static void increaseElementPower(final ElementPower<?> elementPower, final int amount) {
-        addToBot(
-                new ApplyPowerAction(
-                        AbstractDungeon.player,
-                        AbstractDungeon.player,
-                        elementPower,
-                        amount
+        runIfNotElementless(() ->
+                addToBot(
+                        new ApplyPowerAction(
+                                AbstractDungeon.player,
+                                AbstractDungeon.player,
+                                elementPower,
+                                amount
+                        )
                 )
         );
     }
@@ -113,6 +140,10 @@ public class DynamicDungeon {
 
     public static boolean isChilled() {
         return getChilledAmount() > 0;
+    }
+
+    public static boolean isHeatedOrChillder() {
+        return isHeated() || isChilled();
     }
 
     public static int getHeatedAmount() {
@@ -185,5 +216,12 @@ public class DynamicDungeon {
     public static void withAllMonsters(final Consumer<AbstractMonster> monsterConsumer) {
         AbstractDungeon.getCurrRoom().monsters.monsters
                 .forEach(monsterConsumer);
+    }
+
+    public static Optional<AbstractCard> getLastCardPlayed() {
+        ArrayList<AbstractCard> cardsPlayed = AbstractDungeon.actionManager.cardsPlayedThisCombat;
+        return !cardsPlayed.isEmpty() ?
+                Optional.of(cardsPlayed.get(cardsPlayed.size() - 1)) :
+                Optional.empty();
     }
 }

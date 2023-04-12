@@ -15,7 +15,7 @@ public abstract class ElementSoul extends CustomRelic {
             Texture img,
             Texture outline
     ) {
-        super(id, img, outline, RelicTier.RARE, LandingSound.MAGICAL);
+        super(id, img, outline, RelicTier.BOSS, LandingSound.MAGICAL);
     }
 
     @Override
@@ -34,8 +34,10 @@ public abstract class ElementSoul extends CustomRelic {
 
     @Override
     public boolean canSpawn() {
-        return !AbstractDungeon.player.hasRelic(getOppositeSoulId());
+        return getOppositeSoulId() == null || !AbstractDungeon.player.hasRelic(getOppositeSoulId());
     }
 
-    protected abstract String getOppositeSoulId();
+    protected String getOppositeSoulId() {
+        return null;
+    }
 }

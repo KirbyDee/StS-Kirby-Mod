@@ -4,13 +4,13 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.ChilledPower;
-import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.relics.ElementalMaster;
 
@@ -23,12 +23,33 @@ public class AbstractPlayerPatch {
     public static class UseCardPatch {
 
         public static void Postfix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
-            if (hasNotEnoughCost(card) || hasElementlessPower(self, card) || doesInvalidElementSwitch(self, card)) {
+            LOG.debug("Card: " + self.name + " - " + card.tags);
+
+            // invalid cast
+            if (hasNotEnoughCost(card) || hasElementlessPower(self, card)) {
                 return;
             }
 
-            LOG.debug("Card: " + self.name + " - " + card.tags);
-            if (DynamicDungeon.isFireCard(card)) {
+            // element switch check
+            if (doesInvalidElementSwitch(self, card)) {
+                return;
+            }
+
+            // apply element power
+            applyElementPower(card);
+        }
+
+        private static void applyElementPower(final AbstractCard card) {
+            if (DynamicDungeon.isArcaneCard(card)) {
+                DynamicDungeon.applyPresenceOfMind();
+                if (DynamicDungeon.isHeated()) {
+                    DynamicDungeon.applyHeated(card.costForTurn);
+                }
+                else if (DynamicDungeon.isChilled()) {
+                    DynamicDungeon.applyChilled(card.costForTurn);
+                }
+            }
+            else if (DynamicDungeon.isFireCard(card)) {
                 DynamicDungeon.applyHeated(card.costForTurn);
             }
             else if (DynamicDungeon.isIceCard(card)) {

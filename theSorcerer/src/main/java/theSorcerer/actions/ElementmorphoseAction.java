@@ -2,6 +2,7 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import org.apache.commons.lang3.StringUtils;
+import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 
@@ -30,6 +31,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     @Override
     protected boolean canBeChosen(final AbstractCard card) {
         return !card.hasTag(this.elementToMetamorph) &&
+                !card.hasTag(SorcererCardTags.ARCANE) &&
                 card.costForTurn >= 0 &&
                 super.canBeChosen(card);
     }

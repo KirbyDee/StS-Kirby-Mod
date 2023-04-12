@@ -1,7 +1,22 @@
 [
   {
-    "PROPER_NAME": "Elemental Affinities",
+    "PROPER_NAME": "Elemental Card",
     "NAMES": [
+      "elemental card",
+      "elemental_card",
+      "Elemental_Card",
+      "elemental cards",
+      "elemental_cards",
+      "Elemental_Cards"
+    ],
+    "DESCRIPTION": "#yFire, #yIce or #yArcane card."
+  },
+  {
+    "PROPER_NAME": "Elemental Affinity",
+    "NAMES": [
+      "elemental affinity",
+      "elemental_affinity",
+      "Elemental_Affinity",
       "elemental affinities",
       "elemental_affinities",
       "Elemental_Affinities"
@@ -23,11 +38,18 @@
     "DESCRIPTION": "Upon playing an #yIce card, become #yChilled by the amount of the cost of the card played."
   },
   {
+    "PROPER_NAME": "Arcane",
+    "NAMES": [
+      "arcane"
+    ],
+    "DESCRIPTION": "You cannot play #yArcane cards if you do not have any #yElemental #yAffinities. NL #yArcane cards count as either a #yFire or #yIce card, depending on the #yElemental #yAffinities you currently have. NL NL Upon playing an #yArcane card, your next card played will reimburse its energy cost."
+  },
+  {
     "PROPER_NAME": "Elementless",
     "NAMES": [
       "elementless"
     ],
-    "DESCRIPTION": "You can no longer play any #yFire / #yIce cards or become #yHeated / #yChilled."
+    "DESCRIPTION": "You can no longer play any #yElemental #yCards or obtain any #yElemental #yAffinities."
   },
   {
     "PROPER_NAME": "Heated",
@@ -77,27 +99,27 @@
     "NAMES": [
       "firemorphose"
     ],
-    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Fire."
+    "DESCRIPTION": "Metamorphose a card to become #yFire."
   },
   {
     "PROPER_NAME": "Icemorphose",
     "NAMES": [
       "icemorphose"
     ],
-    "DESCRIPTION": "Metamorphose a card to become thesorcerer:Ice."
+    "DESCRIPTION": "Metamorphose a card to become #yIce."
   },
   {
     "PROPER_NAME": "Ablaze",
     "NAMES": [
       "ablaze"
     ],
-    "DESCRIPTION": "Whenever the enemy attacks, they take damage equal to the number of Ablaze stacks they have."
+    "DESCRIPTION": "Whenever the enemy attacks, they take damage equal to the number of #yAblaze stacks they have."
   },
   {
     "PROPER_NAME": "Frozen",
     "NAMES": [
       "frozen"
     ],
-    "DESCRIPTION": "Whenever the enemy gets attacked, they take damage equal to the number of Frozen stacks they have."
+    "DESCRIPTION": "Whenever the enemy gets attacked, they take damage equal to the number of #yFrozen stacks they have."
   }
 ]

@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 public enum CardAbility {
     EMPTY("", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
+    ARCANE(CardUtil.MOD_PREFIX + "Arcane", SorcererCardTags.ARCANE, CardAbilityFix.PREFIX),
     FIRE(CardUtil.MOD_PREFIX + "Fire", SorcererCardTags.FIRE, CardAbilityFix.PREFIX),
     ICE(CardUtil.MOD_PREFIX + "Ice", SorcererCardTags.ICE, CardAbilityFix.PREFIX),
     AUTO(CardUtil.MOD_PREFIX + "Auto", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),

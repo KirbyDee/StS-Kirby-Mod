@@ -222,19 +222,41 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 39 (20/10/9)
-        // 12 attacks
+        //sorcerer 47 (19/19/9) - 75
+        // 14 attacks
         // - common: 9 -> ok?
-        // - uncommon: 2 -> more
+        // - uncommon: 4 -> more
         // - rare: 1 -> more
         // 6 power
         // - common: 0 -> ok
         // - uncommon: 4 -> more
         // - rare: 2 -> more
-        // 21 skills
-        // - common: 9 -> ok?
-        // - uncommon: 6 -> more
+        // 27 skills
+        // - common: 10 -> ok?
+        // - uncommon: 11 -> more
         // - rare: 6 -> more
+        // relic:
+        // - starter: 1
+        //  - ElementalConstruct
+        // - common: 1
+        //  - ?
+        // - uncommon: 2
+        //  - ElementalMaster
+        //  - ?
+        // - rare: 3
+        //  - ?
+        //  - ?
+        //  - ?
+        // - shop: 1
+        //  - ?
+        // - boss: 3
+        //  - BurningSoul
+        //  - FreezingSoul
+        //  - EnergizedSoul
+        // potions 3:
+        // - ?
+        // - ?
+        // - ?
 
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
@@ -280,11 +302,13 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(MagicalCloak.class));
 //        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 //        retVal.add(DynamicCard.getID(OneWithNothing.class));
+//        retVal.add(DynamicCard.getID(Harmony.class));
 //
 //        // uncommon attack
 //        retVal.add(DynamicCard.getID(MirrorForce.class));
 //        retVal.add(DynamicCard.getID(Scorch.class));
-//        retVal.add(DynamicCard.getID(Combustion.class));
+//        retVal.add(DynamicCard.getID(Explosion.class));
+//        retVal.add(DynamicCard.getID(ArcaneBarrage.class));
 //        // uncommon skill
 //        retVal.add(DynamicCard.getID(Dispell.class));
 //        retVal.add(DynamicCard.getID(Cleanse.class));
@@ -293,6 +317,9 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Tradeoff.class));
 //        retVal.add(DynamicCard.getID(UnknownEcho.class));
 //        retVal.add(DynamicCard.getID(FrostArmor.class));
+//        retVal.add(DynamicCard.getID(Implosion.class));
+//        retVal.add(DynamicCard.getID(ArcaneProtection.class));
+//        retVal.add(DynamicCard.getID(ElementalStorm.class));
 //        // uncommon power
 //        retVal.add(DynamicCard.getID(UneducatedGuess.class));
 //        retVal.add(DynamicCard.getID(WallOfFire.class));

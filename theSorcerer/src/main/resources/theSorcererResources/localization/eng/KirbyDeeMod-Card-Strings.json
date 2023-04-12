@@ -227,5 +227,21 @@
   "theSorcerer:Implosion": {
     "NAME": "Implosion",
     "DESCRIPTION": "Apply weak equal to targets thesorcerer:Frozen stacks to all enemies."
+  },
+  "theSorcerer:Harmony": {
+    "NAME": "Harmony",
+    "DESCRIPTION": ""
+  },
+  "theSorcerer:ArcaneBarrage": {
+    "NAME": "Arcane Barrage",
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
+  },
+  "theSorcerer:ArcaneProtection": {
+    "NAME": "Arcane Protection",
+    "DESCRIPTION": "Gain !B! Block !M! times."
+  },
+  "theSorcerer:ElementalStorm": {
+    "NAME": "Elemental Storm",
+    "DESCRIPTION": "Whenever you play an thesorcerer:Elemental_Card this turn, apply !M! Weak and Vulnerable to ALL enemies."
   }
 }

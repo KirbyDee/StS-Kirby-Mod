@@ -12,6 +12,12 @@ public abstract class ElementSoulAction extends AbstractGameAction {
     private final ElementSoul relic;
 
     public ElementSoulAction(
+            ElementSoul relic
+    ) {
+        this(relic, 0);
+    }
+
+    public ElementSoulAction(
             ElementSoul relic,
             int amount
     ) {

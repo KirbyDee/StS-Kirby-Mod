@@ -412,6 +412,7 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new ElementalConstruct(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new BurningSoul(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new EnergizedSoul(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_ORANGE);
 
         // This adds a relic to the Shared pool. Every character can find this relic.

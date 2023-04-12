@@ -8,11 +8,11 @@
   },
   "theSorcerer:HeatedPower": {
     "NAME": "Heated",
-    "DESCRIPTIONS": ["Gain #b", " #yStrength. Your unblocked attacks apply #b", " #yAblaze. #yHeated is reset upon playing an #yIce card or at the start of your next turn. When playing an #yIce card become #yElementless."]
+    "DESCRIPTIONS": ["Gain #b", " #yStrength. NL Your unblocked attacks apply #b", " #yAblaze. NL #yHeated is reset upon playing an #yIce card or at the start of your next turn. When playing an #yIce card become #yElementless."]
   },
   "theSorcerer:ChilledPower": {
     "NAME": "Chilled",
-    "DESCRIPTIONS": ["Gain #b", " #yDexterity. Whenever you fully #yBlock an attack, apply #b", " #yFrozen. #yChilled is reset upon playing an #yFire card or at the start of your next turn. When playing an #yFire card become #yElementless."]
+    "DESCRIPTIONS": ["Gain #b", " #yDexterity. NL Whenever you fully #yBlock an attack, apply #b", " #yFrozen. NL #yChilled is reset upon playing an #yFire card or at the start of your next turn. When playing an #yFire card become #yElementless."]
   },
   "theSorcerer:AblazePower": {
     "NAME": "Ablaze",
@@ -53,5 +53,13 @@
   "theSorcerer:StrongIceAffinityPower": {
     "NAME": "Strong Ice Affinity",
     "DESCRIPTIONS": ["Gain #b", " #yChilled at the start of your next turn."]
+  },
+  "theSorcerer:PresenceOfMindPower": {
+    "NAME": "Presence Of Mind",
+    "DESCRIPTIONS": ["Your next card played will reimburse its energy cost."]
+  },
+  "theSorcerer:ElementalStormPower": {
+    "NAME": "Elemental Storm",
+    "DESCRIPTIONS": ["Whenever you play an #yElemental #yCard this turn, apply #b", "  Weak and Vulnerable to ALL enemies."]
   }
 }

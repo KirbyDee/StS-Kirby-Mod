@@ -23,7 +23,7 @@ public class ElementGlow extends CardBorderGlowManager.GlowInfo {
             return Color.SCARLET.cpy();
         }
         else if (DynamicDungeon.isIceCard(card)) {
-            return Color.ROYAL.cpy();
+            return Color.NAVY.cpy();
         }
         return Color.WHITE.cpy();
     }
