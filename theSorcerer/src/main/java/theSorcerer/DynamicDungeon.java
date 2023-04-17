@@ -77,8 +77,8 @@ public class DynamicDungeon {
         return cardHasAbility(card, CardAbility.ENTOMB);
     }
 
-    public static boolean isEntombOrBottledTombstoneCard(final AbstractCard card) {
-        return DynamicDungeon.isEntombCard(card) || AbstractCardPatch.inBottleTombstone.get(card);
+    public static boolean isEntombOrBottledGhostCard(final AbstractCard card) {
+        return DynamicDungeon.isEntombCard(card) || AbstractCardPatch.inBottleGhost.get(card);
     }
 
     public static boolean isAutoCard(final AbstractCard card) {

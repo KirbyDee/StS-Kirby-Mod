@@ -20,7 +20,7 @@ public class AbstractCardPatch {
 
     public static SpireField<Boolean> inBottleEnergy = new SpireField<>(() -> false);
 
-    public static SpireField<Boolean> inBottleTombstone = new SpireField<>(() -> false);
+    public static SpireField<Boolean> inBottleGhost = new SpireField<>(() -> false);
 
     private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(ElementlessPower.POWER_ID);
 
@@ -31,11 +31,12 @@ public class AbstractCardPatch {
                 AbstractCard result,
                 AbstractCard self
         ) {
-            inBottleTombstone.set(result, inBottleTombstone.get(self));
+            inBottleGhost.set(result, inBottleGhost.get(self));
             inBottleEnergy.set(result, inBottleEnergy.get(self));
             if (inBottleEnergy.get(result)) {
                 DynamicDungeon.makeCardArcane(result);
             }
+            // TODO: do the same with fire/ice that can be given on rest site due to event
 
             return result;
         }

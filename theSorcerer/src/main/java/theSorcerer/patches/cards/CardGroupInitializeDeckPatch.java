@@ -26,7 +26,7 @@ public class CardGroupInitializeDeckPatch {
         CardGroup drawPileCopy = (CardGroup) copy[0];
         List<AbstractCard> entombCards = drawPileCopy.group
                 .stream()
-                .filter(DynamicDungeon::isEntombOrBottledTombstoneCard)
+                .filter(DynamicDungeon::isEntombOrBottledGhostCard)
                 .collect(Collectors.toList());
 
         // remove card from draw pile copy.

@@ -1,8 +1,6 @@
 package theSorcerer.relics;
 
 import basemod.abstracts.CustomBottleRelic;
-import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -13,19 +11,21 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theSorcerer.patches.cards.AbstractCardPatch;
 
-public abstract class BottledRelic extends CustomRelic implements CustomBottleRelic {
+public abstract class BottledRelic extends DynamicRelic implements CustomBottleRelic {
 
     private boolean cardSelected = true;
 
     protected AbstractCard card;
 
     public BottledRelic(
-            String id,
-            Texture img,
-            Texture outline,
+            Class<? extends BottledRelic> thisClazz,
             RelicTier tier
     ) {
-        super(id, img, outline, tier, LandingSound.CLINK);
+        super(
+                thisClazz,
+                tier,
+                LandingSound.CLINK
+        );
     }
 
     @Override
@@ -59,7 +59,7 @@ public abstract class BottledRelic extends CustomRelic implements CustomBottleRe
         CardGroup cardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         getCardGroup().group
                 .stream()
-                .filter(c -> !c.inBottleFlame && !c.inBottleLightning && !c.inBottleTornado && !AbstractCardPatch.inBottleTombstone.get(c) && !AbstractCardPatch.inBottleEnergy.get(c))
+                .filter(c -> !c.inBottleFlame && !c.inBottleLightning && !c.inBottleTornado && !AbstractCardPatch.inBottleGhost.get(c) && !AbstractCardPatch.inBottleEnergy.get(c))
                 .forEach(c -> cardGroup.group.add(c));
         return cardGroup;
     }

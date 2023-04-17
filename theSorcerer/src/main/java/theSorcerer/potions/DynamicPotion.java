@@ -21,7 +21,7 @@ public abstract class DynamicPotion extends CustomPotion {
         super(thisClazz.getSimpleName(), DynamicPotion.getID(thisClazz), rarity, potionSize, potionColor);
     }
 
-    public static String getID(Class<? extends DynamicPotion> thisClazz) {
+    public static String getID(final Class<? extends DynamicPotion> thisClazz) {
         return DynamicDungeon.makeID(thisClazz);
     }
 

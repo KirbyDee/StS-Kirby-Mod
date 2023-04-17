@@ -36,8 +36,8 @@
       "You cannot become #yElementless."
     ]
   },
-  "theSorcerer:BottledTombstone": {
-    "NAME": "Bottled Tombstone",
+  "theSorcerer:BottledGhost": {
+    "NAME": "Bottled Ghost",
     "FLAVOR": "Silence... only silence is perceived.",
     "DESCRIPTIONS": [
       "Upon pick up, choose any Card. Start each combat with this card in your discard pile.",

@@ -241,8 +241,8 @@ public class TheSorcerer extends CustomPlayer {
         // - common: 1
         //  - ?
         // - uncommon: 2
-        //  - ElementalMaster
-        //  - Bottled Tombstone
+        //  - Elemental Master
+        //  - Bottled Ghost
         // - rare: 3
         //  - Bottled Energy
         //  - ?
@@ -254,11 +254,14 @@ public class TheSorcerer extends CustomPlayer {
         //  - FreezingSoul
         //  - EnergizedSoul
         // potions 3:
-        // - FirePotion (Common)
-        // - IcePotion (Common)
-        // - KnowledgePotion (Common)
-        // - FlashbackPotion (Uncommon)
-        // - ArcanePotion (Rare)
+        // - common: 1
+        //  - HeatedPotion
+        //  - ChilledPotion
+        //  - KnowledgePotion
+        // - uncommon: 1
+        //  - FlashbackPotion
+        // - rare: 1
+        //  - ArcanePotion
 
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes

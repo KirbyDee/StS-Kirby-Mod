@@ -20,7 +20,7 @@ public class AbstractPlayerPreBattlePrepPatch {
         CardGroup copy = new CardGroup(self.masterDeck, CardGroup.CardGroupType.DRAW_PILE);
         copy.group
                 .stream()
-                .filter(DynamicDungeon::isEntombOrBottledTombstoneCard)
+                .filter(DynamicDungeon::isEntombOrBottledGhostCard)
                 .forEach(c -> AbstractDungeon.player.discardPile.addToTop(c));
     }
 

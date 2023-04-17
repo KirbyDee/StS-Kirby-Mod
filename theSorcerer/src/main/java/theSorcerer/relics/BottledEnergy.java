@@ -1,30 +1,22 @@
 package theSorcerer.relics;
 
 import basemod.abstracts.CustomSavable;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.util.TextureLoader;
 
 import java.util.function.Predicate;
 
-import static theSorcerer.KirbyDeeMod.makeRelicOutlinePath;
-import static theSorcerer.KirbyDeeMod.makeRelicPath;
-
 public class BottledEnergy extends BottledRelic implements CustomSavable<Integer> {
 
-    public static final String ID = KirbyDeeMod.makeID("BottledEnergy");
-
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
-
     public BottledEnergy() {
-        super(ID, IMG, OUTLINE, RelicTier.RARE);
+        super(
+                BottledEnergy.class,
+                RelicTier.RARE
+        );
     }
 
     @Override

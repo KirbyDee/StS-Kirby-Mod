@@ -26,7 +26,6 @@ public class CardGroupPatch {
         }
     }
 
-    // TODO: I don't think this is needed?
     @SpirePatch(clz = CardGroup.class, method = "renderMasterDeck")
     public static class RenderMasterDeckPatch {
 
@@ -47,10 +46,14 @@ public class CardGroupPatch {
 
     private static void initializeDescription(final AbstractCard card) {
         if (AbstractCardPatch.inBottleEnergy.get(card)) {
+            // need to remove first any ice/fire/arcane which could be in the description
             CardAbility.ICE.removeRawDescription(card);
             CardAbility.FIRE.removeRawDescription(card);
             CardAbility.ARCANE.removeRawDescription(card);
+
+            // add arcane to the description
             CardAbility.ARCANE.addRawDescription(card);
+
             card.initializeDescription();
         }
     }

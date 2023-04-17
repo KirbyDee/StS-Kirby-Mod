@@ -1,29 +1,21 @@
 package theSorcerer.relics;
 
 import basemod.abstracts.CustomSavable;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.util.TextureLoader;
 
 import java.util.function.Predicate;
 
-import static theSorcerer.KirbyDeeMod.makeRelicOutlinePath;
-import static theSorcerer.KirbyDeeMod.makeRelicPath;
+public class BottledGhost extends BottledRelic implements CustomSavable<Integer> {
 
-public class BottledTombstone extends BottledRelic implements CustomSavable<Integer> {
-
-    public static final String ID = KirbyDeeMod.makeID("BottledTombstone");
-
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
-
-    public BottledTombstone() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON);
+    public BottledGhost() {
+        super(
+                BottledGhost.class,
+                RelicTier.UNCOMMON
+        );
     }
 
     @Override
@@ -33,22 +25,22 @@ public class BottledTombstone extends BottledRelic implements CustomSavable<Inte
 
     @Override
     protected void onRemoveBottledCard(AbstractCard card) {
-        AbstractCardPatch.inBottleTombstone.set(card, false);
+        AbstractCardPatch.inBottleGhost.set(card, false);
     }
 
     @Override
     protected void onAddBottledCard(AbstractCard card) {
-        AbstractCardPatch.inBottleTombstone.set(this.card, true);
+        AbstractCardPatch.inBottleGhost.set(this.card, true);
     }
 
     @Override
     public AbstractRelic makeCopy() {
-        return new BottledTombstone();
+        return new BottledGhost();
     }
 
     @Override
     public Predicate<AbstractCard> isOnCard() {
-        return AbstractCardPatch.inBottleTombstone::get;
+        return AbstractCardPatch.inBottleGhost::get;
     }
 
     @Override
