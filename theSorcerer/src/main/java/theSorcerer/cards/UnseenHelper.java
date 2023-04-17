@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.CardAbility;
 
 public class UnseenHelper extends SorcererCard {
@@ -63,6 +63,6 @@ public class UnseenHelper extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).add(CardAbility.ENTOMB);
+        DynamicDungeon.makeCardEntomb(this);
     }
 }

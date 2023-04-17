@@ -2,10 +2,9 @@ package theSorcerer.cards.ice;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.ImplosionAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
 
 public class Implosion extends SorcererIceCard {
 
@@ -35,6 +34,6 @@ public class Implosion extends SorcererIceCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).add(CardAbility.FLASHBACK);
+        DynamicDungeon.makeCardFlashback(this);
     }
 }

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public class Scorch extends SorcererFireCard {
 
@@ -26,28 +27,28 @@ public class Scorch extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
-                        .tags(SorcererCardTags.FLASHBACK)
+                        .abilities(CardAbility.FLASHBACK)
                         .damage(DAMAGE)
         );
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer player, AbstractMonster monster) {
         // effect
-        if (m != null) {
+        if (monster != null) {
             if (Settings.FAST_MODE) {
-                addToBot(new VFXAction(new FireBurstParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.1F));
+                addToBot(new VFXAction(new FireBurstParticleEffect(monster.hb.cX, monster.hb.cY - 40.0F * Settings.scale), 0.1F));
             }
             else {
-                addToBot(new VFXAction(new FireBurstParticleEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale), 0.3F));
+                addToBot(new VFXAction(new FireBurstParticleEffect(monster.hb.cX, monster.hb.cY - 40.0F * Settings.scale), 0.3F));
             }
         }
 
         // damage
         addToBot(
                 new DamageAction(
-                        m,
-                        new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                        monster,
+                        new DamageInfo(player, this.damage, this.damageTypeForTurn),
                         AbstractGameAction.AttackEffect.FIRE
                 )
         );

@@ -6,13 +6,21 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ElementLoseAction;
-import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.cards.DynamicCard;
+import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
@@ -32,33 +40,116 @@ public class DynamicDungeon {
 
     private DynamicDungeon() {}
 
+
+    // -------------------------
+    // CARD
+    // -------------------------
+
+    public static boolean cardHasAbility(final AbstractCard card, final CardAbility ability) {
+        return AbstractCardPatch.abilities.get(card).contains(ability);
+    }
+
     public static boolean isFireCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.FIRE) || (isHeated() && isArcaneCard(card));
+        return cardHasAbility(card, CardAbility.FIRE) || (isHeated() && isArcaneCard(card));
     }
 
     public static boolean isIceCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.ICE) || (isChilled() && isArcaneCard(card));
+        return cardHasAbility(card, CardAbility.ICE) || (isChilled() && isArcaneCard(card));
     }
 
     public static boolean isArcaneCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.ARCANE);
+        return cardHasAbility(card, CardAbility.ARCANE);
     }
 
     public static boolean isFuturityCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.FUTURITY);
+        return cardHasAbility(card, CardAbility.FUTURITY);
     }
 
     public static boolean isFlashbackCard(final AbstractCard card) {
-        return cardHasTag(card, SorcererCardTags.FLASHBACK);
+        return cardHasAbility(card, CardAbility.FLASHBACK);
+    }
+
+    public static boolean isUnplayableCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.UNPLAYABLE);
+    }
+
+    public static boolean isEntombCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.ENTOMB);
+    }
+
+    public static boolean isEntombOrBottledTombstoneCard(final AbstractCard card) {
+        return DynamicDungeon.isEntombCard(card) || AbstractCardPatch.inBottleTombstone.get(card);
+    }
+
+    public static boolean isAutoCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.AUTO);
     }
 
     public static boolean isElementCard(final AbstractCard card) {
         return isFireCard(card) || isIceCard(card) || isArcaneCard(card);
     }
 
-    public static boolean cardHasTag(final AbstractCard card, final AbstractCard.CardTags tag) {
-        return card.hasTag(tag);
+    public static void makeCardFuturity(final AbstractCard card) {
+        if (!isFuturityCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FUTURITY);
+            updateAbilityDescription(card);
+        }
     }
+
+    public static void makeCardFlashback(final AbstractCard card) {
+        if (!isFlashbackCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FLASHBACK);
+            updateAbilityDescription(card);
+        }
+    }
+
+    public static void makeCardFire(final AbstractCard card) {
+        if (!isFireCard(card) && !isArcaneCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FIRE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
+            updateAbilityDescription(card);
+        }
+    }
+
+    public static void makeCardIce(final AbstractCard card) {
+        if (!isIceCard(card) && !isArcaneCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ICE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
+            updateAbilityDescription(card);
+        }
+    }
+
+    public static void makeCardArcane(final AbstractCard card) {
+        if (!isArcaneCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ARCANE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
+            updateAbilityDescription(card);
+        }
+    }
+
+    public static void makeCardEntomb(final AbstractCard card) {
+        if (!isEntombCard(card)) {
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ENTOMB);
+            updateAbilityDescription(card);
+        }
+    }
+
+    public static void updateAbilityDescription(final AbstractCard card) {
+        // in case of non-Dynamic Cards
+        if (!(card instanceof DynamicCard)) {
+            // we have to re-initialize the description based on the abilities
+            CardAbility.initializeAbilityRawDescriptions(card);
+        }
+
+        // update shown description
+        card.initializeDescription();
+    }
+
+
+    // -------------------------
+    // DUNGEON
+    // -------------------------
 
     public static void applyElementless() {
         LOG.info("Trying to apply Elementless");
@@ -75,6 +166,13 @@ public class DynamicDungeon {
                             new ElementlessPower(player)
                     )
             );
+        }
+    }
+
+    public static void removeElementless() {
+        if (hasElementless()) {
+            ElementlessPower power = (ElementlessPower) AbstractDungeon.player.getPower(ElementlessPower.POWER_ID);
+            power.removeSelf();
         }
     }
 
@@ -223,5 +321,34 @@ public class DynamicDungeon {
         return !cardsPlayed.isEmpty() ?
                 Optional.of(cardsPlayed.get(cardsPlayed.size() - 1)) :
                 Optional.empty();
+    }
+
+
+    // -------------------------
+    // MOD
+    // -------------------------
+
+    public static String makeID(Class<?> thisClazz) {
+        return makeID(thisClazz.getSimpleName());
+    }
+
+    public static String makeID(String idText) {
+        return KirbyDeeMod.makeID(idText);
+    }
+
+    public static String makeKeywordID(String idText) {
+        return KirbyDeeMod.makeKeywordID(idText);
+    }
+
+    public static PowerTip getPowerTip(final Class<? extends DynamicPower> powerClass) {
+        PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(DynamicPower.getID(powerClass));
+        return getPowerTip(powerStrings.NAME);
+    }
+
+    public static PowerTip getPowerTip(final String keywordName) {
+        return new PowerTip(
+                TipHelper.capitalize(keywordName),
+                GameDictionary.keywords.get(DynamicDungeon.makeKeywordID(keywordName))
+        );
     }
 }

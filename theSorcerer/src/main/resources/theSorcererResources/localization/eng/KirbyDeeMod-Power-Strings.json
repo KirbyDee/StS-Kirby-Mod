@@ -61,5 +61,9 @@
   "theSorcerer:ElementalStormPower": {
     "NAME": "Elemental Storm",
     "DESCRIPTIONS": ["Whenever you play an #yElemental #yCard this turn, apply #b", "  Weak and Vulnerable to ALL enemies."]
+  },
+  "theSorcerer:CollateralDamagePower": {
+    "NAME": "Collateral Damage",
+    "DESCRIPTIONS": ["Whenever you deal combat damage to an enemy, deal #b", "% damage (rounded) to ALL other enemies."]
   }
 }

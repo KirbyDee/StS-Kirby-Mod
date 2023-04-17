@@ -1,13 +1,11 @@
 package theSorcerer.powers.debuff;
 
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theSorcerer.powers.DynamicPower;
-import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.powers.DynamicAmountPower;
 
-public abstract class ElementDebuffPower extends SelfRemovablePower {
+public abstract class ElementDebuffPower extends DynamicAmountPower {
 
     protected final boolean isSourceMonster;
 
@@ -19,15 +17,10 @@ public abstract class ElementDebuffPower extends SelfRemovablePower {
             final String thisPowerID,
             boolean isSourceMonster
     ) {
-        super(owner, thisPowerID);
+        super(owner, thisPowerID, amount);
         this.type = PowerType.DEBUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;
-
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
         this.isSourceMonster = isSourceMonster;
         if (AbstractDungeon.actionManager.turnHasEnded && isSourceMonster) {
             this.justApplied = true;

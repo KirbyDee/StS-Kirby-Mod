@@ -35,5 +35,25 @@
     "DESCRIPTIONS": [
       "You cannot become #yElementless."
     ]
+  },
+  "theSorcerer:BottledTombstone": {
+    "NAME": "Bottled Tombstone",
+    "FLAVOR": "Silence... only silence is perceived.",
+    "DESCRIPTIONS": [
+      "Upon pick up, choose any Card. Start each combat with this card in your discard pile.",
+      "Choose a card for ",
+      "Start each combat with ",
+      " in your discard pile."
+    ]
+  },
+  "theSorcerer:BottledEnergy": {
+    "NAME": "Bottled Energy",
+    "FLAVOR": "It feels like it is about to burst. Be careful when trying to open it.",
+    "DESCRIPTIONS": [
+      "Upon pick up, choose any Card. This card will become #yArcane.",
+      "Choose a card for ",
+      "Card ",
+      " is treated as #yArcane."
+    ]
   }
 }

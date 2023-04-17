@@ -1,15 +1,14 @@
 package theSorcerer.actions;
 
-import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.CardAbility;
 
 public class ColdShowerAction extends ElementmorphoseAction {
 
     public ColdShowerAction() {
         super(
-                SorcererCardTags.ICE,
                 CardAbility.ICE,
-                SorcererCardTags.FIRE
+                DynamicDungeon::makeCardIce
         );
     }
 }

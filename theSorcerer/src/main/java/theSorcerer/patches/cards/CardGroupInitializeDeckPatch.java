@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,13 +26,12 @@ public class CardGroupInitializeDeckPatch {
         CardGroup drawPileCopy = (CardGroup) copy[0];
         List<AbstractCard> entombCards = drawPileCopy.group
                 .stream()
-                .filter(c -> AbstractCardPatch.abilities.get(c).contains(CardAbility.ENTOMB))
+                .filter(DynamicDungeon::isEntombOrBottledTombstoneCard)
                 .collect(Collectors.toList());
 
         // remove card from draw pile copy.
         // we have to do it in a separate loop, since we cannot remove items from the same list that we are looping in
-        entombCards
-                .forEach(c -> drawPileCopy.group.remove(c));
+        entombCards.forEach(c -> drawPileCopy.group.remove(c));
     }
 
     private static class Locator extends SpireInsertLocator {

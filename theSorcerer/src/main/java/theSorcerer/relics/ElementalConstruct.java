@@ -27,12 +27,14 @@ public class ElementalConstruct extends CustomRelic {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
     }
 
+    @Override
     public void atBattleStart() {
+        flash();
+        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+
         ArrayList<AbstractCard> choices = new ArrayList<>();
         choices.add(new FireConstruct());
         choices.add(new IceConstruct());
-
-        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         addToBot(new ChooseOneAction(choices));
     }
 

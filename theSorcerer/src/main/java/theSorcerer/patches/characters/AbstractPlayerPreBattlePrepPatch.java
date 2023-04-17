@@ -7,8 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.DynamicDungeon;
 
 @SpirePatch(clz = AbstractPlayer.class, method = "preBattlePrep")
 public class AbstractPlayerPreBattlePrepPatch {
@@ -21,7 +20,7 @@ public class AbstractPlayerPreBattlePrepPatch {
         CardGroup copy = new CardGroup(self.masterDeck, CardGroup.CardGroupType.DRAW_PILE);
         copy.group
                 .stream()
-                .filter(c -> AbstractCardPatch.abilities.get(c).contains(CardAbility.ENTOMB))
+                .filter(DynamicDungeon::isEntombOrBottledTombstoneCard)
                 .forEach(c -> AbstractDungeon.player.discardPile.addToTop(c));
     }
 

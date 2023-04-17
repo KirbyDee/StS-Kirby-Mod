@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.characters.TheSorcerer;
 
 public class Defend_Sorcerer extends AbstractCard {
-    public static final String ID = "Defend_R";
+    public static final String ID = "Defend_S";
     private static final CardStrings cardStrings;
 
     public Defend_Sorcerer() {
-        super("Defend_R", cardStrings.NAME, "red/skill/defend", 1, cardStrings.DESCRIPTION, CardType.SKILL, CardColor.RED, CardRarity.BASIC, CardTarget.SELF);
+        super("Defend_S", cardStrings.NAME, "blue/skill/defend", 1, cardStrings.DESCRIPTION, CardType.SKILL, TheSorcerer.Enums.COLOR_ORANGE, CardRarity.BASIC, CardTarget.SELF);
         this.baseBlock = 5;
         this.tags.add(CardTags.STARTER_DEFEND);
     }

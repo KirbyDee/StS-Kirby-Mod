@@ -222,7 +222,7 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 47 (19/19/9) - 75
+        //sorcerer 48 (19/19/10) - 75
         // 14 attacks
         // - common: 9 -> ok?
         // - uncommon: 4 -> more
@@ -230,7 +230,7 @@ public class TheSorcerer extends CustomPlayer {
         // 6 power
         // - common: 0 -> ok
         // - uncommon: 4 -> more
-        // - rare: 2 -> more
+        // - rare: 3 -> more
         // 27 skills
         // - common: 10 -> ok?
         // - uncommon: 11 -> more
@@ -242,9 +242,9 @@ public class TheSorcerer extends CustomPlayer {
         //  - ?
         // - uncommon: 2
         //  - ElementalMaster
-        //  - ?
+        //  - Bottled Tombstone
         // - rare: 3
-        //  - ?
+        //  - Bottled Energy
         //  - ?
         //  - ?
         // - shop: 1
@@ -254,21 +254,23 @@ public class TheSorcerer extends CustomPlayer {
         //  - FreezingSoul
         //  - EnergizedSoul
         // potions 3:
-        // - ?
-        // - ?
-        // - ?
+        // - FirePotion (Common)
+        // - IcePotion (Common)
+        // - KnowledgePotion (Common)
+        // - FlashbackPotion (Uncommon)
+        // - ArcanePotion (Rare)
 
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
         retVal.add(Strike_Sorcerer.ID);
         retVal.add(Strike_Sorcerer.ID);
-//        retVal.add(Strike_Sorcerer.ID);
-//        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
+        retVal.add(Strike_Sorcerer.ID);
         // 4 defends
         retVal.add(Defend_Sorcerer.ID);
         retVal.add(Defend_Sorcerer.ID);
-//        retVal.add(Defend_Sorcerer.ID);
-//        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
+        retVal.add(Defend_Sorcerer.ID);
         // 1 common attack
 //        retVal.add(DefaultCommonAttack.ID); // TODO: 1 basic attack
         // 1 common skill
@@ -281,6 +283,10 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(WellPrepared.class));
         retVal.add(DynamicCard.getID(WellPrepared.class));
         retVal.add(DynamicCard.getID(WellPrepared.class));
+
+        // TODO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
+        // TODO: deck view is not showing correct tags? tags should be for the card itself and not just combat
+        // TODO: upgrade view but for fire/ice morphose. use HandCardSelectScreen SpireReturn (https://github.com/kiooeht/ModTheSpire/wiki/SpireReturn)?
 
 //        // common attack
 //        retVal.add(Strike_Sorcerer.ID);
@@ -338,6 +344,7 @@ public class TheSorcerer extends CustomPlayer {
 //        // rare power
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
+//        retVal.add(DynamicCard.getID(CollateralDamage.class));
 
         return retVal;
     }

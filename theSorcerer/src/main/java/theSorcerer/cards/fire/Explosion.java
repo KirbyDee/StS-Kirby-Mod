@@ -2,10 +2,9 @@ package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.ExplosionAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
 
 public class Explosion extends SorcererFireCard {
 
@@ -35,6 +34,6 @@ public class Explosion extends SorcererFireCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).add(CardAbility.FLASHBACK);
+        DynamicDungeon.makeCardFlashback(this);
     }
 }

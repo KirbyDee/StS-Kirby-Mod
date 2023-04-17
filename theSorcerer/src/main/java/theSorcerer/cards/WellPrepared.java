@@ -3,6 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.patches.cards.CardAbility;
 
 public class WellPrepared extends SorcererCard {
 
@@ -18,9 +19,9 @@ public class WellPrepared extends SorcererCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.RARE)
-                        .tags(
-                                SorcererCardTags.FUTURITY,
-                                SorcererCardTags.FLASHBACK
+                        .abilities(
+                                CardAbility.FUTURITY,
+                                CardAbility.FLASHBACK
                         )
                         .magicNumber(CARD_AMOUNT_DRAW)
         );

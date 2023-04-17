@@ -9,9 +9,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.powers.DynamicAmountPower;
 
-public abstract class ElementPower<E extends AbstractPower> extends SelfRemovablePower {
+public abstract class ElementPower<E extends AbstractPower> extends DynamicAmountPower {
 
     private static final Logger LOG = LogManager.getLogger(ElementPower.class.getName());
 
@@ -20,35 +21,18 @@ public abstract class ElementPower<E extends AbstractPower> extends SelfRemovabl
             final int amount,
             final String thisEvolvedPowerID
     ) {
-        super(owner, thisEvolvedPowerID);
+        super(owner, thisEvolvedPowerID, amount);
         this.isTurnBased = true;
         this.canGoNegative = false;
-
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
 
         updateDescription();
     }
 
     @Override
     public void stackPower(int stackAmount) {
-        stackAmount(stackAmount);
+        super.stackPower(stackAmount);
         applyExtraPower(stackAmount);
         updateDescription();
-    }
-
-    private void stackAmount(int stackAmount) {
-        this.fontScale = 8.0F;
-        this.amount += stackAmount;
-        if (this.amount == 0) {
-            removeSelf();
-        }
-
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
     }
 
     @Override
@@ -111,15 +95,15 @@ public abstract class ElementPower<E extends AbstractPower> extends SelfRemovabl
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        AbstractCard.CardTags tag = getElementLoseTag();
-        if (card.tags.contains(tag)) {
-            LOG.info(tag + " applied, but " + this.ID + " already existing -> remove " + this.ID);
+        CardAbility ability = getElementLoseAbility();
+        if (DynamicDungeon.cardHasAbility(card, ability)) {
+            LOG.info(ability + " applied, but " + this.ID + " already existing -> remove " + this.ID);
             removeSelf();
             DynamicDungeon.applyElementless();
         }
     }
 
-    protected abstract AbstractCard.CardTags getElementLoseTag();
+    protected abstract CardAbility getElementLoseAbility();
 
     @Override
     public void updateDescription() {

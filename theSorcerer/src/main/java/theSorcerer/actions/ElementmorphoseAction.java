@@ -2,9 +2,11 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import org.apache.commons.lang3.StringUtils;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
+
+import java.util.function.Consumer;
 
 public abstract class ElementmorphoseAction extends HandCardChooseAction {
 
@@ -12,26 +14,24 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     private final static String TEXT_1 = "metamorphose to "; // TODO
     private final static String TEXT_2 = " for the rest of the Combat.";
     private final static int CARDS_TO_CHOOSE = 1;
-    private final AbstractCard.CardTags elementToMetamorph;
-    private final CardAbility elementToMetamorphPrefix;
-    private final AbstractCard.CardTags oppositeElement;
+    private final CardAbility elementToMetamorph;
+    private final Consumer<AbstractCard> applyElementToCard;
     // --- VALUES END ---
 
     public ElementmorphoseAction(
-            final AbstractCard.CardTags elementToMetamorph,
-            final CardAbility elementToMetamorphPrefix,
-            final AbstractCard.CardTags oppositeElement
+            final CardAbility elementToMetamorph,
+            final Consumer<AbstractCard> applyElementToCard
     ) {
-        super(CARDS_TO_CHOOSE);
+        // TODO: upgrade is wrong.. but would be nice to have a nice screen to show what is different (check HanCardSelectScreen)
+        super(CARDS_TO_CHOOSE, false, false, false, true);
         this.elementToMetamorph = elementToMetamorph;
-        this.elementToMetamorphPrefix = elementToMetamorphPrefix;
-        this.oppositeElement = oppositeElement;
+        this.applyElementToCard = applyElementToCard;
     }
 
     @Override
     protected boolean canBeChosen(final AbstractCard card) {
-        return !card.hasTag(this.elementToMetamorph) &&
-                !card.hasTag(SorcererCardTags.ARCANE) &&
+        return !DynamicDungeon.cardHasAbility(card, this.elementToMetamorph) &&
+                !DynamicDungeon.isArcaneCard(card) &&
                 card.costForTurn >= 0 &&
                 super.canBeChosen(card);
     }
@@ -39,10 +39,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     @Override
     protected void onCardChosen(AbstractCard card) {
         // add/remove element to/from tags & abilities
-        card.tags.add(this.elementToMetamorph);
-        card.tags.remove(this.oppositeElement);
-        AbstractCardPatch.abilities.get(card).add(CardAbility.from(this.elementToMetamorph));
-        AbstractCardPatch.abilities.get(card).remove(CardAbility.from(this.oppositeElement));
+        this.applyElementToCard.accept(card);
 
         // apply flash, powers and init shown description
         card.superFlash();
@@ -55,6 +52,6 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
 
     @Override
     protected String getChooseText() {
-        return TEXT_1 + StringUtils.capitalize(elementToMetamorphPrefix.name().toLowerCase()) + TEXT_2;
+        return TEXT_1 + StringUtils.capitalize(elementToMetamorph.name().toLowerCase()) + TEXT_2;
     }
 }

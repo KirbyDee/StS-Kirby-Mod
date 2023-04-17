@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public class FrostArmor extends SorcererIceCard {
 
@@ -21,7 +22,7 @@ public class FrostArmor extends SorcererIceCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
-                        .tags(SorcererCardTags.FLASHBACK)
+                        .abilities(CardAbility.FLASHBACK)
                         .block(BLOCK)
         );
     }

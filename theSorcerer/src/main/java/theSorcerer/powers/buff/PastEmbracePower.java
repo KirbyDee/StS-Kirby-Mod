@@ -18,6 +18,9 @@ public class PastEmbracePower extends DynamicPower {
     ) {
         super(owner, POWER_ID);
         this.amount = amount;
+        if (this.amount >= 999) {
+            this.amount = 999;
+        }
 
         updateDescription();
     }

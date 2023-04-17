@@ -6,7 +6,6 @@ import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.eventUtil.AddEventParams;
 import basemod.helpers.CardBorderGlowManager;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -29,13 +28,12 @@ import theSorcerer.cards.DynamicCard;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.IdentityCrisisEvent;
 import theSorcerer.glows.ElementGlow;
-import theSorcerer.potions.PlaceholderPotion;
+import theSorcerer.potions.*;
 import theSorcerer.relics.*;
 import theSorcerer.util.IDCheckDontTouchPls;
 import theSorcerer.util.TextureLoader;
 import theSorcerer.variables.SecondMagicNumber;
 
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -101,12 +99,7 @@ public class KirbyDeeMod implements
     // Colors (RGB)
     // Character Color
     public static final Color SORCERER_ORANGE = CardHelper.getColor(255.0f, 191.0f, 0.0f);
-    
-    // Potion Colors in RGB
-    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
-    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
-    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-    
+
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -387,8 +380,47 @@ public class KirbyDeeMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_SORCERER".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheSorcerer.Enums.THE_SORCERER);
-        
+        BaseMod.addPotion(
+                HeatedPotion.class,
+                Color.SCARLET,
+                Color.RED,
+                Color.WHITE,
+                DynamicPotion.getID(HeatedPotion.class),
+                TheSorcerer.Enums.THE_SORCERER
+        );
+        BaseMod.addPotion(
+                ChilledPotion.class,
+                Color.NAVY,
+                Color.BLUE,
+                Color.WHITE,
+                DynamicPotion.getID(ChilledPotion.class),
+                TheSorcerer.Enums.THE_SORCERER
+        );
+        BaseMod.addPotion(
+                KnowledgePotion.class,
+                Color.OLIVE,
+                Color.YELLOW,
+                null,
+                DynamicPotion.getID(KnowledgePotion.class),
+                TheSorcerer.Enums.THE_SORCERER
+        );
+        BaseMod.addPotion(
+                FlashbackPotion.class,
+                Color.SKY,
+                Color.CYAN,
+                null,
+                DynamicPotion.getID(FlashbackPotion.class),
+                TheSorcerer.Enums.THE_SORCERER
+        );
+        BaseMod.addPotion(
+                ArcanePotion.class,
+                Color.WHITE,
+                Color.WHITE,
+                Color.BLACK,
+                DynamicPotion.getID(ArcanePotion.class),
+                TheSorcerer.Enums.THE_SORCERER
+        );
+
         logger.info("Done editing potions");
     }
     
@@ -414,6 +446,8 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new EnergizedSoul(), TheSorcerer.Enums.COLOR_ORANGE);
         BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new BottledTombstone(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new BottledEnergy(), TheSorcerer.Enums.COLOR_ORANGE);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
 //        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -424,6 +458,11 @@ public class KirbyDeeMod implements
         UnlockTracker.markRelicAsSeen(ElementalConstruct.ID);
         UnlockTracker.markRelicAsSeen(BurningSoul.ID);
         UnlockTracker.markRelicAsSeen(FreezingSoul.ID);
+        UnlockTracker.markRelicAsSeen(EnergizedSoul.ID);
+        UnlockTracker.markRelicAsSeen(ElementalMaster.ID);
+        UnlockTracker.markRelicAsSeen(BottledTombstone.ID);
+        UnlockTracker.markRelicAsSeen(BottledEnergy.ID);
+        // TODO: which ones do we unlock?
         logger.info("Done adding relics!");
     }
     
@@ -541,5 +580,9 @@ public class KirbyDeeMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    public static String makeKeywordID(String idText) {
+        return getModID().toLowerCase() + ":" + idText;
     }
 }

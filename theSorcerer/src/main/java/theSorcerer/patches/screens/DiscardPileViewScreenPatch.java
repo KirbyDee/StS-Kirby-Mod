@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.powers.buff.PastEmbracePower;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
@@ -19,17 +18,6 @@ public class DiscardPileViewScreenPatch {
 
     private static boolean isFlashback(AbstractCard card) {
         return DynamicDungeon.isFlashbackCard(card);
-    }
-
-    @SpirePatch(clz = DiscardPileViewScreen.class, method = "open")
-    public static class OpenPatch {
-
-        public static void Postfix(DiscardPileViewScreen self) {
-            AbstractPileViewScreenPatch.OpenPatch(
-                    AbstractDungeon.player.discardPile,
-                    DiscardPileViewScreenPatch::isFlashback
-            );
-        }
     }
 
     @SpirePatch(clz = DiscardPileViewScreen.class, method = "update")

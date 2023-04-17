@@ -26,6 +26,7 @@
   {
     "PROPER_NAME": "Fire",
     "NAMES": [
+      "Fire",
       "fire"
     ],
     "DESCRIPTION": "Upon playing a #yFire card, become #yHeated by the amount of the cost of the card played."
@@ -33,6 +34,7 @@
   {
     "PROPER_NAME": "Ice",
     "NAMES": [
+      "Ice",
       "ice"
     ],
     "DESCRIPTION": "Upon playing an #yIce card, become #yChilled by the amount of the cost of the card played."
@@ -40,6 +42,7 @@
   {
     "PROPER_NAME": "Arcane",
     "NAMES": [
+      "Arcane",
       "arcane"
     ],
     "DESCRIPTION": "You cannot play #yArcane cards if you do not have any #yElemental #yAffinities. NL #yArcane cards count as either a #yFire or #yIce card, depending on the #yElemental #yAffinities you currently have. NL NL Upon playing an #yArcane card, your next card played will reimburse its energy cost."
@@ -47,6 +50,7 @@
   {
     "PROPER_NAME": "Elementless",
     "NAMES": [
+      "Elementless",
       "elementless"
     ],
     "DESCRIPTION": "You can no longer play any #yElemental #yCards or obtain any #yElemental #yAffinities."
@@ -54,6 +58,7 @@
   {
     "PROPER_NAME": "Heated",
     "NAMES": [
+      "Heated",
       "heated"
     ],
     "DESCRIPTION": "Gain #yStrength equal to how much #yHeated your are. Your unblocked attacks also apply the same amount of #yAblaze."
@@ -61,13 +66,25 @@
   {
     "PROPER_NAME": "Chilled",
     "NAMES": [
+      "Chilled",
       "chilled"
     ],
     "DESCRIPTION": "Gain #yDexterity equal to how much #yChilled your are. Whenever you fully #yBlock an attack, apply the same amount of #yFrozen."
   },
   {
+    "PROPER_NAME": "Presence Of Mind",
+    "NAMES": [
+      "presence of mind",
+      "Presence Of Mind",
+      "presence_of_mind",
+      "Presence_Of_Mind"
+    ],
+    "DESCRIPTION": "Your next card played will reimburse its energy cost."
+  },
+  {
     "PROPER_NAME": "Flashback",
     "NAMES": [
+      "Flashback",
       "flashback",
       "flashbacked"
     ],
@@ -76,6 +93,7 @@
   {
     "PROPER_NAME": "Futurity",
     "NAMES": [
+      "Futurity",
       "futurity"
     ],
     "DESCRIPTION": "Clicking on this card in the #yDraw #yPile will put it in your hand. This card then becomes #yEthereal and #yExhaust"
@@ -83,6 +101,7 @@
   {
     "PROPER_NAME": "Entomb",
     "NAMES": [
+      "Entomb",
       "entomb"
     ],
     "DESCRIPTION": "Start each combat with this card in your discard pile."
@@ -90,6 +109,7 @@
   {
     "PROPER_NAME": "Auto",
     "NAMES": [
+      "Auto",
       "auto"
     ],
     "DESCRIPTION": "This card is automatically played when it is put into your hand. NL If you cannot play it, the card is #yExhausted instead."
@@ -97,20 +117,23 @@
   {
     "PROPER_NAME": "Firemorphose",
     "NAMES": [
+      "Firemorphose",
       "firemorphose"
     ],
-    "DESCRIPTION": "Metamorphose a card to become #yFire."
+    "DESCRIPTION": "Change a card to become #yFire."
   },
   {
     "PROPER_NAME": "Icemorphose",
     "NAMES": [
+      "Icemorphose",
       "icemorphose"
     ],
-    "DESCRIPTION": "Metamorphose a card to become #yIce."
+    "DESCRIPTION": "Change a card to become #yIce."
   },
   {
     "PROPER_NAME": "Ablaze",
     "NAMES": [
+      "Ablaze",
       "ablaze"
     ],
     "DESCRIPTION": "Whenever the enemy attacks, they take damage equal to the number of #yAblaze stacks they have."
@@ -118,6 +141,7 @@
   {
     "PROPER_NAME": "Frozen",
     "NAMES": [
+      "Frozen",
       "frozen"
     ],
     "DESCRIPTION": "Whenever the enemy gets attacked, they take damage equal to the number of #yFrozen stacks they have."

@@ -2,6 +2,7 @@ package theSorcerer.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.actions.ElementSoulAction;
 
@@ -20,6 +21,13 @@ public abstract class ElementSoul extends CustomRelic {
 
     @Override
     public void atTurnStart() {
+        flash();
+        addToBot(
+                new RelicAboveCreatureAction(
+                        AbstractDungeon.player,
+                        this
+                )
+        );
         addToBot(
                 toElementSoulAction().apply(ELEMENT_AMOUNT)
         );

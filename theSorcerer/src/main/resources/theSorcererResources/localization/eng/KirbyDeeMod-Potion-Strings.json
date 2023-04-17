@@ -1,6 +1,22 @@
 {
-"theSorcerer:PlaceholderPotion": {
-        "NAME": "Placeholder Potion",
-        "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
-}
+        "theSorcerer:HeatedPotion": {
+                "NAME": "Heated Potion",
+                "DESCRIPTIONS": ["Gain ", " #yHeated."]
+        },
+        "theSorcerer:ChilledPotion": {
+                "NAME": "Chilled Potion",
+                "DESCRIPTIONS": ["Gain ", " #yChilled."]
+        },
+        "theSorcerer:KnowledgePotion": {
+                "NAME": "Knowledge Potion",
+                "DESCRIPTIONS": ["Remove #yElementless."]
+        },
+        "theSorcerer:ArcanePotion": {
+                "NAME": "Arcane Potion",
+                "DESCRIPTIONS": ["Gain #yPresence #yOf #yMind."]
+        },
+        "theSorcerer:FlashbackPotion": {
+                "NAME": "Flashback Potion",
+                "DESCRIPTIONS": ["Give #yFlashback to all cards in your hand for the rest of combat."]
+        }
 }

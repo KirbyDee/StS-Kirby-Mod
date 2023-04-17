@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.powers.DynamicAmountPower;
 
-public class ElementlessPower extends SelfRemovablePower {
+public class ElementlessPower extends DynamicAmountPower {
 
     private static final String POWER_NAME = "ElementlessPower";
 
@@ -22,15 +22,10 @@ public class ElementlessPower extends SelfRemovablePower {
             final AbstractCreature owner,
             final int amount
     ) {
-        super(owner, POWER_ID);
+        super(owner, POWER_ID, amount);
         this.type = PowerType.DEBUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;
-
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
 
         updateDescription();
     }

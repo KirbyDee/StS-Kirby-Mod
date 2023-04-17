@@ -1,27 +1,18 @@
 package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.powers.DynamicAmountPower;
 
-public abstract class StrongAffinityPower extends SelfRemovablePower {
+public abstract class StrongAffinityPower extends DynamicAmountPower {
 
     public StrongAffinityPower(
             AbstractCreature owner,
             int amount,
             String powerId
     ) {
-        super(owner, powerId);
-        this.amount = amount;
+        super(owner, powerId, amount);
 
         updateDescription();
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
     }
 
     @Override

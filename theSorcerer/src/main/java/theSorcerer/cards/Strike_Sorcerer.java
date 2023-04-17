@@ -12,13 +12,14 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.characters.TheSorcerer;
 
 public class Strike_Sorcerer extends AbstractCard {
-    public static final String ID = "Strike_B";
+    public static final String ID = "Strike_S";
     private static final CardStrings cardStrings;
 
     public Strike_Sorcerer() {
-        super("Strike_B", cardStrings.NAME, "blue/attack/strike", 1, cardStrings.DESCRIPTION, CardType.ATTACK, CardColor.BLUE, CardRarity.BASIC, CardTarget.ENEMY);
+        super("Strike_S", cardStrings.NAME, "blue/attack/strike", 1, cardStrings.DESCRIPTION, CardType.ATTACK, TheSorcerer.Enums.COLOR_ORANGE, CardRarity.BASIC, CardTarget.ENEMY);
         this.baseDamage = 6;
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);

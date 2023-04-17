@@ -18,6 +18,10 @@ public class AbstractCardPatch {
 
     public static SpireField<List<CardAbility>> abilities = new SpireField<>(ArrayList::new);
 
+    public static SpireField<Boolean> inBottleEnergy = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> inBottleTombstone = new SpireField<>(() -> false);
+
     private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(ElementlessPower.POWER_ID);
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
@@ -27,12 +31,11 @@ public class AbstractCardPatch {
                 AbstractCard result,
                 AbstractCard self
         ) {
-            result.isEthereal = self.isEthereal;
-            result.isInnate = self.isInnate;
-            result.retain = self.retain;
-            result.exhaust = self.exhaust;
-            result.tags = self.tags;
-//            AbstractCardPatch.abilities.set(result, AbstractCardPatch.abilities.get(self)); // TODO: upgrade card will not have the same abilities as before?
+            inBottleTombstone.set(result, inBottleTombstone.get(self));
+            inBottleEnergy.set(result, inBottleEnergy.get(self));
+            if (inBottleEnergy.get(result)) {
+                DynamicDungeon.makeCardArcane(result);
+            }
 
             return result;
         }
@@ -54,7 +57,7 @@ public class AbstractCardPatch {
                 return false;
             }
             else if (DynamicDungeon.isElementCard(self) && DynamicDungeon.hasElementless()) {
-                self.cantUseMessage = ELEMENTLESS_STRINGS.DESCRIPTIONS[2];
+                self.cantUseMessage = ELEMENTLESS_STRINGS.DESCRIPTIONS[1];
                 return false;
             }
             return true;

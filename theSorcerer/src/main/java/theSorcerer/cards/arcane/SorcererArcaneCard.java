@@ -2,6 +2,7 @@ package theSorcerer.cards.arcane;
 
 import theSorcerer.cards.SorcererCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public abstract class SorcererArcaneCard extends SorcererCard {
 
@@ -9,7 +10,7 @@ public abstract class SorcererArcaneCard extends SorcererCard {
             InfoBuilder infoBuilder
     ) {
         super(
-                infoBuilder.tags(SorcererCardTags.ARCANE)
+                infoBuilder.abilities(CardAbility.ARCANE)
         );
     }
 }

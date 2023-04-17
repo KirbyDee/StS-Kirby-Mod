@@ -9,6 +9,9 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
+import theSorcerer.KirbyDeeMod;
+import theSorcerer.potions.DynamicPotion;
 import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makePowerPath;
@@ -55,5 +58,9 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
     private static Texture loadTexture(final String path) {
         LOG.info("Load Texture: " + path);
         return TextureLoader.getTexture(path);
+    }
+
+    public static String getID(Class<? extends DynamicPower> thisClazz) {
+        return DynamicDungeon.makeID(thisClazz);
     }
 }

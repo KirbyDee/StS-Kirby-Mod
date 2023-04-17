@@ -3,8 +3,8 @@ package theSorcerer.cards.fire;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.buff.InfernophoenixPower;
 public class Infernophoenix extends SorcererFireCard {
@@ -38,6 +38,6 @@ public class Infernophoenix extends SorcererFireCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).add(CardAbility.FUTURITY);
+        DynamicDungeon.makeCardFuturity(this);
     }
 }

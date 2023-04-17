@@ -41,7 +41,7 @@
   },
   "theSorcerer:Elementmorphose": {
     "NAME": "Elementmorphose",
-    "DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose a card in your hand for the rest of the combat."
+    "DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose a card in your hand for the rest of combat."
   },
   "theSorcerer:BaptismOfFire": {
     "NAME": "Baptism of Fire",
@@ -186,7 +186,7 @@
   },
   "theSorcerer:PillarOfFlame": {
     "NAME": "Pillar Of Flame",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Deal !M! damage to ALL other enemies."
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Then deal !M! damage to ALL other enemies."
   },
   "theSorcerer:IceBlock": {
     "NAME": "Ice Block",
@@ -243,5 +243,9 @@
   "theSorcerer:ElementalStorm": {
     "NAME": "Elemental Storm",
     "DESCRIPTION": "Whenever you play an thesorcerer:Elemental_Card this turn, apply !M! Weak and Vulnerable to ALL enemies."
+  },
+  "theSorcerer:CollateralDamage": {
+    "NAME": "Collateral Damage",
+    "DESCRIPTION": "Whenever you deal unblocked combat damage to an enemy, deal !M!% damage (rounded) to ALL other enemies."
   }
 }

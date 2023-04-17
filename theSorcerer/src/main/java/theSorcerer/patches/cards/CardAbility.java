@@ -1,42 +1,43 @@
 package theSorcerer.patches.cards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theSorcerer.cards.SorcererCardTags;
 
 import java.util.Arrays;
 
 public enum CardAbility {
-    EMPTY("", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    ARCANE(CardUtil.MOD_PREFIX + "Arcane", SorcererCardTags.ARCANE, CardAbilityFix.PREFIX),
-    FIRE(CardUtil.MOD_PREFIX + "Fire", SorcererCardTags.FIRE, CardAbilityFix.PREFIX),
-    ICE(CardUtil.MOD_PREFIX + "Ice", SorcererCardTags.ICE, CardAbilityFix.PREFIX),
-    AUTO(CardUtil.MOD_PREFIX + "Auto", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    UNPLAYABLE("Unplayable", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    ETHEREAL("Ethereal", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    RETAIN("Retain", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    INNATE("Innate", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    ENTOMB(CardUtil.MOD_PREFIX + "Entomb", AbstractCard.CardTags.EMPTY, CardAbilityFix.PREFIX),
-    EXHAUST("Exhaust", AbstractCard.CardTags.EMPTY, CardAbilityFix.POSTFIX),
-    FUTURITY(CardUtil.MOD_PREFIX + "Futurity", SorcererCardTags.FUTURITY, CardAbilityFix.POSTFIX),
-    FLASHBACK(CardUtil.MOD_PREFIX + "Flashback", SorcererCardTags.FLASHBACK, CardAbilityFix.POSTFIX);
+    // TODO: TExt to localization
+    EMPTY("", CardAbilityFix.NONE),
+    ARCANE(CardUtil.MOD_PREFIX + "Arcane", CardAbilityFix.PREFIX),
+    FIRE(CardUtil.MOD_PREFIX + "Fire", CardAbilityFix.PREFIX),
+    ICE(CardUtil.MOD_PREFIX + "Ice", CardAbilityFix.PREFIX),
+    AUTO(CardUtil.MOD_PREFIX + "Auto", CardAbilityFix.PREFIX),
+    UNPLAYABLE("Unplayable", CardAbilityFix.PREFIX),
+    ETHEREAL("Ethereal", CardAbilityFix.PREFIX),
+    RETAIN("Retain", CardAbilityFix.PREFIX),
+    INNATE("Innate", CardAbilityFix.PREFIX),
+    ENTOMB(CardUtil.MOD_PREFIX + "Entomb", CardAbilityFix.PREFIX),
+    EXHAUST("Exhaust", CardAbilityFix.POSTFIX),
+    FUTURITY(CardUtil.MOD_PREFIX + "Futurity", CardAbilityFix.POSTFIX),
+    FLASHBACK(CardUtil.MOD_PREFIX + "Flashback", CardAbilityFix.POSTFIX);
 
     public final String text;
 
-    public final AbstractCard.CardTags tag;
-
     public final CardAbilityFix fix;
 
-    CardAbility(final String text, final AbstractCard.CardTags tag, final CardAbilityFix fix) {
+    CardAbility(final String text, final CardAbilityFix fix) {
         this.text = text;
-        this.tag = tag;
         this.fix = fix;
     }
 
-    public static CardAbility from(AbstractCard.CardTags tag) {
-        return Arrays.stream(CardAbility.values())
-                .filter(a -> tag == a.tag)
-                .findFirst()
-                .orElse(EMPTY);
+    public static void removeAllAbilityRawDescriptions(final AbstractCard card) {
+        Arrays.stream(CardAbility.values())
+                .forEach(a -> a.removeRawDescription(card));
+    }
+
+    public static void initializeAbilityRawDescriptions(final AbstractCard card) {
+        removeAllAbilityRawDescriptions(card);
+        AbstractCardPatch.abilities.get(card)
+                .forEach(a -> a.addRawDescription(card));
     }
 
     public boolean isEmpty() {
@@ -47,7 +48,7 @@ public enum CardAbility {
         return !isEmpty();
     }
 
-    public void addDescription(final AbstractCard card) {
+    public void addRawDescription(final AbstractCard card) {
         if (fix == CardAbilityFix.PREFIX) {
             card.rawDescription = text + CardUtil.PERIOD + CardUtil.NEW_LINE + card.rawDescription;
         }
@@ -56,7 +57,7 @@ public enum CardAbility {
         }
     }
 
-    public void removeDescription(final AbstractCard card) {
+    public void removeRawDescription(final AbstractCard card) {
         if (fix == CardAbilityFix.PREFIX) {
             card.rawDescription = card.rawDescription.replace(text + CardUtil.PERIOD + CardUtil.NEW_LINE, "");
         }

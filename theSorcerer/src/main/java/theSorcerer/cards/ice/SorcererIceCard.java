@@ -3,6 +3,7 @@ package theSorcerer.cards.ice;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 
 public abstract class SorcererIceCard extends SorcererCard {
 
@@ -10,7 +11,7 @@ public abstract class SorcererIceCard extends SorcererCard {
             DynamicCard.InfoBuilder infoBuilder
     ) {
         super(
-                infoBuilder.tags(SorcererCardTags.ICE)
+                infoBuilder.abilities(CardAbility.ICE)
         );
     }
 }

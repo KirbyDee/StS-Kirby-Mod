@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import org.apache.commons.lang3.StringUtils;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
@@ -39,7 +40,7 @@ public abstract class DynamicCard extends CustomCard {
     public boolean isThirdMagicNumberModified;
 
     public static String getID(Class<? extends DynamicCard> thisClazz) {
-        return KirbyDeeMod.makeID(thisClazz.getSimpleName());
+        return DynamicDungeon.makeID(thisClazz);
     }
 
     public static DynamicCard.InfoBuilder InfoBuilder(Class<? extends DynamicCard> thisClazz) {
@@ -103,20 +104,12 @@ public abstract class DynamicCard extends CustomCard {
         public InfoBuilder tags(final CardTags... tags) {
             final List<CardTags> tagsList = Arrays.asList(tags);
             this.tags.addAll(tagsList);
-            this.tags.stream()
-                    .map(CardAbility::from)
-                    .filter(CardAbility::isNotEmpty)
-                    .forEach(this.abilities::add);
             return this;
         }
 
         public InfoBuilder abilities(final CardAbility... abilities) {
             final List<CardAbility> abilityList = Arrays.asList(abilities);
             this.abilities.addAll(abilityList);
-            abilityList.stream()
-                    .map(a -> a.tag)
-                    .filter(t -> t != CardTags.EMPTY)
-                    .forEach(this.tags::add);
             return this;
         }
 
@@ -272,7 +265,7 @@ public abstract class DynamicCard extends CustomCard {
         this.rawDescription = this.upgraded && StringUtils.isNotBlank(this.baseUpgradeRawDescription) ?
                 this.baseUpgradeRawDescription :
                 this.baseRawDescription;
-        AbstractCardPatch.abilities.get(this).forEach(a -> a.addDescription(this));
+        AbstractCardPatch.abilities.get(this).forEach(a -> a.addRawDescription(this));
     }
 
     public void displayUpgrades() {
@@ -310,13 +303,12 @@ public abstract class DynamicCard extends CustomCard {
 
     @Override
     public boolean canPlay(AbstractCard card) {
-        return !AbstractCardPatch.abilities.get(card).contains(CardAbility.UNPLAYABLE) &&
-                super.canPlay(card);
+        return !DynamicDungeon.isUnplayableCard(card) && super.canPlay(card);
     }
 
     @Override
     public void upgrade() {
-        if (!upgraded) {
+        if (!this.upgraded) {
             upgradeName();
             upgradeValues();
             initializeDescription();

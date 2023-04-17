@@ -2,9 +2,9 @@ package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import theSorcerer.powers.SelfRemovablePower;
+import theSorcerer.powers.DynamicAmountPower;
 
-public abstract class EndOfTurnElementPower extends SelfRemovablePower {
+public abstract class EndOfTurnElementPower extends DynamicAmountPower {
 
     private final String elementPower;
 
@@ -14,30 +14,14 @@ public abstract class EndOfTurnElementPower extends SelfRemovablePower {
             final String elementPower,
             final int amount
     ) {
-        super(owner, powerId);
+        super(owner, powerId, amount);
         this.elementPower = elementPower;
 
         this.type = PowerType.BUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;
 
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
-
         updateDescription();
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        this.fontScale = 8.0F;
-        this.amount += stackAmount;
-        if (this.amount > 999) {
-            this.amount = 999;
-        }
-
-        this.updateDescription();
     }
 
     @Override

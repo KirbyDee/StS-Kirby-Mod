@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.relics.ElementalMaster;
@@ -77,17 +78,17 @@ public class AbstractPlayerPatch {
         }
 
         private static boolean doesInvalidElementSwitch(AbstractPlayer self, AbstractCard card) {
-            return doesInvalidElementSwitch(self, card, HeatedPower.POWER_ID, SorcererCardTags.ICE) ||
-                    doesInvalidElementSwitch(self, card, ChilledPower.POWER_ID, SorcererCardTags.FIRE);
+            return doesInvalidElementSwitch(self, card, HeatedPower.POWER_ID, CardAbility.ICE) ||
+                    doesInvalidElementSwitch(self, card, ChilledPower.POWER_ID, CardAbility.FIRE);
         }
 
         private static boolean doesInvalidElementSwitch(
                 final AbstractPlayer self,
                 final AbstractCard card,
                 final String selfHasPowerId,
-                final AbstractCard.CardTags cardHasTag
+                final CardAbility cardAbility
         ) {
-            if (self.hasPower(selfHasPowerId) && card.hasTag(cardHasTag)) {
+            if (self.hasPower(selfHasPowerId) && DynamicDungeon.cardHasAbility(card, cardAbility)) {
                 if (self.hasRelic(ElementalMaster.ID)) {
                     LOG.debug("Player has ElementalMaster relic, so possible to switch elements");
                     self.getRelic(ElementalMaster.ID).flash();

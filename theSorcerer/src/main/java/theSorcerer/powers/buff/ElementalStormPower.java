@@ -12,9 +12,10 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
+import theSorcerer.powers.DynamicAmountPower;
 import theSorcerer.powers.SelfRemovablePower;
 
-public class ElementalStormPower extends SelfRemovablePower {
+public class ElementalStormPower extends DynamicAmountPower {
 
     public static final String POWER_NAME = "ElementalStormPower";
 
@@ -24,8 +25,7 @@ public class ElementalStormPower extends SelfRemovablePower {
             AbstractCreature owner,
             int amount
     ) {
-        super(owner, POWER_ID);
-        this.amount = amount;
+        super(owner, POWER_ID, amount);
 
         updateDescription();
     }

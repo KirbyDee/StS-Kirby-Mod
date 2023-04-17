@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
 
 @SpirePatch(clz = DrawPileViewScreen.class, method = SpirePatch.CLASS)
 public class DrawPileViewScreenPatch {
@@ -18,17 +17,6 @@ public class DrawPileViewScreenPatch {
 
     private static boolean isFuturity(AbstractCard card) {
         return DynamicDungeon.isFuturityCard(card);
-    }
-
-    @SpirePatch(clz = DrawPileViewScreen.class, method = "open")
-    public static class OpenPatch {
-
-        public static void Postfix(DrawPileViewScreen self) {
-            AbstractPileViewScreenPatch.OpenPatch(
-                    AbstractDungeon.player.drawPile,
-                    DrawPileViewScreenPatch::isFuturity
-            );
-        }
     }
 
     @SpirePatch(clz = DrawPileViewScreen.class, method = "update")

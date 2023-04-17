@@ -4,7 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.DynamicDungeon;
 
 import java.util.function.Predicate;
 
@@ -16,10 +16,10 @@ public class AbstractDungeonPatch {
 
         public static void Prefix() {
             if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.GAME_DECK_VIEW) {
-                stopGlow(AbstractDungeon.player.drawPile, card -> card.hasTag(SorcererCardTags.FUTURITY));
+                stopGlow(AbstractDungeon.player.drawPile, DynamicDungeon::isFuturityCard);
             }
             else if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.DISCARD_VIEW) {
-                stopGlow(AbstractDungeon.player.discardPile, card -> card.hasTag(SorcererCardTags.FLASHBACK));
+                stopGlow(AbstractDungeon.player.discardPile, DynamicDungeon::isFlashbackCard);
             }
         }
 
