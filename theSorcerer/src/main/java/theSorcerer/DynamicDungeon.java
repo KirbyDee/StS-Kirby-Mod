@@ -28,6 +28,7 @@ import theSorcerer.powers.buff.PresenceOfMindPower;
 import theSorcerer.powers.debuff.AblazePower;
 import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.powers.debuff.FrozenPower;
+import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
 
 import java.util.ArrayList;
@@ -154,9 +155,9 @@ public class DynamicDungeon {
     public static void applyElementless() {
         LOG.info("Trying to apply Elementless");
         AbstractPlayer player = AbstractDungeon.player;
-        if (player.hasRelic(ElementalMaster.ID)) {
+        if (player.hasRelic(DynamicRelic.getID(ElementalMaster.class))) {
             LOG.info("Player has ElementMaster, cannot apply Elementless");
-            player.getRelic(ElementalMaster.ID).flash();
+            player.getRelic(DynamicRelic.getID(ElementalMaster.class)).flash();
         }
         else {
             addToBot(
@@ -245,11 +246,11 @@ public class DynamicDungeon {
     }
 
     public static int getHeatedAmount() {
-        return getElement(HeatedPower.POWER_ID);
+        return getElement(DynamicPower.getID(HeatedPower.class));
     }
 
     public static int getChilledAmount() {
-        return getElement(ChilledPower.POWER_ID);
+        return getElement(DynamicPower.getID(ChilledPower.class));
     }
 
     public static void withAblaze(

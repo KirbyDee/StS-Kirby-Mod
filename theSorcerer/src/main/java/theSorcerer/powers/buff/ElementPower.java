@@ -17,6 +17,18 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
     private static final Logger LOG = LogManager.getLogger(ElementPower.class.getName());
 
     public ElementPower(
+            Class<? extends ElementPower<E>> thisClazz,
+            final AbstractCreature owner,
+            final int amount
+    ) {
+        super(thisClazz, owner, amount);
+        this.isTurnBased = true;
+        this.canGoNegative = false;
+
+        updateDescription();
+    }
+
+    public ElementPower(
             final AbstractCreature owner,
             final int amount,
             final String thisEvolvedPowerID

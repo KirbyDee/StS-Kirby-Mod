@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.KirbyDeeMod;
-import theSorcerer.potions.DynamicPotion;
 import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makePowerPath;
@@ -20,15 +18,55 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
 
     private static final Logger LOG = LogManager.getLogger(DynamicPower.class.getName());
 
+    protected final String[] descriptions;
+
+    public DynamicPower(
+            Class<? extends DynamicPower> thisClazz,
+            AbstractCreature owner
+    ) {
+        super();
+        this.ID = getID(thisClazz);
+        this.owner = owner;
+
+        PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(this.ID);
+        this.name = powerStrings.NAME;
+        this.descriptions = powerStrings.DESCRIPTIONS;
+
+        loadTextures(this.ID);
+        this.region128 = new TextureAtlas.AtlasRegion(
+                getTexture(thisClazz, 84),
+                0,
+                0,
+                84,
+                84
+        );
+        this.region48 = new TextureAtlas.AtlasRegion(
+                getTexture(thisClazz, 32),
+                0,
+                0,
+                32,
+                32
+        );
+    }
+
+    public static String getID(final Class<? extends DynamicPower> thisClazz) {
+        return DynamicDungeon.makeID(thisClazz);
+    }
+
+    private static Texture getTexture(final Class<? extends DynamicPower> thisClazz, final int resolution) {
+        return getTexture(makePowerPath(thisClazz.getSimpleName() + resolution + ".png"));
+    }
+
+
+
+
     private static Texture TEX_84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
 
     private static Texture TEX_32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    protected final String[] descriptions;
-
     public DynamicPower(
-            final AbstractCreature owner,
-            final String powerID
+            AbstractCreature owner,
+            String powerID
     ) {
         this.owner = owner;
         this.ID = powerID;
@@ -37,7 +75,6 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
         this.name = powerStrings.NAME;
         this.descriptions = powerStrings.DESCRIPTIONS;
 
-        loadTextures(this.ID);
         this.region128 = new TextureAtlas.AtlasRegion(TEX_84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(TEX_32, 0, 0, 32, 32);
     }
@@ -52,15 +89,11 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
     }
 
     private static Texture loadTexture(final String powerId, final int resolution) {
-        return loadTexture(makePowerPath(powerId + resolution + ".png"));
+        return getTexture(makePowerPath(powerId + resolution + ".png"));
     }
 
-    private static Texture loadTexture(final String path) {
+    private static Texture getTexture(final String path) {
         LOG.info("Load Texture: " + path);
         return TextureLoader.getTexture(path);
-    }
-
-    public static String getID(Class<? extends DynamicPower> thisClazz) {
-        return DynamicDungeon.makeID(thisClazz);
     }
 }

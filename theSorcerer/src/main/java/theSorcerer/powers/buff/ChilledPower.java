@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.debuff.FrozenPower;
 
@@ -15,15 +14,15 @@ public class ChilledPower extends ElementPower<DexterityPower> {
 
     private static final Logger LOG = LogManager.getLogger(ChilledPower.class.getName());
 
-    private static final String POWER_NAME = "ChilledPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public ChilledPower(
             final AbstractCreature owner,
             final int amount
     ) {
-        super(owner, amount, POWER_ID);
+        super(
+                ChilledPower.class,
+                owner,
+                amount
+        );
     }
 
     protected DexterityPower createExtraPower(final int amount) {

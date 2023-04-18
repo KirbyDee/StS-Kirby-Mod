@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.KirbyDeeMod;
+import theSorcerer.powers.DynamicPower;
 
 public class WallOfFirePower extends EndOfTurnElementPower {
 
@@ -18,7 +19,7 @@ public class WallOfFirePower extends EndOfTurnElementPower {
         super(
                 owner,
                 POWER_ID,
-                HeatedPower.POWER_ID,
+                DynamicPower.getID(HeatedPower.class),
                 amount
         );
     }

@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.debuff.AblazePower;
 
@@ -15,15 +14,15 @@ public class HeatedPower extends ElementPower<StrengthPower> {
 
     private static final Logger LOG = LogManager.getLogger(HeatedPower.class.getName());
 
-    private static final String POWER_NAME = "HeatedPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public HeatedPower(
             final AbstractCreature owner,
             final int amount
     ) {
-        super(owner, amount, POWER_ID);
+        super(
+                HeatedPower.class,
+                owner,
+                amount
+        );
     }
 
     protected StrengthPower createExtraPower(final int amount) {

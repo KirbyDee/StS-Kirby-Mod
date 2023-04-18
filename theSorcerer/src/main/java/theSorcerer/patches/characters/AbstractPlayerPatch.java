@@ -11,8 +11,10 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
 
 @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
@@ -78,8 +80,8 @@ public class AbstractPlayerPatch {
         }
 
         private static boolean doesInvalidElementSwitch(AbstractPlayer self, AbstractCard card) {
-            return doesInvalidElementSwitch(self, card, HeatedPower.POWER_ID, CardAbility.ICE) ||
-                    doesInvalidElementSwitch(self, card, ChilledPower.POWER_ID, CardAbility.FIRE);
+            return doesInvalidElementSwitch(self, card, DynamicPower.getID(HeatedPower.class), CardAbility.ICE) ||
+                    doesInvalidElementSwitch(self, card, DynamicPower.getID(ChilledPower.class), CardAbility.FIRE);
         }
 
         private static boolean doesInvalidElementSwitch(
@@ -89,9 +91,9 @@ public class AbstractPlayerPatch {
                 final CardAbility cardAbility
         ) {
             if (self.hasPower(selfHasPowerId) && DynamicDungeon.cardHasAbility(card, cardAbility)) {
-                if (self.hasRelic(ElementalMaster.ID)) {
+                if (self.hasRelic(DynamicRelic.getID(ElementalMaster.class))) {
                     LOG.debug("Player has ElementalMaster relic, so possible to switch elements");
-                    self.getRelic(ElementalMaster.ID).flash();
+                    self.getRelic(DynamicRelic.getID(ElementalMaster.class)).flash();
                     return false;
                 }
                 else {

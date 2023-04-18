@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.KirbyDeeMod;
+import theSorcerer.powers.DynamicPower;
 
 public class FrostShockPower extends EndOfTurnElementPower {
 
@@ -21,7 +22,7 @@ public class FrostShockPower extends EndOfTurnElementPower {
         super(
                 owner,
                 POWER_ID,
-                ChilledPower.POWER_ID,
+                DynamicPower.getID(ChilledPower.class),
                 amount
         );
     }

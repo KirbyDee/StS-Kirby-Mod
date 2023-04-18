@@ -5,6 +5,19 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 public abstract class DynamicAmountPower extends SelfRemovablePower {
 
     public DynamicAmountPower(
+            Class<? extends DynamicAmountPower> thisClazz,
+            AbstractCreature owner,
+            int amount
+    ) {
+        super(thisClazz, owner);
+
+        this.amount = amount;
+        if (this.amount >= 999) {
+            this.amount = 999;
+        }
+    }
+
+    public DynamicAmountPower(
             final AbstractCreature owner,
             String powerID,
             int amount

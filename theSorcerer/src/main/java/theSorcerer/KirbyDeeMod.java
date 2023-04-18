@@ -455,11 +455,11 @@ public class KirbyDeeMod implements
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
         // (the others are all starters so they're marked as seen in the character file)
-        UnlockTracker.markRelicAsSeen(ElementalConstruct.ID);
-        UnlockTracker.markRelicAsSeen(BurningSoul.ID);
-        UnlockTracker.markRelicAsSeen(FreezingSoul.ID);
-        UnlockTracker.markRelicAsSeen(EnergizedSoul.ID);
-        UnlockTracker.markRelicAsSeen(ElementalMaster.ID);
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalConstruct.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BurningSoul.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(FreezingSoul.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(EnergizedSoul.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalMaster.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledGhost.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledEnergy.class));
         // TODO: which ones do we unlock?

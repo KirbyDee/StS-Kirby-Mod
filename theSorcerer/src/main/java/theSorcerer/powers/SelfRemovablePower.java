@@ -10,7 +10,14 @@ public abstract class SelfRemovablePower extends DynamicPower {
     private static final Logger LOG = LogManager.getLogger(SelfRemovablePower.class.getName());
 
     public SelfRemovablePower(
-            final AbstractCreature owner,
+            Class<? extends SelfRemovablePower> thisClazz,
+            final AbstractCreature owner
+    ) {
+        super(thisClazz, owner);
+    }
+
+    public SelfRemovablePower(
+            AbstractCreature owner,
             String powerID
     ) {
         super(owner, powerID);

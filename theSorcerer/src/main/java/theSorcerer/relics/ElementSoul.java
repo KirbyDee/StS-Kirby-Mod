@@ -1,22 +1,22 @@
 package theSorcerer.relics;
 
-import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.actions.ElementSoulAction;
 
 import java.util.function.Function;
 
-public abstract class ElementSoul extends CustomRelic {
+public abstract class ElementSoul extends DynamicRelic {
     private static final int ELEMENT_AMOUNT = 3;
 
     public ElementSoul(
-            String id,
-            Texture img,
-            Texture outline
+            Class<? extends ElementSoul> thisClazz
     ) {
-        super(id, img, outline, RelicTier.BOSS, LandingSound.MAGICAL);
+        super(
+                thisClazz,
+                RelicTier.BOSS,
+                LandingSound.MAGICAL
+        );
     }
 
     @Override
@@ -42,10 +42,10 @@ public abstract class ElementSoul extends CustomRelic {
 
     @Override
     public boolean canSpawn() {
-        return getOppositeSoulId() == null || !AbstractDungeon.player.hasRelic(getOppositeSoulId());
+        return getOppositeSoul() == null || !AbstractDungeon.player.hasRelic(getID(getOppositeSoul()));
     }
 
-    protected String getOppositeSoulId() {
+    protected Class<? extends ElementSoul> getOppositeSoul() {
         return null;
     }
 }

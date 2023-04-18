@@ -1,30 +1,22 @@
 package theSorcerer.relics;
 
-import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.special.FireConstruct;
 import theSorcerer.cards.special.IceConstruct;
-import theSorcerer.util.TextureLoader;
 
 import java.util.ArrayList;
 
-import static theSorcerer.KirbyDeeMod.makeRelicOutlinePath;
-import static theSorcerer.KirbyDeeMod.makeRelicPath;
-
-public class ElementalConstruct extends CustomRelic {
-
-    public static final String ID = KirbyDeeMod.makeID("ElementalConstruct");
-
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
+public class ElementalConstruct extends DynamicRelic {
 
     public ElementalConstruct() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
+        super(
+                ElementalConstruct.class,
+                RelicTier.STARTER,
+                LandingSound.MAGICAL
+        );
     }
 
     @Override

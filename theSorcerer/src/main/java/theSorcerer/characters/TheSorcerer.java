@@ -26,6 +26,7 @@ import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.Strike_Sorcerer;
 import theSorcerer.cards.WellPrepared;
 import theSorcerer.cards.fire.Scorch;
+import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalConstruct;
 
 import java.util.ArrayList;
@@ -356,7 +357,7 @@ public class TheSorcerer extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(ElementalConstruct.ID);
+        retVal.add(DynamicRelic.getID(ElementalConstruct.class));
 
         return retVal;
     }
