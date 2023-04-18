@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
@@ -257,18 +258,14 @@ public class DynamicDungeon {
             final AbstractMonster monster,
             Consumer<AblazePower> ablazePowerConsumer
     ) {
-        if (monster.hasPower(AblazePower.POWER_ID)) {
-            ablazePowerConsumer.accept((AblazePower) monster.getPower(AblazePower.POWER_ID));
-        }
+        withPower(monster, AblazePower.class, ablazePowerConsumer);
     }
 
     public static void withFrozen(
             final AbstractMonster monster,
             Consumer<FrozenPower> frozenPowerConsumer
     ) {
-        if (monster.hasPower(FrozenPower.POWER_ID)) {
-            frozenPowerConsumer.accept((FrozenPower) monster.getPower(FrozenPower.POWER_ID));
-        }
+        withPower(monster, FrozenPower.class, frozenPowerConsumer);
     }
 
 
@@ -322,6 +319,17 @@ public class DynamicDungeon {
         return !cardsPlayed.isEmpty() ?
                 Optional.of(cardsPlayed.get(cardsPlayed.size() - 1)) :
                 Optional.empty();
+    }
+
+    public static boolean hasPower(final AbstractCreature creature, final Class<? extends DynamicPower> thisClazz) {
+        return creature.hasPower(DynamicPower.getID(thisClazz));
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <P extends DynamicPower> void withPower(final AbstractCreature creature, final Class<P> thisClazz, Consumer<P> powerConsumer) {
+        if (hasPower(creature, thisClazz)) {
+            powerConsumer.accept((P) creature.getPower(DynamicPower.getID(thisClazz)));
+        }
     }
 
 

@@ -12,6 +12,24 @@ public abstract class ElementDebuffPower extends DynamicAmountPower {
     private boolean justApplied = false;
 
     public ElementDebuffPower(
+            Class<? extends ElementDebuffPower> thisClazz,
+            AbstractCreature owner,
+            int amount,
+            boolean isSourceMonster
+    ) {
+        super(thisClazz, owner, amount);
+        this.type = PowerType.DEBUFF;
+        this.isTurnBased = true;
+        this.canGoNegative = false;
+        this.isSourceMonster = isSourceMonster;
+        if (AbstractDungeon.actionManager.turnHasEnded && isSourceMonster) {
+            this.justApplied = true;
+        }
+
+        updateDescription();
+    }
+
+    public ElementDebuffPower(
             final AbstractCreature owner,
             final int amount,
             final String thisPowerID,

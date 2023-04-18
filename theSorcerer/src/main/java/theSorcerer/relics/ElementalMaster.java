@@ -1,6 +1,6 @@
 package theSorcerer.relics;
 
-// TODO: add power tip Elementless
+// TODO: add power tip Elementless, also Heated, Chilled and Presence of mind
 public class ElementalMaster extends DynamicRelic {
 
     public ElementalMaster() {
