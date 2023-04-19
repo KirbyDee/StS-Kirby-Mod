@@ -28,18 +28,6 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
         updateDescription();
     }
 
-    public ElementPower(
-            final AbstractCreature owner,
-            final int amount,
-            final String thisEvolvedPowerID
-    ) {
-        super(owner, thisEvolvedPowerID, amount);
-        this.isTurnBased = true;
-        this.canGoNegative = false;
-
-        updateDescription();
-    }
-
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);

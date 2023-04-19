@@ -5,19 +5,17 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.SelfRemovablePower;
 
 public class PresenceOfMindPower extends SelfRemovablePower {
 
-    public static final String POWER_NAME = "PresenceOfMindPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public PresenceOfMindPower(
             AbstractCreature owner
     ) {
-        super(owner, POWER_ID);
+        super(
+                PresenceOfMindPower.class,
+                owner
+        );
 
         updateDescription();
     }

@@ -3,19 +3,19 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.KirbyDeeMod;
 
+// TODO: new image
 public class StrongIceAffinityPower extends StrongAffinityPower {
-
-    public static final String POWER_NAME = "StrongIceAffinityPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
 
     public StrongIceAffinityPower(
             AbstractCreature owner,
             int amount
     ) {
-        super(owner, amount, POWER_ID);
+        super(
+                StrongIceAffinityPower.class,
+                owner,
+                amount
+        );
     }
 
     @Override

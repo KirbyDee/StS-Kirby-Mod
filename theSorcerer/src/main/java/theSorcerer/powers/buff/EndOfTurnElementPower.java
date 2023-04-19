@@ -3,20 +3,24 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import theSorcerer.powers.DynamicAmountPower;
+import theSorcerer.powers.DynamicPower;
 
 public abstract class EndOfTurnElementPower extends DynamicAmountPower {
 
     private final String elementPower;
 
     public EndOfTurnElementPower(
-            final AbstractCreature owner,
-            final String powerId,
-            final String elementPower,
-            final int amount
+            Class<? extends EndOfTurnElementPower> thisClazz,
+            AbstractCreature owner,
+            Class<? extends DynamicPower> elementPower,
+            int amount
     ) {
-        super(owner, powerId, amount);
-        this.elementPower = elementPower;
-
+        super(
+                thisClazz,
+                owner,
+                amount
+        );
+        this.elementPower = DynamicPower.getID(elementPower);
         this.type = PowerType.BUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;

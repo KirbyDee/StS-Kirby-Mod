@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,14 +48,15 @@ public class DiscardPileViewScreenPatch {
             AbstractDungeon.closeCurrentScreen();
 
             // trigger PastEmbracePower
-            if (AbstractDungeon.player.hasPower(PastEmbracePower.POWER_ID)) {
-                AbstractDungeon.player.getPower(PastEmbracePower.POWER_ID).onSpecificTrigger();
-            }
+            DynamicDungeon.withPowerDo(AbstractDungeon.player, PastEmbracePower.class, AbstractPower::onSpecificTrigger);
 
             // trigger on flashback
             if (card instanceof DynamicCard) {
                 ((DynamicCard) card).triggerOnFlashback();
             }
+
+            // trigger flash
+            card.superFlash();
         }
     }
 }

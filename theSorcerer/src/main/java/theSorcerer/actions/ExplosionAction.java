@@ -24,7 +24,7 @@ public class ExplosionAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        DynamicDungeon.withAblaze(
+        DynamicDungeon.withAblazeDo(
                 monster,
                 this::withAblaze
         );
@@ -38,7 +38,7 @@ public class ExplosionAction extends AbstractGameAction {
             return;
         }
 
-        DynamicDungeon.withAllMonsters(m ->
+        DynamicDungeon.withAllMonstersDo(m ->
                 addToBot(
                         new DamageAction(
                                 m,

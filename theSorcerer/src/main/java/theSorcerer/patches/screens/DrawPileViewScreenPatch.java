@@ -49,6 +49,9 @@ public class DrawPileViewScreenPatch {
             if (card instanceof DynamicCard) {
                 ((DynamicCard) card).triggerOnFuturity();
             }
+
+            // trigger flash
+            card.superFlash();
         }
     }
 }

@@ -51,7 +51,7 @@ public class LostKnowledge extends SorcererCard {
     }
 
     public void triggerOnGlowCheck() {
-        if (AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID)) {
+        if (DynamicDungeon.hasElementless()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
         else {

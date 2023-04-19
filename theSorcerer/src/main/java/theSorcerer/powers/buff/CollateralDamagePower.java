@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.actions.DamageMultipleEnemiesAction;
 import theSorcerer.powers.DynamicAmountPower;
 
@@ -18,15 +17,15 @@ public class CollateralDamagePower extends DynamicAmountPower {
 
     private static final Logger LOG = LogManager.getLogger(CollateralDamagePower.class.getName());
 
-    public static final String POWER_NAME = "CollateralDamagePower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public CollateralDamagePower(
             AbstractCreature owner,
             int amount
     ) {
-        super(owner, POWER_ID, amount);
+        super(
+                CollateralDamagePower.class,
+                owner,
+                amount
+        );
 
         updateDescription();
     }

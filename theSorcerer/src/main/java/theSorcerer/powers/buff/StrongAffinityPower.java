@@ -6,11 +6,15 @@ import theSorcerer.powers.DynamicAmountPower;
 public abstract class StrongAffinityPower extends DynamicAmountPower {
 
     public StrongAffinityPower(
+            Class<? extends StrongAffinityPower> thisClazz,
             AbstractCreature owner,
-            int amount,
-            String powerId
+            int amount
     ) {
-        super(owner, powerId, amount);
+        super(
+                thisClazz,
+                owner,
+                amount
+        );
 
         updateDescription();
     }

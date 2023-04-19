@@ -22,7 +22,11 @@ public class ElementlessPower extends DynamicAmountPower {
             final AbstractCreature owner,
             final int amount
     ) {
-        super(owner, POWER_ID, amount);
+        super(
+                ElementlessPower.class,
+                owner,
+                amount
+        );
         this.type = PowerType.DEBUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;

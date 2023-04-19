@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.debuff.ElementlessPower;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class AbstractCardPatch {
 
     public static SpireField<Boolean> inBottleGhost = new SpireField<>(() -> false);
 
-    private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(ElementlessPower.POWER_ID);
+    private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(DynamicPower.getID(ElementlessPower.class));
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopyPatch {

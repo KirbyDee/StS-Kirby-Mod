@@ -4,27 +4,32 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.SelfRemovablePower;
 
 public class CryophoenixPower extends SelfRemovablePower {
 
-    public static final String POWER_NAME = "CryophoenixPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public CryophoenixPower(
             final AbstractCreature owner
     ) {
-        super(owner, POWER_ID);
+        super(
+                CryophoenixPower.class,
+                owner
+        );
         this.amount = 0;
 
         updateDescription();
     }
 
+    @Override
+    public void atStartOfTurn() {
+        removeSelf();
+    }
+
     public int onAttacked(DamageInfo info, int damageAmount) {
-        addToBot(
+        flash();
+        addToTop(
                 new DamageAction(
                         info.owner,
                         new DamageInfo(this.owner, info.output, DamageInfo.DamageType.THORNS),

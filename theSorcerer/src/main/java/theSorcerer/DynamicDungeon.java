@@ -22,6 +22,7 @@ import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.DynamicPower;
+import theSorcerer.powers.SelfRemovablePower;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
@@ -172,10 +173,7 @@ public class DynamicDungeon {
     }
 
     public static void removeElementless() {
-        if (hasElementless()) {
-            ElementlessPower power = (ElementlessPower) AbstractDungeon.player.getPower(ElementlessPower.POWER_ID);
-            power.removeSelf();
-        }
+        withPowerDo(AbstractDungeon.player, ElementlessPower.class, SelfRemovablePower::removeSelf);
     }
 
     public static void runIfNotElementless(Runnable runnable) {
@@ -188,11 +186,11 @@ public class DynamicDungeon {
     }
 
     public static boolean hasElementless() {
-        return AbstractDungeon.player.hasPower(ElementlessPower.POWER_ID);
+        return hasPower(AbstractDungeon.player, ElementlessPower.class);
     }
 
     public static void flashElementlessRelic() {
-        AbstractDungeon.player.getPower(ElementlessPower.POWER_ID).flash();
+        withPowerDo(AbstractDungeon.player, ElementlessPower.class, AbstractPower::flash);
     }
 
     public static void applyHeated(final int amount) {
@@ -218,7 +216,7 @@ public class DynamicDungeon {
     }
 
     public static boolean hasPresenceOfMind() {
-        return AbstractDungeon.player.hasPower(PresenceOfMindPower.POWER_ID);
+        return hasPower(AbstractDungeon.player, PresenceOfMindPower.class);
     }
 
     public static void increaseElementPower(final ElementPower<?> elementPower, final int amount) {
@@ -254,18 +252,18 @@ public class DynamicDungeon {
         return getElement(DynamicPower.getID(ChilledPower.class));
     }
 
-    public static void withAblaze(
+    public static void withAblazeDo(
             final AbstractMonster monster,
             Consumer<AblazePower> ablazePowerConsumer
     ) {
-        withPower(monster, AblazePower.class, ablazePowerConsumer);
+        withPowerDo(monster, AblazePower.class, ablazePowerConsumer);
     }
 
-    public static void withFrozen(
+    public static void withFrozenDo(
             final AbstractMonster monster,
             Consumer<FrozenPower> frozenPowerConsumer
     ) {
-        withPower(monster, FrozenPower.class, frozenPowerConsumer);
+        withPowerDo(monster, FrozenPower.class, frozenPowerConsumer);
     }
 
 
@@ -309,7 +307,7 @@ public class DynamicDungeon {
         addToBot(new GainEnergyAction(amount));
     }
 
-    public static void withAllMonsters(final Consumer<AbstractMonster> monsterConsumer) {
+    public static void withAllMonstersDo(final Consumer<AbstractMonster> monsterConsumer) {
         AbstractDungeon.getCurrRoom().monsters.monsters
                 .forEach(monsterConsumer);
     }
@@ -326,7 +324,7 @@ public class DynamicDungeon {
     }
 
     @SuppressWarnings("unchecked")
-    public static <P extends DynamicPower> void withPower(final AbstractCreature creature, final Class<P> thisClazz, Consumer<P> powerConsumer) {
+    public static <P extends DynamicPower> void withPowerDo(final AbstractCreature creature, final Class<P> thisClazz, Consumer<P> powerConsumer) {
         if (hasPower(creature, thisClazz)) {
             powerConsumer.accept((P) creature.getPower(DynamicPower.getID(thisClazz)));
         }

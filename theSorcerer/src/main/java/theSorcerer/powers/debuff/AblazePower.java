@@ -41,7 +41,7 @@ public class AblazePower extends ElementDebuffPower {
                     new DamageAction(
                             this.owner,
                             new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS),
-                            AbstractGameAction.AttackEffect.FIRE
+                            AbstractGameAction.AttackEffect.NONE
                     )
             );
         }

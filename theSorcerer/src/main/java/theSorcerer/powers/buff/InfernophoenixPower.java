@@ -3,19 +3,17 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theSorcerer.KirbyDeeMod;
 import theSorcerer.powers.SelfRemovablePower;
 
 public class InfernophoenixPower extends SelfRemovablePower {
 
-    public static final String POWER_NAME = "InfernophoenixPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
-
     public InfernophoenixPower(
             AbstractCreature owner
     ) {
-        super(owner, POWER_ID);
+        super(
+                InfernophoenixPower.class,
+                owner
+        );
         this.amount = 0;
 
         updateDescription();

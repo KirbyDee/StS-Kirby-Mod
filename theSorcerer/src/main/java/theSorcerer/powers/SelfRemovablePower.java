@@ -16,16 +16,8 @@ public abstract class SelfRemovablePower extends DynamicPower {
         super(thisClazz, owner);
     }
 
-    public SelfRemovablePower(
-            AbstractCreature owner,
-            String powerID
-    ) {
-        super(owner, powerID);
-    }
-
     public void removeSelf() {
         LOG.info("Remove " + this.ID);
-        flash();
         addToBot(
                 new RemoveSpecificPowerAction(
                         this.owner,

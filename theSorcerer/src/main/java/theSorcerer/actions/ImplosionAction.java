@@ -24,7 +24,7 @@ public class ImplosionAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        DynamicDungeon.withFrozen(
+        DynamicDungeon.withFrozenDo(
                 monster,
                 this::withFrozen
         );
@@ -38,7 +38,7 @@ public class ImplosionAction extends AbstractGameAction {
             return;
         }
 
-        DynamicDungeon.withAllMonsters(m ->
+        DynamicDungeon.withAllMonstersDo(m ->
                 addToBot(
                         new ApplyPowerAction(
                                 m,
