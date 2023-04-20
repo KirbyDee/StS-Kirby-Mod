@@ -90,8 +90,8 @@
   },
   "theSorcerer:UnfairExchange": {
     "NAME": "Unfair Exchange",
-    "DESCRIPTION": "Exchange !M! cards from your discard pile with !theSorcerer:MM! card from your exhaust pile.",
-    "UPGRADE_DESCRIPTION": "Exchange !M! card from your discard pile with !theSorcerer:MM! card from your exhaust pile.",
+    "DESCRIPTION": "Exchange !M! cards from your discard pile with !theSorcerer:MM! card from your exhaust pile and give it thesorcerer:Flashback.",
+    "UPGRADE_DESCRIPTION": "Exchange !M! card from your discard pile with !theSorcerer:MM! card from your exhaust pile and give it thesorcerer:Flashback.",
     "EXTENDED_DESCRIPTION": [
       "My",
       " discard ",

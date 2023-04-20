@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.PutCardFromDiscardPileToExhaustPileAction;
-import theSorcerer.actions.PutCardFromExhaustPileToDiscardPileAction;
+import theSorcerer.actions.PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction;
 import theSorcerer.patches.cards.CardAbility;
 
 public class UnfairExchange extends SorcererCard {
@@ -35,7 +35,7 @@ public class UnfairExchange extends SorcererCard {
                 new PutCardFromDiscardPileToExhaustPileAction(this.magicNumber)
         );
         addToBot(
-                new PutCardFromExhaustPileToDiscardPileAction(this.secondMagicNumber)
+                new PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction(this.secondMagicNumber)
         );
     }
 
