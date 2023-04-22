@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import theSorcerer.DynamicDungeon;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,6 +39,11 @@ public class RandomPowerRemoveAction extends AbstractGameAction {
     }
 
     private void removePower() {
+        if (this.creature.hasPower(ArtifactPower.POWER_ID)) {
+            this.creature.getPower(ArtifactPower.POWER_ID).onSpecificTrigger();
+            return;
+        }
+
         List<AbstractPower> copyPowers = this.creature.powers;
         Collections.shuffle(copyPowers, AbstractDungeon.miscRng.random);
         copyPowers

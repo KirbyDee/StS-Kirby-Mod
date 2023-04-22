@@ -41,4 +41,9 @@ public class PastEmbracePower extends DynamicAmountPower {
     public AbstractPower makeCopy() {
         return new PastEmbracePower(this.owner, this.amount);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

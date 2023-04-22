@@ -43,4 +43,9 @@ public class PresenceOfMindPower extends SelfRemovablePower {
     public AbstractPower makeCopy() {
         return new PresenceOfMindPower(this.owner);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

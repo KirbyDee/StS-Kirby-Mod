@@ -109,4 +109,9 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
     public void updateDescription() {
         description = this.descriptions[0] + this.amount + this.descriptions[1] + this.amount + this.descriptions[2];
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

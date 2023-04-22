@@ -27,6 +27,7 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
         super();
         this.ID = getID(thisClazz);
         this.owner = owner;
+        this.type = getPowerType();
 
         PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(this.ID);
         this.name = powerStrings.NAME;
@@ -60,4 +61,6 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
         LOG.info("Load Texture: " + path);
         return TextureLoader.getTexture(path);
     }
+
+    public abstract PowerType getPowerType();
 }

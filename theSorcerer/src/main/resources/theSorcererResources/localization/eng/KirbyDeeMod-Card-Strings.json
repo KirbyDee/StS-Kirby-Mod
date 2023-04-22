@@ -247,5 +247,9 @@
   "theSorcerer:CollateralDamage": {
     "NAME": "Collateral Damage",
     "DESCRIPTION": "Whenever you deal unblocked combat damage to an enemy, deal !M!% damage (rounded) to ALL other enemies."
+  },
+  "theSorcerer:Ignite": {
+    "NAME": "Ignite",
+    "DESCRIPTION": "Deal !D! damage. NL Target loses !M! HP for the next !theSorcerer:MM! turns."
   }
 }

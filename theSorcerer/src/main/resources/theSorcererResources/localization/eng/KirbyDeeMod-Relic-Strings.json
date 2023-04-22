@@ -46,8 +46,8 @@
       " in your discard pile."
     ]
   },
-  "theSorcerer:BottledEnergy": {
-    "NAME": "Bottled Energy",
+  "theSorcerer:BottledLife": {
+    "NAME": "Bottled Life",
     "FLAVOR": "It feels like it is about to burst. Be careful when trying to open it.",
     "DESCRIPTIONS": [
       "Upon pick up, choose any Card. This card will become #yArcane.",

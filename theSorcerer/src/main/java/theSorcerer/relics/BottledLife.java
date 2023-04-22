@@ -10,11 +10,11 @@ import theSorcerer.patches.cards.AbstractCardPatch;
 
 import java.util.function.Predicate;
 
-public class BottledEnergy extends BottledRelic implements CustomSavable<Integer> {
+public class BottledLife extends BottledRelic implements CustomSavable<Integer> {
 
-    public BottledEnergy() {
+    public BottledLife() {
         super(
-                BottledEnergy.class,
+                BottledLife.class,
                 RelicTier.RARE
         );
     }
@@ -41,7 +41,7 @@ public class BottledEnergy extends BottledRelic implements CustomSavable<Integer
 
     @Override
     public AbstractRelic makeCopy() {
-        return new BottledEnergy();
+        return new BottledLife();
     }
 
     @Override

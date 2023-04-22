@@ -34,4 +34,9 @@ public abstract class StrongAffinityPower extends DynamicAmountPower {
     public void updateDescription() {
         this.description = descriptions[0] + this.amount + descriptions[1];
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

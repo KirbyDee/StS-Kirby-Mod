@@ -21,7 +21,6 @@ public abstract class EndOfTurnElementPower extends DynamicAmountPower {
                 amount
         );
         this.elementPower = DynamicPower.getID(elementPower);
-        this.type = PowerType.BUFF;
         this.isTurnBased = true;
         this.canGoNegative = false;
 
@@ -44,6 +43,11 @@ public abstract class EndOfTurnElementPower extends DynamicAmountPower {
     @Override
     public void updateDescription() {
         description = this.descriptions[0] + this.amount + this.descriptions[1];
+    }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
     }
 }
 

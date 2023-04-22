@@ -3,14 +3,9 @@ package theSorcerer.powers.debuff;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theSorcerer.KirbyDeeMod;
-import theSorcerer.powers.DynamicAmountPower;
+import theSorcerer.powers.DynamicReducePerTurnPower;
 
-public class ElementlessPower extends DynamicAmountPower {
-
-    private static final String POWER_NAME = "ElementlessPower";
-
-    public static final String POWER_ID = KirbyDeeMod.makeID(POWER_NAME);
+public class ElementlessPower extends DynamicReducePerTurnPower {
 
     public ElementlessPower(
             final AbstractCreature owner
@@ -19,36 +14,17 @@ public class ElementlessPower extends DynamicAmountPower {
     }
 
     public ElementlessPower(
-            final AbstractCreature owner,
-            final int amount
+            AbstractCreature owner,
+            int amount
     ) {
         super(
                 ElementlessPower.class,
                 owner,
-                amount
+                amount,
+                false
         );
-        this.type = PowerType.DEBUFF;
-        this.isTurnBased = true;
-        this.canGoNegative = false;
 
         updateDescription();
-    }
-
-    @Override
-    public void atEndOfRound() {
-        if (this.amount == 0) {
-            removeSelf();
-        }
-        else {
-            addToBot(
-                    new ReducePowerAction(
-                            this.owner,
-                            this.owner,
-                            this.ID,
-                            1
-                    )
-            );
-        }
     }
 
     @Override
@@ -59,5 +35,10 @@ public class ElementlessPower extends DynamicAmountPower {
     @Override
     public AbstractPower makeCopy() {
         return new ElementlessPower(this.owner);
+    }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.DEBUFF;
     }
 }

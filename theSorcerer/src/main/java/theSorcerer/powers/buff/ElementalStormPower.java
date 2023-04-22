@@ -84,4 +84,9 @@ public class ElementalStormPower extends DynamicAmountPower {
     public AbstractPower makeCopy() {
         return new ElementalStormPower(this.owner, this.amount);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

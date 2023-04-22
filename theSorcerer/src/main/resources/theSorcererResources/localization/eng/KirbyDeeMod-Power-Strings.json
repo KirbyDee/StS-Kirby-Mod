@@ -2,25 +2,25 @@
   "theSorcerer:ElementlessPower": {
     "NAME": "Elementless",
     "DESCRIPTIONS": [
-      "You can no longer play any #yFire / #yIce cards or become #yHeated / #yChilled.",
+      "You can no longer play any #yFire / #yIce cards or become #yHeated / #yChilled. Before the start of your turn, reduce #yElementless by #b1.",
       "Cannot play this card. NL I am #rElementless"
     ]
   },
   "theSorcerer:HeatedPower": {
     "NAME": "Heated",
-    "DESCRIPTIONS": ["Gain #b", " #yStrength. NL Your unblocked attacks apply #b", " #yAblaze. NL #yHeated is reset upon playing an #yIce card or at the start of your next turn. When playing an #yIce card become #yElementless."]
+    "DESCRIPTIONS": ["Gain #b", " #yStrength. NL Your unblocked attacks apply #b", " #yAblaze. NL Lose #yHeated upon playing an #yIce card or before the start of your next turn. When playing an #yIce card become #yElementless."]
   },
   "theSorcerer:ChilledPower": {
     "NAME": "Chilled",
-    "DESCRIPTIONS": ["Gain #b", " #yDexterity. NL Whenever you fully #yBlock an attack, apply #b", " #yFrozen. NL #yChilled is reset upon playing an #yFire card or at the start of your next turn. When playing an #yFire card become #yElementless."]
+    "DESCRIPTIONS": ["Gain #b", " #yDexterity. NL Whenever you fully #yBlock an attack, apply #b", " #yFrozen. NL Lose #yChilled upon playing an #yFire card or before the start of your next turn. When playing an #yFire card become #yElementless."]
   },
   "theSorcerer:AblazePower": {
     "NAME": "Ablaze",
-    "DESCRIPTIONS": ["Target takes #b", " damage whenever they attack."]
+    "DESCRIPTIONS": ["Target takes #b", " damage whenever they attack. At the end of its turn, reduce #yAblaze by #b1."]
   },
   "theSorcerer:FrozenPower": {
     "NAME": "Frozen",
-    "DESCRIPTIONS": ["Target takes #b", " damage whenever they get attacked."]
+    "DESCRIPTIONS": ["Target takes #b", " damage whenever they get attacked. At the end of its turn, reduce #yFrozen by #b1."]
   },
   "theSorcerer:PastEmbracePower": {
     "NAME": "Past Embrace",
@@ -28,11 +28,11 @@
   },
   "theSorcerer:InfernophoenixPower": {
     "NAME": "Infernophoenix",
-    "DESCRIPTIONS": ["At the start of your next turn, heal #b", " HP."]
+    "DESCRIPTIONS": ["At the start of your next turn, heal #b", " HP, then lose #yInfernophoenix"]
   },
   "theSorcerer:CryophoenixPower": {
     "NAME": "Cryophoenix",
-    "DESCRIPTIONS": ["Reflect any combat damage."]
+    "DESCRIPTIONS": ["Reflect any combat damage this turn. At the start of your next turn, lose #yCryophoenix"]
   },
   "theSorcerer:WallOfFirePower": {
     "NAME": "Wall Of Fire",
@@ -65,5 +65,9 @@
   "theSorcerer:CollateralDamagePower": {
     "NAME": "Collateral Damage",
     "DESCRIPTIONS": ["Whenever you deal combat damage to an enemy, deal #b", "% damage (rounded) to ALL other enemies."]
+  },
+  "theSorcerer:IgnitePower": {
+    "NAME": "Ignite",
+    "DESCRIPTIONS": ["At the end of its turn, loses #b", " HP, then reduce #yIgnite by #b1."]
   }
 }

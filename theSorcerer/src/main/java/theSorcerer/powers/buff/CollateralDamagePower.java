@@ -87,4 +87,9 @@ public class CollateralDamagePower extends DynamicAmountPower {
     public AbstractPower makeCopy() {
         return new CollateralDamagePower(this.owner, this.amount);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

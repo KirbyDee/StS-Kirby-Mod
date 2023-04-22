@@ -4,12 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.powers.DynamicAmountPower;
+import theSorcerer.powers.DynamicReducePerTurnPower;
 
-public abstract class ElementDebuffPower extends DynamicAmountPower {
-
-    protected final boolean isSourceMonster;
-
-    private boolean justApplied = false;
+public abstract class ElementDebuffPower extends DynamicReducePerTurnPower {
 
     public ElementDebuffPower(
             Class<? extends ElementDebuffPower> thisClazz,
@@ -17,36 +14,18 @@ public abstract class ElementDebuffPower extends DynamicAmountPower {
             int amount,
             boolean isSourceMonster
     ) {
-        super(thisClazz, owner, amount);
-        this.type = PowerType.DEBUFF;
-        this.isTurnBased = true;
-        this.canGoNegative = false;
-        this.isSourceMonster = isSourceMonster;
-        if (AbstractDungeon.actionManager.turnHasEnded && isSourceMonster) {
-            this.justApplied = true;
-        }
-
+        super(
+                thisClazz,
+                owner,
+                amount,
+                isSourceMonster
+        );
         updateDescription();
     }
 
-    public void atEndOfRound() {
-        if (this.justApplied) {
-            this.justApplied = false;
-        } else {
-            if (this.amount == 0) {
-                removeSelf();
-            }
-            else {
-                addToBot(
-                        new ReducePowerAction(
-                                this.owner,
-                                this.owner,
-                                this.ID,
-                                1
-                        )
-                );
-            }
-        }
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.DEBUFF;
     }
 
     @Override

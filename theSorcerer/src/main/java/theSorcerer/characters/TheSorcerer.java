@@ -223,11 +223,11 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 48 (19/19/10) - 75
-        // 14 attacks
+        //sorcerer 49 (19/19/11) - 75
+        // 15 attacks
         // - common: 9 -> ok?
         // - uncommon: 4 -> more
-        // - rare: 1 -> more
+        // - rare: 2 -> more
         // 6 power
         // - common: 0 -> ok
         // - uncommon: 4 -> more
@@ -245,7 +245,7 @@ public class TheSorcerer extends CustomPlayer {
         //  - Elemental Master
         //  - Bottled Ghost
         // - rare: 3
-        //  - Bottled Energy
+        //  - Bottled Life
         //  - ?
         //  - ?
         // - shop: 1
@@ -338,6 +338,7 @@ public class TheSorcerer extends CustomPlayer {
 //
 //        // rare attack
 //        retVal.add(DynamicCard.getID(Decay.class));
+//        retVal.add(DynamicCard.getID(Ignite.class));
 //        // rare skill
 //        retVal.add(DynamicCard.getID(Renounce.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));

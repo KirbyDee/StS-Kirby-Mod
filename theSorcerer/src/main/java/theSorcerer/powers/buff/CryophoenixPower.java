@@ -49,4 +49,9 @@ public class CryophoenixPower extends SelfRemovablePower {
     public AbstractPower makeCopy() {
         return new CryophoenixPower(this.owner);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }

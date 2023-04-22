@@ -45,4 +45,9 @@ public class InfernophoenixPower extends SelfRemovablePower {
     public AbstractPower makeCopy() {
         return new InfernophoenixPower(this.owner);
     }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
+    }
 }
