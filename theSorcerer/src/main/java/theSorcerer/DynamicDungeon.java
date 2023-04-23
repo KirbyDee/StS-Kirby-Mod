@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ElementLoseAction;
@@ -153,6 +154,17 @@ public class DynamicDungeon {
     // -------------------------
     // DUNGEON
     // -------------------------
+
+    public static void runIfNotArtifact(
+            final AbstractCreature creature,
+            final Runnable runnable
+    ) {
+        if (creature.hasPower(ArtifactPower.POWER_ID)) {
+            creature.getPower(ArtifactPower.POWER_ID).onSpecificTrigger();
+            return;
+        }
+        runnable.run();
+    }
 
     public static void applyElementless() {
         LOG.info("Trying to apply Elementless");

@@ -6,9 +6,6 @@ import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.cards.ice.SorcererIceCard;
-import theSorcerer.cards.status.Frostbite;
 
 public class FireShield extends SorcererFireCard { // TODO: rename and different card
 

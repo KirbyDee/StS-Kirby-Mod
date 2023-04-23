@@ -223,7 +223,7 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 49 (19/19/11) - 75
+        //sorcerer 50 (19/20/11) - 75
         // 15 attacks
         // - common: 9 -> ok?
         // - uncommon: 4 -> more
@@ -232,9 +232,9 @@ public class TheSorcerer extends CustomPlayer {
         // - common: 0 -> ok
         // - uncommon: 4 -> more
         // - rare: 3 -> more
-        // 27 skills
+        // 28 skills
         // - common: 10 -> ok?
-        // - uncommon: 11 -> more
+        // - uncommon: 12 -> more
         // - rare: 6 -> more
         // relic:
         // - starter: 1
@@ -330,6 +330,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Implosion.class));
 //        retVal.add(DynamicCard.getID(ArcaneProtection.class));
 //        retVal.add(DynamicCard.getID(ElementalStorm.class));
+//        retVal.add(DynamicCard.getID(Polymorph.class));
 //        // uncommon power
 //        retVal.add(DynamicCard.getID(UneducatedGuess.class));
 //        retVal.add(DynamicCard.getID(WallOfFire.class));

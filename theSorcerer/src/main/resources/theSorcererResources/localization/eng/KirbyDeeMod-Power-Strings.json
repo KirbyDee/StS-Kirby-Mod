@@ -69,5 +69,15 @@
   "theSorcerer:IgnitePower": {
     "NAME": "Ignite",
     "DESCRIPTIONS": ["At the end of its turn, loses #b", " HP, then reduce #yIgnite by #b1."]
+  },
+  "theSorcerer:PolymorphPower": {
+    "NAME": "Polymorph",
+    "DESCRIPTIONS": [
+      "#b",
+      " has been transfigured into a Sheep which cannot attack or #yblock. NL Taking damage or after #b",
+      " turn",
+      " turns",
+      " the sheep will turn back to its original form."
+    ]
   }
 }

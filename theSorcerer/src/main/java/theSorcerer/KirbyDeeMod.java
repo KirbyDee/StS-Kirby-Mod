@@ -544,8 +544,12 @@ public class KirbyDeeMod implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/KirbyDeeMod-Orb-Strings.json");
-        
-        logger.info("Done edittting strings");
+
+        // MonsterStrings
+        BaseMod.loadCustomStringsFile(MonsterStrings.class,
+                getModID() + "Resources/localization/eng/KirbyDeeMod-Monster-Strings.json");
+
+        logger.info("Done editing strings");
     }
     
     // ================ /LOAD THE TEXT/ ===================

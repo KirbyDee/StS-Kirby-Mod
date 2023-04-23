@@ -1,0 +1,12 @@
+{
+  "theSorcerer:Sheep": {
+    "MOVES": [
+      ""
+    ],
+    "NAME": "Sheep",
+    "DIALOG": [
+      "Baaaaa",
+      "..."
+    ]
+  }
+}

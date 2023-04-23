@@ -251,5 +251,16 @@
   "theSorcerer:Ignite": {
     "NAME": "Ignite",
     "DESCRIPTION": "Deal !D! damage. NL Target loses !M! HP for the next !theSorcerer:MM! turns."
+  },
+  "theSorcerer:Polymorph": {
+    "NAME": "Polymorph",
+    "DESCRIPTION": "Transfigure target into a sheep for !M! turn.",
+    "EXTENDED_DESCRIPTION": [
+      "Transfigure target into a sheep for !M! turns."
+    ]
+  },
+  "theSorcerer:Sheep": {
+    "NAME": "Sheep",
+    "DESCRIPTION": "Cannot attack or Block. NL The sheep will turn back into the original monster when taking damage or certain turns have passed."
   }
 }
