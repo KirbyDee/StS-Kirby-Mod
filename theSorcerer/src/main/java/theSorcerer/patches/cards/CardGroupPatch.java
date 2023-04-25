@@ -15,7 +15,7 @@ public class CardGroupPatch {
     public static class AddToHandPatch {
 
         public static void Postfix(CardGroup self, AbstractCard c) {
-            if (DynamicDungeon.isUnplayableCard(c)) {
+            if (DynamicDungeon.isAutoCard(c)) {
                 AbstractDungeon.actionManager.addToBottom(
                         new AutoUseCardAction(
                                 AbstractDungeon.player,

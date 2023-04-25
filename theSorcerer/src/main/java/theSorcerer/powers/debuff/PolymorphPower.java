@@ -1,12 +1,11 @@
 package theSorcerer.powers.debuff;
 
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.SmokePuffEffect;
-import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ReplaceMonsterAction;
@@ -37,13 +36,6 @@ public class PolymorphPower extends DynamicReducePerTurnPower {
     }
 
     @Override
-    public void onInitialApplication() {
-        this.sheep.init();
-        this.sheep.applyPowers();
-        this.sheep.showHealthBar();
-    }
-
-    @Override
     public void onSpecificTrigger() {
         LOG.info("Sheep took damage or died");
         sheep.powers.remove(this);
@@ -61,9 +53,8 @@ public class PolymorphPower extends DynamicReducePerTurnPower {
         replaceSheepWithOriginalMonster();
     }
 
-    // TODO: sheep sound
     private void replaceSheepWithOriginalMonster() {
-        addToBot(
+        addToTop(
                 new VFXAction(
                         new SmokePuffEffect(
                                 this.sheep.hb.cX,
@@ -71,8 +62,11 @@ public class PolymorphPower extends DynamicReducePerTurnPower {
                         )
                 )
         );
-        addToBot(new WaitAction(0.1F));
-        addToBot(
+        addToTop(
+                new SFXAction("ATTACK_MAGIC_FAST_3")
+        );
+        addToTop(new WaitAction(0.1F));
+        addToTop(
                 new ReplaceMonsterAction(
                         this.sheep,
                         this.monster,

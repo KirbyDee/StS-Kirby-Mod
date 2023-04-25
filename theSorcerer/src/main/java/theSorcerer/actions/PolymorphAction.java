@@ -3,6 +3,7 @@ package theSorcerer.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -32,14 +33,9 @@ public class PolymorphAction extends AbstractGameAction {
     }
 
     private void applyPolymorphPower() {
-        AbstractMonster sheep;
-        if (this.monster instanceof Sheep) {
-            sheep = this.monster;
-        }
-        else {
-            sheep = new Sheep(this.monster);
-            polymorphMonster(sheep);
-        }
+        AbstractMonster sheep = this.monster instanceof Sheep ?
+                this.monster :
+                polymorphMonster();
 
         addToBot(
                 new ApplyPowerAction(
@@ -55,7 +51,12 @@ public class PolymorphAction extends AbstractGameAction {
         );
     }
 
-    private void polymorphMonster(final AbstractMonster sheep) {
+    private Sheep polymorphMonster() {
+        Sheep sheep = new Sheep(this.monster);
+        sheep.init();
+        sheep.applyPowers();
+        sheep.showHealthBar();
+
         addToBot(
                 new VFXAction(
                         new SmokePuffEffect(
@@ -64,7 +65,8 @@ public class PolymorphAction extends AbstractGameAction {
                         )
                 )
         );
-        addToBot(new WaitAction(0.25F));
+        addToBot(new SFXAction("ATTACK_MAGIC_FAST_3"));
+        addToBot(new WaitAction(0.1F));
         addToBot(
                 new ReplaceMonsterAction(
                         this.monster,
@@ -72,5 +74,9 @@ public class PolymorphAction extends AbstractGameAction {
                         true
                 )
         );
+        addToBot(new WaitAction(0.25F));
+        addToBot(new CustomSFXAction("SHEEP"));
+
+        return sheep;
     }
 }

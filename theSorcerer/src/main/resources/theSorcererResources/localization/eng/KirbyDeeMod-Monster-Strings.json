@@ -5,8 +5,9 @@
     ],
     "NAME": "Sheep",
     "DIALOG": [
-      "Baaaaa",
-      "..."
+      "...",
+      "Baa",
+      "@Baaa!!@"
     ]
   }
 }

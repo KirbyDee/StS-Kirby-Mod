@@ -8,16 +8,19 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
@@ -291,6 +294,9 @@ public class TheSorcerer extends CustomPlayer {
         // TODO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
         // TODO: deck view is not showing correct tags? tags should be for the card itself and not just combat
         // TODO: upgrade view but for fire/ice morphose. use HandCardSelectScreen SpireReturn (https://github.com/kiooeht/ModTheSpire/wiki/SpireReturn)?
+
+        // TOOD: use for heated:
+        // AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 0.25F));
 
 //        // common attack
 //        retVal.add(Strike_Sorcerer.ID);
