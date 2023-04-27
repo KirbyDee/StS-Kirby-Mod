@@ -12,7 +12,7 @@ import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.cards.status.Frostbite;
 
-public class FrostArrow extends SorcererIceCard { // TODO: rename and different card
+public class FrostArrow extends SorcererIceCard { // TODOO: rename and different card
 
     // --- VALUES START ---
     private static final int COST = 0;

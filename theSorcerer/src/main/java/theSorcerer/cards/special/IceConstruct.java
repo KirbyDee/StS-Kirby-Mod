@@ -15,6 +15,8 @@ public class IceConstruct extends DynamicCard {
                         .rarity(CardRarity.SPECIAL)
                         .build()
         );
+
+        this.cardsToPreview = new IceDefend();
     }
 
     @Override

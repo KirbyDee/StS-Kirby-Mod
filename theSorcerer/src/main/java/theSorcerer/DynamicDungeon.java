@@ -209,17 +209,18 @@ public class DynamicDungeon {
 
     public static void applyHeated(final int amount) {
         increaseElementPower(new HeatedPower(AbstractDungeon.player, amount), amount);
-        addToBot(
+        addToTop(
                 new VFXAction(
                         AbstractDungeon.player,
                         new InflameEffect(AbstractDungeon.player),
-                        0.5F
+                        0.25F
                 )
         );
     }
 
     public static void applyChilled(final int amount) {
         increaseElementPower(new ChilledPower(AbstractDungeon.player, amount), amount);
+        // TODOO: frost effect
     }
 
     public static void applyPresenceOfMind() {

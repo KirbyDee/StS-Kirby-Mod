@@ -7,7 +7,7 @@ import theSorcerer.DynamicDungeon;
 public class PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction extends ExhaustPileCardChooseAction {
 
     // --- VALUES START ---
-    private final static String[] TEXTS = { // TODO
+    private final static String[] TEXTS = { // TODOO
             "Choose ",
             " card ",
             " cards ",

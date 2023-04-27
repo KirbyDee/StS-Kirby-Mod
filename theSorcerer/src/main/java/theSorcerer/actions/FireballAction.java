@@ -24,6 +24,6 @@ public class FireballAction extends DrawPileCardChooseAction {
 
     @Override
     protected String getChooseText() {
-        return "Choose another Fireball to put into your hand"; // TODO
+        return "Choose another Fireball to put into your hand"; // TODOO
     }
 }

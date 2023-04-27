@@ -25,6 +25,6 @@ public class CrystalProtectionAction extends DrawPileCardChooseAction {
 
     @Override
     protected String getChooseText() {
-        return "Choose another Crystal Protection to put into your hand"; // TODO
+        return "Choose another Crystal Protection to put into your hand"; // TODOO
     }
 }

@@ -15,6 +15,8 @@ public class FireConstruct extends DynamicCard {
                         .rarity(CardRarity.SPECIAL)
                         .build()
         );
+
+        this.cardsToPreview = new FireStrike();
     }
 
     @Override

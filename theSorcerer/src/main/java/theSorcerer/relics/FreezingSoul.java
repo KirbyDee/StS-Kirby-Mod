@@ -2,6 +2,8 @@ package theSorcerer.relics;
 
 import theSorcerer.actions.ElementSoulAction;
 import theSorcerer.actions.FreezingSoulAction;
+import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.debuff.FrozenPower;
 
 import java.util.function.Function;
 
@@ -10,6 +12,15 @@ public class FreezingSoul extends ElementSoul {
     public FreezingSoul() {
         super(
                 FreezingSoul.class
+        );
+    }
+
+    @Override
+    protected void initializeTips() {
+        super.initializeTips();
+        addTip(
+                ChilledPower.class,
+                FrozenPower.class
         );
     }
 

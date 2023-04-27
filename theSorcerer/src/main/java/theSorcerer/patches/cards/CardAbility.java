@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import java.util.Arrays;
 
 public enum CardAbility {
-    // TODO: TExt to localization
+    // TODOO: TExt to localization
     EMPTY("", CardAbilityFix.NONE),
     ARCANE(CardUtil.MOD_PREFIX + "Arcane", CardAbilityFix.PREFIX),
     FIRE(CardUtil.MOD_PREFIX + "Fire", CardAbilityFix.PREFIX),

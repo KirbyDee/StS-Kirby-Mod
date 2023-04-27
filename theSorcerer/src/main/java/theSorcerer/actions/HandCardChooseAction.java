@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public abstract class HandCardChooseAction extends CardChooseAction {
 
     // --- VALUES START ---
-    private final boolean canPickZero;
-    private final boolean forTransform;
-    private final boolean forUpgrade;
+    protected final boolean canPickZero;
+    protected final boolean forTransform;
+    protected final boolean forUpgrade;
     // --- VALUES END ---
 
     public HandCardChooseAction(

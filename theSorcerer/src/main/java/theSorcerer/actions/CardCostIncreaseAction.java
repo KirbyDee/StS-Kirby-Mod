@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 public class CardCostIncreaseAction extends HandCardChooseAction {
 
     // --- VALUES START ---
-    private final static String TEXT = "increase Energy Cost by "; // TODO
+    private final static String TEXT = "increase Energy Cost by "; // TODOO
     private final int costIncrease;
     // --- VALUES END ---
 

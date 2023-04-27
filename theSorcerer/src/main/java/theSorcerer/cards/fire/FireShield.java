@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 
-public class FireShield extends SorcererFireCard { // TODO: rename and different card
+public class FireShield extends SorcererFireCard { // TODOO: rename and different card
 
     // --- VALUES START ---
     private static final int COST = 0;

@@ -6,6 +6,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.cards.special.FireConstruct;
 import theSorcerer.cards.special.IceConstruct;
+import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.powers.debuff.AblazePower;
+import theSorcerer.powers.debuff.FrozenPower;
 
 import java.util.ArrayList;
 
@@ -16,6 +20,18 @@ public class ElementalConstruct extends DynamicRelic {
                 ElementalConstruct.class,
                 RelicTier.STARTER,
                 LandingSound.MAGICAL
+        );
+    }
+
+    @Override
+    protected void initializeTips() {
+        super.initializeTips();
+        addTip("Fire", "Ice");
+        addTip(
+                HeatedPower.class,
+                AblazePower.class,
+                ChilledPower.class,
+                FrozenPower.class
         );
     }
 

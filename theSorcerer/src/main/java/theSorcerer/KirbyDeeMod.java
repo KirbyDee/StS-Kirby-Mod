@@ -462,7 +462,7 @@ public class KirbyDeeMod implements
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalMaster.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledGhost.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledLife.class));
-        // TODO: which ones do we unlock?
+        // TODOO: which ones do we unlock?
         logger.info("Done adding relics!");
     }
     

@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.effect.FireParticleEffect;
 
-// TODO Stirke, Defend + fire and ice add to SorcererCard and make it possible to have custom image path
+// TODOO Stirke, Defend + fire and ice add to SorcererCard and make it possible to have custom image path
 public class FireStrike extends SorcererFireCard {
 
     // --- VALUES START ---

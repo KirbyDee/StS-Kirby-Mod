@@ -20,7 +20,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
@@ -279,9 +278,9 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(Defend_Sorcerer.ID);
         retVal.add(Defend_Sorcerer.ID);
         // 1 common attack
-//        retVal.add(DefaultCommonAttack.ID); // TODO: 1 basic attack
+//        retVal.add(DefaultCommonAttack.ID); // TODOO: 1 basic attack
         // 1 common skill
-//        retVal.add(DefaultCommonPower.ID); // TODO: 1 basic skill
+//        retVal.add(DefaultCommonPower.ID); // TODOO: 1 basic skill
 
 //        retVal.add(Armaments.ID);
         retVal.add(DynamicCard.getID(WellPrepared.class));
@@ -291,12 +290,8 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(WellPrepared.class));
         retVal.add(DynamicCard.getID(WellPrepared.class));
 
-        // TODO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
-        // TODO: deck view is not showing correct tags? tags should be for the card itself and not just combat
-        // TODO: upgrade view but for fire/ice morphose. use HandCardSelectScreen SpireReturn (https://github.com/kiooeht/ModTheSpire/wiki/SpireReturn)?
-
-        // TOOD: use for heated:
-        // AbstractDungeon.actionManager.addToBottom(new VFXAction(this, new InflameEffect(this), 0.25F));
+        // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
+        // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
 
 //        // common attack
 //        retVal.add(Strike_Sorcerer.ID);
@@ -304,7 +299,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(FrozenTomb.class));
 //        retVal.add(DynamicCard.getID(Fireball.class));
 //        retVal.add(DynamicCard.getID(Thaw.class));
-//        retVal.add(DynamicCard.getID(FrostArrow.class)); // TODO
+//        retVal.add(DynamicCard.getID(FrostArrow.class)); // TODOO
 //        retVal.add(DynamicCard.getID(LostKnowledge.class));
 //        retVal.add(DynamicCard.getID(SorcerersRaid.class));
 //        retVal.add(DynamicCard.getID(LastResort.class));
@@ -314,7 +309,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(SparkingTendril.class));
 //        retVal.add(DynamicCard.getID(CrystalProtection.class));
 //        retVal.add(DynamicCard.getID(Congeal.class));
-//        retVal.add(DynamicCard.getID(FireShield.class)); // TODO
+//        retVal.add(DynamicCard.getID(FireShield.class)); // TODOO
 //        retVal.add(DynamicCard.getID(MagicalCloak.class));
 //        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 //        retVal.add(DynamicCard.getID(OneWithNothing.class));
@@ -419,7 +414,7 @@ public class TheSorcerer extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Scorch(); // TODO
+        return new Scorch(); // TODOO
     }
 
     // The class name as it appears next to your player name in-game

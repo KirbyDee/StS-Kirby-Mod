@@ -7,6 +7,9 @@ import com.megacrit.cardcrawl.localization.PotionStrings;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicPower;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public abstract class DynamicPotion extends CustomPotion {
 
     protected String[] descriptions;
@@ -42,12 +45,17 @@ public abstract class DynamicPotion extends CustomPotion {
         this.tips.add(new PowerTip(this.name, this.description));
     }
 
-    protected void addTip(final String keyword) {
-        this.tips.add(DynamicDungeon.getPowerTip(keyword));
+    protected final void addTip(final String... keyword) {
+        this.tips.addAll(
+                Arrays.stream(keyword).map(DynamicDungeon::getPowerTip).collect(Collectors.toList())
+        );
     }
 
-    protected void addTip(final Class<? extends DynamicPower> powerClass) {
-        this.tips.add(DynamicDungeon.getPowerTip(powerClass));
+    @SafeVarargs
+    protected final void addTip(final Class<? extends DynamicPower>... powerClass) {
+        this.tips.addAll(
+                Arrays.stream(powerClass).map(DynamicDungeon::getPowerTip).collect(Collectors.toList())
+        );
     }
 
     protected abstract void updateDescription();

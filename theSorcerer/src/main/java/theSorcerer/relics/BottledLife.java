@@ -7,6 +7,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.powers.buff.ChilledPower;
+import theSorcerer.powers.buff.HeatedPower;
+import theSorcerer.powers.buff.PresenceOfMindPower;
+import theSorcerer.powers.debuff.ElementlessPower;
 
 import java.util.function.Predicate;
 
@@ -17,6 +21,13 @@ public class BottledLife extends BottledRelic implements CustomSavable<Integer> 
                 BottledLife.class,
                 RelicTier.RARE
         );
+    }
+
+    @Override
+    protected void initializeTips() {
+        super.initializeTips();
+        addTip("Arcane");
+        addTip(PresenceOfMindPower.class);
     }
 
     @Override

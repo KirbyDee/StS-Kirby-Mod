@@ -16,7 +16,7 @@ import theSorcerer.patches.monsters.AbstractMonsterPatch;
 
 public class MirrorForceAction extends AbstractGameAction {
 
-    private static final String TEXT = "That enemy does not intend to attack!"; // TODO
+    private static final String TEXT = "That enemy does not intend to attack!"; // TODOO
 
     private final AbstractPlayer player;
     private final AbstractMonster targetMonster;

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 public class PutCardFromDiscardPileToExhaustPileAction extends DiscardPileCardChooseAction {
 
     // --- VALUES START ---
-    private final static String[] TEXTS = { // TODO
+    private final static String[] TEXTS = { // TODOO
             "Choose ",
             " card ",
             " cards ",

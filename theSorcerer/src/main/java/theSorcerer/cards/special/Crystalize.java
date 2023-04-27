@@ -2,15 +2,15 @@ package theSorcerer.cards.special;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.ColdShowerAction;
+import theSorcerer.actions.CrystalizeAction;
 import theSorcerer.cards.DynamicCard;
 
-public class ColdShower extends DynamicCard {
+public class Crystalize extends DynamicCard {
 
-    public ColdShower() {
+    public Crystalize() {
         super(
 
-                DynamicCard.InfoBuilder(ColdShower.class)
+                DynamicCard.InfoBuilder(Crystalize.class)
                         .type(CardType.POWER)
                         .rarity(CardRarity.SPECIAL)
                         .build()
@@ -24,6 +24,6 @@ public class ColdShower extends DynamicCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new ColdShowerAction());
+        addToBot(new CrystalizeAction());
     }
 }

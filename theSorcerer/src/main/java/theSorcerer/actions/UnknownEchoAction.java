@@ -6,7 +6,7 @@ import theSorcerer.DynamicDungeon;
 public class UnknownEchoAction extends HandCardChooseAction {
 
     // --- VALUES START ---
-    private final static String TEXT = "put on top of your draw pile."; // TODO
+    private final static String TEXT = "put on top of your draw pile."; // TODOO
     // --- VALUES END ---
 
     public UnknownEchoAction(int amount) {

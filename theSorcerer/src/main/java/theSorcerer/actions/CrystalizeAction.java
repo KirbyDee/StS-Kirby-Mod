@@ -3,9 +3,9 @@ package theSorcerer.actions;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.CardAbility;
 
-public class ColdShowerAction extends ElementmorphoseAction {
+public class CrystalizeAction extends ElementmorphoseAction {
 
-    public ColdShowerAction() {
+    public CrystalizeAction() {
         super(
                 CardAbility.ICE,
                 DynamicDungeon::makeCardIce

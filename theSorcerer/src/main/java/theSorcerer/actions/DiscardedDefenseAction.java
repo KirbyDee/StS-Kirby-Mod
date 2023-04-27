@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 public class DiscardedDefenseAction extends HandCardChooseAction {
 
     // --- VALUES START ---
-    private final static String TEXT = "discard."; // TODO
+    private final static String TEXT = "discard."; // TODOO
     private final AbstractPlayer player;
     private final int block;
     // --- VALUES END ---

@@ -31,7 +31,7 @@ public class Fireball extends SorcererFireCard {
         );
     }
 
-    // TODO: fireball sfx?
+    // TODOO: fireball sfx?
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // effect

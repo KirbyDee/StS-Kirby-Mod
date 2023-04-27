@@ -8,11 +8,11 @@
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:FireStrike": {
-    "NAME": "Strike",
+    "NAME": "Fire Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
   "theSorcerer:IceDefend": {
-    "NAME": "Defend",
+    "NAME": "Ice Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:Scorch": {
@@ -47,8 +47,8 @@
     "NAME": "Baptism of Fire",
     "DESCRIPTION": "thesorcerer:Firemorphose a card in your hand for the rest of combat."
   },
-  "theSorcerer:ColdShower": {
-    "NAME": "Cold Shower",
+  "theSorcerer:Crystalize": {
+    "NAME": "Crystalize",
     "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat."
   },
   "theSorcerer:Tradeoff": {

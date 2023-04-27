@@ -39,7 +39,7 @@ public class AbstractCardPatch {
             if (inBottleEnergy.get(result)) {
                 DynamicDungeon.makeCardArcane(result);
             }
-            // TODO: do the same with fire/ice that can be given on rest site due to event
+            // TODOO: do the same with fire/ice that can be given on rest site due to event
 
             return result;
         }
