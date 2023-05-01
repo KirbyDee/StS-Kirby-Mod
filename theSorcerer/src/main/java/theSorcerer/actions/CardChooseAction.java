@@ -111,7 +111,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
         onActionDone();
     }
 
-    private void onCardsChosen(Stream<AbstractCard> cards) {
+    protected void onCardsChosen(Stream<AbstractCard> cards) {
         this.isDone = true;
         cards
                 .peek(c -> LOG.debug("Card chosen: " + c.name))

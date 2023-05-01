@@ -8,10 +8,26 @@ public abstract class DynamicAmountPower extends SelfRemovablePower {
 
     private static final Logger LOG = LogManager.getLogger(DynamicAmountPower.class.getName());
 
+    private final boolean removeIfZero;
+
     public DynamicAmountPower(
             Class<? extends DynamicAmountPower> thisClazz,
             AbstractCreature owner,
             int amount
+    ) {
+        this(
+                thisClazz,
+                owner,
+                amount,
+                true
+        );
+    }
+
+    public DynamicAmountPower(
+            Class<? extends DynamicAmountPower> thisClazz,
+            AbstractCreature owner,
+            int amount,
+            boolean removeIfZero
     ) {
         super(thisClazz, owner);
 
@@ -19,6 +35,7 @@ public abstract class DynamicAmountPower extends SelfRemovablePower {
         if (this.amount >= 999) {
             this.amount = 999;
         }
+        this.removeIfZero = removeIfZero;
     }
 
     @Override
@@ -26,7 +43,7 @@ public abstract class DynamicAmountPower extends SelfRemovablePower {
         LOG.info("Stack power " + this.ID + " by " + stackAmount);
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if (this.amount == 0) {
+        if (this.removeIfZero && this.amount == 0) {
             removeSelf();
         }
 

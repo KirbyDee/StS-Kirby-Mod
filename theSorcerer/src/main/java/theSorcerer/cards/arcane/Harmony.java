@@ -7,8 +7,8 @@ import theSorcerer.cards.DynamicCard;
 public class Harmony extends SorcererArcaneCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     // --- VALUES END ---
 
     public Harmony() {

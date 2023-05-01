@@ -28,13 +28,8 @@ public class AbstractPlayerPatch {
         public static void Postfix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
             LOG.debug("Card: " + self.name + " - " + card.tags);
 
-            // invalid cast
-            if (hasNotEnoughCost(card) || hasElementlessPower(self, card)) {
-                return;
-            }
-
-            // element switch check
-            if (doesInvalidElementSwitch(self, card)) {
+            // element check
+            if (hasElementlessPower(self, card) || doesInvalidElementSwitch(self, card)) {
                 return;
             }
 

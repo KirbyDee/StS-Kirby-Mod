@@ -26,7 +26,7 @@ public class PillarOfFlame extends SorcererFireCard {
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
-                        .target(CardTarget.NONE)
+                        .target(CardTarget.ALL_ENEMY)
                         .damage(DAMAGE_SECONDARY)
                         .magicNumber(DAMAGE_PRIMARY)
         );

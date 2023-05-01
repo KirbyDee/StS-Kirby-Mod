@@ -232,8 +232,8 @@
     "NAME": "Harmony",
     "DESCRIPTION": ""
   },
-  "theSorcerer:ArcaneBarrage": {
-    "NAME": "Arcane Barrage",
+  "theSorcerer:ArcaneComets": {
+    "NAME": "Arcane Comets",
     "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
   },
   "theSorcerer:ArcaneProtection": {
@@ -262,5 +262,22 @@
   "theSorcerer:Sheep": {
     "NAME": "Sheep",
     "DESCRIPTION": "Cannot attack or Block. NL The sheep will turn back into the original monster when taking damage or certain turns have passed."
+  },
+  "theSorcerer:PulsatingBlade": {
+    "NAME": "Pulsating Blade",
+    "DESCRIPTION": "Deal !D! damage. NL Swap the cost of 2 cards in your hand this turn."
+  },
+  "theSorcerer:BruteForce": {
+    "NAME": "Brute Force",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you become thesorcerer:Elementless, return this card from the discard pile to your hand."
+  },
+  "theSorcerer:ImprudentPunches": {
+    "NAME": "Imprudent Punches",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each time you became thesorcerer:Elementless. NL (Elementless count: !M!.)"
+  },
+  "theSorcerer:Meditation": {
+    "NAME": "Meditation",
+    "DESCRIPTION": "Gain [E] [E] [E].",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]."
   }
 }

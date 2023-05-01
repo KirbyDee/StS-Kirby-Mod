@@ -21,7 +21,7 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
             final AbstractCreature owner,
             final int amount
     ) {
-        super(thisClazz, owner, amount);
+        super(thisClazz, owner, amount, false);
         this.isTurnBased = true;
         this.canGoNegative = false;
 

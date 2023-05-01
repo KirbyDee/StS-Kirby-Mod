@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 
-public class ArcaneBarrage extends SorcererArcaneCard {
+public class ArcaneComets extends SorcererArcaneCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
@@ -15,9 +15,9 @@ public class ArcaneBarrage extends SorcererArcaneCard {
     private static final int DAMAGE_TIMES = 5;
     // --- VALUES END ---
 
-    public ArcaneBarrage() {
+    public ArcaneComets() {
         super(
-                DynamicCard.InfoBuilder(ArcaneBarrage.class)
+                DynamicCard.InfoBuilder(ArcaneComets.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)

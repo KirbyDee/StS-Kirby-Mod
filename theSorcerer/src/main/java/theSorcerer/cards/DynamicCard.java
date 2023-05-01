@@ -321,6 +321,8 @@ public abstract class DynamicCard extends CustomCard {
 
     public void triggerOnFuturity() {}
 
+    public void triggerOnElementless() {}
+
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         DynamicCard card = (DynamicCard) super.makeStatEquivalentCopy();

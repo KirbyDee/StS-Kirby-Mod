@@ -8,13 +8,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -225,18 +223,18 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 50 (19/20/11) - 75
-        // 15 attacks
-        // - common: 9 -> ok?
-        // - uncommon: 4 -> more
-        // - rare: 2 -> more
+        //sorcerer 54 (20/22/12) - 75
+        // 18 attacks
+        // - common: 10 -> ok?
+        // - uncommon: 1 -> more
+        // - rare: 3 -> ok?
         // 6 power
         // - common: 0 -> ok
         // - uncommon: 4 -> more
         // - rare: 3 -> more
-        // 28 skills
+        // 29 skills
         // - common: 10 -> ok?
-        // - uncommon: 12 -> more
+        // - uncommon: 13 -> more?
         // - rare: 6 -> more
         // relic:
         // - starter: 1
@@ -303,6 +301,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(LostKnowledge.class));
 //        retVal.add(DynamicCard.getID(SorcerersRaid.class));
 //        retVal.add(DynamicCard.getID(LastResort.class));
+//        retVal.add(DynamicCard.getID(BruteForce.class));
 //        // common skill
 //        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(DynamicCard.getID(IceBlock.class));
@@ -320,6 +319,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Scorch.class));
 //        retVal.add(DynamicCard.getID(Explosion.class));
 //        retVal.add(DynamicCard.getID(ArcaneBarrage.class));
+//        retVal.add(DynamicCard.getID(ImprudentPunches.class));
 //        // uncommon skill
 //        retVal.add(DynamicCard.getID(Dispell.class));
 //        retVal.add(DynamicCard.getID(Cleanse.class));
@@ -332,6 +332,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(ArcaneProtection.class));
 //        retVal.add(DynamicCard.getID(ElementalStorm.class));
 //        retVal.add(DynamicCard.getID(Polymorph.class));
+//        retVal.add(DynamicCard.getID(Meditation.class));
 //        // uncommon power
 //        retVal.add(DynamicCard.getID(UneducatedGuess.class));
 //        retVal.add(DynamicCard.getID(WallOfFire.class));
@@ -341,6 +342,7 @@ public class TheSorcerer extends CustomPlayer {
 //        // rare attack
 //        retVal.add(DynamicCard.getID(Decay.class));
 //        retVal.add(DynamicCard.getID(Ignite.class));
+//        retVal.add(DynamicCard.getID(PulsatingBlade.class));
 //        // rare skill
 //        retVal.add(DynamicCard.getID(Renounce.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));

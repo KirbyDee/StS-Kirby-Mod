@@ -255,11 +255,11 @@ public class DynamicDungeon {
     }
 
     public static boolean isHeated() {
-        return getHeatedAmount() > 0;
+        return hasPower(AbstractDungeon.player, HeatedPower.class);
     }
 
     public static boolean isChilled() {
-        return getChilledAmount() > 0;
+        return hasPower(AbstractDungeon.player, ChilledPower.class);
     }
 
     public static boolean isHeatedOrChillder() {
