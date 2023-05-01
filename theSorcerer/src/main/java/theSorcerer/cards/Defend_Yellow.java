@@ -1,32 +1,29 @@
-package theSorcerer.cards.ice;
+package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.DynamicCard;
 
-public class IceDefend extends SorcererIceCard {
+public class Defend_Yellow extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 3;
     // --- VALUES END ---
 
-    public IceDefend() {
+    public Defend_Yellow() {
         super(
-                DynamicCard.InfoBuilder(IceDefend.class)
+                DynamicCard.InfoBuilder(Defend_Yellow.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.SPECIAL)
+                        .rarity(CardRarity.BASIC)
                         .target(CardTarget.SELF)
                         .tags(CardTags.STARTER_DEFEND)
                         .block(BLOCK)
         );
     }
 
-    @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
                 new GainBlockAction(
@@ -35,12 +32,9 @@ public class IceDefend extends SorcererIceCard {
                         this.block
                 )
         );
-
-        CardCrawlGame.sound.play("ORB_FROST_CHANNEL", 0.1F);
     }
 
-    @Override
-    protected void upgradeValues() {
-        upgradeBlock(UPGRADE_PLUS_BLOCK);
+    public void upgrade() {
+        upgradeBlock(UPGRADE_BLOCK);
     }
 }

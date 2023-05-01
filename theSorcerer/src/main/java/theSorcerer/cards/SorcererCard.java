@@ -9,7 +9,7 @@ public abstract class SorcererCard extends DynamicCard {
     ) {
         super(
                 infoBuilder
-                        .color(TheSorcerer.Enums.COLOR_ORANGE)
+                        .color(TheSorcerer.Enums.COLOR_YELLOW)
                         .build()
         );
     }

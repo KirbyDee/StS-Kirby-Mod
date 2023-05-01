@@ -21,10 +21,9 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.cards.Defend_Sorcerer;
+import theSorcerer.cards.Defend_Yellow;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.Strike_Sorcerer;
-import theSorcerer.cards.WellPrepared;
+import theSorcerer.cards.Strike_Yellow;
 import theSorcerer.cards.fire.Scorch;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalConstruct;
@@ -32,7 +31,7 @@ import theSorcerer.relics.ElementalConstruct;
 import java.util.ArrayList;
 
 import static theSorcerer.KirbyDeeMod.*;
-import static theSorcerer.characters.TheSorcerer.Enums.COLOR_ORANGE;
+import static theSorcerer.characters.TheSorcerer.Enums.COLOR_YELLOW;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -51,9 +50,9 @@ public class TheSorcerer extends CustomPlayer {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_SORCERER;
-        @SpireEnum(name = "SORCERER_ORANGE_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_ORANGE;
-        @SpireEnum(name = "SORCERER_ORANGE_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "SORCERER_YELLOW_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor COLOR_YELLOW;
+        @SpireEnum(name = "SORCERER_YELLOW_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -266,27 +265,17 @@ public class TheSorcerer extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
-        retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
-        retVal.add(Strike_Sorcerer.ID);
+        for (int i = 0; i < 4; i++) {
+            retVal.add(DynamicCard.getID(Strike_Yellow.class));
+        }
         // 4 defends
-        retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
-        retVal.add(Defend_Sorcerer.ID);
+        for (int i = 0; i < 4; i++) {
+            retVal.add(DynamicCard.getID(Defend_Yellow.class));
+        }
         // 1 common attack
 //        retVal.add(DefaultCommonAttack.ID); // TODOO: 1 basic attack
         // 1 common skill
 //        retVal.add(DefaultCommonPower.ID); // TODOO: 1 basic skill
-
-//        retVal.add(Armaments.ID);
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
-        retVal.add(DynamicCard.getID(WellPrepared.class));
 
         // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
         // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
@@ -391,13 +380,13 @@ public class TheSorcerer extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_ORANGE;
+        return COLOR_YELLOW;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return KirbyDeeMod.SORCERER_ORANGE;
+        return KirbyDeeMod.SORCERER_YELLOW;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -434,14 +423,14 @@ public class TheSorcerer extends CustomPlayer {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return KirbyDeeMod.SORCERER_ORANGE;
+        return KirbyDeeMod.SORCERER_YELLOW;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return KirbyDeeMod.SORCERER_ORANGE;
+        return KirbyDeeMod.SORCERER_YELLOW;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

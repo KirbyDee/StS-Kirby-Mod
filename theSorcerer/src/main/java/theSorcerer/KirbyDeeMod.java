@@ -87,52 +87,41 @@ public class KirbyDeeMod implements
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
-    //This is for the in-game mod settings panel.
     private static final String MODNAME = "KirbyDee Mod";
 
     private static final String MOD_ID = "KirbyDeeMod";
-    private static final String AUTHOR = "KirbyDee"; // And pretty soon - You!
+    private static final String AUTHOR = "KirbyDee";
     private static final String DESCRIPTION = "A mod for Slay the Spire feat. the Sorcerer.";
     
     // =============== INPUT TEXTURE LOCATION =================
     
     // Colors (RGB)
     // Character Color
-    public static final Color SORCERER_ORANGE = CardHelper.getColor(255.0f, 191.0f, 0.0f);
-
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    public static final Color SORCERER_YELLOW = CardHelper.getColor(191.0f, 191.0f, 0.0f);
   
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "theSorcererResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "theSorcererResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "theSorcererResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "theSorcererResources/images/512/bg_attack.png";
+    private static final String SKILL_DEFAULT_GRAY = "theSorcererResources/images/512/bg_skill.png";
+    private static final String POWER_DEFAULT_GRAY = "theSorcererResources/images/512/bg_power.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "theSorcererResources/images/512/card_default_gray_orb.png";// TODOO
+    private static final String CARD_ENERGY_ORB = "theSorcererResources/images/512/card_small_orb.png";// TODOO
     
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "theSorcererResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "theSorcererResources/images/512/card_small_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_attack.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_skill.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_power.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/card_default_gray_orb.png"; // TODOO
     
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/card_default_gray_orb.png";
-    
-    // Character assets
-    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/defaultCharacter/corpse.png";
-    
-    //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = "theSorcererResources/images/Badge.png";
+    // Character assets // TODOO
+    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/DefaultCharacterButton.png";// TODOO
+    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/DefaultCharacterPortraitBG.png";// TODOO
+    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/defaultCharacter/shoulder.png";// TODOO
+    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/defaultCharacter/shoulder2.png";// TODOO
+    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/defaultCharacter/corpse.png";// TODOO
+    public static final String BADGE_IMAGE = "theSorcererResources/images/Badge.png";// TODOO
     
     // Atlas and JSON files for the Animations
-    public static final String THE_SORCERER_SKELETON_ATLAS = "theSorcererResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_SORCERER_SKELETON_ATLAS = "theSorcererResources/images/char/defaultCharacter/skeleton.atlas";// TODOO
+    public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/defaultCharacter/skeleton.json";// TODOO
     
     // =============== MAKE IMAGE PATHS =================
 
@@ -205,10 +194,10 @@ public class KirbyDeeMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheSorcerer.Enums.COLOR_ORANGE.toString());
+        logger.info("Creating the color " + TheSorcerer.Enums.COLOR_YELLOW.toString());
         
-        BaseMod.addColor(TheSorcerer.Enums.COLOR_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE,
-                SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE, SORCERER_ORANGE,
+        BaseMod.addColor(TheSorcerer.Enums.COLOR_YELLOW, SORCERER_YELLOW, SORCERER_YELLOW, SORCERER_YELLOW,
+                SORCERER_YELLOW, SORCERER_YELLOW, SORCERER_YELLOW, SORCERER_YELLOW,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -441,13 +430,13 @@ public class KirbyDeeMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new ElementalConstruct(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new BurningSoul(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new EnergizedSoul(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new BottledGhost(), TheSorcerer.Enums.COLOR_ORANGE);
-        BaseMod.addRelicToCustomPool(new BottledLife(), TheSorcerer.Enums.COLOR_ORANGE);
+        BaseMod.addRelicToCustomPool(new ElementalConstruct(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new BurningSoul(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new FreezingSoul(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new EnergizedSoul(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new BottledGhost(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new BottledLife(), TheSorcerer.Enums.COLOR_YELLOW);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
 //        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
