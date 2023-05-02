@@ -73,7 +73,7 @@ public class TheSorcerer extends CustomPlayer {
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("DefaultCharacter");
+    private static final String ID = makeID("TheSorcerer");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -84,17 +84,18 @@ public class TheSorcerer extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "theSorcererResources/images/char/defaultCharacter/orb/layer1.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer2.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer3.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer4.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer5.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer6.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer1d.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer2d.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer3d.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer4d.png",
-            "theSorcererResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "theSorcererResources/images/char/theSorcerer/orb/layer1.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer2.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer3.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer4.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer5.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer6.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer1d.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer2d.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer3d.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer4d.png",
+            "theSorcererResources/images/char/theSorcerer/orb/layer5d.png"
+    };
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -102,9 +103,9 @@ public class TheSorcerer extends CustomPlayer {
 
     public TheSorcerer(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theSorcererResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "theSorcererResources/images/char/theSorcerer/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "theSorcererResources/images/char/defaultCharacter/Spriter/theSorcererAnimation.scml"));
+                        "theSorcererResources/images/char/theSorcerer/Spriter/theSorcererAnimation.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  

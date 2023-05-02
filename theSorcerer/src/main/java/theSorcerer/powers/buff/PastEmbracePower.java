@@ -3,6 +3,7 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicAmountPower;
 
 public class PastEmbracePower extends DynamicAmountPower {
@@ -23,17 +24,17 @@ public class PastEmbracePower extends DynamicAmountPower {
     @Override
     public void onSpecificTrigger() {
         flash();
-        addToBot(new DrawCardAction(this.owner, this.amount));
+        DynamicDungeon.gainEnergy(this.amount);
     }
 
     @Override
     public void updateDescription() {
-        this.description = descriptions[0] + this.amount;
+        this.description = descriptions[0];
         if (this.amount == 1) {
             this.description += descriptions[1];
         }
         else {
-            this.description += descriptions[2];
+            this.description += descriptions[2] + this.amount + descriptions[3];
         }
     }
 

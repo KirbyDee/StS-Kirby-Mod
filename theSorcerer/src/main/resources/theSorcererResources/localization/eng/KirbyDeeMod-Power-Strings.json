@@ -24,7 +24,12 @@
   },
   "theSorcerer:PastEmbracePower": {
     "NAME": "Past Embrace",
-    "DESCRIPTIONS": ["Whenever a card is #yFlashbacked, draw #b", " card.", " cards."]
+    "DESCRIPTIONS": [
+      "Whenever a card is #yFlashbacked, gain [E] ",
+      ".",
+      "#b",
+      " times."
+    ]
   },
   "theSorcerer:InfernophoenixPower": {
     "NAME": "Infernophoenix",

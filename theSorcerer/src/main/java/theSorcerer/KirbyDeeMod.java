@@ -103,25 +103,25 @@ public class KirbyDeeMod implements
     private static final String ATTACK_DEFAULT_GRAY = "theSorcererResources/images/512/bg_attack.png";
     private static final String SKILL_DEFAULT_GRAY = "theSorcererResources/images/512/bg_skill.png";
     private static final String POWER_DEFAULT_GRAY = "theSorcererResources/images/512/bg_power.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "theSorcererResources/images/512/card_default_gray_orb.png";// TODOO
-    private static final String CARD_ENERGY_ORB = "theSorcererResources/images/512/card_small_orb.png";// TODOO
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "theSorcererResources/images/512/card_orb.png";
+    private static final String CARD_ENERGY_ORB = "theSorcererResources/images/512/card_small_orb.png";
     
     private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_attack.png";
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_skill.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_power.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/card_default_gray_orb.png"; // TODOO
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/card_orb.png";
     
     // Character assets // TODOO
-    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/DefaultCharacterButton.png";// TODOO
-    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/DefaultCharacterPortraitBG.png";// TODOO
-    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/defaultCharacter/shoulder.png";// TODOO
-    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/defaultCharacter/shoulder2.png";// TODOO
-    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/defaultCharacter/corpse.png";// TODOO
+    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/TheSorcererButton.png";// TODOO
+    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/TheSorcererPortraitBG.png";// TODOO
+    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/theSorcerer/shoulder.png";// TODOO
+    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/theSorcerer/shoulder2.png";// TODOO
+    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/theSorcerer/corpse.png";// TODOO
     public static final String BADGE_IMAGE = "theSorcererResources/images/Badge.png";// TODOO
     
     // Atlas and JSON files for the Animations
-    public static final String THE_SORCERER_SKELETON_ATLAS = "theSorcererResources/images/char/defaultCharacter/skeleton.atlas";// TODOO
-    public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/defaultCharacter/skeleton.json";// TODOO
+    public static final String THE_SORCERER_SKELETON_ATLAS = "theSorcererResources/images/char/theSorcerer/skeleton.atlas";// TODOO
+    public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/theSorcerer/skeleton.json";// TODOO
     
     // =============== MAKE IMAGE PATHS =================
 

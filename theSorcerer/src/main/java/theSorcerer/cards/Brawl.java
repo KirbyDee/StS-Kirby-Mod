@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class BruteForce extends SorcererCard {
+public class Brawl extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
@@ -16,9 +16,9 @@ public class BruteForce extends SorcererCard {
     private static final int UPGRADE_DAMAGE = 3;
     // --- VALUES END ---
 
-    public BruteForce() {
+    public Brawl() {
         super(
-                DynamicCard.InfoBuilder(BruteForce.class)
+                DynamicCard.InfoBuilder(Brawl.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)

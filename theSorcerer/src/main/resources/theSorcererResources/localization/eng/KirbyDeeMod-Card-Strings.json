@@ -66,7 +66,7 @@
   },
   "theSorcerer:PastEmbrace": {
     "NAME": "Past Embrace",
-    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw 1 card."
+    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, gain [E]."
   },
   "theSorcerer:Infernophoenix": {
     "NAME": "Infernophoenix",
@@ -267,8 +267,8 @@
     "NAME": "Pulsating Blade",
     "DESCRIPTION": "Deal !D! damage. NL Swap the cost of 2 cards in your hand this turn."
   },
-  "theSorcerer:BruteForce": {
-    "NAME": "Brute Force",
+  "theSorcerer:Brawl": {
+    "NAME": "Brawl",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you become thesorcerer:Elementless, return this card from the discard pile to your hand."
   },
   "theSorcerer:ImprudentPunches": {
