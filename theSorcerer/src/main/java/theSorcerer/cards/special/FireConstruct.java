@@ -6,14 +6,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.fire.FireStrike;
 
-public class FireConstruct extends DynamicCard {
+public class FireConstruct extends SorcererSpecialCard {
 
     public FireConstruct() {
         super(
                 DynamicCard.InfoBuilder(FireConstruct.class)
                         .type(CardType.POWER)
-                        .rarity(CardRarity.SPECIAL)
-                        .build()
         );
 
         this.cardsToPreview = new FireStrike();

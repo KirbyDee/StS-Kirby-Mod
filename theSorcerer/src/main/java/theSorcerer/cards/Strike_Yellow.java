@@ -40,7 +40,7 @@ public class Strike_Yellow extends SorcererCard {
         );
     }
 
-    public void upgrade() {
+    public void upgradeValues() {
         upgradeDamage(UPGRADE_DAMAGE);
     }
 }

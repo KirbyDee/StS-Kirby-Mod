@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.powers.buff.StrongAffinityPower;
 
-public abstract class StrongAffinityChoose extends DynamicCard {
+public abstract class StrongAffinityChoose extends SorcererSpecialCard {
 
     public StrongAffinityChoose(
             DynamicCard.InfoBuilder builder
@@ -15,8 +15,6 @@ public abstract class StrongAffinityChoose extends DynamicCard {
         super(
                 builder
                         .type(CardType.POWER)
-                        .rarity(CardRarity.SPECIAL)
-                        .build()
         );
     }
 

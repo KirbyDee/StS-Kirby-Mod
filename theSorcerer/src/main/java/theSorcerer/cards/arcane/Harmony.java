@@ -16,7 +16,7 @@ public class Harmony extends SorcererArcaneCard {
                 DynamicCard.InfoBuilder(Harmony.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.COMMON)
+                        .rarity(CardRarity.UNCOMMON)
         );
     }
 

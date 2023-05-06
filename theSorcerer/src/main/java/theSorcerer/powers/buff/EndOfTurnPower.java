@@ -5,14 +5,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import theSorcerer.powers.DynamicAmountPower;
 import theSorcerer.powers.DynamicPower;
 
-public abstract class EndOfTurnElementPower extends DynamicAmountPower {
+public abstract class EndOfTurnPower extends DynamicAmountPower {
 
-    private final String elementPower;
+    private final String powerToCheck;
 
-    public EndOfTurnElementPower(
-            Class<? extends EndOfTurnElementPower> thisClazz,
+    public EndOfTurnPower(
+            Class<? extends EndOfTurnPower> thisClazz,
             AbstractCreature owner,
-            Class<? extends DynamicPower> elementPower,
+            Class<? extends DynamicPower> powerToCheck,
             int amount
     ) {
         super(
@@ -20,7 +20,7 @@ public abstract class EndOfTurnElementPower extends DynamicAmountPower {
                 owner,
                 amount
         );
-        this.elementPower = DynamicPower.getID(elementPower);
+        this.powerToCheck = DynamicPower.getID(powerToCheck);
         this.isTurnBased = true;
         this.canGoNegative = false;
 
@@ -31,7 +31,7 @@ public abstract class EndOfTurnElementPower extends DynamicAmountPower {
     public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
         if (isPlayer) {
             AbstractPlayer player = (AbstractPlayer) this.owner;
-            if (player.hasPower(this.elementPower)) {
+            if (player.hasPower(this.powerToCheck)) {
                 flash();
                 applyPower();
             }
@@ -42,7 +42,7 @@ public abstract class EndOfTurnElementPower extends DynamicAmountPower {
 
     @Override
     public void updateDescription() {
-        description = this.descriptions[0] + this.amount + this.descriptions[1];
+        this.description = this.descriptions[0] + this.amount + this.descriptions[1];
     }
 
     @Override

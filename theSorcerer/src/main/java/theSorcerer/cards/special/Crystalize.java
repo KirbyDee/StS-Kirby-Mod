@@ -5,15 +5,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.CrystalizeAction;
 import theSorcerer.cards.DynamicCard;
 
-public class Crystalize extends DynamicCard {
+public class Crystalize extends SorcererSpecialCard {
 
     public Crystalize() {
         super(
 
                 DynamicCard.InfoBuilder(Crystalize.class)
                         .type(CardType.POWER)
-                        .rarity(CardRarity.SPECIAL)
-                        .build()
         );
     }
 

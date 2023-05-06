@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -223,18 +224,18 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 54 (20/22/12) - 75
-        // 18 attacks
+        //sorcerer 62 (21/28/13) - 75
+        // 19 attacks
         // - common: 10 -> ok?
-        // - uncommon: 1 -> more
+        // - uncommon: 8 -> more
         // - rare: 3 -> ok?
-        // 6 power
+        // 8 power
         // - common: 0 -> ok
-        // - uncommon: 4 -> more
-        // - rare: 3 -> more
-        // 29 skills
-        // - common: 10 -> ok?
-        // - uncommon: 13 -> more?
+        // - uncommon: 5 -> more
+        // - rare: 4 -> more
+        // 32 skills
+        // - common: 9 -> ok?
+        // - uncommon: 17 -> more?
         // - rare: 6 -> more
         // relic:
         // - starter: 1
@@ -287,7 +288,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(FrozenTomb.class));
 //        retVal.add(DynamicCard.getID(Fireball.class));
 //        retVal.add(DynamicCard.getID(Thaw.class));
-//        retVal.add(DynamicCard.getID(FrostArrow.class)); // TODOO
+//        retVal.add(DynamicCard.getID(FrostArrow.class));
 //        retVal.add(DynamicCard.getID(LostKnowledge.class));
 //        retVal.add(DynamicCard.getID(SorcerersRaid.class));
 //        retVal.add(DynamicCard.getID(LastResort.class));
@@ -298,11 +299,10 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(SparkingTendril.class));
 //        retVal.add(DynamicCard.getID(CrystalProtection.class));
 //        retVal.add(DynamicCard.getID(Congeal.class));
-//        retVal.add(DynamicCard.getID(FireShield.class)); // TODOO
+//        retVal.add(DynamicCard.getID(FireShield.class));
 //        retVal.add(DynamicCard.getID(MagicalCloak.class));
 //        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 //        retVal.add(DynamicCard.getID(OneWithNothing.class));
-//        retVal.add(DynamicCard.getID(Harmony.class));
 //
 //        // uncommon attack
 //        retVal.add(DynamicCard.getID(MirrorForce.class));
@@ -310,6 +310,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Explosion.class));
 //        retVal.add(DynamicCard.getID(ArcaneBarrage.class));
 //        retVal.add(DynamicCard.getID(ImprudentPunches.class));
+//        retVal.add(DynamicCard.getID(UndecidedChoice.class));
 //        // uncommon skill
 //        retVal.add(DynamicCard.getID(Dispell.class));
 //        retVal.add(DynamicCard.getID(Cleanse.class));
@@ -323,11 +324,16 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(ElementalStorm.class));
 //        retVal.add(DynamicCard.getID(Polymorph.class));
 //        retVal.add(DynamicCard.getID(Meditation.class));
+//        retVal.add(DynamicCard.getID(Foretell.class));
+//        retVal.add(DynamicCard.getID(SlipperyFooting.class));
+//        retVal.add(DynamicCard.getID(WarmWelcome.class));
+//        retVal.add(DynamicCard.getID(Harmony.class));
 //        // uncommon power
 //        retVal.add(DynamicCard.getID(UneducatedGuess.class));
 //        retVal.add(DynamicCard.getID(WallOfFire.class));
 //        retVal.add(DynamicCard.getID(PastEmbrace.class));
 //        retVal.add(DynamicCard.getID(FrostShock.class));
+//        retVal.add(DynamicCard.getID(ElementalCharm.class));
 //
 //        // rare attack
 //        retVal.add(DynamicCard.getID(Decay.class));
@@ -344,6 +350,10 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
 //        retVal.add(DynamicCard.getID(CollateralDamage.class));
+//        retVal.add(DynamicCard.getID(InnerFocus.class));
+
+        // TODO: this.cardsToPreview = new Frostbite();
+        // TODO: this.cardsToPreview = new Burn();
 
         return retVal;
     }

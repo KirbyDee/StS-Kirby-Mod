@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
 import javassist.CtBehavior;
+import theSorcerer.DynamicDungeon;
 
 import java.util.function.Consumer;
 
@@ -36,6 +37,7 @@ public class HandCardSelectScreenRenderPatch {
         self.upgradePreviewCard.target_x = (float)Settings.WIDTH * 0.63F;
         self.upgradePreviewCard.target_y = (float)Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
         applyElementToCard.accept(self.upgradePreviewCard);
+        DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
         self.upgradePreviewCard.applyPowers();
         self.upgradePreviewCard.render(sb);
         self.upgradePreviewCard.updateHoverLogic();

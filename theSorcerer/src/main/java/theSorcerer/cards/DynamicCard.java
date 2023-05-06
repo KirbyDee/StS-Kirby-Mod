@@ -243,6 +243,7 @@ public abstract class DynamicCard extends CustomCard {
         this.retain = info.abilities.contains(CardAbility.RETAIN);
         this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
         AbstractCardPatch.abilities.get(this).addAll(info.abilities);
+        AbstractCardPatch.abilitiesPerCombat.get(this).addAll(info.abilities);
 
         // init values
         this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;
@@ -265,7 +266,7 @@ public abstract class DynamicCard extends CustomCard {
         this.rawDescription = this.upgraded && StringUtils.isNotBlank(this.baseUpgradeRawDescription) ?
                 this.baseUpgradeRawDescription :
                 this.baseRawDescription;
-        AbstractCardPatch.abilities.get(this).forEach(a -> a.addRawDescription(this));
+        AbstractCardPatch.abilitiesPerCombat.get(this).forEach(a -> a.addRawDescription(this));
     }
 
     public void displayUpgrades() {

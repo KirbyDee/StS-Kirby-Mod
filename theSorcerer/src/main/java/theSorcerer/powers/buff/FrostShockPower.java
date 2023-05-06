@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class FrostShockPower extends EndOfTurnElementPower {
+public class FrostShockPower extends EndOfTurnPower {
 
     public FrostShockPower(
             final AbstractCreature owner,

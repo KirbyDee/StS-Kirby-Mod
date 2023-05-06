@@ -28,11 +28,11 @@ public class FrostArmor extends SorcererIceCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
                 new GainBlockAction(
-                        p,
-                        p,
+                        player,
+                        player,
                         this.block
                 )
         );

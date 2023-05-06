@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import theSorcerer.powers.debuff.ElementlessPower;
 
-public class UneducatedGuessPower extends EndOfTurnElementPower {
+public class UneducatedGuessPower extends EndOfTurnPower {
 
     public UneducatedGuessPower(
             final AbstractCreature owner,
@@ -30,6 +30,12 @@ public class UneducatedGuessPower extends EndOfTurnElementPower {
                         this.amount
                 )
         );
+    }
+
+    @Override
+    public void updateDescription() {
+        super.updateDescription();
+        this.description += (this.amount == 1 ? this.descriptions[2] : this.descriptions[3]) + this.descriptions[4];
     }
 
     @Override

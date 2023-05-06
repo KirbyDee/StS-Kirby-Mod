@@ -26,7 +26,7 @@ public class FireStrike extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.SPECIAL)
                         .target(CardTarget.ENEMY)
-                        .tags(CardTags.STARTER_STRIKE, CardTags.STRIKE)
+                        .tags(CardTags.STRIKE)
                         .damage(DAMAGE)
         );
     }

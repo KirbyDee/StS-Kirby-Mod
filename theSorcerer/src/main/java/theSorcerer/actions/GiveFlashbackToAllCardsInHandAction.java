@@ -30,6 +30,6 @@ public class GiveFlashbackToAllCardsInHandAction extends AbstractGameAction {
         // apply flash, powers and init shown description
         card.superFlash();
         card.applyPowers();
-        card.initializeDescription();
+        DynamicDungeon.updateAbilityDescription(card);
     }
 }

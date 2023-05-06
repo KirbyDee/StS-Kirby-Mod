@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -21,12 +22,16 @@ public class MirrorForceAction extends AbstractGameAction {
     private final AbstractPlayer player;
     private final AbstractMonster targetMonster;
 
+    private final boolean upgraded;
+
     public MirrorForceAction(
             AbstractPlayer player,
-            AbstractMonster targetMonster
+            AbstractMonster targetMonster,
+            boolean upgraded
     ) {
         this.player = player;
         this.targetMonster = targetMonster;
+        this.upgraded = upgraded;
     }
 
     @Override
@@ -65,12 +70,24 @@ public class MirrorForceAction extends AbstractGameAction {
     }
 
     private void damageEnemy(final int damage) {
-        addToBot(
-                new DamageAction(
-                        this.targetMonster,
-                        new DamageInfo(this.player, damage),
-                        AbstractGameAction.AttackEffect.NONE
-                )
-        );
+        if (this.upgraded) {
+            addToBot(
+                    new DamageAllEnemiesAction(
+                            this.player,
+                            damage,
+                            DamageInfo.DamageType.NORMAL,
+                            AbstractGameAction.AttackEffect.NONE
+                    )
+            );
+        }
+        else {
+            addToBot(
+                    new DamageAction(
+                            this.targetMonster,
+                            new DamageInfo(this.player, damage, DamageInfo.DamageType.NORMAL),
+                            AbstractGameAction.AttackEffect.NONE
+                    )
+            );
+        }
     }
 }

@@ -2,28 +2,32 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.actions.PutCardFromDrawPileToDiscardPileAction;
+import theSorcerer.patches.cards.CardAbility;
 
-public class Defend_Yellow extends SorcererCard {
+public class Fortell extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 
-    public Defend_Yellow() {
+    public Fortell() {
         super(
-                DynamicCard.InfoBuilder(Defend_Yellow.class)
+                DynamicCard.InfoBuilder(Fortell.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.BASIC)
+                        .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
-                        .tags(CardTags.STARTER_DEFEND)
                         .block(BLOCK)
+                        .abilities(CardAbility.FUTURITY)
         );
     }
 
+    @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
                 new GainBlockAction(
@@ -34,7 +38,8 @@ public class Defend_Yellow extends SorcererCard {
         );
     }
 
-    public void upgradeValues() {
-        upgradeBlock(UPGRADE_BLOCK);
+    @Override
+    protected void upgradeValues() {
+        upgradeBlock(UPGRADE_PLUS_BLOCK);
     }
 }

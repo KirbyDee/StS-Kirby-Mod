@@ -117,13 +117,13 @@
     "NAME": "Frostbite",
     "DESCRIPTION": "At the end of your turn, take !M! damage."
   },
-  "theSorcerer:FrostArrow": {
-    "NAME": "Frost Arrow",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Frostbite into your discard pile."
+  "theSorcerer:IceArrow": {
+    "NAME": "Ice Arrow",
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Chilling *Charm into your draw pile."
   },
   "theSorcerer:FireShield": {
     "NAME": "Fire Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Add a *Burn into your discard pile."
+    "DESCRIPTION": "Gain !B! Block. NL Add a *Heating *Charm into your draw pile."
   },
   "theSorcerer:FrozenTomb": {
     "NAME": "Frozen Tomb",
@@ -144,7 +144,8 @@
   },
   "theSorcerer:MirrorForce": {
     "NAME": "Mirror Force",
-    "DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to it."
+    "DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to it.",
+    "UPGRADE_DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to all enemies."
   },
   "theSorcerer:Dispell": {
     "NAME": "Dispell",
@@ -279,5 +280,37 @@
     "NAME": "Meditation",
     "DESCRIPTION": "Gain [E] [E] [E].",
     "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]."
+  },
+  "theSorcerer:Fortell": {
+    "NAME": "Fortell",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "theSorcerer:UndecidedChoice": {
+    "NAME": "Undecided Choice",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL If you are thesorcerer:Elementless, this card costs 0 instead."
+  },
+  "theSorcerer:SlipperyFooting": {
+    "NAME": "Slippery Footing",
+    "DESCRIPTION": "Add a random theSorcerer:Ice card into your hand."
+  },
+  "theSorcerer:WarmWelcome": {
+    "NAME": "Warm Welcome",
+    "DESCRIPTION": "Add a random theSorcerer:Fire card into your hand."
+  },
+  "theSorcerer:InnerFocus": {
+    "NAME": "Inner Focus",
+    "DESCRIPTION": "If you have thesorcerer:Presence_Of_Mind at the start of your turn, gain [E] ."
+  },
+  "theSorcerer:HeatingCharm": {
+    "NAME": "Heating Charm",
+    "DESCRIPTION": "Gain !M! theSorcerer:Heated."
+  },
+  "theSorcerer:ChillingCharm": {
+    "NAME": "Chilling Charm",
+    "DESCRIPTION": "Gain !M! theSorcerer:Chilled."
+  },
+  "theSorcerer:ElementalCharm": {
+    "NAME": "Elemental Charm",
+    "DESCRIPTION": "At the start of each turn, add either a *Heating *Charm or *Chilling *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
   }
 }

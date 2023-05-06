@@ -54,7 +54,8 @@ public class CardGroupPatch {
             // add arcane to the description
             CardAbility.ARCANE.addRawDescription(card);
 
-            card.initializeDescription();
+            // update description again with abilities
+            DynamicDungeon.updateAbilityDescription(card);
         }
     }
 }

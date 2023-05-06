@@ -9,7 +9,7 @@ import theSorcerer.patches.cards.CardAbility;
 public class MirrorForce extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
+    private static final int COST = 1;
     // --- VALUES END ---
 
     public MirrorForce() {
@@ -28,13 +28,9 @@ public class MirrorForce extends SorcererCard {
         addToBot(
                 new MirrorForceAction(
                         player,
-                        monster
+                        monster,
+                        this.upgraded
                 )
         );
-    }
-
-    @Override
-    protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).remove(CardAbility.ETHEREAL);
     }
 }

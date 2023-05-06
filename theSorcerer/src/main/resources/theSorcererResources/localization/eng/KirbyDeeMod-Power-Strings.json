@@ -45,7 +45,13 @@
   },
   "theSorcerer:UneducatedGuessPower": {
     "NAME": "Uneducated Guess",
-    "DESCRIPTIONS": ["At the end of your turn, if you are #yElementless, draw #b", " additional card next turn."]
+    "DESCRIPTIONS": [
+      "At the end of your turn, if you are #yElementless, draw #b",
+      " additional ",
+      "card",
+      "cards",
+      "next turn."
+    ]
   },
   "theSorcerer:FrostShockPower": {
     "NAME": "Frost Shock",
@@ -83,6 +89,25 @@
       " turn",
       " turns",
       " the sheep will turn back to its original form."
+    ]
+  },
+  "theSorcerer:InnerFocusPower": {
+    "NAME": "Inner Focus",
+    "DESCRIPTIONS": [
+      "If you have #yPresence #yOf #yMind at the start of your turn, gain [E] ",
+      "#b",
+      " times.",
+      "."
+    ]
+  },
+  "theSorcerer:ElementalCharmPower": {
+    "NAME": "Elemental Charm",
+    "DESCRIPTIONS": [
+      "At the start of your next turn, add either #b",
+      " *Heating *Charm or *Chilling *Charm into your hand, depending on the #yElemental #yAffinities you end up this turn.",
+      "At the start of each turn, add #b",
+      " #yHeating #yCharm into your hand.",
+      " #yChilling #yCharm into your hand."
     ]
   }
 }

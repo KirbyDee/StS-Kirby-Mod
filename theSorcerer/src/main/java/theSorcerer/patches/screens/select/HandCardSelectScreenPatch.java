@@ -80,15 +80,13 @@ public class HandCardSelectScreenPatch {
         public static void Postfix(
                 HandCardSelectScreen self
         ) {
+            Consumer<AbstractCard> applyElementToCard = forElementMorphoseField.get(self);
+            if (applyElementToCard == null) {
+                return;
+            }
+
             if (self.selectedCards.size() == 1) {
-                float target_x;
-                if (forElementMorphoseField.get(self) != null) {
-                    target_x = (float) Settings.WIDTH * 0.37F;
-                }
-                else {
-                    target_x = (float) Settings.WIDTH / 2.0F;
-                }
-                self.selectedCards.group.get(0).target_x = target_x;
+                self.selectedCards.group.get(0).target_x = (float) Settings.WIDTH * 0.37F;
             }
         }
     }
@@ -101,6 +99,9 @@ public class HandCardSelectScreenPatch {
         ) {
             Consumer<AbstractCard> applyElementToCard = forElementMorphoseField.get(self);
             if (applyElementToCard == null) {
+                if (self.upgradePreviewCard != null) {
+                    DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
+                }
                 return;
             }
 
@@ -143,6 +144,9 @@ public class HandCardSelectScreenPatch {
         ) {
             Consumer<AbstractCard> applyElementToCard = forElementMorphoseField.get(self);
             if (applyElementToCard == null) {
+                if (self.upgradePreviewCard != null) {
+                    DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
+                }
                 return;
             }
 

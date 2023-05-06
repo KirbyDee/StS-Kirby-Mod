@@ -1,43 +1,45 @@
-package theSorcerer.cards.fire;
+package theSorcerer.cards.ice;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.special.HeatingCharm;
+import theSorcerer.cards.special.ChillingCharm;
 
-public class FireShield extends SorcererFireCard {
+public class IceArrow extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int DAMAGE = 6;
+    private static final int UPGRADE_PLUS_DAMAGE = 3;
     private static final int TOKEN_AMOUNT = 1;
     // --- VALUES END ---
 
-    public FireShield() {
+    public IceArrow() {
         super(
-                DynamicCard.InfoBuilder(FireShield.class)
+                DynamicCard.InfoBuilder(IceArrow.class)
                         .cost(COST)
-                        .type(CardType.SKILL)
+                        .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
-                        .target(CardTarget.SELF)
-                        .block(BLOCK)
+                        .target(CardTarget.ENEMY)
+                        .damage(DAMAGE)
                         .magicNumber(TOKEN_AMOUNT)
         );
 
-        this.cardsToPreview = new HeatingCharm();
+        this.cardsToPreview = new ChillingCharm();
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new GainBlockAction(
-                        player,
-                        player,
-                        this.block
+                new DamageAction(
+                        monster,
+                        new DamageInfo(player, this.damage, this.damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.BLUNT_LIGHT
                 )
         );
 
@@ -57,7 +59,7 @@ public class FireShield extends SorcererFireCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBlock(UPGRADE_PLUS_BLOCK);
+        upgradeBlock(UPGRADE_PLUS_DAMAGE);
         this.cardsToPreview.upgrade();
     }
 }

@@ -6,14 +6,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.ice.IceDefend;
 
-public class IceConstruct extends DynamicCard {
+public class IceConstruct extends SorcererSpecialCard {
 
     public IceConstruct() {
         super(
                 DynamicCard.InfoBuilder(IceConstruct.class)
                         .type(CardType.POWER)
-                        .rarity(CardRarity.SPECIAL)
-                        .build()
         );
 
         this.cardsToPreview = new IceDefend();

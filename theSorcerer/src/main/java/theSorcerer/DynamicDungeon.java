@@ -1,5 +1,6 @@
 package theSorcerer;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -36,13 +37,14 @@ import theSorcerer.powers.debuff.FrozenPower;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class DynamicDungeon {
 
-    protected static final Logger LOG = LogManager.getLogger(DynamicDungeon.class.getName());
+    private static final Logger LOG = LogManager.getLogger(DynamicDungeon.class.getName());
 
     private DynamicDungeon() {}
 
@@ -52,15 +54,23 @@ public class DynamicDungeon {
     // -------------------------
 
     public static boolean cardHasAbility(final AbstractCard card, final CardAbility ability) {
-        return AbstractCardPatch.abilities.get(card).contains(ability);
+        return AbstractCardPatch.abilitiesPerCombat.get(card).contains(ability);
     }
 
     public static boolean isFireCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.FIRE) || (isHeated() && isArcaneCard(card));
+        return isOriginalFireCard(card) || (isHeated() && isArcaneCard(card));
+    }
+
+    public static boolean isOriginalFireCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.FIRE);
     }
 
     public static boolean isIceCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.ICE) || (isChilled() && isArcaneCard(card));
+        return isOriginalIceCard(card) || (isChilled() && isArcaneCard(card));
+    }
+
+    public static boolean isOriginalIceCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.ICE);
     }
 
     public static boolean isArcaneCard(final AbstractCard card) {
@@ -97,56 +107,74 @@ public class DynamicDungeon {
 
     public static void makeCardFuturity(final AbstractCard card) {
         if (!isFuturityCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FUTURITY);
+            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.FUTURITY);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardFlashback(final AbstractCard card) {
         if (!isFlashbackCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FLASHBACK);
+            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.FLASHBACK);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardFire(final AbstractCard card) {
-        if (!isFireCard(card) && !isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FIRE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
+        makeCardFire(card, false);
+    }
+
+    public static void makeCardFire(final AbstractCard card, boolean permanently) {
+        SpireField<Set<CardAbility>> abilities = permanently ?
+                AbstractCardPatch.abilities :
+                AbstractCardPatch.abilitiesPerCombat;
+        if (!isIceCard(card) && !isArcaneCard(card)) {
+            abilities.get(card).add(CardAbility.FIRE);
+            abilities.get(card).remove(CardAbility.ICE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardIce(final AbstractCard card) {
+        makeCardIce(card, false);
+    }
+
+    public static void makeCardIce(final AbstractCard card, boolean permanently) {
+        SpireField<Set<CardAbility>> abilities = permanently ?
+                AbstractCardPatch.abilities :
+                AbstractCardPatch.abilitiesPerCombat;
         if (!isIceCard(card) && !isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ICE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
+            abilities.get(card).add(CardAbility.ICE);
+            abilities.get(card).remove(CardAbility.FIRE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardArcane(final AbstractCard card) {
+        makeCardIce(card, false);
+    }
+
+    public static void makeCardArcane(final AbstractCard card, boolean permanently) {
+        SpireField<Set<CardAbility>> abilities = permanently ?
+                AbstractCardPatch.abilities :
+                AbstractCardPatch.abilitiesPerCombat;
         if (!isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ARCANE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
+            abilities.get(card).add(CardAbility.ARCANE);
+            abilities.get(card).remove(CardAbility.FIRE);
+            abilities.get(card).remove(CardAbility.ICE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardEntomb(final AbstractCard card) {
         if (!isEntombCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ENTOMB);
+            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.ENTOMB);
             updateAbilityDescription(card);
         }
     }
 
     public static void updateAbilityDescription(final AbstractCard card) {
-        // in case of non-Dynamic Cards
-        if (!(card instanceof DynamicCard)) {
-            // we have to re-initialize the description based on the abilities
-            CardAbility.initializeAbilityRawDescriptions(card);
-        }
+        // we have to re-initialize the description based on the abilities
+        CardAbility.initializeAbilityRawDescriptions(card);
 
         // update shown description
         card.initializeDescription();
@@ -379,5 +407,27 @@ public class DynamicDungeon {
                 TipHelper.capitalize(keywordName),
                 GameDictionary.keywords.get(DynamicDungeon.makeKeywordID(keywordName))
         );
+    }
+
+    public static DynamicCard returnRandomFireCardInCombat() {
+        return returnRandomElementCardInCombat(DynamicDungeon::isOriginalFireCard);
+    }
+
+    public static DynamicCard returnRandomIceCardInCombat() {
+        return returnRandomElementCardInCombat(DynamicDungeon::isOriginalIceCard);
+    }
+
+    private static DynamicCard returnRandomElementCardInCombat(final Predicate<DynamicCard> elementPredicate) {
+        Set<AbstractCard> cards = new HashSet<>();
+        cards.addAll(AbstractDungeon.srcCommonCardPool.group);
+        cards.addAll(AbstractDungeon.srcUncommonCardPool.group);
+        cards.addAll(AbstractDungeon.srcRareCardPool.group);
+
+        List<DynamicCard> elementCards = cards.stream()
+                .filter(DynamicCard.class::isInstance)
+                .map(DynamicCard.class::cast)
+                .filter(elementPredicate)
+                .collect(Collectors.toList());
+        return elementCards.get(AbstractDungeon.cardRandomRng.random(elementCards.size() - 1));
     }
 }

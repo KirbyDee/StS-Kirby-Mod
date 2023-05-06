@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class WallOfFirePower extends EndOfTurnElementPower {
+public class WallOfFirePower extends EndOfTurnPower {
 
     public WallOfFirePower(
             final AbstractCreature owner,
