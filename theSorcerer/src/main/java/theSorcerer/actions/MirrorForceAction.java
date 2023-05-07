@@ -32,6 +32,7 @@ public class MirrorForceAction extends AbstractGameAction {
         this.player = player;
         this.targetMonster = targetMonster;
         this.upgraded = upgraded;
+        this.actionType = ActionType.DAMAGE;
     }
 
     @Override

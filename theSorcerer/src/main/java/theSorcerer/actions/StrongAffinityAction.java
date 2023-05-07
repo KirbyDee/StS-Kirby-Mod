@@ -30,6 +30,7 @@ public class StrongAffinityAction extends AbstractGameAction {
         this.upgraded = upgraded;
         this.freeToPlayOnce = freeToPlayOnce;
         this.energyOnUse = energyOnUse;
+        this.actionType = ActionType.POWER;
     }
 
     @Override

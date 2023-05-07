@@ -1,19 +1,11 @@
 package theSorcerer.cards.ice;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.actions.CrystalProtectionAction;
-import theSorcerer.actions.FireballAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.fire.SorcererFireCard;
 
 public class CrystalProtection extends SorcererIceCard {
 

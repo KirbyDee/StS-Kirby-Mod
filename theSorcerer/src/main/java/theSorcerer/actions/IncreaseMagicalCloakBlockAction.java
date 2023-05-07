@@ -16,6 +16,7 @@ public class IncreaseMagicalCloakBlockAction extends AbstractGameAction {
     ) {
         this.card = card;
         this.amount = amount;
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     public void update() {

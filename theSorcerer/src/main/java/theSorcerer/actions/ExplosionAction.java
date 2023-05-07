@@ -20,6 +20,7 @@ public class ExplosionAction extends AbstractGameAction {
     ) {
         this.player = player;
         this.monster = monster;
+        this.actionType = ActionType.DAMAGE;
     }
 
     @Override

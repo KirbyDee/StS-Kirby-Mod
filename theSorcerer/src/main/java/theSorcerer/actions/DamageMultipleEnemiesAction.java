@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DamageMultipleEnemiesAction extends AbstractGameAction {
 
-    private int[] damage;
+    private final int[] damage;
     private boolean firstFrame;
 
     public DamageMultipleEnemiesAction(

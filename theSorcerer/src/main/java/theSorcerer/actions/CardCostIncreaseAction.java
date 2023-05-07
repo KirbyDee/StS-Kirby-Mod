@@ -15,6 +15,7 @@ public class CardCostIncreaseAction extends HandCardChooseAction {
     ) {
         super(cardAmount);
         this.costIncrease = costIncrease;
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     @Override

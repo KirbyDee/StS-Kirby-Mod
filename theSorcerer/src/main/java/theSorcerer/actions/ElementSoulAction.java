@@ -23,6 +23,7 @@ public abstract class ElementSoulAction extends AbstractGameAction {
     ) {
         this.relic = relic;
         this.amount = amount;
+        this.actionType = ActionType.POWER;
     }
 
     @Override

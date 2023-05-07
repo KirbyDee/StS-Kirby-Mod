@@ -14,6 +14,7 @@ public class PulsatingBladeAction extends HandCardChooseAction {
 
     public PulsatingBladeAction() {
         super(2);
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     @Override

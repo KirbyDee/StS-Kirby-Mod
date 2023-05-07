@@ -13,6 +13,7 @@ public class RethinkingAction extends AbstractGameAction {
         }
 
         this.isDone = true;
+        this.actionType = ActionType.SPECIAL;
     }
 
     private void switchElements(final int elementAmount) {

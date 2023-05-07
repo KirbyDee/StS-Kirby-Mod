@@ -19,6 +19,7 @@ public class IgniteLoseHpAction extends AbstractGameAction {
     ) {
         setValues(target, source, amount);
         this.attackEffect = effect;
+        this.actionType = ActionType.DAMAGE;
     }
 
     @Override

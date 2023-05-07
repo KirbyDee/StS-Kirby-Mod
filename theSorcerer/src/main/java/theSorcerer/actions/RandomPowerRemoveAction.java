@@ -27,6 +27,7 @@ public class RandomPowerRemoveAction extends AbstractGameAction {
         this.creature = creature;
         this.powerType = powerType;
         this.amount = amount;
+        this.actionType = ActionType.REDUCE_POWER;
     }
 
     @Override

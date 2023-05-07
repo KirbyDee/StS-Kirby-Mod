@@ -24,6 +24,7 @@ public class PolymorphAction extends AbstractGameAction {
         this.monster = monster;
         this.source = source;
         this.amount = amount;
+        this.actionType = ActionType.SPECIAL;
     }
 
     @Override

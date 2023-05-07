@@ -25,6 +25,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
         super(CARDS_TO_CHOOSE, false, false, false, false);
         this.elementToMetamorph = elementToMetamorph;
         this.applyElementToCard = applyElementToCard;
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     @Override

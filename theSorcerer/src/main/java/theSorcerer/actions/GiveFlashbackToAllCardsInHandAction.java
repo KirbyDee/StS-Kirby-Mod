@@ -12,6 +12,7 @@ public class GiveFlashbackToAllCardsInHandAction extends AbstractGameAction {
 
     public GiveFlashbackToAllCardsInHandAction() {
         this.player = AbstractDungeon.player;
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     @Override

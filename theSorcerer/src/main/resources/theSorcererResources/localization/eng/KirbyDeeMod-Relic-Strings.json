@@ -55,5 +55,13 @@
       "Card ",
       " is treated as #yArcane."
     ]
+  },
+  "theSorcerer:BagOfIce": {
+    "NAME": "Bag of Ice",
+    "FLAVOR": "How can ice burn?",
+    "DESCRIPTIONS": [
+      "At the start of each combat, apply #b",
+      " #yAblaze and #yFrozen to ALL enemies."
+    ]
   }
 }

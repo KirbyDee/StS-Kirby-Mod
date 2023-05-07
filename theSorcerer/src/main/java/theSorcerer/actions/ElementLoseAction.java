@@ -15,6 +15,7 @@ public class ElementLoseAction extends AbstractGameAction {
             AbstractPlayer owner
     ) {
         this.owner = owner;
+        this.actionType = ActionType.REDUCE_POWER;
     }
 
     @Override

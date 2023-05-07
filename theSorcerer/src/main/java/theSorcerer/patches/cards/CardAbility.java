@@ -36,7 +36,7 @@ public enum CardAbility {
 
     public static void initializeAbilityRawDescriptions(final AbstractCard card) {
         removeAllAbilityRawDescriptions(card);
-        AbstractCardPatch.abilitiesPerCombat.get(card)
+        AbstractCardPatch.abilities.get(card)
                 .forEach(a -> a.addRawDescription(card));
     }
 

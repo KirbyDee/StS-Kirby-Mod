@@ -11,6 +11,7 @@ public class UnknownEchoAction extends HandCardChooseAction {
 
     public UnknownEchoAction(int amount) {
         super(amount);
+        this.actionType = ActionType.ENERGY;
     }
 
     @Override

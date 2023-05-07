@@ -5,10 +5,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.debuff.ElementlessPower;
@@ -21,11 +19,19 @@ public class AbstractCardPatch {
 
     public static SpireField<Set<CardAbility>> abilities = new SpireField<>(HashSet::new);
 
-    public static SpireField<Set<CardAbility>> abilitiesPerCombat = new SpireField<>(HashSet::new);
-
     public static SpireField<Boolean> inBottleEnergy = new SpireField<>(() -> false);
 
     public static SpireField<Boolean> inBottleGhost = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> hasBeenMadeFire = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> hasBeenMadeIce = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> hasBeenMadeArcane = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> hasBeenMadeFuturity = new SpireField<>(() -> false);
+
+    public static SpireField<Boolean> hasBeenMadeFlashback = new SpireField<>(() -> false);
 
     private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(DynamicPower.getID(ElementlessPower.class));
 
@@ -36,22 +42,31 @@ public class AbstractCardPatch {
                 AbstractCard result,
                 AbstractCard self
         ) {
+            // permanent ability changes
             inBottleGhost.set(result, inBottleGhost.get(self));
             inBottleEnergy.set(result, inBottleEnergy.get(self));
-            if (inBottleEnergy.get(result)) {
-                DynamicDungeon.makeCardArcane(result, true);
+            hasBeenMadeArcane.set(result, hasBeenMadeArcane.get(self));
+            hasBeenMadeFire.set(result, hasBeenMadeFire.get(self));
+            hasBeenMadeIce.set(result, hasBeenMadeIce.get(self));
+            hasBeenMadeFuturity.set(result, hasBeenMadeFuturity.get(self));
+            hasBeenMadeFlashback.set(result, hasBeenMadeFlashback.get(self));
+            if (inBottleEnergy.get(result) || hasBeenMadeArcane.get(result)) {
+                DynamicDungeon.makeCardArcane(result);
             }
-            abilities.set(result, abilities.get(self));
-            if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-                abilitiesPerCombat.set(result, abilitiesPerCombat.get(self));
+            if (hasBeenMadeFire.get(result)) {
+                DynamicDungeon.makeCardFire(result);
             }
-            else {
-                abilitiesPerCombat.get(result).addAll(new HashSet<>(abilities.get(self)));
+            if (hasBeenMadeIce.get(result)) {
+                DynamicDungeon.makeCardIce(result);
+            }
+            if (hasBeenMadeFuturity.get(result)) {
+                DynamicDungeon.makeCardFuturity(result);
+            }
+            if (hasBeenMadeFlashback.get(result)) {
+                DynamicDungeon.makeCardFlashback(result);
             }
             DynamicDungeon.updateAbilityDescription(result);
-            // TODO: abilitiesPerCombat are not copied, only abilities... how do we want to show the correct element in the upgrade screen
-
-            // TODOO: do the same with fire/ice that can be given on rest site due to event
+            // TODO: upgrade screen does not show "temporary" ability changes.. how do we do that?
 
             return result;
         }

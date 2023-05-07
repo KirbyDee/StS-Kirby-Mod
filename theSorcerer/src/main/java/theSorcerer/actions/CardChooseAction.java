@@ -22,14 +22,14 @@ public abstract class CardChooseAction extends AbstractGameAction {
     protected final AbstractPlayer player;
     protected final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
     protected final CardGroup cardGroup;
-    protected  final boolean anyNumber;
+    protected final boolean anyNumber;
     // --- VALUES END ---
 
     public CardChooseAction(
             final CardGroup cardGroup,
             final int amount
     ) {
-        this(cardGroup, amount, false);
+        this(cardGroup, amount, amount == -1);
     }
 
     public CardChooseAction(
@@ -51,6 +51,9 @@ public abstract class CardChooseAction extends AbstractGameAction {
         if (this.duration == Settings.ACTION_DUR_FAST) {
             // get all the cards which cannot be chosen
             gatherCannotBeChosen();
+            if (this.anyNumber) {
+                this.amount = this.cardGroup.group.size();
+            }
 
             // if no cards are left -> nothing to do
             if (this.cannotBeChosen.size() == this.cardGroup.group.size()) {

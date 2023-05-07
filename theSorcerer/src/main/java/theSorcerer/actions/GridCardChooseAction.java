@@ -75,15 +75,25 @@ public abstract class GridCardChooseAction extends CardChooseAction {
 
     @Override
     protected void showCardSelectionScreen() {
-        AbstractDungeon.gridSelectScreen.open(
-                this.tmp,
-                this.amount,
-                getChooseText(),
-                this.forUpgrade,
-                this.forTransform,
-                this.canCancel,
-                this.forPurge
-        );
+        if (this.anyNumber) {
+            AbstractDungeon.gridSelectScreen.open(
+                    this.tmp,
+                    this.amount,
+                    true,
+                    getChooseText()
+            );
+        }
+        else {
+            AbstractDungeon.gridSelectScreen.open(
+                    this.tmp,
+                    this.amount,
+                    getChooseText(),
+                    this.forUpgrade,
+                    this.forTransform,
+                    this.canCancel,
+                    this.forPurge
+            );
+        }
     }
 
     @Override

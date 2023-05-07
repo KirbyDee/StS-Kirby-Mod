@@ -17,6 +17,7 @@ public class AutoUseCardAction extends AbstractGameAction {
     ) {
         this.player = player;
         this.card = card;
+        this.actionType = ActionType.USE;
     }
 
     @Override

@@ -16,6 +16,7 @@ public class PutCardFromDrawPileToDiscardPileAction extends DrawPileCardChooseAc
 
     public PutCardFromDrawPileToDiscardPileAction(final int amount) {
         super(amount);
+        this.actionType = ActionType.DISCARD;
     }
 
     @Override

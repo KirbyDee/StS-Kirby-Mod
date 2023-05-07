@@ -17,6 +17,7 @@ public class PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction extends E
 
     public PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction(final int amount) {
         super(amount);
+        this.actionType = ActionType.CARD_MANIPULATION;
     }
 
     @Override

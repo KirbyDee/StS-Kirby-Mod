@@ -10,6 +10,7 @@ public class FireballAction extends DrawPileCardChooseAction {
 
     public FireballAction() {
         super(AMOUNT, true);
+        this.actionType = ActionType.DRAW;
     }
 
     @Override

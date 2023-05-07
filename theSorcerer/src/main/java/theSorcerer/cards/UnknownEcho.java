@@ -10,7 +10,7 @@ public class UnknownEcho extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int CARDS_TO_DRAW = 3;
+    private static final int CARDS_TO_DRAW = 2;
     private static final int UPGRADE_CARDS_TO_DRAW = 1;
     private static final int CARDS_TO_PUT_ON_DECK = 1;
     // --- VALUES END ---

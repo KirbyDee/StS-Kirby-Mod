@@ -15,9 +15,9 @@ public class Ignite extends SorcererFireCard {
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int LOSE_HEALTH = 4;
-    private static final int UPGRADE_LOSE_HEALTH = 2;
-    private static final int LOSE_HEALTH_TURNS = 2;
+    private static final int LOSE_HEALTH = 6;
+    private static final int LOSE_HEALTH_TURNS = 1;
+    private static final int UPGRADE_LOSE_HEALTH_TURNS = 1;
     // --- VALUES END ---
 
     public Ignite() {
@@ -64,6 +64,6 @@ public class Ignite extends SorcererFireCard {
     @Override
     protected void upgradeValues() {
         upgradeDamage(UPGRADE_PLUS_DMG);
-        upgradeMagicNumber(UPGRADE_LOSE_HEALTH);
+        upgradeSecondMagicNumber(UPGRADE_LOSE_HEALTH_TURNS);
     }
 }

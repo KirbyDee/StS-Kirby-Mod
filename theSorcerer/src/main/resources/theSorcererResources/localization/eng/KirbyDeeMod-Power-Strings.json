@@ -109,5 +109,13 @@
       " #yHeating #yCharm into your hand.",
       " #yChilling #yCharm into your hand."
     ]
+  },
+  "theSorcerer:IceAgePower": {
+    "NAME": "Ice Age",
+    "DESCRIPTIONS": [
+      "Cannot gain Block for the next #b",
+      " turns.",
+      " turn."
+    ]
   }
 }

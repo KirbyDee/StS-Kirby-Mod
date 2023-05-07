@@ -224,24 +224,24 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 62 (21/28/13) - 75
-        // 19 attacks
-        // - common: 10 -> ok?
-        // - uncommon: 8 -> more
-        // - rare: 3 -> ok?
-        // 8 power
+        //sorcerer 68 (21/31/16) - 75
+        // 24 attacks -> more (4)
+        // - common: 11 -> ok
+        // - uncommon: 9 -> more (4)
+        // - rare: 4 -> ok
+        // 9 power -> more (3)
         // - common: 0 -> ok
         // - uncommon: 5 -> more
         // - rare: 4 -> more
-        // 32 skills
-        // - common: 9 -> ok?
-        // - uncommon: 17 -> more?
-        // - rare: 6 -> more
+        // 35 skills -> more
+        // - common: 10 -> ok
+        // - uncommon: 17 -> ok
+        // - rare: 8 -> ok
         // relic:
         // - starter: 1
         //  - ElementalConstruct
         // - common: 1
-        //  - ?
+        //  - BagOfIce
         // - uncommon: 2
         //  - Elemental Master
         //  - Bottled Ghost
@@ -293,6 +293,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(SorcerersRaid.class));
 //        retVal.add(DynamicCard.getID(LastResort.class));
 //        retVal.add(DynamicCard.getID(BruteForce.class));
+//        retVal.add(DynamicCard.getID(InsightfulAttack.class));
 //        // common skill
 //        retVal.add(Defend_Sorcerer.ID);
 //        retVal.add(DynamicCard.getID(IceBlock.class));
@@ -303,6 +304,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(MagicalCloak.class));
 //        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 //        retVal.add(DynamicCard.getID(OneWithNothing.class));
+//        retVal.add(DynamicCard.getID(SelfFulfillingProphecy.class));
 //
 //        // uncommon attack
 //        retVal.add(DynamicCard.getID(MirrorForce.class));
@@ -311,6 +313,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(ArcaneBarrage.class));
 //        retVal.add(DynamicCard.getID(ImprudentPunches.class));
 //        retVal.add(DynamicCard.getID(UndecidedChoice.class));
+//        retVal.add(DynamicCard.getID(Misdirection.class));
 //        // uncommon skill
 //        retVal.add(DynamicCard.getID(Dispell.class));
 //        retVal.add(DynamicCard.getID(Cleanse.class));
@@ -339,6 +342,7 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Decay.class));
 //        retVal.add(DynamicCard.getID(Ignite.class));
 //        retVal.add(DynamicCard.getID(PulsatingBlade.class));
+//        retVal.add(DynamicCard.getID(ChronoBlast.class));
 //        // rare skill
 //        retVal.add(DynamicCard.getID(Renounce.class));
 //        retVal.add(DynamicCard.getID(Elementmorphose.class));
@@ -346,6 +350,8 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(UnseenHelper.class));
 //        retVal.add(DynamicCard.getID(StrongAffinity.class));
 //        retVal.add(DynamicCard.getID(Rethinking.class));
+//        retVal.add(DynamicCard.getID(Siphon.class));
+//        retVal.add(DynamicCard.getID(IceAge.class));
 //        // rare power
 //        retVal.add(DynamicCard.getID(Infernophoenix.class));
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));

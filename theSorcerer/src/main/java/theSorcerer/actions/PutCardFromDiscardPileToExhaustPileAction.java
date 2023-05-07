@@ -16,6 +16,7 @@ public class PutCardFromDiscardPileToExhaustPileAction extends DiscardPileCardCh
 
     public PutCardFromDiscardPileToExhaustPileAction(final int amount) {
         super(amount);
+        this.actionType = ActionType.EXHAUST;
     }
 
     @Override

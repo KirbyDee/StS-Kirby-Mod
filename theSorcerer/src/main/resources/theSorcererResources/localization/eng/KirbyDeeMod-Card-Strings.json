@@ -312,5 +312,32 @@
   "theSorcerer:ElementalCharm": {
     "NAME": "Elemental Charm",
     "DESCRIPTION": "At the start of each turn, add either a *Heating *Charm or *Chilling *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
+  },
+  "theSorcerer:Misdirection": {
+    "NAME": "Misdirection",
+    "DESCRIPTION": "Deal !D! damage. NL Target will then change its intent."
+  },
+  "theSorcerer:ChronoBlast": {
+    "NAME": "Chrono-Blast",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Take an extra turn after this one. NL End your turn."
+  },
+  "theSorcerer:SelfFulfillingProphecy": {
+    "NAME": "Fulfilling Prophecy",
+    "DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! card.",
+    "UPGRADE_DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! cards."
+  },
+  "theSorcerer:Siphon": {
+    "NAME": "Siphon",
+    "DESCRIPTION": "Exhaust a card in your discard pile. NL Gain [E] equal to its cost.",
+    "UPGRADE_DESCRIPTION": "Exhaust any number of cards in your discard pile. NL Gain [E] equal to their combined cost."
+  },
+  "theSorcerer:InsightfulAttack": {
+    "NAME": "Insightful Attack",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL If the card drawn is an thesorcerer:Elemental_Card draw an additional card."
+  },
+  "theSorcerer:IceAge": {
+    "NAME": "Ice Age",
+    "DESCRIPTION": "Remove all Block from ALL enemies. NL Enemies cannot gain Block for the next !M! turn.",
+    "UPGRADE_DESCRIPTION": "Remove all Block from ALL enemies. NL Enemies cannot gain Block for the next !M! turns."
   }
 }

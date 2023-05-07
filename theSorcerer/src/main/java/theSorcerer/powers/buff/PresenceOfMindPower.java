@@ -3,7 +3,9 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.SelfRemovablePower;
 
@@ -22,15 +24,19 @@ public class PresenceOfMindPower extends SelfRemovablePower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (DynamicDungeon.isArcaneCard(card)) {
-            flash();
-        }
-        else {
+        flash();
+        if (!DynamicDungeon.isArcaneCard(card)) {
             removeSelf();
         }
 
+        // normal cost card gives back their cost
         if (card.costForTurn > 0) {
             DynamicDungeon.gainEnergy(card.costForTurn);
+        }
+
+        // X-cost card gives back their cost
+        else if (card.costForTurn == -1) {
+            DynamicDungeon.gainEnergy(EnergyPanel.getCurrentEnergy());
         }
     }
 

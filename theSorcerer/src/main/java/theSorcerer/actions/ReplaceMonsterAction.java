@@ -28,6 +28,7 @@ public class ReplaceMonsterAction extends AbstractGameAction {
         this.fromMonster = fromMonster;
         this.toMonster = toMonster;
         this.newMonster = newMonster;
+        this.actionType = ActionType.SPECIAL;
     }
 
     @Override

@@ -11,6 +11,7 @@ public class CrystalProtectionAction extends DrawPileCardChooseAction {
 
     public CrystalProtectionAction() {
         super(AMOUNT, true);
+        this.actionType = ActionType.DRAW;
     }
 
     @Override

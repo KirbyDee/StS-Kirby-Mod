@@ -54,7 +54,7 @@ public class DynamicDungeon {
     // -------------------------
 
     public static boolean cardHasAbility(final AbstractCard card, final CardAbility ability) {
-        return AbstractCardPatch.abilitiesPerCombat.get(card).contains(ability);
+        return AbstractCardPatch.abilities.get(card).contains(ability);
     }
 
     public static boolean isFireCard(final AbstractCard card) {
@@ -107,67 +107,46 @@ public class DynamicDungeon {
 
     public static void makeCardFuturity(final AbstractCard card) {
         if (!isFuturityCard(card)) {
-            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.FUTURITY);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FUTURITY);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardFlashback(final AbstractCard card) {
         if (!isFlashbackCard(card)) {
-            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.FLASHBACK);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FLASHBACK);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardFire(final AbstractCard card) {
-        makeCardFire(card, false);
-    }
-
-    public static void makeCardFire(final AbstractCard card, boolean permanently) {
-        SpireField<Set<CardAbility>> abilities = permanently ?
-                AbstractCardPatch.abilities :
-                AbstractCardPatch.abilitiesPerCombat;
         if (!isIceCard(card) && !isArcaneCard(card)) {
-            abilities.get(card).add(CardAbility.FIRE);
-            abilities.get(card).remove(CardAbility.ICE);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.FIRE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardIce(final AbstractCard card) {
-        makeCardIce(card, false);
-    }
-
-    public static void makeCardIce(final AbstractCard card, boolean permanently) {
-        SpireField<Set<CardAbility>> abilities = permanently ?
-                AbstractCardPatch.abilities :
-                AbstractCardPatch.abilitiesPerCombat;
         if (!isIceCard(card) && !isArcaneCard(card)) {
-            abilities.get(card).add(CardAbility.ICE);
-            abilities.get(card).remove(CardAbility.FIRE);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ICE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardArcane(final AbstractCard card) {
-        makeCardIce(card, false);
-    }
-
-    public static void makeCardArcane(final AbstractCard card, boolean permanently) {
-        SpireField<Set<CardAbility>> abilities = permanently ?
-                AbstractCardPatch.abilities :
-                AbstractCardPatch.abilitiesPerCombat;
         if (!isArcaneCard(card)) {
-            abilities.get(card).add(CardAbility.ARCANE);
-            abilities.get(card).remove(CardAbility.FIRE);
-            abilities.get(card).remove(CardAbility.ICE);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ARCANE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
+            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
             updateAbilityDescription(card);
         }
     }
 
     public static void makeCardEntomb(final AbstractCard card) {
         if (!isEntombCard(card)) {
-            AbstractCardPatch.abilitiesPerCombat.get(card).add(CardAbility.ENTOMB);
+            AbstractCardPatch.abilities.get(card).add(CardAbility.ENTOMB);
             updateAbilityDescription(card);
         }
     }
@@ -351,6 +330,10 @@ public class DynamicDungeon {
 
     public static void drawCard(final int amount) {
         addToBot(new DrawCardAction(amount));
+    }
+
+    public static void drawCard(final int amount, final AbstractGameAction followupAction) {
+        addToBot(new DrawCardAction(amount, followupAction));
     }
 
     public static void gainEnergy(final int amount) {

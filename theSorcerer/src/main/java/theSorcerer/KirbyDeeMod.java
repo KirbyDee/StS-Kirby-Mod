@@ -437,6 +437,7 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new ElementalMaster(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new BottledGhost(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new BottledLife(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new BagOfIce(), TheSorcerer.Enums.COLOR_YELLOW);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
 //        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -451,6 +452,7 @@ public class KirbyDeeMod implements
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalMaster.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledGhost.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledLife.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BagOfIce.class));
         // TODOO: which ones do we unlock?
         logger.info("Done adding relics!");
     }

@@ -19,6 +19,7 @@ public class DiscardedDefenseAction extends HandCardChooseAction {
         super(true);
         this.player = player;
         this.block = block;
+        this.actionType = ActionType.DISCARD;
     }
 
     @Override
