@@ -1,11 +1,11 @@
 package theSorcerer;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,6 +37,8 @@ import theSorcerer.powers.debuff.ElementlessPower;
 import theSorcerer.powers.debuff.FrozenPower;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
+import theSorcerer.relics.ElementalPets;
+import theSorcerer.relics.ProtectingGloves;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -75,6 +78,10 @@ public class DynamicDungeon {
 
     public static boolean isArcaneCard(final AbstractCard card) {
         return cardHasAbility(card, CardAbility.ARCANE);
+    }
+
+    public static boolean canPlayArcane() {
+        return hasRelic(ProtectingGloves.class) || DynamicDungeon.isHeatedOrChillder();
     }
 
     public static boolean isFuturityCard(final AbstractCard card) {
@@ -175,12 +182,20 @@ public class DynamicDungeon {
         runnable.run();
     }
 
+    public static void triggerRelic(final AbstractRelic relic) {
+        relic.flash();
+        addToBot(
+                new RelicAboveCreatureAction(AbstractDungeon.player, relic)
+        );
+    }
+
     public static void applyElementless() {
         LOG.info("Trying to apply Elementless");
         AbstractPlayer player = AbstractDungeon.player;
         if (player.hasRelic(DynamicRelic.getID(ElementalMaster.class))) {
             LOG.info("Player has ElementMaster, cannot apply Elementless");
-            player.getRelic(DynamicRelic.getID(ElementalMaster.class)).flash();
+            AbstractRelic relic = player.getRelic(DynamicRelic.getID(ElementalMaster.class));
+            triggerRelic(relic);
         }
         else {
             addToBot(
@@ -215,7 +230,8 @@ public class DynamicDungeon {
     }
 
     public static void applyHeated(final int amount) {
-        increaseElementPower(new HeatedPower(AbstractDungeon.player, amount), amount);
+        int realAmount = getAdaptedElementalAffinityAmount(amount);
+        increaseElementPower(new HeatedPower(AbstractDungeon.player, realAmount), realAmount);
         addToTop(
                 new VFXAction(
                         AbstractDungeon.player,
@@ -226,8 +242,18 @@ public class DynamicDungeon {
     }
 
     public static void applyChilled(final int amount) {
-        increaseElementPower(new ChilledPower(AbstractDungeon.player, amount), amount);
+        int realAmount = getAdaptedElementalAffinityAmount(amount);
+        increaseElementPower(new ChilledPower(AbstractDungeon.player, realAmount), realAmount);
         // TODOO: frost effect
+    }
+
+    private static int getAdaptedElementalAffinityAmount(final int amount) {
+        int realAmount = amount;
+        if (hasRelic(ElementalPets.class)) {
+            realAmount += ElementalPets.AFFINITY_GAIN_PLUS;
+            DynamicDungeon.triggerRelic(AbstractDungeon.player.getRelic(DynamicRelic.getID(ElementalPets.class)));
+        }
+        return realAmount;
     }
 
     public static void applyPresenceOfMind() {
@@ -360,6 +386,17 @@ public class DynamicDungeon {
     public static <P extends DynamicPower> void withPowerDo(final AbstractCreature creature, final Class<P> thisClazz, Consumer<P> powerConsumer) {
         if (hasPower(creature, thisClazz)) {
             powerConsumer.accept((P) creature.getPower(DynamicPower.getID(thisClazz)));
+        }
+    }
+
+    public static boolean hasRelic(final Class<? extends DynamicRelic> thisClazz) {
+        return AbstractDungeon.player.hasRelic(DynamicRelic.getID(thisClazz));
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <P extends DynamicRelic> void withRelicDo(final Class<P> thisClazz, Consumer<P> relicConsumer) {
+        if (hasRelic(thisClazz)) {
+            relicConsumer.accept((P) AbstractDungeon.player.getRelic(DynamicRelic.getID(thisClazz)));
         }
     }
 

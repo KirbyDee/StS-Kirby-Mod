@@ -12,7 +12,7 @@ public class Thaw extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int DAMAGE_MULTIPLIER = 5;
+    private static final int DAMAGE_MULTIPLIER = 3;
     // --- VALUES END ---
 
     public Thaw() {

@@ -2,6 +2,12 @@ package theSorcerer.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Girya;
+import com.megacrit.cardcrawl.relics.PeacePipe;
+import com.megacrit.cardcrawl.relics.Shovel;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.util.TextureLoader;
@@ -28,6 +34,25 @@ public abstract class DynamicRelic extends CustomRelic {
         );
     }
 
+    public static boolean canSpawnCampfireRelic() {
+        if (AbstractDungeon.floorNum >= 48 && !Settings.isEndless) {
+            return false;
+        }
+        else {
+            return AbstractDungeon.player.relics
+                    .stream()
+                    .filter(DynamicRelic::isCampfireRelic)
+                    .count() < 2;
+        }
+    }
+
+    private static boolean isCampfireRelic(final AbstractRelic relic) {
+        return relic instanceof PeacePipe ||
+                relic instanceof Shovel ||
+                relic instanceof Girya ||
+                relic instanceof MisoSoup;
+    }
+
     public static String getID(final Class<? extends DynamicRelic> thisClazz) {
         return DynamicDungeon.makeID(thisClazz);
     }
@@ -49,6 +74,8 @@ public abstract class DynamicRelic extends CustomRelic {
                 Arrays.stream(keyword).map(DynamicDungeon::getPowerTip).collect(Collectors.toList())
         );
     }
+
+    public void triggerOnFlashback() {}
 
     @SafeVarargs
     protected final void addTip(final Class<? extends DynamicPower>... powerClass) {

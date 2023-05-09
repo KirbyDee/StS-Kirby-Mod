@@ -14,7 +14,7 @@ public class ElementGlow extends CardBorderGlowManager.GlowInfo {
 
     @Override
     public boolean test(AbstractCard card) {
-        return !DynamicDungeon.hasElementless() && (DynamicDungeon.isElementCard(card));
+        return !DynamicDungeon.hasElementless() && DynamicDungeon.isElementCard(card);
     }
 
     @Override

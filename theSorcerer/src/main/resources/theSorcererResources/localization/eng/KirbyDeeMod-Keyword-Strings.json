@@ -5,9 +5,11 @@
       "elemental card",
       "elemental_card",
       "Elemental_Card",
+      "Elemental Card",
       "elemental cards",
       "elemental_cards",
-      "Elemental_Cards"
+      "Elemental_Cards",
+      "Elemental Cards"
     ],
     "DESCRIPTION": "#yFire, #yIce or #yArcane card."
   },
@@ -17,9 +19,11 @@
       "elemental affinity",
       "elemental_affinity",
       "Elemental_Affinity",
+      "Elemental Affinity",
       "elemental affinities",
       "elemental_affinities",
-      "Elemental_Affinities"
+      "Elemental_Affinities",
+      "Elemental Affinities"
     ],
     "DESCRIPTION": "#yHeated or #yChilled."
   },

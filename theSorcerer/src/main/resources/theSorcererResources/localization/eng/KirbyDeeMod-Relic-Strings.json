@@ -63,5 +63,35 @@
       "At the start of each combat, apply #b",
       " #yAblaze and #yFrozen to ALL enemies."
     ]
+  },
+  "theSorcerer:BouncyCastle": {
+    "NAME": "Bouncy Castle",
+    "FLAVOR": "Wohoooo!! Feel the height!",
+    "DESCRIPTIONS": [
+      "Whenever you #yFlashback a card, draw #b",
+      " card."
+    ]
+  },
+  "theSorcerer:ElementalPets": {
+    "NAME": "Elemental Pets",
+    "FLAVOR": "No touching!",
+    "DESCRIPTIONS": [
+      "Whenever you gain #yElemental #yAffinity, gain #b",
+      " more."
+    ]
+  },
+  "theSorcerer:MisoSoup": {
+    "NAME": "Miso Soup",
+    "FLAVOR": "A deep savory flavor, with toasty, funky, salty-sweet richness, full of umami. Best served either hot or cold.",
+    "DESCRIPTIONS": [
+      "You can now #yFiremorphose or #yIcemorphose a card at Rest Sites."
+    ]
+  },
+  "theSorcerer:ProtectingGloves": {
+    "NAME": "Protecting Gloves",
+    "FLAVOR": "Protecting from heat and cold. Perfect gift for christmas.",
+    "DESCRIPTIONS": [
+      "You are able to play #yArcane cards without #yElemental #yAffinities, but in doing so, it does not increase your #yElemental #yAffinity."
+    ]
   }
 }

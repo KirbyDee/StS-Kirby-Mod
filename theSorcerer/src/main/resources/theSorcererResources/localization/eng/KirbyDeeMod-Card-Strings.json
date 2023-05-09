@@ -339,5 +339,9 @@
     "NAME": "Ice Age",
     "DESCRIPTION": "Remove all Block from ALL enemies. NL Enemies cannot gain Block for the next !M! turn.",
     "UPGRADE_DESCRIPTION": "Remove all Block from ALL enemies. NL Enemies cannot gain Block for the next !M! turns."
+  },
+  "theSorcerer:Singularity": {
+    "NAME": "Singularity",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each thesorcerer:Arcane card you played this combat. NL (Played !M! thesorcerer:Arcane card(s).)"
   }
 }

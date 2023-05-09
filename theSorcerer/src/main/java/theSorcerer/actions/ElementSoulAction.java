@@ -34,7 +34,7 @@ public abstract class ElementSoulAction extends AbstractGameAction {
 
     private void runSoulAction() {
         LOG.info("Apply Soul power at turn start");
-        relic.flash();
+        DynamicDungeon.triggerRelic(relic);
         applySoulPower();
     }
 

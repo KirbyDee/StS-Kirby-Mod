@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.AbstractCardPatch;
 
 public abstract class BottledRelic extends DynamicRelic implements CustomBottleRelic {
@@ -100,8 +101,7 @@ public abstract class BottledRelic extends DynamicRelic implements CustomBottleR
 
     @Override
     public void atBattleStart() {
-        flash();
-        addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        DynamicDungeon.triggerRelic(this);
     }
 
     @Override

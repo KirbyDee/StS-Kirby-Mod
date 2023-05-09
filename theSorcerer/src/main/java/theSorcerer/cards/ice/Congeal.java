@@ -10,7 +10,7 @@ public class Congeal extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int BLOCK_MULTIPLIER = 4;
+    private static final int BLOCK_MULTIPLIER = 3;
     // --- VALUES END ---
 
     public Congeal() {

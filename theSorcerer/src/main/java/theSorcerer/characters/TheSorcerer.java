@@ -22,9 +22,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.cards.Defend_Yellow;
-import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.Strike_Yellow;
+import theSorcerer.cards.*;
 import theSorcerer.cards.fire.Scorch;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalConstruct;
@@ -224,11 +222,11 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 68 (21/31/16) - 75
-        // 24 attacks -> more (4)
+        //sorcerer 69 (21/31/17) - 75
+        // 25 attacks -> more (3)
         // - common: 11 -> ok
-        // - uncommon: 9 -> more (4)
-        // - rare: 4 -> ok
+        // - uncommon: 9 -> more (3)
+        // - rare: 5 -> ok
         // 9 power -> more (3)
         // - common: 0 -> ok
         // - uncommon: 5 -> more
@@ -242,15 +240,16 @@ public class TheSorcerer extends CustomPlayer {
         //  - ElementalConstruct
         // - common: 1
         //  - BagOfIce
-        // - uncommon: 2
+        // - uncommon: 3
         //  - Elemental Master
         //  - Bottled Ghost
+        //  - BouncyCastle
         // - rare: 3
         //  - Bottled Life
-        //  - ?
-        //  - ?
+        //  - Elemental Pets
+        //  - MisoSoup
         // - shop: 1
-        //  - ?
+        //  - ProtectingGloves
         // - boss: 3
         //  - BurningSoul
         //  - FreezingSoul
@@ -275,9 +274,9 @@ public class TheSorcerer extends CustomPlayer {
             retVal.add(DynamicCard.getID(Defend_Yellow.class));
         }
         // 1 common attack
-//        retVal.add(DefaultCommonAttack.ID); // TODOO: 1 basic attack
+        retVal.add(DynamicCard.getID(SorcerersRaid.class));
         // 1 common skill
-//        retVal.add(DefaultCommonPower.ID); // TODOO: 1 basic skill
+        retVal.add(DynamicCard.getID(DiscardedDefense.class));
 
         // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
         // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
@@ -357,9 +356,12 @@ public class TheSorcerer extends CustomPlayer {
 //        retVal.add(DynamicCard.getID(Cryophoenix.class));
 //        retVal.add(DynamicCard.getID(CollateralDamage.class));
 //        retVal.add(DynamicCard.getID(InnerFocus.class));
+//        retVal.add(DynamicCard.getID(Singularity.class));
 
         // TODO: this.cardsToPreview = new Frostbite();
         // TODO: this.cardsToPreview = new Burn();
+        // TODO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
+        // TODO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
 
         return retVal;
     }

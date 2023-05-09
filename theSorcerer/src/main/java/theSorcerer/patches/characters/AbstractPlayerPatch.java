@@ -1,7 +1,7 @@
 package theSorcerer.patches.characters;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,18 +9,22 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.cards.SorcererCardTags;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
+import theSorcerer.relics.ProtectingGloves;
 
 @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
 public class AbstractPlayerPatch {
 
     private static final Logger LOG = LogManager.getLogger(AbstractPlayerPatch.class.getName());
+
+    public static SpireField<Integer> elementalCardsPlayedPerCombat = new SpireField<>(() -> 0);
+
+    public static SpireField<Integer> arcaneCardsPlayedPerCombat = new SpireField<>(() -> 0);
 
     @SpirePatch(clz = AbstractPlayer.class, method = "useCard")
     public static class UseCardPatch {
@@ -28,8 +32,21 @@ public class AbstractPlayerPatch {
         public static void Postfix(AbstractPlayer self, AbstractCard card, AbstractMonster monster, int energyOnUse) {
             LOG.debug("Card: " + self.name + " - " + card.tags);
 
-            // element check
-            if (hasElementlessPower(self, card) || doesInvalidElementSwitch(self, card)) {
+            // elementless
+            if (hasElementlessPower(self, card)) {
+                return;
+            }
+
+            // elemental card played +1
+            if (DynamicDungeon.isElementCard(card)) {
+                elementalCardsPlayedPerCombat.set(self, elementalCardsPlayedPerCombat.get(self) + 1);
+            }
+            if (DynamicDungeon.isArcaneCard(card)) {
+                arcaneCardsPlayedPerCombat.set(self, arcaneCardsPlayedPerCombat.get(self) + 1);
+            }
+
+            // invalid switch
+            if (doesInvalidElementSwitch(self, card)) {
                 return;
             }
 
@@ -46,6 +63,9 @@ public class AbstractPlayerPatch {
                 else if (DynamicDungeon.isChilled()) {
                     DynamicDungeon.applyChilled(card.costForTurn);
                 }
+                else if (DynamicDungeon.hasRelic(ProtectingGloves.class)) {
+                    DynamicDungeon.triggerRelic(AbstractDungeon.player.getRelic(DynamicRelic.getID(ProtectingGloves.class)));
+                }
             }
             else if (DynamicDungeon.isFireCard(card)) {
                 DynamicDungeon.applyHeated(card.costForTurn);
@@ -53,14 +73,6 @@ public class AbstractPlayerPatch {
             else if (DynamicDungeon.isIceCard(card)) {
                 DynamicDungeon.applyChilled(card.costForTurn);
             }
-        }
-
-        private static boolean hasNotEnoughCost(AbstractCard card) {
-            if (card.costForTurn <= 0) {
-                LOG.debug("Cost of card is 0 or less -> NOP");
-                return true;
-            }
-            return false;
         }
 
         private static boolean hasElementlessPower(AbstractPlayer self, AbstractCard card) {
@@ -88,7 +100,7 @@ public class AbstractPlayerPatch {
             if (self.hasPower(selfHasPowerId) && DynamicDungeon.cardHasAbility(card, cardAbility)) {
                 if (self.hasRelic(DynamicRelic.getID(ElementalMaster.class))) {
                     LOG.debug("Player has ElementalMaster relic, so possible to switch elements");
-                    self.getRelic(DynamicRelic.getID(ElementalMaster.class)).flash();
+                    DynamicDungeon.triggerRelic(self.getRelic(DynamicRelic.getID(ElementalMaster.class)));
                     return false;
                 }
                 else {

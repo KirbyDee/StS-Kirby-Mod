@@ -22,6 +22,10 @@ public class AbstractPlayerPreBattlePrepPatch {
                 .stream()
                 .filter(DynamicDungeon::isEntombOrBottledGhostCard)
                 .forEach(c -> AbstractDungeon.player.discardPile.addToTop(c));
+
+        // resetting elemental cards played
+        AbstractPlayerPatch.elementalCardsPlayedPerCombat.set(self, 0);
+        AbstractPlayerPatch.arcaneCardsPlayedPerCombat.set(self, 0);
     }
 
     private static class Locator extends SpireInsertLocator {

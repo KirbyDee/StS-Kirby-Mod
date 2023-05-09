@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.special.FireConstruct;
 import theSorcerer.cards.special.IceConstruct;
 import theSorcerer.powers.buff.ChilledPower;
@@ -35,8 +36,7 @@ public class ElementalConstruct extends DynamicRelic {
 
     @Override
     public void atBattleStart() {
-        flash();
-        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        DynamicDungeon.triggerRelic(this);
 
         ArrayList<AbstractCard> choices = new ArrayList<>();
         choices.add(new FireConstruct());

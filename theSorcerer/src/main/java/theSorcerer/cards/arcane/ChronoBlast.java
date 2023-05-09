@@ -43,6 +43,7 @@ public class ChronoBlast extends SorcererArcaneCard {
         List<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
         // damage
         if (monsters != null && !monsters.isEmpty()) {
+            // TODOO: middle of hb.cX and hb.cY for first and last monster
             AbstractMonster middleMonster = monsters.get(monsters.size() / 2);
             addToBot(
                     new VFXAction(

@@ -2,6 +2,7 @@ package theSorcerer.relics;
 
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.ElementSoulAction;
 
 import java.util.function.Function;
@@ -21,13 +22,7 @@ public abstract class ElementSoul extends DynamicRelic {
 
     @Override
     public void atTurnStart() {
-        flash();
-        addToBot(
-                new RelicAboveCreatureAction(
-                        AbstractDungeon.player,
-                        this
-                )
-        );
+        DynamicDungeon.triggerRelic(this);
         addToBot(
                 toElementSoulAction().apply(ELEMENT_AMOUNT)
         );

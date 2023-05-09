@@ -38,6 +38,7 @@ public class DiscardedDefense extends SorcererCard {
         addToBot(new DiscardedDefenseAction(p, this.block));
     }
 
+    @Override
     public void applyPowers() {
         super.applyPowers();
         this.baseSecondMagicNumber = GameActionManager.totalDiscardedThisTurn;

@@ -438,6 +438,10 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new BottledGhost(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new BottledLife(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new BagOfIce(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new BouncyCastle(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new ElementalPets(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new MisoSoup(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new ProtectingGloves(), TheSorcerer.Enums.COLOR_YELLOW);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
 //        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -453,6 +457,10 @@ public class KirbyDeeMod implements
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledGhost.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BottledLife.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BagOfIce.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(BouncyCastle.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalPets.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(MisoSoup.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ProtectingGloves.class));
         // TODOO: which ones do we unlock?
         logger.info("Done adding relics!");
     }

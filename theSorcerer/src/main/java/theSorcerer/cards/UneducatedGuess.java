@@ -1,10 +1,8 @@
-package theSorcerer.cards.fire;
+package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCard;
 import theSorcerer.powers.buff.UneducatedGuessPower;
 
 public class UneducatedGuess extends SorcererCard {

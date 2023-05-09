@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.powers.buff.PastEmbracePower;
+import theSorcerer.relics.DynamicRelic;
+import theSorcerer.relics.BouncyCastle;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -54,6 +56,10 @@ public class DiscardPileViewScreenPatch {
             if (card instanceof DynamicCard) {
                 ((DynamicCard) card).triggerOnFlashback();
             }
+            DynamicDungeon.withRelicDo(
+                    BouncyCastle.class,
+                    DynamicRelic::triggerOnFlashback
+            );
 
             // trigger flash
             card.superFlash();

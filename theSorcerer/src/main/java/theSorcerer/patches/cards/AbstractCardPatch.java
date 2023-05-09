@@ -84,7 +84,7 @@ public class AbstractCardPatch {
             if (!result) {
                 return false;
             }
-            else if (DynamicDungeon.isArcaneCard(self) && !DynamicDungeon.isHeatedOrChillder()) {
+            else if (DynamicDungeon.isArcaneCard(self) && !DynamicDungeon.canPlayArcane()) {
                 return false;
             }
             else if (DynamicDungeon.isElementCard(self) && DynamicDungeon.hasElementless()) {
