@@ -5,18 +5,18 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
-import theSorcerer.powers.buff.ElementalCharmPower;
+import theSorcerer.powers.buff.ElementalAmuletPower;
 
-public class ElementalCharm extends SorcererCard {
+public class ElementalAmulet extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int NUMBER_OF_CHARMS = 1;
     // --- VALUES END ---
 
-    public ElementalCharm() {
+    public ElementalAmulet() {
         super(
-                DynamicCard.InfoBuilder(ElementalCharm.class)
+                DynamicCard.InfoBuilder(ElementalAmulet.class)
                         .cost(COST)
                         .type(CardType.POWER)
                         .rarity(CardRarity.UNCOMMON)
@@ -31,7 +31,7 @@ public class ElementalCharm extends SorcererCard {
                 new ApplyPowerAction(
                         player,
                         player,
-                        new ElementalCharmPower(
+                        new ElementalAmuletPower(
                                 player,
                                 this.magicNumber
                         )

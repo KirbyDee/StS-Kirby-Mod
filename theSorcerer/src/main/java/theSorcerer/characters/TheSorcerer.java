@@ -9,7 +9,6 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -222,10 +221,10 @@ public class TheSorcerer extends CustomPlayer {
         // - rare: 10
 
 
-        //sorcerer 69 (21/31/17) - 75
-        // 25 attacks -> more (3)
+        //sorcerer 71 (21/33/17) - 75
+        // 25 attacks -> more (1)
         // - common: 11 -> ok
-        // - uncommon: 9 -> more (3)
+        // - uncommon: 11 -> more
         // - rare: 5 -> ok
         // 9 power -> more (3)
         // - common: 0 -> ok
@@ -274,90 +273,15 @@ public class TheSorcerer extends CustomPlayer {
             retVal.add(DynamicCard.getID(Defend_Yellow.class));
         }
         // 1 common attack
-        retVal.add(DynamicCard.getID(SorcerersRaid.class));
+        retVal.add(DynamicCard.getID(ChargeAttack.class));
         // 1 common skill
         retVal.add(DynamicCard.getID(DiscardedDefense.class));
 
+        // TODOO: arcane cards, if you try to cast them wihtout element, should see text
         // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
         // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
-
-//        // common attack
-//        retVal.add(Strike_Sorcerer.ID);
-//        retVal.add(DynamicCard.getID(PillarOfFlame.class));
-//        retVal.add(DynamicCard.getID(FrozenTomb.class));
-//        retVal.add(DynamicCard.getID(Fireball.class));
-//        retVal.add(DynamicCard.getID(Thaw.class));
-//        retVal.add(DynamicCard.getID(FrostArrow.class));
-//        retVal.add(DynamicCard.getID(LostKnowledge.class));
-//        retVal.add(DynamicCard.getID(SorcerersRaid.class));
-//        retVal.add(DynamicCard.getID(LastResort.class));
-//        retVal.add(DynamicCard.getID(BruteForce.class));
-//        retVal.add(DynamicCard.getID(InsightfulAttack.class));
-//        // common skill
-//        retVal.add(Defend_Sorcerer.ID);
-//        retVal.add(DynamicCard.getID(IceBlock.class));
-//        retVal.add(DynamicCard.getID(SparkingTendril.class));
-//        retVal.add(DynamicCard.getID(CrystalProtection.class));
-//        retVal.add(DynamicCard.getID(Congeal.class));
-//        retVal.add(DynamicCard.getID(FireShield.class));
-//        retVal.add(DynamicCard.getID(MagicalCloak.class));
-//        retVal.add(DynamicCard.getID(DiscardedDefense.class));
-//        retVal.add(DynamicCard.getID(OneWithNothing.class));
-//        retVal.add(DynamicCard.getID(SelfFulfillingProphecy.class));
-//
-//        // uncommon attack
-//        retVal.add(DynamicCard.getID(MirrorForce.class));
-//        retVal.add(DynamicCard.getID(Scorch.class));
-//        retVal.add(DynamicCard.getID(Explosion.class));
-//        retVal.add(DynamicCard.getID(ArcaneBarrage.class));
-//        retVal.add(DynamicCard.getID(ImprudentPunches.class));
-//        retVal.add(DynamicCard.getID(UndecidedChoice.class));
-//        retVal.add(DynamicCard.getID(Misdirection.class));
-//        // uncommon skill
-//        retVal.add(DynamicCard.getID(Dispell.class));
-//        retVal.add(DynamicCard.getID(Cleanse.class));
-//        retVal.add(DynamicCard.getID(BuriedAlive.class));
-//        retVal.add(DynamicCard.getID(ForgottenConduit.class));
-//        retVal.add(DynamicCard.getID(Tradeoff.class));
-//        retVal.add(DynamicCard.getID(UnknownEcho.class));
-//        retVal.add(DynamicCard.getID(FrostArmor.class));
-//        retVal.add(DynamicCard.getID(Implosion.class));
-//        retVal.add(DynamicCard.getID(ArcaneProtection.class));
-//        retVal.add(DynamicCard.getID(ElementalStorm.class));
-//        retVal.add(DynamicCard.getID(Polymorph.class));
-//        retVal.add(DynamicCard.getID(Meditation.class));
-//        retVal.add(DynamicCard.getID(Foretell.class));
-//        retVal.add(DynamicCard.getID(SlipperyFooting.class));
-//        retVal.add(DynamicCard.getID(WarmWelcome.class));
-//        retVal.add(DynamicCard.getID(Harmony.class));
-//        // uncommon power
-//        retVal.add(DynamicCard.getID(UneducatedGuess.class));
-//        retVal.add(DynamicCard.getID(WallOfFire.class));
-//        retVal.add(DynamicCard.getID(PastEmbrace.class));
-//        retVal.add(DynamicCard.getID(FrostShock.class));
-//        retVal.add(DynamicCard.getID(ElementalCharm.class));
-//
-//        // rare attack
-//        retVal.add(DynamicCard.getID(Decay.class));
-//        retVal.add(DynamicCard.getID(Ignite.class));
-//        retVal.add(DynamicCard.getID(PulsatingBlade.class));
-//        retVal.add(DynamicCard.getID(ChronoBlast.class));
-//        // rare skill
-//        retVal.add(DynamicCard.getID(Renounce.class));
-//        retVal.add(DynamicCard.getID(Elementmorphose.class));
-//        retVal.add(DynamicCard.getID(WellPrepared.class));
-//        retVal.add(DynamicCard.getID(UnseenHelper.class));
-//        retVal.add(DynamicCard.getID(StrongAffinity.class));
-//        retVal.add(DynamicCard.getID(Rethinking.class));
-//        retVal.add(DynamicCard.getID(Siphon.class));
-//        retVal.add(DynamicCard.getID(IceAge.class));
-//        // rare power
-//        retVal.add(DynamicCard.getID(Infernophoenix.class));
-//        retVal.add(DynamicCard.getID(Cryophoenix.class));
-//        retVal.add(DynamicCard.getID(CollateralDamage.class));
-//        retVal.add(DynamicCard.getID(InnerFocus.class));
-//        retVal.add(DynamicCard.getID(Singularity.class));
-
+        // TODOO -> AbstractCardModifier for modifying cards to be element, flashback etc? : https://github.com/daviscook477/BaseMod/wiki/CardModifiers#alternate-costs
+        // TODO https://github.com/daviscook477/BaseMod/wiki/CardModifiers
         // TODO: this.cardsToPreview = new Frostbite();
         // TODO: this.cardsToPreview = new Burn();
         // TODO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));

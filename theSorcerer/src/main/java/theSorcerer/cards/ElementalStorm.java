@@ -8,8 +8,8 @@ import theSorcerer.powers.buff.ElementalStormPower;
 public class ElementalStorm extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int WEAK_VULNERABLE_AMOUNT = 1;
     // --- VALUES END ---
 

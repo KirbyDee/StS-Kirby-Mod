@@ -100,14 +100,14 @@
       "."
     ]
   },
-  "theSorcerer:ElementalCharmPower": {
-    "NAME": "Elemental Charm",
+  "theSorcerer:ElementalAmuletPower": {
+    "NAME": "Elemental Amulet",
     "DESCRIPTIONS": [
       "At the start of your next turn, add either #b",
-      " *Heating *Charm or *Chilling *Charm into your hand, depending on the #yElemental #yAffinities you end up this turn.",
+      " *Fire *Charm or *Ice *Charm into your hand, depending on the #yElemental #yAffinities you end up this turn.",
       "At the start of each turn, add #b",
-      " #yHeating #yCharm into your hand.",
-      " #yChilling #yCharm into your hand."
+      " #Fire #yCharm into your hand.",
+      " #Ice #yCharm into your hand."
     ]
   },
   "theSorcerer:IceAgePower": {

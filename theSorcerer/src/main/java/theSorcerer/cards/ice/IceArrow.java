@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.special.ChillingCharm;
+import theSorcerer.cards.special.IceCharm;
 
 public class IceArrow extends SorcererIceCard {
 
@@ -30,7 +30,7 @@ public class IceArrow extends SorcererIceCard {
                         .magicNumber(TOKEN_AMOUNT)
         );
 
-        this.cardsToPreview = new ChillingCharm();
+        this.cardsToPreview = new IceCharm();
     }
 
     @Override

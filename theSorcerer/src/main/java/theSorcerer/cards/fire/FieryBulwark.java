@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.special.HeatingCharm;
+import theSorcerer.cards.special.FireCharm;
 
-public class FireShield extends SorcererFireCard {
+public class FieryBulwark extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -17,9 +17,9 @@ public class FireShield extends SorcererFireCard {
     private static final int TOKEN_AMOUNT = 1;
     // --- VALUES END ---
 
-    public FireShield() {
+    public FieryBulwark() {
         super(
-                DynamicCard.InfoBuilder(FireShield.class)
+                DynamicCard.InfoBuilder(FieryBulwark.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.COMMON)
@@ -28,7 +28,7 @@ public class FireShield extends SorcererFireCard {
                         .magicNumber(TOKEN_AMOUNT)
         );
 
-        this.cardsToPreview = new HeatingCharm();
+        this.cardsToPreview = new FireCharm();
     }
 
     @Override

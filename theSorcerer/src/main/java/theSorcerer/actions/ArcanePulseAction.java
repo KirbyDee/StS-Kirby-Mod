@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import theSorcerer.patches.monsters.AbstractMonsterPatch;
 
-public class MirrorForceAction extends AbstractGameAction {
+public class ArcanePulseAction extends AbstractGameAction {
 
     private static final String TEXT = "That enemy does not intend to attack!"; // TODOO
 
@@ -24,7 +24,7 @@ public class MirrorForceAction extends AbstractGameAction {
 
     private final boolean upgraded;
 
-    public MirrorForceAction(
+    public ArcanePulseAction(
             AbstractPlayer player,
             AbstractMonster targetMonster,
             boolean upgraded

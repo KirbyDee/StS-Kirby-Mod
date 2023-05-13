@@ -2,10 +2,7 @@ package theSorcerer;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -338,6 +335,45 @@ public class DynamicDungeon {
             amount = DynamicDungeon.getChilledAmount();
         }
         return amount;
+    }
+
+    public static void loseHeated(final int amount) {
+        loseElements(DynamicPower.getID(HeatedPower.class), amount);
+    }
+
+    public static void loseChilled(final int amount) {
+        loseElements(DynamicPower.getID(ChilledPower.class), amount);
+    }
+
+    public static void loseElements(final int amount) {
+        if (isChilled()) {
+            loseChilled(amount);
+        }
+        else if (isHeated()) {
+            loseHeated(amount);
+        }
+    }
+
+    private static void loseElements(final String elementPowerId, final int amount) {
+        if (getElement(elementPowerId) > amount) {
+            addToTop(
+                    new ReducePowerAction(
+                            AbstractDungeon.player,
+                            AbstractDungeon.player,
+                            elementPowerId,
+                            amount
+                    )
+            );
+        }
+        else {
+            addToTop(
+                    new RemoveSpecificPowerAction(
+                            AbstractDungeon.player,
+                            AbstractDungeon.player,
+                            elementPowerId
+                    )
+            );
+        }
     }
 
     public static void loseAllElements() {

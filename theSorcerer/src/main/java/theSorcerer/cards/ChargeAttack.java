@@ -2,45 +2,45 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import theSorcerer.DynamicDungeon;
 
-public class SorcerersRaid extends SorcererCard {
+public class ChargeAttack extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int DAMAGE = 8;
-    private static final int UPGRADE_DAMAGE = 11;
+    private static final int UPGRADE_DAMAGE = 2;
     private static final int WEAK_VULNERABLE = 1;
     private static final int UPGRADE_WEAK_VULNERABLE = 1;
     // --- VALUES END ---
 
-    public SorcerersRaid() {
+    public ChargeAttack() {
         super(
-                DynamicCard.InfoBuilder(SorcerersRaid.class)
+                DynamicCard.InfoBuilder(ChargeAttack.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
                         .damage(DAMAGE)
                         .magicNumber(WEAK_VULNERABLE)
-                        .target(CardTarget.ALL_ENEMY)
+                        .target(CardTarget.ENEMY)
         );
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        AbstractDungeon.getCurrRoom().monsters.monsters
-                .forEach(m -> applyWeakAndVulnerable(player, m));
-
-        DynamicDungeon.applyElementless();
-    }
-
-    private void applyWeakAndVulnerable(AbstractPlayer player, AbstractMonster monster) {
+        addToBot(
+                new DamageAction(
+                        monster,
+                        new DamageInfo(player, this.damage, this.damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.BLUNT_LIGHT
+                )
+        );
         applyDebuff(player, monster, new WeakPower(monster, this.magicNumber, false));
         applyDebuff(player, monster, new VulnerablePower(monster, this.magicNumber, false));
     }

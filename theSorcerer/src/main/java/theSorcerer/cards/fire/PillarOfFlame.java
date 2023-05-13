@@ -14,9 +14,9 @@ public class PillarOfFlame extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int DAMAGE_PRIMARY = 10;
+    private static final int DAMAGE_PRIMARY = 8;
     private static final int UPGRADE_DAMAGE_PRIMARY = 2;
-    private static final int DAMAGE_SECONDARY = 5;
+    private static final int DAMAGE_SECONDARY = 4;
     private static final int UPGRADE_DAMAGE_SECONDARY = 1;
     // --- VALUES END ---
 
@@ -27,8 +27,8 @@ public class PillarOfFlame extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ALL_ENEMY)
-                        .damage(DAMAGE_SECONDARY)
-                        .magicNumber(DAMAGE_PRIMARY)
+                        .damage(DAMAGE_PRIMARY)
+                        .magicNumber(DAMAGE_SECONDARY)
         );
     }
 

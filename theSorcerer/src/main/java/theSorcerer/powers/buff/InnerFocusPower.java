@@ -13,7 +13,7 @@ public class InnerFocusPower extends StartOfTurnPower {
         super(
                 InnerFocusPower.class,
                 owner,
-                HeatedPower.class,
+                PresenceOfMindPower.class,
                 amount
         );
     }

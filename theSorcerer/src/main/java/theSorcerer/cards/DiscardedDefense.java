@@ -9,8 +9,8 @@ import theSorcerer.actions.DiscardedDefenseAction;
 public class DiscardedDefense extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int BLOCK = 7;
+    private static final int COST = 1;
+    private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int CARD_DRAW = 1;
     private static final int CARDS_DISCARDED = 0;

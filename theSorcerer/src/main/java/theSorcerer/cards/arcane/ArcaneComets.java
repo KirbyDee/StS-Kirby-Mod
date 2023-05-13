@@ -12,7 +12,7 @@ public class ArcaneComets extends SorcererArcaneCard {
     private static final int COST = 2;
     private static final int DAMAGE = 2;
     private static final int UPGRADE_DAMAGE = 1;
-    private static final int DAMAGE_TIMES = 5;
+    private static final int DAMAGE_TIMES = 4;
     // --- VALUES END ---
 
     public ArcaneComets() {

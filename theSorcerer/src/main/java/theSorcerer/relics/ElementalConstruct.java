@@ -30,7 +30,9 @@ public class ElementalConstruct extends DynamicRelic {
         addTip("Fire", "Ice");
         addTip(
                 HeatedPower.class,
-                ChilledPower.class
+                ChilledPower.class,
+                AblazePower.class,
+                FrozenPower.class
         );
     }
 

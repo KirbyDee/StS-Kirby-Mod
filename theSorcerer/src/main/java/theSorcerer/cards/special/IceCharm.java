@@ -6,7 +6,7 @@ import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.CardAbility;
 
-public class ChillingCharm extends SorcererSpecialCard {
+public class IceCharm extends SorcererSpecialCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
@@ -14,9 +14,9 @@ public class ChillingCharm extends SorcererSpecialCard {
     private static final int UPGRADE_TOKEN_AMOUNT = 1;
     // --- VALUES END ---
 
-    public ChillingCharm() {
+    public IceCharm() {
         super(
-                DynamicCard.InfoBuilder(ChillingCharm.class)
+                DynamicCard.InfoBuilder(IceCharm.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .magicNumber(TOKEN_AMOUNT)

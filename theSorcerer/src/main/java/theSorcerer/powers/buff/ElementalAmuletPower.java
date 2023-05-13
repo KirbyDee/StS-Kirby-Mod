@@ -6,20 +6,20 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.cards.special.ChillingCharm;
-import theSorcerer.cards.special.HeatingCharm;
+import theSorcerer.cards.special.IceCharm;
+import theSorcerer.cards.special.FireCharm;
 import theSorcerer.powers.DynamicAmountPower;
 
-public class ElementalCharmPower extends DynamicAmountPower {
+public class ElementalAmuletPower extends DynamicAmountPower {
 
     private Class<? extends ElementPower<?>> elementPower;
 
-    public ElementalCharmPower(
+    public ElementalAmuletPower(
             AbstractCreature owner,
             int amount
     ) {
         super(
-                ElementalCharmPower.class,
+                ElementalAmuletPower.class,
                 owner,
                 amount
         );
@@ -49,10 +49,10 @@ public class ElementalCharmPower extends DynamicAmountPower {
         if (this.elementPower != null && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
             if (this.elementPower == HeatedPower.class) {
-                makeTempCharmInHand(new HeatingCharm());
+                makeTempCharmInHand(new FireCharm());
             }
             else if (this.elementPower == ChilledPower.class) {
-                makeTempCharmInHand(new ChillingCharm());
+                makeTempCharmInHand(new IceCharm());
             }
         }
     }
@@ -84,7 +84,7 @@ public class ElementalCharmPower extends DynamicAmountPower {
 
     @Override
     public AbstractPower makeCopy() {
-        return new ElementalCharmPower(this.owner, this.amount);
+        return new ElementalAmuletPower(this.owner, this.amount);
     }
 
     @Override

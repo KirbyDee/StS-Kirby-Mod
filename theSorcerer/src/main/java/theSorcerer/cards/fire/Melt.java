@@ -8,16 +8,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 
-public class Thaw extends SorcererFireCard {
+public class Melt extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int DAMAGE_MULTIPLIER = 3;
     // --- VALUES END ---
 
-    public Thaw() {
+    public Melt() {
         super(
-                DynamicCard.InfoBuilder(Thaw.class)
+                DynamicCard.InfoBuilder(Melt.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)

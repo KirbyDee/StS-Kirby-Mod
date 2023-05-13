@@ -6,7 +6,7 @@ import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.CardAbility;
 
-public class HeatingCharm extends SorcererSpecialCard {
+public class FireCharm extends SorcererSpecialCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
@@ -14,9 +14,9 @@ public class HeatingCharm extends SorcererSpecialCard {
     private static final int UPGRADE_TOKEN_AMOUNT = 1;
     // --- VALUES END ---
 
-    public HeatingCharm() {
+    public FireCharm() {
         super(
-                DynamicCard.InfoBuilder(HeatingCharm.class)
+                DynamicCard.InfoBuilder(FireCharm.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .magicNumber(TOKEN_AMOUNT)

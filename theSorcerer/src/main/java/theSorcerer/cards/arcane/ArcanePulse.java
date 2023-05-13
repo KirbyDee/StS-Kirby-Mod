@@ -1,20 +1,20 @@
-package theSorcerer.cards;
+package theSorcerer.cards.arcane;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.MirrorForceAction;
-import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.actions.ArcanePulseAction;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.patches.cards.CardAbility;
 
-public class MirrorForce extends SorcererCard {
+public class ArcanePulse extends SorcererArcaneCard {
 
     // --- VALUES START ---
-    private static final int COST = 1;
+    private static final int COST = 2;
     // --- VALUES END ---
 
-    public MirrorForce() {
+    public ArcanePulse() {
         super(
-                DynamicCard.InfoBuilder(MirrorForce.class)
+                DynamicCard.InfoBuilder(ArcanePulse.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
@@ -26,7 +26,7 @@ public class MirrorForce extends SorcererCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new MirrorForceAction(
+                new ArcanePulseAction(
                         player,
                         monster,
                         this.upgraded

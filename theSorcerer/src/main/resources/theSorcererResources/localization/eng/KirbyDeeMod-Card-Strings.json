@@ -109,9 +109,9 @@
     "NAME": "Last Resort",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable. NL If you are thesorcerer:Elementless, apply !theSorcerer:MM! Vulnerable instead."
   },
-  "theSorcerer:SorcerersRaid": {
-    "NAME": "Sorcerers Raid",
-    "DESCRIPTION": "Deal !D! damage and apply !M! Weak and Vulnerable to ALL enemies. NL Become thesorcerer:Elementless."
+  "theSorcerer:ChargeAttack": {
+    "NAME": "Charge Attack",
+    "DESCRIPTION": "Deal !D! damage and apply !M! Weak and Vulnerable."
   },
   "theSorcerer:Frostbite": {
     "NAME": "Frostbite",
@@ -119,11 +119,11 @@
   },
   "theSorcerer:IceArrow": {
     "NAME": "Ice Arrow",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Chilling *Charm into your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Ice *Charm into your draw pile."
   },
-  "theSorcerer:FireShield": {
-    "NAME": "Fire Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Add a *Heating *Charm into your draw pile."
+  "theSorcerer:FieryBulwark": {
+    "NAME": "Fiery Bulwark",
+    "DESCRIPTION": "Gain !B! Block. NL Add a *Fire *Charm into your draw pile."
   },
   "theSorcerer:FrozenTomb": {
     "NAME": "Frozen Tomb",
@@ -142,8 +142,8 @@
     "NAME": "One With Nothing",
     "DESCRIPTION": "Become thesorcerer:Elementless."
   },
-  "theSorcerer:MirrorForce": {
-    "NAME": "Mirror Force",
+  "theSorcerer:ArcanePulse": {
+    "NAME": "Arcane Pulse",
     "DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to it.",
     "UPGRADE_DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to all enemies."
   },
@@ -157,8 +157,8 @@
     "DESCRIPTION": "Remove !M! random debuff from yourself. (If the debuff has stacks, remove 1 stack instead.)",
     "UPGRADE_DESCRIPTION": "Remove !M! random debuffs from yourself. NL (If the debuffs has stacks, remove 1 stack instead.)"
   },
-  "theSorcerer:Thaw": {
-    "NAME": "Thaw",
+  "theSorcerer:Melt": {
+    "NAME": "Melt",
     "DESCRIPTION": "Deal damage equal to !M! times your thesorcerer:Chilled. NL (Deal !theSorcerer:MM! damage.)"
   },
   "theSorcerer:Congeal": {
@@ -167,11 +167,11 @@
   },
   "theSorcerer:Fireball": {
     "NAME": "Fireball",
-    "DESCRIPTION": "Deal !D! damage. NL Put another Fireball from your draw pile into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Put another *Fireball from your draw pile into your hand."
   },
-  "theSorcerer:CrystalProtection": {
-    "NAME": "Crystal Protection",
-    "DESCRIPTION": "Gain !B! Block. NL Put another Crystal Protection from your draw pile into your hand."
+  "theSorcerer:CrystalArmour": {
+    "NAME": "Crystal Armour",
+    "DESCRIPTION": "Gain !B! Block. NL Put another *Crystal *Armour from your draw pile into your hand."
   },
   "theSorcerer:WallOfFire": {
     "NAME": "Wall Of Fire",
@@ -301,17 +301,17 @@
     "NAME": "Inner Focus",
     "DESCRIPTION": "If you have thesorcerer:Presence_Of_Mind at the start of your turn, gain [E] ."
   },
-  "theSorcerer:HeatingCharm": {
-    "NAME": "Heating Charm",
+  "theSorcerer:FireCharm": {
+    "NAME": "Fire Charm",
     "DESCRIPTION": "Gain !M! theSorcerer:Heated."
   },
-  "theSorcerer:ChillingCharm": {
-    "NAME": "Chilling Charm",
+  "theSorcerer:IceCharm": {
+    "NAME": "Ice Charm",
     "DESCRIPTION": "Gain !M! theSorcerer:Chilled."
   },
-  "theSorcerer:ElementalCharm": {
-    "NAME": "Elemental Charm",
-    "DESCRIPTION": "At the start of each turn, add either a *Heating *Charm or *Chilling *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
+  "theSorcerer:ElementalAmulet": {
+    "NAME": "Elemental Amulet",
+    "DESCRIPTION": "At the start of each turn, add either a *Fire *Charm or *Ice *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
   },
   "theSorcerer:Misdirection": {
     "NAME": "Misdirection",
@@ -343,5 +343,14 @@
   "theSorcerer:Singularity": {
     "NAME": "Singularity",
     "DESCRIPTION": "Deal !D! damage to a random enemy for each thesorcerer:Arcane card you played this combat. NL (Played !M! thesorcerer:Arcane card(s).)"
+  },
+  "theSorcerer:MagicSmoke": {
+    "NAME": "Magic Smoke",
+    "DESCRIPTION": "Deal !D! damage. NL Add a random thesorcerer:Elemental_Card from your draw pile into your hand. NL It costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Choose an thesorcerer:Elemental_Card from your draw pile and add it into your hand. NL It costs 0 this turn."
+  },
+  "theSorcerer:CalculatedRisk": {
+    "NAME": "Calculated Risk",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities. NL Become thesorcerer:Elementless."
   }
 }

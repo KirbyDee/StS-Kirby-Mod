@@ -2,21 +2,20 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theSorcerer.cards.fire.Fireball;
-import theSorcerer.cards.ice.CrystalProtection;
+import theSorcerer.cards.ice.CrystalArmour;
 
-public class CrystalProtectionAction extends DrawPileCardChooseAction {
+public class CrystalArmourAction extends DrawPileCardChooseAction {
 
     private static final int AMOUNT = 1;
 
-    public CrystalProtectionAction() {
+    public CrystalArmourAction() {
         super(AMOUNT, true);
         this.actionType = ActionType.DRAW;
     }
 
     @Override
     protected boolean canBeChosen(final AbstractCard card) {
-        return card instanceof CrystalProtection;
+        return card instanceof CrystalArmour;
     }
 
     @Override
