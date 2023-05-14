@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -434,6 +435,93 @@ public class DynamicDungeon {
         if (hasRelic(thisClazz)) {
             relicConsumer.accept((P) AbstractDungeon.player.getRelic(DynamicRelic.getID(thisClazz)));
         }
+    }
+
+    public static void triggerOnElementless() {
+        triggerOnSpecific(
+                DynamicCard::triggerOnElementless,
+                DynamicPower::triggerOnElementless,
+                DynamicRelic::triggerOnElementless
+        );
+    }
+
+    public static void triggerOnFlashback(final AbstractCard card) {
+        triggerOnSpecific(
+                card,
+                DynamicCard::triggerOnFlashback,
+                DynamicPower::triggerOnFlashback,
+                DynamicRelic::triggerOnFlashback
+        );
+    }
+
+    public static void triggerOnFuturity(final AbstractCard card) {
+        triggerOnSpecific(
+                card,
+                DynamicCard::triggerOnFuturity,
+                DynamicPower::triggerOnFuturity,
+                DynamicRelic::triggerOnFuturity
+        );
+    }
+
+    public static void triggerOnSpecific(
+            final Consumer<DynamicCard> cardConsumer,
+            final Consumer<DynamicPower> powerConsumer,
+            final Consumer<DynamicRelic> relicConsumer
+    ) {
+        triggerOnSpecific(
+                null,
+                cardConsumer,
+                powerConsumer,
+                relicConsumer
+        );
+    }
+
+    public static void triggerOnSpecific(
+            final AbstractCard card,
+            final Consumer<DynamicCard> cardConsumer,
+            final Consumer<DynamicPower> powerConsumer,
+            final Consumer<DynamicRelic> relicConsumer
+    ) {
+        if (card == null) {
+            triggerCardsOnSpecific(AbstractDungeon.player.hand, cardConsumer);
+            triggerCardsOnSpecific(AbstractDungeon.player.drawPile, cardConsumer);
+            triggerCardsOnSpecific(AbstractDungeon.player.discardPile, cardConsumer);
+            triggerCardsOnSpecific(AbstractDungeon.player.exhaustPile, cardConsumer);
+        }
+        if (card instanceof DynamicCard) {
+            cardConsumer.accept((DynamicCard) card);
+        }
+        triggerPowersOnSpecific(powerConsumer);
+        triggerRelicsOnSpecific(relicConsumer);
+    }
+
+    private static void triggerCardsOnSpecific(
+            final CardGroup cardGroup,
+            final Consumer<DynamicCard> consumer
+    ) {
+        cardGroup.group
+                .stream()
+                .filter(DynamicCard.class::isInstance)
+                .map(DynamicCard.class::cast)
+                .forEach(consumer);
+    }
+
+    private static void triggerPowersOnSpecific(
+            final Consumer<DynamicPower> consumer
+    ) {
+        AbstractDungeon.player.powers.stream()
+                .filter(DynamicPower.class::isInstance)
+                .map(DynamicPower.class::cast)
+                .forEach(consumer);
+    }
+
+    private static void triggerRelicsOnSpecific(
+            final Consumer<DynamicRelic> consumer
+    ) {
+        AbstractDungeon.player.relics.stream()
+                .filter(DynamicRelic.class::isInstance)
+                .map(DynamicRelic.class::cast)
+                .forEach(consumer);
     }
 
 

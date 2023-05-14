@@ -1,13 +1,11 @@
 package theSorcerer.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
-import theSorcerer.patches.cards.AbstractCardPatch;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.patches.cards.CardAbility;
 
 public class ForgottenConduit extends SorcererCard {
@@ -47,6 +45,6 @@ public class ForgottenConduit extends SorcererCard {
         );
 
         // gain 2(3) energy
-        addToBot(new GainEnergyAction(this.magicNumber));
+        DynamicDungeon.gainEnergy(this.magicNumber);
     }
 }

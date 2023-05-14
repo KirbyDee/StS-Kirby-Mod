@@ -19,7 +19,7 @@ public class Strike_Yellow extends SorcererCard {
                 DynamicCard.InfoBuilder(Strike_Yellow.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(CardRarity.SPECIAL)
+                        .rarity(CardRarity.BASIC)
                         .target(CardTarget.ENEMY)
                         .tags(CardTags.STARTER_STRIKE, CardTags.STRIKE)
                         .damage(DAMAGE)

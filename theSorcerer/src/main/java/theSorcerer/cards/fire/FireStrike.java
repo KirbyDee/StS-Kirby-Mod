@@ -24,7 +24,7 @@ public class FireStrike extends SorcererFireCard {
                 DynamicCard.InfoBuilder(FireStrike.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(CardRarity.SPECIAL)
+                        .rarity(CardRarity.BASIC)
                         .target(CardTarget.ENEMY)
                         .tags(CardTags.STRIKE)
                         .damage(DAMAGE)

@@ -57,7 +57,7 @@ public abstract class DynamicCard extends CustomCard {
 
         private CardType type = CardType.STATUS;
 
-        private CardRarity rarity = CardRarity.BASIC;
+        private CardRarity rarity = CardRarity.SPECIAL;
 
         private CardTarget target = CardTarget.NONE;
 

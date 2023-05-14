@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.cards.DynamicCard;
 import theSorcerer.powers.buff.PastEmbracePower;
-import theSorcerer.relics.DynamicRelic;
-import theSorcerer.relics.BouncyCastle;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -53,13 +50,7 @@ public class DiscardPileViewScreenPatch {
             DynamicDungeon.withPowerDo(AbstractDungeon.player, PastEmbracePower.class, AbstractPower::onSpecificTrigger);
 
             // trigger on flashback
-            if (card instanceof DynamicCard) {
-                ((DynamicCard) card).triggerOnFlashback();
-            }
-            DynamicDungeon.withRelicDo(
-                    BouncyCastle.class,
-                    DynamicRelic::triggerOnFlashback
-            );
+            DynamicDungeon.triggerOnFlashback(card);
 
             // trigger flash
             card.superFlash();

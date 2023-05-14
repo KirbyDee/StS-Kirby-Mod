@@ -22,7 +22,7 @@ public class PastEmbracePower extends DynamicAmountPower {
     }
 
     @Override
-    public void onSpecificTrigger() {
+    public void triggerOnFlashback() {
         flash();
         DynamicDungeon.gainEnergy(this.amount);
     }

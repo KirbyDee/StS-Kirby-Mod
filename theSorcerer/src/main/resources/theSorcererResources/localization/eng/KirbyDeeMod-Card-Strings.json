@@ -70,11 +70,11 @@
   },
   "theSorcerer:Infernophoenix": {
     "NAME": "Infernophoenix",
-    "DESCRIPTION": "At the start of your next turn, heal HP equal to the damage you take this turn. NL This power lasts 1 turn."
+    "DESCRIPTION": "At the start of your next turn, heal HP equal to the damage you take this turn. Whenever you receive damage, add a *Burn into your discard pile. NL This power lasts 1 turn."
   },
   "theSorcerer:Cryophoenix": {
     "NAME": "Cryophoenix",
-    "DESCRIPTION": "Reflect any combat damage. NL This power lasts 1 turn."
+    "DESCRIPTION": "Reflect any combat damage. Whenever you are attacked, add a *Frostbite into your discard pile. NL This power lasts 1 turn."
   },
   "theSorcerer:ForgottenConduit": {
     "NAME": "Forgotten Conduit",
@@ -352,5 +352,35 @@
   "theSorcerer:CalculatedRisk": {
     "NAME": "Calculated Risk",
     "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities. NL Become thesorcerer:Elementless."
+  },
+  "theSorcerer:ResourceManagement": {
+    "NAME": "Resource Management",
+    "DESCRIPTION": "Gain [E]. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities."
+  },
+  "theSorcerer:Combustion": {
+    "NAME": "Combustion",
+    "DESCRIPTION": "Deal !D! damage. NL Can only be played if you are thesorcerer:Heated."
+  },
+  "theSorcerer:ArcticShell": {
+    "NAME": "Arctic Shell",
+    "DESCRIPTION": "Gain !B! block. NL Can only be played if you are thesorcerer:Chilled."
+  },
+  "theSorcerer:Expend": {
+    "NAME": "Expend",
+    "DESCRIPTION": "Draw !M! card. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities."
+  },
+  "theSorcerer:AwingShout": {
+    "NAME": "Awing Shout",
+    "DESCRIPTION": "Whenever you become thesorcerer:Elementless, apply !M! Weak and Vulnerable to ALL enemies."
+  },
+  "theSorcerer:DangerousTempo": {
+    "NAME": "Dangerous Tempo",
+    "DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E] [E]."
+  },
+  "theSorcerer:AngerManagement": {
+    "NAME": "Anger Management",
+    "DESCRIPTION": "ALL enemies lose !M! strength this turn. NL If this card is thesorcerer:Futurified become thesorcerer:Elementless."
   }
 }

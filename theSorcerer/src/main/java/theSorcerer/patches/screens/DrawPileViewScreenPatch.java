@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.cards.DynamicCard;
 
 @SpirePatch(clz = DrawPileViewScreen.class, method = SpirePatch.CLASS)
 public class DrawPileViewScreenPatch {
@@ -46,9 +45,7 @@ public class DrawPileViewScreenPatch {
             AbstractDungeon.player.hand.applyPowers();
 
             // trigger on futurity
-            if (card instanceof DynamicCard) {
-                ((DynamicCard) card).triggerOnFuturity();
-            }
+            DynamicDungeon.triggerOnFuturity(card);
 
             // trigger flash
             card.superFlash();

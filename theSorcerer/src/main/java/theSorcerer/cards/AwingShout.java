@@ -3,23 +3,24 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.powers.buff.AwingShoutPower;
 import theSorcerer.powers.buff.PastEmbracePower;
 
-public class PastEmbrace extends SorcererCard {
+public class AwingShout extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
-    private static final int ENERGY_GAIN = 1;
+    private static final int COST = 1;
+    private static final int WEAK_VULNERABILITY_AMOUNT = 1;
+    private static final int UPGRADE_WEAK_VULNERABILITY_AMOUNT = 1;
     // --- VALUES END ---
 
-    public PastEmbrace() {
+    public AwingShout() {
         super(
-                DynamicCard.InfoBuilder(PastEmbrace.class)
+                DynamicCard.InfoBuilder(AwingShout.class)
                         .cost(COST)
                         .type(CardType.POWER)
-                        .rarity(CardRarity.UNCOMMON)
-                        .magicNumber(ENERGY_GAIN)
+                        .rarity(CardRarity.RARE)
+                        .magicNumber(WEAK_VULNERABILITY_AMOUNT)
         );
     }
 
@@ -29,7 +30,10 @@ public class PastEmbrace extends SorcererCard {
                 new ApplyPowerAction(
                         player,
                         player,
-                        new PastEmbracePower(player, this.magicNumber),
+                        new AwingShoutPower(
+                                player,
+                                this.magicNumber
+                        ),
                         this.magicNumber
                 )
         );
@@ -37,6 +41,6 @@ public class PastEmbrace extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADE_WEAK_VULNERABILITY_AMOUNT);
     }
 }

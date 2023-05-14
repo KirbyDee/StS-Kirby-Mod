@@ -164,105 +164,6 @@ public class TheSorcerer extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        //ironclad 75 (23/36/16)
-        // 32 attacks
-        // - common: 16
-        // - uncommon: 11
-        // - rare: 5
-        // 14 power
-        // - common: 0
-        // - uncommon: 8
-        // - rare: 6
-        // 29 skills
-        // - common: 7
-        // - uncommon: 17
-        // - rare: 5
-
-        //silent 75 (23/33/19)
-        // 28 attacks
-        // - common: 11
-        // - uncommon: 13
-        // - rare: 4
-        // 11 power
-        // - common: 0
-        // - uncommon: 6
-        // - rare: 5
-        // 36 skills
-        // - common: 12
-        // - uncommon: 14
-        // - rare: 10
-
-        //defect 75 (22/36/17)
-        // 24 attacks
-        // - common: 11
-        // - uncommon: 8
-        // - rare: 5
-        // 14 power
-        // - common: 0
-        // - uncommon: 8
-        // - rare: 6
-        // 37 skills
-        // - common: 11
-        // - uncommon: 20
-        // - rare: 6
-
-        //watcher 75 (23/35/17)
-        // 27 attacks
-        // - common: 12
-        // - uncommon: 12
-        // - rare: 3
-        // 12 power
-        // - common: 0
-        // - uncommon: 8
-        // - rare: 4
-        // 36 skills
-        // - common: 11
-        // - uncommon: 15
-        // - rare: 10
-
-
-        //sorcerer 71 (21/33/17) - 75
-        // 25 attacks -> more (1)
-        // - common: 11 -> ok
-        // - uncommon: 11 -> more
-        // - rare: 5 -> ok
-        // 9 power -> more (3)
-        // - common: 0 -> ok
-        // - uncommon: 5 -> more
-        // - rare: 4 -> more
-        // 35 skills -> more
-        // - common: 10 -> ok
-        // - uncommon: 17 -> ok
-        // - rare: 8 -> ok
-        // relic:
-        // - starter: 1
-        //  - ElementalConstruct
-        // - common: 1
-        //  - BagOfIce
-        // - uncommon: 3
-        //  - Elemental Master
-        //  - Bottled Ghost
-        //  - BouncyCastle
-        // - rare: 3
-        //  - Bottled Life
-        //  - Elemental Pets
-        //  - MisoSoup
-        // - shop: 1
-        //  - ProtectingGloves
-        // - boss: 3
-        //  - BurningSoul
-        //  - FreezingSoul
-        //  - EnergizedSoul
-        // potions 3:
-        // - common: 1
-        //  - HeatedPotion
-        //  - ChilledPotion
-        //  - KnowledgePotion
-        // - uncommon: 1
-        //  - FlashbackPotion
-        // - rare: 1
-        //  - ArcanePotion
-
         logger.info("Begin loading starter Deck Strings");
         // 4 strikes
         for (int i = 0; i < 4; i++) {
@@ -276,14 +177,13 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(ChargeAttack.class));
         // 1 common skill
         retVal.add(DynamicCard.getID(DiscardedDefense.class));
+        retVal.add(DynamicCard.getID(DangerousTempo.class));
 
         // TODOO: arcane cards, if you try to cast them wihtout element, should see text
         // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
         // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
         // TODOO -> AbstractCardModifier for modifying cards to be element, flashback etc? : https://github.com/daviscook477/BaseMod/wiki/CardModifiers#alternate-costs
         // TODO https://github.com/daviscook477/BaseMod/wiki/CardModifiers
-        // TODO: this.cardsToPreview = new Frostbite();
-        // TODO: this.cardsToPreview = new Burn();
         // TODO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
         // TODO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
 

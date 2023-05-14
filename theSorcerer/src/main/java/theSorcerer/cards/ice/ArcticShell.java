@@ -1,23 +1,23 @@
 package theSorcerer.cards.ice;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.CrystalArmourAction;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 
-public class CrystalArmour extends SorcererIceCard {
+public class ArcticShell extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_BLOCK = 3;
     // --- VALUES END ---
 
-    public CrystalArmour() {
+    public ArcticShell() {
         super(
-                DynamicCard.InfoBuilder(CrystalArmour.class)
+                DynamicCard.InfoBuilder(ArcticShell.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.COMMON)
@@ -26,28 +26,25 @@ public class CrystalArmour extends SorcererIceCard {
         );
     }
 
-    // TODOO: sfx?
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        // block
+    public boolean canPlay(AbstractCard card) {
+        return DynamicDungeon.isChilled();
+    }
+
+    @Override
+    public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
                 new GainBlockAction(
-                        p,
-                        p,
+                        player,
+                        player,
                         this.block
                 )
         );
-
-        addToBot(new WaitAction(0.25F));
-
-        // search another crystal armour
-        addToBot(
-                new CrystalArmourAction()
-        );
+        DynamicDungeon.drawCard(this.magicNumber);
     }
 
     @Override
     protected void upgradeValues() {
-        upgradeBlock(UPGRADE_PLUS_BLOCK);
+        upgradeBlock(UPGRADE_BLOCK);
     }
 }

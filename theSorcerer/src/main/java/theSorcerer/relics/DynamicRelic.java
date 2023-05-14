@@ -77,6 +77,10 @@ public abstract class DynamicRelic extends CustomRelic {
 
     public void triggerOnFlashback() {}
 
+    public void triggerOnFuturity() {}
+
+    public void triggerOnElementless() {}
+
     @SafeVarargs
     protected final void addTip(final Class<? extends DynamicPower>... powerClass) {
         this.tips.addAll(

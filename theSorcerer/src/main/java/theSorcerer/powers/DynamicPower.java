@@ -49,6 +49,12 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
         );
     }
 
+    public void triggerOnFlashback() {}
+
+    public void triggerOnFuturity() {}
+
+    public void triggerOnElementless() {}
+
     public static String getID(final Class<? extends DynamicPower> thisClazz) {
         return DynamicDungeon.makeID(thisClazz);
     }

@@ -2,10 +2,13 @@ package theSorcerer.powers.buff;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import theSorcerer.cards.status.Frostbite;
 import theSorcerer.powers.SelfRemovablePower;
 
 public class CryophoenixPower extends SelfRemovablePower {
@@ -29,6 +32,7 @@ public class CryophoenixPower extends SelfRemovablePower {
 
     public int onAttacked(DamageInfo info, int damageAmount) {
         flash();
+        addToBot(new MakeTempCardInDiscardAction(new Frostbite(), 1));
         addToTop(
                 new DamageAction(
                         info.owner,

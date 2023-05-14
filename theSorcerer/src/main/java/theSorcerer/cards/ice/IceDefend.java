@@ -19,7 +19,7 @@ public class IceDefend extends SorcererIceCard {
                 DynamicCard.InfoBuilder(IceDefend.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.SPECIAL)
+                        .rarity(CardRarity.BASIC)
                         .target(CardTarget.SELF)
                         .tags(CardTags.STARTER_DEFEND)
                         .block(BLOCK)

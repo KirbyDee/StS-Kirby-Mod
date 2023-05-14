@@ -1,5 +1,7 @@
 package theSorcerer.powers.buff;
 
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -30,6 +32,8 @@ public class InfernophoenixPower extends SelfRemovablePower {
 
     @Override
     public int onLoseHp(int damageAmount) {
+        flash();
+        addToBot(new MakeTempCardInDiscardAction(new Burn(), 1));
         this.amount += damageAmount;
         updateDescription();
 

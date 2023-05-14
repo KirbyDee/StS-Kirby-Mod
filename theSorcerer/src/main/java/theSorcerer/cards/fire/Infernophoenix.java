@@ -1,6 +1,7 @@
 package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
@@ -23,6 +24,7 @@ public class Infernophoenix extends SorcererFireCard {
                         .tags(CardTags.HEALING)
                         .abilities(CardAbility.AUTO)
         );
+        this.cardsToPreview = new Burn();
     }
 
     @Override

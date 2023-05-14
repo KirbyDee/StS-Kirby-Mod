@@ -1,10 +1,8 @@
 package theSorcerer.powers.debuff;
 
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import theSorcerer.cards.DynamicCard;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicReducePerTurnPower;
 
 public class ElementlessPower extends DynamicReducePerTurnPower {
@@ -37,22 +35,7 @@ public class ElementlessPower extends DynamicReducePerTurnPower {
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        triggerOnElementless();
-    }
-
-    private void triggerOnElementless() {
-        triggerOnElementless(AbstractDungeon.player.hand);
-        triggerOnElementless(AbstractDungeon.player.drawPile);
-        triggerOnElementless(AbstractDungeon.player.discardPile);
-        triggerOnElementless(AbstractDungeon.player.exhaustPile);
-    }
-
-    private void triggerOnElementless(final CardGroup cardGroup) {
-        cardGroup.group
-                .stream()
-                .filter(DynamicCard.class::isInstance)
-                .map(DynamicCard.class::cast)
-                .forEach(DynamicCard::triggerOnElementless);
+        DynamicDungeon.triggerOnElementless();
     }
 
     @Override

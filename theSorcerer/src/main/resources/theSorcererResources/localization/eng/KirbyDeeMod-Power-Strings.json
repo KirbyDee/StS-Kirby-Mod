@@ -33,11 +33,11 @@
   },
   "theSorcerer:InfernophoenixPower": {
     "NAME": "Infernophoenix",
-    "DESCRIPTIONS": ["At the start of your next turn, heal #b", " HP, then lose #yInfernophoenix"]
+    "DESCRIPTIONS": ["Whenever you receive damage, add a #yBurn into your discard pile. At the start of your next turn, heal #b", " HP, then lose #yInfernophoenix"]
   },
   "theSorcerer:CryophoenixPower": {
     "NAME": "Cryophoenix",
-    "DESCRIPTIONS": ["Reflect any combat damage this turn. At the start of your next turn, lose #yCryophoenix"]
+    "DESCRIPTIONS": ["Whenever you are attacked, add a #yFrostbite into your discard pile. Reflect any combat damage this turn. At the start of your next turn, lose #yCryophoenix"]
   },
   "theSorcerer:WallOfFirePower": {
     "NAME": "Wall Of Fire",
@@ -116,6 +116,13 @@
       "Cannot gain Block for the next #b",
       " turns.",
       " turn."
+    ]
+  },
+  "theSorcerer:AwingShoutPower": {
+    "NAME": "Awing Shout",
+    "DESCRIPTIONS": [
+      "Whenever you become thesorcerer:Elementless, apply #b",
+      " Weak and Vulnerable to ALL enemies."
     ]
   }
 }
