@@ -3,7 +3,6 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.buff.CollateralDamagePower;
 
@@ -43,7 +42,7 @@ public class CollateralDamage extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        AbstractCardPatch.abilities.get(this).remove(CardAbility.ETHEREAL);
+        this.isEthereal = false;
         upgradeMagicNumber(UPGRADE_PERCENT_DAMAGE);
     }
 }

@@ -24,12 +24,12 @@ public class BottledGhost extends BottledRelic implements CustomSavable<Integer>
     }
 
     @Override
-    protected void onRemoveBottledCard(AbstractCard card) {
-        AbstractCardPatch.inBottleGhost.set(card, false);
+    protected void onRemoveBottledCard() {
+        AbstractCardPatch.inBottleGhost.set(this.card, false);
     }
 
     @Override
-    protected void onAddBottledCard(AbstractCard card) {
+    protected void onAddBottledCard() {
         AbstractCardPatch.inBottleGhost.set(this.card, true);
     }
 
@@ -60,7 +60,7 @@ public class BottledGhost extends BottledRelic implements CustomSavable<Integer>
         if (cardIndex >= 0 && cardIndex < AbstractDungeon.player.masterDeck.group.size()) {
             this.card = AbstractDungeon.player.masterDeck.group.get(cardIndex);
             if (this.card != null) {
-                onAddBottledCard(this.card);
+                onAddBottledCard();
                 setDescriptionAfterLoading();
             }
         }

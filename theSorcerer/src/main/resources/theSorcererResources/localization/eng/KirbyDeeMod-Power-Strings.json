@@ -3,7 +3,8 @@
     "NAME": "Elementless",
     "DESCRIPTIONS": [
       "You can no longer play any #yElemental #yCards cards or obtain any #yElemental #yAffinities. Before the start of your turn, reduce #yElementless by #b1.",
-      "Cannot play this card. NL I am #rElementless"
+      "Cannot play this card. NL I am #rElementless.",
+      "Cannot play this card. NL I need #rElemental #rAffinities."
     ]
   },
   "theSorcerer:HeatedPower": {

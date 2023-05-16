@@ -43,13 +43,15 @@ public class ChronoBlast extends SorcererArcaneCard {
         List<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
         // damage
         if (monsters != null && !monsters.isEmpty()) {
-            // TODOO: middle of hb.cX and hb.cY for first and last monster
-            AbstractMonster middleMonster = monsters.get(monsters.size() / 2);
+            AbstractMonster monsterMostLeft = monsters.get(0);
+            AbstractMonster monsterMostRight = monsters.get(monsters.size() - 1);
+            final float cX = (monsterMostRight.hb.cX + monsterMostLeft.hb.cX) / 2;
+            final float cY = (monsterMostRight.hb.cY + monsterMostLeft.hb.cY) / 2;
             addToBot(
                     new VFXAction(
                             new WeightyImpactEffect(
-                                    middleMonster.hb.cX,
-                                    middleMonster.hb.cY
+                                    cX,
+                                    cY
                             )
                     )
             );

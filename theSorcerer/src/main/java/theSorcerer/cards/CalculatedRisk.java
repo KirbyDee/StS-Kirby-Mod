@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.modifiers.ElementAffinityCardCostModifier;
+import theSorcerer.modifiers.ElementAffinityMod;
 
 public class CalculatedRisk extends SorcererCard {
 
@@ -29,7 +29,7 @@ public class CalculatedRisk extends SorcererCard {
                         .damage(DAMAGE)
                         .block(BLOCK)
         );
-        CardModifierManager.addModifier(this, new ElementAffinityCardCostModifier());
+        CardModifierManager.addModifier(this, new ElementAffinityMod());
     }
 
     @Override

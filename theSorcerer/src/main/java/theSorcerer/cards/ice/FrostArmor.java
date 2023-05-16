@@ -1,10 +1,12 @@
 package theSorcerer.cards.ice;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCardTags;
+import theSorcerer.modifiers.FlashbackMod;
 import theSorcerer.patches.cards.CardAbility;
 
 public class FrostArmor extends SorcererIceCard {

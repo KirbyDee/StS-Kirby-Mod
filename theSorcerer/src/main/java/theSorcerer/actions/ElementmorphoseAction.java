@@ -54,10 +54,9 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
         // add/remove element to/from tags & abilities
         this.applyElementToCard.accept(card);
 
-        // apply flash, powers and init shown description
+        // apply flash, powers
         card.superFlash();
         card.applyPowers();
-        DynamicDungeon.updateAbilityDescription(card);
 
         // add back to hand
         this.player.hand.addToTop(card);

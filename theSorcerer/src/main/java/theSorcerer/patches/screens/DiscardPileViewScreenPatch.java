@@ -1,15 +1,17 @@
 package theSorcerer.patches.screens;
 
+import basemod.cardmods.EtherealMod;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.powers.buff.PastEmbracePower;
+import theSorcerer.modifiers.FlashbackMod;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -17,7 +19,7 @@ public class DiscardPileViewScreenPatch {
     private static final Logger LOG = LogManager.getLogger(DiscardPileViewScreenPatch.class.getName());
 
     private static boolean isFlashback(AbstractCard card) {
-        return DynamicDungeon.isFlashbackCard(card);
+        return CardModifierManager.hasModifier(card, FlashbackMod.ID);
     }
 
     @SpirePatch(clz = DiscardPileViewScreen.class, method = "update")
@@ -38,7 +40,8 @@ public class DiscardPileViewScreenPatch {
             card.current_x = CardGroup.DISCARD_PILE_X;
             card.current_y = CardGroup.DISCARD_PILE_Y;
 
-            AbstractPileViewScreenPatch.computeDescription(card);
+            DynamicDungeon.makeCardExhaust(card);
+            DynamicDungeon.makeCardEthereal(card);
 
             AbstractDungeon.player.hand.addToHand(card);
             AbstractDungeon.player.discardPile.removeCard(card);
@@ -46,10 +49,8 @@ public class DiscardPileViewScreenPatch {
             AbstractDungeon.player.hand.applyPowers();
             AbstractDungeon.closeCurrentScreen();
 
-            // trigger PastEmbracePower
-            DynamicDungeon.withPowerDo(AbstractDungeon.player, PastEmbracePower.class, AbstractPower::onSpecificTrigger);
-
             // trigger on flashback
+            // TODO move to FlashbackMod? but how?
             DynamicDungeon.triggerOnFlashback(card);
 
             // trigger flash

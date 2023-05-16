@@ -4,7 +4,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.modifiers.ElementAffinityCardCostModifier;
+import theSorcerer.modifiers.ElementAffinityMod;
 
 public class ResourceManagement extends SorcererCard {
 
@@ -22,7 +22,7 @@ public class ResourceManagement extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(ENERGY_GAIN)
         );
-        CardModifierManager.addModifier(this, new ElementAffinityCardCostModifier());
+        CardModifierManager.addModifier(this, new ElementAffinityMod());
     }
 
     @Override

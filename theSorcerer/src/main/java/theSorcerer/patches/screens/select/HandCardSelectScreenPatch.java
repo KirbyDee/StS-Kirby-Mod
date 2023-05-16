@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
-import theSorcerer.DynamicDungeon;
 
 import java.util.function.Consumer;
 
@@ -99,16 +98,12 @@ public class HandCardSelectScreenPatch {
         ) {
             Consumer<AbstractCard> applyElementToCard = forElementMorphoseField.get(self);
             if (applyElementToCard == null) {
-                if (self.upgradePreviewCard != null) {
-                    DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
-                }
                 return;
             }
 
             if (self.numCardsToSelect == 1 && self.selectedCards.group.size() == 1 && self.selectedCards.size() == 1) {
                 self.upgradePreviewCard = self.selectedCards.group.get(0).makeStatEquivalentCopy();
                 applyElementToCard.accept(self.upgradePreviewCard);
-                DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
                 self.upgradePreviewCard.drawScale = 0.75F;
             }
         }
@@ -144,9 +139,6 @@ public class HandCardSelectScreenPatch {
         ) {
             Consumer<AbstractCard> applyElementToCard = forElementMorphoseField.get(self);
             if (applyElementToCard == null) {
-                if (self.upgradePreviewCard != null) {
-                    DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
-                }
                 return;
             }
 
@@ -155,7 +147,6 @@ public class HandCardSelectScreenPatch {
                     self.upgradePreviewCard = self.selectedCards.group.get(0).makeStatEquivalentCopy();
                 }
                 applyElementToCard.accept(self.upgradePreviewCard);
-                DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
                 self.upgradePreviewCard.drawScale = 0.75F;
                 self.upgradePreviewCard.targetDrawScale = 0.75F;
             }

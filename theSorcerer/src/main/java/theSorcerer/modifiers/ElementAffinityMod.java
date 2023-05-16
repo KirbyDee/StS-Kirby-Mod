@@ -5,7 +5,7 @@ import basemod.interfaces.AlternateCardCostModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theSorcerer.DynamicDungeon;
 
-public class ElementAffinityCardCostModifier extends AbstractCardModifier implements AlternateCardCostModifier {
+public class ElementAffinityMod extends AbstractCardModifier implements AlternateCardCostModifier {
 
     @Override
     public int getAlternateResource(AbstractCard card) {
@@ -38,6 +38,6 @@ public class ElementAffinityCardCostModifier extends AbstractCardModifier implem
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new ElementAffinityCardCostModifier();
+        return new ElementAffinityMod();
     }
 }

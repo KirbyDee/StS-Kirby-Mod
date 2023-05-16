@@ -1,7 +1,6 @@
 package theSorcerer.relics;
 
 import basemod.abstracts.CustomBottleRelic;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -70,12 +69,12 @@ public abstract class BottledRelic extends DynamicRelic implements CustomBottleR
         if (this.card != null) {
             AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.getSpecificCard(this.card);
             if (cardInDeck != null) {
-                onRemoveBottledCard(cardInDeck);
+                onRemoveBottledCard();
             }
         }
     }
 
-    protected abstract void onRemoveBottledCard(final AbstractCard card);
+    protected abstract void onRemoveBottledCard();
 
     @Override
     public void update() {
@@ -83,14 +82,14 @@ public abstract class BottledRelic extends DynamicRelic implements CustomBottleR
         if (!this.cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             this.cardSelected = true;
             this.card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-            onAddBottledCard(this.card);
+            onAddBottledCard();
             AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             setDescriptionAfterLoading();
         }
     }
 
-    protected abstract void onAddBottledCard(final AbstractCard card);
+    protected abstract void onAddBottledCard();
 
     public void setDescriptionAfterLoading() {
         this.description = this.DESCRIPTIONS[2] + FontHelper.colorString(this.card.name, "y") + this.DESCRIPTIONS[3];

@@ -3,7 +3,6 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 
 public class ImprudentPunches extends SorcererCard {
@@ -45,6 +44,6 @@ public class ImprudentPunches extends SorcererCard {
     @Override
     protected void upgradeValues() {
         upgradeDamage(UPGRADE_DAMAGE);
-        AbstractCardPatch.abilities.get(this).remove(CardAbility.EXHAUST);
+        this.exhaust = false;
     }
 }

@@ -1,8 +1,10 @@
 package theSorcerer.cards;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.modifiers.FlashbackMod;
 import theSorcerer.patches.cards.CardAbility;
 
 public class WellPrepared extends SorcererCard {

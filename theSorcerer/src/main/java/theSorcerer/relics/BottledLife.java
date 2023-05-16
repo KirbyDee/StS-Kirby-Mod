@@ -1,16 +1,15 @@
 package theSorcerer.relics;
 
 import basemod.abstracts.CustomSavable;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.modifiers.ArcaneMod;
 import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.powers.buff.ChilledPower;
-import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.powers.buff.PresenceOfMindPower;
-import theSorcerer.powers.debuff.ElementlessPower;
 
 import java.util.function.Predicate;
 
@@ -41,13 +40,15 @@ public class BottledLife extends BottledRelic implements CustomSavable<Integer> 
     }
 
     @Override
-    protected void onRemoveBottledCard(AbstractCard card) {
+    protected void onRemoveBottledCard() {
         AbstractCardPatch.inBottleEnergy.set(card, false);
+        CardModifierManager.removeModifiersById(this.card, ArcaneMod.ID, true);
     }
 
     @Override
-    protected void onAddBottledCard(AbstractCard card) {
+    protected void onAddBottledCard() {
         AbstractCardPatch.inBottleEnergy.set(this.card, true);
+        DynamicDungeon.makeCardArcane(this.card);
     }
 
     @Override
@@ -77,7 +78,7 @@ public class BottledLife extends BottledRelic implements CustomSavable<Integer> 
         if (cardIndex >= 0 && cardIndex < AbstractDungeon.player.masterDeck.group.size()) {
             this.card = AbstractDungeon.player.masterDeck.group.get(cardIndex);
             if (this.card != null) {
-                onAddBottledCard(this.card);
+                onAddBottledCard();
                 setDescriptionAfterLoading();
             }
         }

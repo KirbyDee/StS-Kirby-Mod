@@ -22,7 +22,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.cards.*;
-import theSorcerer.cards.fire.Scorch;
 import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalConstruct;
 
@@ -177,15 +176,10 @@ public class TheSorcerer extends CustomPlayer {
         retVal.add(DynamicCard.getID(ChargeAttack.class));
         // 1 common skill
         retVal.add(DynamicCard.getID(DiscardedDefense.class));
-        retVal.add(DynamicCard.getID(DangerousTempo.class));
 
-        // TODOO: arcane cards, if you try to cast them wihtout element, should see text
-        // TODOO: need to store tags / abilities? on file if you restart game? (CardCrawlGame.metricData?)
-        // TODOO: deck view is not showing correct tags? tags should be for the card itself and not just combat
-        // TODOO -> AbstractCardModifier for modifying cards to be element, flashback etc? : https://github.com/daviscook477/BaseMod/wiki/CardModifiers#alternate-costs
-        // TODO https://github.com/daviscook477/BaseMod/wiki/CardModifiers
-        // TODO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
-        // TODO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
+        // TODOO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
+        // TODOO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
+        // TODOO: dar pile fucked up if I do flashback or something similar?
 
         return retVal;
     }
@@ -248,7 +242,7 @@ public class TheSorcerer extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Scorch(); // TODOO
+        return new ChargeAttack();
     }
 
     // The class name as it appears next to your player name in-game

@@ -1,5 +1,11 @@
 package theSorcerer;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.EtherealMod;
+import basemod.cardmods.ExhaustMod;
+import basemod.cardmods.InnateMod;
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -22,6 +28,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ElementLoseAction;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.modifiers.*;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 import theSorcerer.powers.DynamicPower;
@@ -55,7 +62,7 @@ public class DynamicDungeon {
     // -------------------------
 
     public static boolean cardHasAbility(final AbstractCard card, final CardAbility ability) {
-        return AbstractCardPatch.abilities.get(card).contains(ability);
+        return CardModifierManager.hasModifier(card, ability.cardMod.identifier(card));
     }
 
     public static boolean isFireCard(final AbstractCard card) {
@@ -99,11 +106,27 @@ public class DynamicDungeon {
     }
 
     public static boolean isEntombOrBottledGhostCard(final AbstractCard card) {
-        return DynamicDungeon.isEntombCard(card) || AbstractCardPatch.inBottleGhost.get(card);
+        return isEntombCard(card) || AbstractCardPatch.inBottleGhost.get(card);
+    }
+
+    public static boolean isInnateCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.INNATE);
     }
 
     public static boolean isAutoCard(final AbstractCard card) {
         return cardHasAbility(card, CardAbility.AUTO);
+    }
+
+    public static boolean isEtherealCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.ETHEREAL);
+    }
+
+    public static boolean isRetainCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.RETAIN);
+    }
+
+    public static boolean isExhaustCard(final AbstractCard card) {
+        return cardHasAbility(card, CardAbility.EXHAUST);
     }
 
     public static boolean isElementCard(final AbstractCard card) {
@@ -112,56 +135,88 @@ public class DynamicDungeon {
 
     public static void makeCardFuturity(final AbstractCard card) {
         if (!isFuturityCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FUTURITY);
-            updateAbilityDescription(card);
+            makeCard(card, new FuturityMod());
         }
     }
 
     public static void makeCardFlashback(final AbstractCard card) {
         if (!isFlashbackCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FLASHBACK);
-            updateAbilityDescription(card);
+            makeCard(card, new FlashbackMod());
         }
     }
 
     public static void makeCardFire(final AbstractCard card) {
-        if (!isIceCard(card) && !isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.FIRE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
-            updateAbilityDescription(card);
+        if (!isArcaneCard(card) && !isFireCard(card)) {
+            makeCard(card, new FireMod());
         }
     }
 
     public static void makeCardIce(final AbstractCard card) {
-        if (!isIceCard(card) && !isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ICE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
-            updateAbilityDescription(card);
+        if (!isArcaneCard(card) && !isIceCard(card)) {
+            makeCard(card, new IceMod());
         }
     }
 
     public static void makeCardArcane(final AbstractCard card) {
         if (!isArcaneCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ARCANE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.FIRE);
-            AbstractCardPatch.abilities.get(card).remove(CardAbility.ICE);
-            updateAbilityDescription(card);
+            makeCard(card, new ArcaneMod());
         }
     }
 
     public static void makeCardEntomb(final AbstractCard card) {
         if (!isEntombCard(card)) {
-            AbstractCardPatch.abilities.get(card).add(CardAbility.ENTOMB);
-            updateAbilityDescription(card);
+            makeCard(card, new EntombMod());
         }
     }
 
-    public static void updateAbilityDescription(final AbstractCard card) {
-        // we have to re-initialize the description based on the abilities
-        CardAbility.initializeAbilityRawDescriptions(card);
+    public static void makeCardInnate(final AbstractCard card) {
+        if (!isInnateCard(card)) {
+            makeCard(card, new InnateMod());
+        }
+    }
 
-        // update shown description
-        card.initializeDescription();
+    public static void makeCardAuto(final AbstractCard card) {
+        if (!isAutoCard(card)) {
+            makeCard(card, new AutoMod());
+        }
+    }
+
+    public static void makeCardUnplayable(final AbstractCard card) {
+        if (!isUnplayableCard(card)) {
+            makeCard(card, new UnplayableMod());
+        }
+    }
+
+    public static void makeCardEthereal(final AbstractCard card) {
+        if (!isEtherealCard(card)) {
+            makeCard(card, new EtherealMod());
+        }
+    }
+
+    public static void makeCardRetain(final AbstractCard card) {
+        if (!isRetainCard(card)) {
+            makeCard(card, new RetainMod());
+        }
+    }
+
+    public static void makeCardExhaust(final AbstractCard card) {
+        if (!isExhaustCard(card)) {
+            makeCard(card, new ExhaustMod());
+        }
+    }
+
+    public static void makeCard(
+            final AbstractCard card,
+            final CardAbility cardAbility
+    ) {
+        makeCard(card, cardAbility.cardMod);
+    }
+
+    private static void makeCard(
+            final AbstractCard card,
+            final AbstractCardModifier cardModifier
+    ) {
+        CardModifierManager.addModifier(card, cardModifier);
     }
 
 

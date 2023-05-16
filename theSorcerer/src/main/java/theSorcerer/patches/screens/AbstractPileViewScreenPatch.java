@@ -52,21 +52,4 @@ public class AbstractPileViewScreenPatch {
     private static boolean isHovered(AbstractCard card) {
         return card.hb.hovered;
     }
-
-    public static void computeDescription(AbstractCard card) {
-        // remove futurity / flashback
-        AbstractCardPatch.abilities.get(card).remove(CardAbility.FLASHBACK);
-        AbstractCardPatch.abilities.get(card).remove(CardAbility.FUTURITY);
-
-        // add ethereal
-        card.isEthereal = true;
-        AbstractCardPatch.abilities.get(card).add(CardAbility.ETHEREAL);
-
-        // add exhaust (if not power, doesn't make sense to give exhaust to powers)
-        if (card.type != AbstractCard.CardType.POWER) {
-            card.exhaust = true;
-            AbstractCardPatch.abilities.get(card).add(CardAbility.EXHAUST);
-        }
-        DynamicDungeon.updateAbilityDescription(card);
-    }
 }

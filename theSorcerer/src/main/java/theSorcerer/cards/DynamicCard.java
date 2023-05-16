@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import org.apache.commons.lang3.StringUtils;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.cards.CardAbility;
 
 import java.util.Arrays;
@@ -237,12 +236,8 @@ public abstract class DynamicCard extends CustomCard {
         // tags
         this.tags.addAll(info.tags);
 
-        // abilities
-        this.isEthereal = info.abilities.contains(CardAbility.ETHEREAL);
-        this.isInnate = info.abilities.contains(CardAbility.INNATE);
-        this.retain = info.abilities.contains(CardAbility.RETAIN);
-        this.exhaust = info.abilities.contains(CardAbility.EXHAUST);
-        AbstractCardPatch.abilities.get(this).addAll(info.abilities);
+        // add card modifiers
+        info.abilities.forEach(a -> DynamicDungeon.makeCard(this, a));
 
         // init values
         this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;
@@ -251,7 +246,6 @@ public abstract class DynamicCard extends CustomCard {
         resetAttributes();
         initializeDescription();
     }
-
 
     @Override
     public void initializeDescription() {
@@ -265,7 +259,6 @@ public abstract class DynamicCard extends CustomCard {
         this.rawDescription = this.upgraded && StringUtils.isNotBlank(this.baseUpgradeRawDescription) ?
                 this.baseUpgradeRawDescription :
                 this.baseRawDescription;
-        AbstractCardPatch.abilities.get(this).forEach(a -> a.addRawDescription(this));
     }
 
     public void displayUpgrades() {
@@ -299,11 +292,6 @@ public abstract class DynamicCard extends CustomCard {
         this.isSecondMagicNumberModified = false;
         this.thirdMagicNumber = this.baseThirdMagicNumber;
         this.isThirdMagicNumberModified = false;
-    }
-
-    @Override
-    public boolean canPlay(AbstractCard card) {
-        return !DynamicDungeon.isUnplayableCard(card) && super.canPlay(card);
     }
 
     @Override

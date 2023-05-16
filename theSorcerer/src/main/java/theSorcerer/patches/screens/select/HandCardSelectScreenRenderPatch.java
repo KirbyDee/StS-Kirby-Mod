@@ -37,7 +37,6 @@ public class HandCardSelectScreenRenderPatch {
         self.upgradePreviewCard.target_x = (float)Settings.WIDTH * 0.63F;
         self.upgradePreviewCard.target_y = (float)Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
         applyElementToCard.accept(self.upgradePreviewCard);
-        DynamicDungeon.updateAbilityDescription(self.upgradePreviewCard);
         self.upgradePreviewCard.applyPowers();
         self.upgradePreviewCard.render(sb);
         self.upgradePreviewCard.updateHoverLogic();

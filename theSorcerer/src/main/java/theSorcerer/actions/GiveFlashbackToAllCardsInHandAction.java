@@ -28,9 +28,8 @@ public class GiveFlashbackToAllCardsInHandAction extends AbstractGameAction {
     private void applyFlashback(final AbstractCard card) {
         DynamicDungeon.makeCardFlashback(card);
 
-        // apply flash, powers and init shown description
+        // apply flash, powers
         card.superFlash();
         card.applyPowers();
-        DynamicDungeon.updateAbilityDescription(card);
     }
 }
