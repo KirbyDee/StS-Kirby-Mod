@@ -136,6 +136,14 @@
     "DESCRIPTION": "Change a card to become #yIce."
   },
   {
+    "PROPER_NAME": "Arcanemorphose",
+    "NAMES": [
+      "Arcanemorphose",
+      "arcanemorphose"
+    ],
+    "DESCRIPTION": "Change a card to become #yArcane."
+  },
+  {
     "PROPER_NAME": "Ablaze",
     "NAMES": [
       "Ablaze",

@@ -80,11 +80,11 @@
       " more."
     ]
   },
-  "theSorcerer:MisoSoup": {
-    "NAME": "Miso Soup",
-    "FLAVOR": "A deep savory flavor, with toasty, funky, salty-sweet richness, full of umami. Best served either hot or cold.",
+  "theSorcerer:TreeOfLife": {
+    "NAME": "Tree of Life",
+    "FLAVOR": "One bite of its fruit will energize your soul.",
     "DESCRIPTIONS": [
-      "You can now #yFiremorphose or #yIcemorphose a card at Rest Sites."
+      "You can now #yArcanemorphose a card in your deck at #yRest #ySites."
     ]
   },
   "theSorcerer:ProtectingGloves": {

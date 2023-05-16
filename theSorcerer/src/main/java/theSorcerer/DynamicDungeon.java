@@ -157,6 +157,10 @@ public class DynamicDungeon {
         }
     }
 
+    public static boolean canMakeCardArcane(final AbstractCard card) {
+        return !isArcaneCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+    }
+
     public static void makeCardArcane(final AbstractCard card) {
         if (!isArcaneCard(card)) {
             makeCard(card, new ArcaneMod());
@@ -463,6 +467,14 @@ public class DynamicDungeon {
                 .forEach(monsterConsumer);
     }
 
+    public static CardGroup filterCardGroupBy(final CardGroup cardGroup, Predicate<AbstractCard> predicate) {
+        final CardGroup newCardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        cardGroup.group.stream()
+                .filter(predicate)
+                .forEach(c -> newCardGroup.group.add(c));
+        return newCardGroup;
+    }
+
     public static Optional<AbstractCard> getLastCardPlayed() {
         ArrayList<AbstractCard> cardsPlayed = AbstractDungeon.actionManager.cardsPlayedThisCombat;
         return !cardsPlayed.isEmpty() ?
@@ -579,23 +591,6 @@ public class DynamicDungeon {
                 .forEach(consumer);
     }
 
-
-    // -------------------------
-    // MOD
-    // -------------------------
-
-    public static String makeID(Class<?> thisClazz) {
-        return makeID(thisClazz.getSimpleName());
-    }
-
-    public static String makeID(String idText) {
-        return KirbyDeeMod.makeID(idText);
-    }
-
-    public static String makeKeywordID(String idText) {
-        return KirbyDeeMod.makeKeywordID(idText);
-    }
-
     public static PowerTip getPowerTip(final Class<? extends DynamicPower> powerClass) {
         PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(DynamicPower.getID(powerClass));
         return getPowerTip(powerStrings.NAME);
@@ -628,5 +623,22 @@ public class DynamicDungeon {
                 .filter(elementPredicate)
                 .collect(Collectors.toList());
         return elementCards.get(AbstractDungeon.cardRandomRng.random(elementCards.size() - 1));
+    }
+
+
+    // -------------------------
+    // MOD
+    // -------------------------
+
+    public static String makeID(Class<?> thisClazz) {
+        return makeID(thisClazz.getSimpleName());
+    }
+
+    public static String makeID(String idText) {
+        return KirbyDeeMod.makeID(idText);
+    }
+
+    public static String makeKeywordID(String idText) {
+        return KirbyDeeMod.makeKeywordID(idText);
     }
 }

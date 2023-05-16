@@ -1,14 +1,17 @@
 package theSorcerer.relics;
 
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
+import theSorcerer.DynamicDungeon;
+import theSorcerer.ui.campfire.ArcanemorphoseOption;
 
 import java.util.ArrayList;
 
-public class MisoSoup extends DynamicRelic {
+public class TreeOfLife extends DynamicRelic {
 
-    public MisoSoup() {
+    public TreeOfLife() {
         super(
-                MisoSoup.class,
+                TreeOfLife.class,
                 RelicTier.RARE,
                 LandingSound.FLAT
         );
@@ -17,7 +20,7 @@ public class MisoSoup extends DynamicRelic {
     @Override
     protected void initializeTips() {
         super.initializeTips();
-        addTip("Firemorphose", "Icemorphose");
+        addTip("Arcanemorphose");
     }
 
     @Override
@@ -32,6 +35,13 @@ public class MisoSoup extends DynamicRelic {
 
     @Override
     public void addCampfireOption(ArrayList<AbstractCampfireOption> options) {
-        options.add(null); // TODO: check how TokeOption goes
+        options.add(
+                new ArcanemorphoseOption(
+                        !DynamicDungeon.filterCardGroupBy(
+                                AbstractDungeon.player.masterDeck,
+                                DynamicDungeon::canMakeCardArcane
+                        ).isEmpty()
+                )
+        );
     }
 }

@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 @SpirePatch(clz = HandCardSelectScreen.class, method = "render")
 public class HandCardSelectScreenRenderPatch {
 
-    @SpireInsertPatch(locator = Locator.class, localvars = {"arrowTimer", "arrowScale1", "arrowScale2", "arrowScale3"})
+    @SpireInsertPatch(locator = Locator.class)
     public static void renderPatch(
             HandCardSelectScreen self,
             SpriteBatch sb,

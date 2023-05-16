@@ -50,7 +50,7 @@ public abstract class DynamicRelic extends CustomRelic {
         return relic instanceof PeacePipe ||
                 relic instanceof Shovel ||
                 relic instanceof Girya ||
-                relic instanceof MisoSoup;
+                relic instanceof TreeOfLife;
     }
 
     public static String getID(final Class<? extends DynamicRelic> thisClazz) {
