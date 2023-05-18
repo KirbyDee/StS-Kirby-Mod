@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.PutCardFromDrawPileToDiscardPileAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class BuriedAlive extends SorcererCard {
 
@@ -22,7 +22,7 @@ public class BuriedAlive extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.NONE)
                         .magicNumber(CARDS_TO_CHOOSE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

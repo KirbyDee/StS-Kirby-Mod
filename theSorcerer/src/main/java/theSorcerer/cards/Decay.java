@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.DecayAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Decay extends SorcererCard {
 
@@ -22,7 +22,7 @@ public class Decay extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

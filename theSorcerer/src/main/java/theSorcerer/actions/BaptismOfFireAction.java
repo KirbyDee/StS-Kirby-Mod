@@ -1,13 +1,13 @@
 package theSorcerer.actions;
 
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class BaptismOfFireAction extends ElementmorphoseAction {
 
     public BaptismOfFireAction() {
         super(
-                CardAbility.FIRE,
+                CardModifier.FIRE,
                 DynamicDungeon::makeCardFire
         );
     }

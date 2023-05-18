@@ -1,13 +1,13 @@
 package theSorcerer.actions;
 
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class CrystalizeAction extends ElementmorphoseAction {
 
     public CrystalizeAction() {
         super(
-                CardAbility.ICE,
+                CardModifier.ICE,
                 DynamicDungeon::makeCardIce
         );
     }

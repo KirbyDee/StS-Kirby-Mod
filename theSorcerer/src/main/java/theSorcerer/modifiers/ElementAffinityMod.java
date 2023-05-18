@@ -7,6 +7,10 @@ import theSorcerer.DynamicDungeon;
 
 public class ElementAffinityMod extends AbstractCardModifier implements AlternateCardCostModifier {
 
+    public static final String ID = "thesorcerer:Elementcost";
+
+    private static final String ELEMENTCOST_DESCRIPTION = ID + " NL ";
+
     @Override
     public int getAlternateResource(AbstractCard card) {
         return DynamicDungeon.getElementAmount();
@@ -37,7 +41,17 @@ public class ElementAffinityMod extends AbstractCardModifier implements Alternat
     }
 
     @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
         return new ElementAffinityMod();
+    }
+
+    @Override
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return ELEMENTCOST_DESCRIPTION + rawDescription;
     }
 }

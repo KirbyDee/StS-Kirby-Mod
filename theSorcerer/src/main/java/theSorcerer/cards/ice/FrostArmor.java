@@ -1,13 +1,10 @@
 package theSorcerer.cards.ice;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.modifiers.FlashbackMod;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class FrostArmor extends SorcererIceCard {
 
@@ -24,7 +21,7 @@ public class FrostArmor extends SorcererIceCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
-                        .abilities(CardAbility.FLASHBACK)
+                        .modifiers(CardModifier.FLASHBACK)
                         .block(BLOCK)
         );
     }

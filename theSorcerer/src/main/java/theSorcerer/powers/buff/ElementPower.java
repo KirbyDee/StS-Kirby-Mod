@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.DynamicAmountPower;
 
 public abstract class ElementPower<E extends AbstractPower> extends DynamicAmountPower {
@@ -57,7 +57,7 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
 
     @Override
     public void atEndOfRound() {
-        reducePowerToZero();
+        removeSelf();
     }
 
     @Override
@@ -95,15 +95,15 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        CardAbility ability = getElementLoseAbility();
-        if (DynamicDungeon.cardHasAbility(card, ability)) {
-            LOG.info(ability + " applied, but " + this.ID + " already existing -> remove " + this.ID);
+        CardModifier modifier = getElementLoseModifier();
+        if (DynamicDungeon.cardHasModifier(card, modifier)) {
+            LOG.info(modifier + " applied, but " + this.ID + " already existing -> remove " + this.ID);
             removeSelf();
             DynamicDungeon.applyElementless();
         }
     }
 
-    protected abstract CardAbility getElementLoseAbility();
+    protected abstract CardModifier getElementLoseModifier();
 
     @Override
     public void updateDescription() {

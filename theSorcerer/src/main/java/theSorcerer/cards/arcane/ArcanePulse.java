@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.ArcanePulseAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class ArcanePulse extends SorcererArcaneCard {
 
@@ -19,7 +19,7 @@ public class ArcanePulse extends SorcererArcaneCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
-                        .abilities(CardAbility.EXHAUST, CardAbility.ETHEREAL)
+                        .modifiers(CardModifier.EXHAUST, CardModifier.ETHEREAL)
         );
     }
 

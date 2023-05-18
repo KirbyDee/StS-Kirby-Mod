@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class ImprudentPunches extends SorcererCard {
 
@@ -22,7 +22,7 @@ public class ImprudentPunches extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ALL_ENEMY)
                         .damage(DAMAGE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
                         .magicNumber(ELEMENTLESS_TIMES)
         );
     }

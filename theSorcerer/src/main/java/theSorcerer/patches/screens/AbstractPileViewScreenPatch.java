@@ -5,9 +5,6 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;

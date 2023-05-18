@@ -11,13 +11,8 @@ import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.debuff.ElementlessPower;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
 public class AbstractCardPatch {
-
-    public static SpireField<Set<CardAbility>> abilities = new SpireField<>(HashSet::new);
 
     public static SpireField<Boolean> inBottleEnergy = new SpireField<>(() -> false);
 

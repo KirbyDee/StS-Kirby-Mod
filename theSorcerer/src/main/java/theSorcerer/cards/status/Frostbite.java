@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Frostbite extends DynamicCard {
 
@@ -23,7 +23,7 @@ public class Frostbite extends DynamicCard {
                         .type(CardType.STATUS)
                         .rarity(CardRarity.COMMON)
                         .magicNumber(DAMAGE)
-                        .abilities(CardAbility.UNPLAYABLE)
+                        .modifiers(CardModifier.UNPLAYABLE)
                         .build()
         );
     }

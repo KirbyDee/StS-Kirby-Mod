@@ -3,7 +3,7 @@ package theSorcerer.actions;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import org.apache.commons.lang3.StringUtils;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.patches.screens.select.HandCardSelectScreenPatch;
 
 import java.util.function.Consumer;
@@ -14,12 +14,12 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     private final static String TEXT_1 = "metamorphose to "; // TODOO
     private final static String TEXT_2 = " for the rest of the Combat.";
     private final static int CARDS_TO_CHOOSE = 1;
-    private final CardAbility elementToMetamorph;
+    private final CardModifier elementToMetamorph;
     private final Consumer<AbstractCard> applyElementToCard;
     // --- VALUES END ---
 
     public ElementmorphoseAction(
-            final CardAbility elementToMetamorph,
+            final CardModifier elementToMetamorph,
             final Consumer<AbstractCard> applyElementToCard
     ) {
         super(CARDS_TO_CHOOSE, false, false, false, false);
@@ -30,7 +30,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
 
     @Override
     protected boolean canBeChosen(final AbstractCard card) {
-        return !DynamicDungeon.cardHasAbility(card, this.elementToMetamorph) &&
+        return !DynamicDungeon.cardHasModifier(card, this.elementToMetamorph) &&
                 !DynamicDungeon.isArcaneCard(card) &&
                 card.costForTurn >= 0 &&
                 super.canBeChosen(card);

@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class FireCharm extends SorcererSpecialCard {
 
@@ -20,7 +20,7 @@ public class FireCharm extends SorcererSpecialCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .magicNumber(TOKEN_AMOUNT)
-                        .abilities(CardAbility.ETHEREAL, CardAbility.EXHAUST)
+                        .modifiers(CardModifier.ETHEREAL, CardModifier.EXHAUST)
         );
     }
 

@@ -1,7 +1,7 @@
 package theSorcerer.cards.arcane;
 
 import theSorcerer.cards.SorcererCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public abstract class SorcererArcaneCard extends SorcererCard {
 
@@ -9,7 +9,7 @@ public abstract class SorcererArcaneCard extends SorcererCard {
             InfoBuilder infoBuilder
     ) {
         super(
-                infoBuilder.abilities(CardAbility.ARCANE)
+                infoBuilder.modifiers(CardModifier.ARCANE)
         );
     }
 }

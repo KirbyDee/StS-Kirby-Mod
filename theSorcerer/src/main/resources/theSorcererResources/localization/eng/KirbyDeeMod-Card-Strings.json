@@ -351,12 +351,12 @@
   },
   "theSorcerer:CalculatedRisk": {
     "NAME": "Calculated Risk",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities. NL Become thesorcerer:Elementless."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Become thesorcerer:Elementless."
   },
   "theSorcerer:ResourceManagement": {
     "NAME": "Resource Management",
-    "DESCRIPTION": "Gain [E]. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities."
+    "DESCRIPTION": "Gain [E].",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]."
   },
   "theSorcerer:Combustion": {
     "NAME": "Combustion",
@@ -368,7 +368,7 @@
   },
   "theSorcerer:Expend": {
     "NAME": "Expend",
-    "DESCRIPTION": "Draw !M! card. NL Can be cast for less energy at a cost of thesorcerer:Elemental_Affinities."
+    "DESCRIPTION": "Draw !M! card."
   },
   "theSorcerer:AwingShout": {
     "NAME": "Awing Shout",

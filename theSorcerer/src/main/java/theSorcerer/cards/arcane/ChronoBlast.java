@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class ChronoBlast extends SorcererArcaneCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.ALL_ENEMY)
                         .damage(DAMAGE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

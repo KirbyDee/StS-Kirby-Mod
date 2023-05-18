@@ -1,11 +1,9 @@
 package theSorcerer.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.modifiers.FlashbackMod;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class WellPrepared extends SorcererCard {
 
@@ -21,9 +19,9 @@ public class WellPrepared extends SorcererCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.RARE)
-                        .abilities(
-                                CardAbility.FUTURITY,
-                                CardAbility.FLASHBACK
+                        .modifiers(
+                                CardModifier.FUTURITY,
+                                CardModifier.FLASHBACK
                         )
                         .magicNumber(CARD_AMOUNT_DRAW)
         );

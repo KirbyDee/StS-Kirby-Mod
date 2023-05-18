@@ -26,7 +26,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.characters.TheSorcerer;
-import theSorcerer.events.IdentityCrisisEvent;
+import theSorcerer.events.DynamicEvent;
+import theSorcerer.events.ElementalCreaturesEvent;
 import theSorcerer.glows.ElementGlow;
 import theSorcerer.potions.*;
 import theSorcerer.relics.*;
@@ -344,7 +345,7 @@ public class KirbyDeeMod implements
 
         // Create a new event builder
         // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent.class) // for this specific event
+        AddEventParams eventParams = new AddEventParams.Builder(DynamicEvent.getID(ElementalCreaturesEvent.class), ElementalCreaturesEvent.class) // for this specific event
             .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
             .playerClass(TheSorcerer.Enums.THE_SORCERER) // Character specific event
             .create();

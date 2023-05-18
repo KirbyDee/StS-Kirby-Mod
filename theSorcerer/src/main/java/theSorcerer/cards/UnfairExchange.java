@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.PutCardFromDiscardPileToExhaustPileAction;
 import theSorcerer.actions.PutCardFromExhaustPileToDiscardPileAndGiveFlashbackAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class UnfairExchange extends SorcererCard {
 
@@ -25,7 +25,7 @@ public class UnfairExchange extends SorcererCard {
                         .target(CardTarget.NONE)
                         .magicNumber(DISCARD)
                         .secondMagicNumber(EXHAUST)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

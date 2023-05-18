@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.StrongAffinityAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class StrongAffinity extends SorcererCard {
 
@@ -18,7 +18,7 @@ public class StrongAffinity extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.NONE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

@@ -2,8 +2,7 @@ package theSorcerer.cards.fire;
 
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.SorcererCard;
-import theSorcerer.cards.SorcererCardTags;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public abstract class SorcererFireCard extends SorcererCard {
 
@@ -11,7 +10,7 @@ public abstract class SorcererFireCard extends SorcererCard {
             DynamicCard.InfoBuilder infoBuilder
     ) {
         super(
-                infoBuilder.abilities(CardAbility.FIRE)
+                infoBuilder.modifiers(CardModifier.FIRE)
         );
     }
 }

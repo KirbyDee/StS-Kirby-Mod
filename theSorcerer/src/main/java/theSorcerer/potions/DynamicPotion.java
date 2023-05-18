@@ -21,7 +21,13 @@ public abstract class DynamicPotion extends CustomPotion {
             PotionColor potionColor
     ) {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
-        super(thisClazz.getSimpleName(), DynamicPotion.getID(thisClazz), rarity, potionSize, potionColor);
+        super(
+                thisClazz.getSimpleName(),
+                DynamicPotion.getID(thisClazz),
+                rarity,
+                potionSize,
+                potionColor
+        );
     }
 
     public static String getID(final Class<? extends DynamicPotion> thisClazz) {

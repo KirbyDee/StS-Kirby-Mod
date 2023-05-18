@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.buff.CollateralDamagePower;
 
 public class CollateralDamage extends SorcererCard {
@@ -22,7 +22,7 @@ public class CollateralDamage extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
                         .magicNumber(PERCENT_DAMAGE)
-                        .abilities(CardAbility.ETHEREAL)
+                        .modifiers(CardModifier.ETHEREAL)
         );
     }
 

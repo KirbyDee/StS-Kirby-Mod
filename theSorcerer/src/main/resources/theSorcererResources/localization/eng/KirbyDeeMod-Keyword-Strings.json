@@ -158,5 +158,13 @@
       "frozen"
     ],
     "DESCRIPTION": "Whenever the enemy gets attacked, they take damage equal to the number of #yFrozen stacks they have."
+  },
+  {
+    "PROPER_NAME": "Elementcost",
+    "NAMES": [
+      "Elementcost",
+      "elementcost"
+    ],
+    "DESCRIPTION": "This card can be cast for less energy at a cost of #yElemental #yAffinities."
   }
 ]

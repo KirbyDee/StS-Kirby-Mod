@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class AngerManagement extends SorcererCard {
 
@@ -29,7 +29,7 @@ public class AngerManagement extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(STRENGTH_LOSS)
-                        .abilities(CardAbility.FUTURITY)
+                        .modifiers(CardModifier.FUTURITY)
         );
     }
 

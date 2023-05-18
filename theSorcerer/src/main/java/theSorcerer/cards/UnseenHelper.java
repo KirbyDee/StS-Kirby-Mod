@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class UnseenHelper extends SorcererCard {
 
@@ -28,7 +28,7 @@ public class UnseenHelper extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.NONE)
                         .magicNumber(ENERGY_GAIN)
-                        .abilities(CardAbility.UNPLAYABLE)
+                        .modifiers(CardModifier.UNPLAYABLE)
         );
     }
 

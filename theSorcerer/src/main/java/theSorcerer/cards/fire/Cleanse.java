@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.actions.RandomPowerRemoveAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Cleanse extends SorcererFireCard {
 
@@ -22,7 +22,7 @@ public class Cleanse extends SorcererFireCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
                         .magicNumber(POWERS_TO_REMOVE)
         );
     }

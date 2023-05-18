@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class WarmWelcome extends SorcererFireCard {
 
@@ -21,7 +21,7 @@ public class WarmWelcome extends SorcererFireCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

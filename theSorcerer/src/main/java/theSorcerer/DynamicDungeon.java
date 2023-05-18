@@ -30,7 +30,7 @@ import theSorcerer.actions.ElementLoseAction;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.modifiers.*;
 import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.SelfRemovablePower;
 import theSorcerer.powers.buff.ChilledPower;
@@ -61,8 +61,8 @@ public class DynamicDungeon {
     // CARD
     // -------------------------
 
-    public static boolean cardHasAbility(final AbstractCard card, final CardAbility ability) {
-        return CardModifierManager.hasModifier(card, ability.cardMod.identifier(card));
+    public static boolean cardHasModifier(final AbstractCard card, final CardModifier modifier) {
+        return CardModifierManager.hasModifier(card, modifier.cardMod.identifier(card));
     }
 
     public static boolean isFireCard(final AbstractCard card) {
@@ -70,7 +70,7 @@ public class DynamicDungeon {
     }
 
     public static boolean isOriginalFireCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.FIRE);
+        return cardHasModifier(card, CardModifier.FIRE);
     }
 
     public static boolean isIceCard(final AbstractCard card) {
@@ -78,11 +78,11 @@ public class DynamicDungeon {
     }
 
     public static boolean isOriginalIceCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.ICE);
+        return cardHasModifier(card, CardModifier.ICE);
     }
 
     public static boolean isArcaneCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.ARCANE);
+        return cardHasModifier(card, CardModifier.ARCANE);
     }
 
     public static boolean canPlayArcane() {
@@ -90,19 +90,19 @@ public class DynamicDungeon {
     }
 
     public static boolean isFuturityCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.FUTURITY);
+        return cardHasModifier(card, CardModifier.FUTURITY);
     }
 
     public static boolean isFlashbackCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.FLASHBACK);
+        return cardHasModifier(card, CardModifier.FLASHBACK);
     }
 
     public static boolean isUnplayableCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.UNPLAYABLE);
+        return cardHasModifier(card, CardModifier.UNPLAYABLE);
     }
 
     public static boolean isEntombCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.ENTOMB);
+        return cardHasModifier(card, CardModifier.ENTOMB);
     }
 
     public static boolean isEntombOrBottledGhostCard(final AbstractCard card) {
@@ -110,23 +110,23 @@ public class DynamicDungeon {
     }
 
     public static boolean isInnateCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.INNATE);
+        return cardHasModifier(card, CardModifier.INNATE);
     }
 
     public static boolean isAutoCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.AUTO);
+        return cardHasModifier(card, CardModifier.AUTO);
     }
 
     public static boolean isEtherealCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.ETHEREAL);
+        return cardHasModifier(card, CardModifier.ETHEREAL);
     }
 
     public static boolean isRetainCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.RETAIN);
+        return cardHasModifier(card, CardModifier.RETAIN);
     }
 
     public static boolean isExhaustCard(final AbstractCard card) {
-        return cardHasAbility(card, CardAbility.EXHAUST);
+        return cardHasModifier(card, CardModifier.EXHAUST);
     }
 
     public static boolean isElementCard(final AbstractCard card) {
@@ -145,10 +145,18 @@ public class DynamicDungeon {
         }
     }
 
+    public static boolean canMakeCardFire(final AbstractCard card) {
+        return !isFireCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+    }
+
     public static void makeCardFire(final AbstractCard card) {
         if (!isArcaneCard(card) && !isFireCard(card)) {
             makeCard(card, new FireMod());
         }
+    }
+
+    public static boolean canMakeCardIce(final AbstractCard card) {
+        return !isIceCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
     }
 
     public static void makeCardIce(final AbstractCard card) {
@@ -211,9 +219,9 @@ public class DynamicDungeon {
 
     public static void makeCard(
             final AbstractCard card,
-            final CardAbility cardAbility
+            final CardModifier cardModifier
     ) {
-        makeCard(card, cardAbility.cardMod);
+        makeCard(card, cardModifier.cardMod);
     }
 
     private static void makeCard(

@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.RethinkingAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Rethinking extends SorcererCard {
 
@@ -19,7 +19,7 @@ public class Rethinking extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

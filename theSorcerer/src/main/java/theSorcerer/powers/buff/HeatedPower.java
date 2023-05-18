@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.debuff.AblazePower;
 
 public class HeatedPower extends ElementPower<StrengthPower> {
@@ -35,8 +35,8 @@ public class HeatedPower extends ElementPower<StrengthPower> {
     }
 
     @Override
-    protected CardAbility getElementLoseAbility() {
-        return CardAbility.ICE;
+    protected CardModifier getElementLoseModifier() {
+        return CardModifier.ICE;
     }
 
     @Override

@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.patches.cards.CardAbility;
 
 public class FrozenTomb extends SorcererIceCard {
 

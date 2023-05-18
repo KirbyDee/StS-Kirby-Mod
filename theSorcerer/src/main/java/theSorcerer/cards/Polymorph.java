@@ -1,13 +1,10 @@
 package theSorcerer.cards;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.DecayAction;
 import theSorcerer.actions.PolymorphAction;
 import theSorcerer.cards.special.Sheep;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Polymorph extends SorcererCard {
 
@@ -25,7 +22,7 @@ public class Polymorph extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
                         .magicNumber(POLYMORPH_TURNS)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
 
         this.cardsToPreview = new Sheep();

@@ -1,12 +1,11 @@
 package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class ForgottenConduit extends SorcererCard {
 
@@ -22,7 +21,7 @@ public class ForgottenConduit extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.NONE)
                         .magicNumber(ENERGY_GAIN)
-                        .abilities(CardAbility.UNPLAYABLE, CardAbility.FLASHBACK)
+                        .modifiers(CardModifier.UNPLAYABLE, CardModifier.FLASHBACK)
         );
     }
 

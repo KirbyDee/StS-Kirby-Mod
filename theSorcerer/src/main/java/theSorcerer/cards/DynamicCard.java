@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import org.apache.commons.lang3.StringUtils;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,7 +52,7 @@ public abstract class DynamicCard extends CustomCard {
 
         private final Set<CardTags> tags = new HashSet<>();
 
-        private final Set<CardAbility> abilities = new HashSet<>();
+        private final Set<CardModifier> modifiers = new HashSet<>();
 
         private CardType type = CardType.STATUS;
 
@@ -106,9 +106,9 @@ public abstract class DynamicCard extends CustomCard {
             return this;
         }
 
-        public InfoBuilder abilities(final CardAbility... abilities) {
-            final List<CardAbility> abilityList = Arrays.asList(abilities);
-            this.abilities.addAll(abilityList);
+        public InfoBuilder modifiers(final CardModifier... modifiers) {
+            final List<CardModifier> modifierList = Arrays.asList(modifiers);
+            this.modifiers.addAll(modifierList);
             return this;
         }
 
@@ -162,7 +162,7 @@ public abstract class DynamicCard extends CustomCard {
 
         public final Set<CardTags> tags;
 
-        public final Set<CardAbility> abilities;
+        public final Set<CardModifier> modifiers;
 
         public final CardType type;
 
@@ -195,7 +195,7 @@ public abstract class DynamicCard extends CustomCard {
             this.img = img;
             this.thisClazz = builder.thisClazz;
             this.tags = builder.tags;
-            this.abilities = builder.abilities;
+            this.modifiers = builder.modifiers;
             this.type = builder.type;
             this.rarity = builder.rarity;
             this.target = builder.target;
@@ -237,7 +237,7 @@ public abstract class DynamicCard extends CustomCard {
         this.tags.addAll(info.tags);
 
         // add card modifiers
-        info.abilities.forEach(a -> DynamicDungeon.makeCard(this, a));
+        info.modifiers.forEach(a -> DynamicDungeon.makeCard(this, a));
 
         // init values
         this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;
@@ -250,12 +250,12 @@ public abstract class DynamicCard extends CustomCard {
     @Override
     public void initializeDescription() {
         if (this.baseRawDescription != null) {
-            initRawDescriptionWithAbilities();
+            initBaseRawDescription();
         }
         super.initializeDescription();
     }
 
-    private void initRawDescriptionWithAbilities() {
+    private void initBaseRawDescription() {
         this.rawDescription = this.upgraded && StringUtils.isNotBlank(this.baseUpgradeRawDescription) ?
                 this.baseUpgradeRawDescription :
                 this.baseRawDescription;

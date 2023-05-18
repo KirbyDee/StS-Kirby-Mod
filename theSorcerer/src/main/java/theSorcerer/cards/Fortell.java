@@ -2,10 +2,8 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.PutCardFromDrawPileToDiscardPileAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Fortell extends SorcererCard {
 
@@ -23,7 +21,7 @@ public class Fortell extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
                         .block(BLOCK)
-                        .abilities(CardAbility.FUTURITY)
+                        .modifiers(CardModifier.FUTURITY)
         );
     }
 

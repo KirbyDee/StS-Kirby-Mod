@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.status.Frostbite;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.buff.CryophoenixPower;
 
 public class Cryophoenix extends SorcererIceCard {
@@ -22,7 +22,7 @@ public class Cryophoenix extends SorcererIceCard {
                         .type(CardType.POWER)
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
-                        .abilities(CardAbility.AUTO)
+                        .modifiers(CardModifier.AUTO)
         );
         this.cardsToPreview = new Frostbite();
     }

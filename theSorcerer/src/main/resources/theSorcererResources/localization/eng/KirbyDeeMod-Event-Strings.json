@@ -1,21 +1,24 @@
 {
-  "theSorcerer:IdentityCrisisEvent": {
-    "NAME": "Identity Crisis",
+  "theSorcerer:ElementalCreaturesEvent": {
+    "NAME": "Elemental Creatures",
     "DESCRIPTIONS": [
-      "As you move through ~The~ ~City~ you come across a #pPurple #pMirror. NL You look at it, but you see no reflection.",
-      "You see no one but #g~You~ #g~wish~ #g~to~ #g~become~ #g~someone.~",
-      "#r@YOU@ #r@EXIST@ #r@AND@ #r@ARE@ #r@VALID!@",
-      "#yYou #yare #yat #ypeace #ywith #yyour #ypresence.",
-      "You have no hands."
+      "As you wander aimlessly, you stumble upon 2 elemental creatures. NL One looks a lot like a living #rFlame whereas the other like a living #bIcicle !",
+      "A fierce fight evolves! NL ... NL ... NL After some blows back and forth, the elemental creatures retreat in fear but not after giving you something in return...",
+      "After a while, the elemental creatures realize that they are being watched. NL They come over to you with no ill intent. NL On the contrary... they seem to be keen to help you out!",
+      "You ignore the elemental creatures, confident in your choice.",
+      "You reach out with your hands and touch the creature... you feel its power!"
     ],
     "OPTIONS": [
-      "[Inspiration] #gGain #ga #gRandom #gStarting #gRelic.",
-      "[Denial] #rLose #r",
-      " #rMax #rHP. #gRemove #ga #gCard #gfrom #gyour #gdeck.",
-      "[Acceptance] #gGain #gApotheosis.",
-      "[TOUCH THE MIRROR] TOUCH TOUCH TO#C# TOUCH TO UCH TOUCH #rTOUCH TOUCH",
+      "[Fight]",
+      "[Hide]",
       "[Leave]",
-      "Select card to remove."
+      "[Touch #rFlame ] #gChange #ga #gcard #gin #gyour #gdeck #gto #gbecome #yFire.",
+      "[Touch #bIcicle ] #gChange #ga #gcard #gin #gyour #gdeck #gto #gbecome #yIce.",
+      "[Ignore]",
+      "[Leave] #rTake #r",
+      " #rDamage.",
+      "Select a Card to change to #yFire.",
+      "Select a Card to change to #yIce."
     ]
   }
 }

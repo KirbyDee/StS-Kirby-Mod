@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.IncreaseMagicalCloakBlockAction;
-import theSorcerer.patches.cards.CardAbility;
 
 public class MagicalCloak extends SorcererCard {
 

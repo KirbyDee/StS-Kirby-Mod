@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.DangerousTempoAction;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class DangerousTempo extends SorcererCard {
 
@@ -23,7 +23,7 @@ public class DangerousTempo extends SorcererCard {
                         .target(CardTarget.NONE)
                         .magicNumber(DRAW_CARD_AMOUNT)
                         .secondMagicNumber(ENERGY_GAIN)
-                        .abilities(CardAbility.UNPLAYABLE, CardAbility.FUTURITY)
+                        .modifiers(CardModifier.UNPLAYABLE, CardModifier.FUTURITY)
         );
     }
 

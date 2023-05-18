@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.special.BaptismOfFire;
 import theSorcerer.cards.special.Crystalize;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class Elementmorphose extends SorcererCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.RARE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

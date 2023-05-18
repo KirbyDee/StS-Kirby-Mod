@@ -1,6 +1,5 @@
 package theSorcerer.cards.fire;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -10,8 +9,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.modifiers.FlashbackMod;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Scorch extends SorcererFireCard {
 
@@ -28,7 +26,7 @@ public class Scorch extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
-                        .abilities(CardAbility.FLASHBACK)
+                        .modifiers(CardModifier.FLASHBACK)
                         .damage(DAMAGE)
         );
     }

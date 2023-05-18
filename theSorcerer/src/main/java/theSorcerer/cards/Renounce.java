@@ -3,7 +3,7 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Renounce extends SorcererCard {
 
@@ -21,7 +21,7 @@ public class Renounce extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .magicNumber(CARD_AMOUNT_DRAW)
                         .secondMagicNumber(ENERGY_GAIN)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

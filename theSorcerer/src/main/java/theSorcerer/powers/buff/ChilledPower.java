@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.debuff.FrozenPower;
 
 public class ChilledPower extends ElementPower<DexterityPower> {
@@ -35,8 +35,8 @@ public class ChilledPower extends ElementPower<DexterityPower> {
     }
 
     @Override
-    protected CardAbility getElementLoseAbility() {
-        return CardAbility.FIRE;
+    protected CardModifier getElementLoseModifier() {
+        return CardModifier.FIRE;
     }
 
     @Override

@@ -4,6 +4,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.modifiers.ElementAffinityMod;
 
 public class Expend extends SorcererCard {
@@ -21,8 +22,8 @@ public class Expend extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(DRAW_CARDS)
+                        .modifiers(CardModifier.ELEMENTCOST)
         );
-        CardModifierManager.addModifier(this, new ElementAffinityMod());
     }
 
     @Override

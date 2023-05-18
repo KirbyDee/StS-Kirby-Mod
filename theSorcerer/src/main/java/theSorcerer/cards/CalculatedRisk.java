@@ -1,13 +1,12 @@
 package theSorcerer.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.modifiers.ElementAffinityMod;
+import theSorcerer.modifiers.CardModifier;
 
 public class CalculatedRisk extends SorcererCard {
 
@@ -28,8 +27,8 @@ public class CalculatedRisk extends SorcererCard {
                         .target(CardTarget.ALL_ENEMY)
                         .damage(DAMAGE)
                         .block(BLOCK)
+                        .modifiers(CardModifier.ELEMENTCOST)
         );
-        CardModifierManager.addModifier(this, new ElementAffinityMod());
     }
 
     @Override

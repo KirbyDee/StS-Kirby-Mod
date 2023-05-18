@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.PulsatingBladeAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class PulsatingBlade extends SorcererArcaneCard {
 
@@ -22,7 +22,7 @@ public class PulsatingBlade extends SorcererArcaneCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

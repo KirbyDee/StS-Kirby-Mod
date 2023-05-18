@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.SiphonAction;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 
 public class Siphon extends SorcererArcaneCard {
 
@@ -21,7 +21,7 @@ public class Siphon extends SorcererArcaneCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.RARE)
                         .magicNumber(CARDS_TO_EXHAUST)
-                        .abilities(CardAbility.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.patches.cards.CardAbility;
+import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.buff.InfernophoenixPower;
 public class Infernophoenix extends SorcererFireCard {
 
@@ -22,7 +22,7 @@ public class Infernophoenix extends SorcererFireCard {
                         .rarity(CardRarity.RARE)
                         .target(CardTarget.SELF)
                         .tags(CardTags.HEALING)
-                        .abilities(CardAbility.AUTO)
+                        .modifiers(CardModifier.AUTO)
         );
         this.cardsToPreview = new Burn();
     }
