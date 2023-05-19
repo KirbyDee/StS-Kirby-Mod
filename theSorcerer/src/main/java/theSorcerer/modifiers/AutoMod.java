@@ -7,7 +7,7 @@ public class AutoMod extends AbstractCardModifier {
 
     public static final String ID = "thesorcerer:Auto";
 
-    private static final String AUTO_DESCRIPTION =  ID + " NL ";
+    private static final String AUTO_DESCRIPTION =  ID + ". NL ";
 
     @Override
     public String identifier(AbstractCard card) {

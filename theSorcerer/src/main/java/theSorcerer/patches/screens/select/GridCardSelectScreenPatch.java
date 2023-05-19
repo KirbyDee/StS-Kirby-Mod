@@ -1,6 +1,5 @@
 package theSorcerer.patches.screens.select;
 
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,7 +14,7 @@ public class GridCardSelectScreenPatch {
 
     private static final String CANCEL = "Cancel";
 
-    public static SpireField<Consumer<AbstractCard>> forElementMorphoseField = new SpireField<>(() -> null);
+    public static SpireField<Consumer<AbstractCard>> forModifyCardConsumer = new SpireField<>(() -> null);
 
     public static void open(
             final CardGroup group,
@@ -25,7 +24,7 @@ public class GridCardSelectScreenPatch {
             final boolean forTransform,
             final boolean canCancel,
             final boolean forPurge,
-            final Consumer<AbstractCard> applyElementToCard
+            final Consumer<AbstractCard> applyModificationToCard
     ) {
         AbstractDungeon.gridSelectScreen.open(
                 group,
@@ -36,8 +35,8 @@ public class GridCardSelectScreenPatch {
                 canCancel,
                 forPurge
         );
-        forElementMorphoseField.set(AbstractDungeon.gridSelectScreen, applyElementToCard);
-        if (canCancel && applyElementToCard != null) {
+        forModifyCardConsumer.set(AbstractDungeon.gridSelectScreen, applyModificationToCard);
+        if (canCancel && applyModificationToCard != null) {
             AbstractDungeon.overlayMenu.cancelButton.show(CANCEL);
         }
     }
@@ -67,7 +66,7 @@ public class GridCardSelectScreenPatch {
                 boolean canCancel,
                 boolean forPurge
         ) {
-            forElementMorphoseField.set(self, null);
+            forModifyCardConsumer.set(self, null);
         }
     }
 
@@ -77,7 +76,7 @@ public class GridCardSelectScreenPatch {
         public static void Prefix(
                 GridCardSelectScreen self
         ) {
-            forElementMorphoseField.set(self, null);
+            forModifyCardConsumer.set(self, null);
         }
     }
 
@@ -88,8 +87,8 @@ public class GridCardSelectScreenPatch {
                 GridCardSelectScreen self,
                 boolean ___canCancel
         ) {
-            Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forElementMorphoseField.get(self);
-            if (self.upgradePreviewCard == null || applyElementToCard == null) {
+            Consumer<AbstractCard> applyModificationToCard = GridCardSelectScreenPatch.forModifyCardConsumer.get(self);
+            if (self.upgradePreviewCard == null || applyModificationToCard == null) {
                 return;
             }
 

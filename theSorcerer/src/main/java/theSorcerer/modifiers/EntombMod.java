@@ -7,7 +7,7 @@ public class EntombMod extends AbstractCardModifier {
 
     public static final String ID = "thesorcerer:Entomb";
 
-    private static final String ENTOMB_DESCRIPTION = ID + " NL ";
+    private static final String ENTOMB_DESCRIPTION = ID + ". NL ";
 
     @Override
     public String identifier(AbstractCard card) {

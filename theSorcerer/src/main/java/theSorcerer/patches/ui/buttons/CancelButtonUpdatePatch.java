@@ -22,7 +22,7 @@ public class CancelButtonUpdatePatch {
             CancelButton self,
             float ___target_x
     ) {
-        Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forElementMorphoseField.get(AbstractDungeon.gridSelectScreen);
+        Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forModifyCardConsumer.get(AbstractDungeon.gridSelectScreen);
         if (applyElementToCard != null && AbstractDungeon.screen == AbstractDungeon.CurrentScreen.GRID) {
             if (!AbstractDungeon.gridSelectScreen.confirmScreenUp) {
                 AbstractDungeon.closeCurrentScreen();

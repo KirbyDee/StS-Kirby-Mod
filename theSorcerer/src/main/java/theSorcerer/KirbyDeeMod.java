@@ -17,6 +17,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -28,6 +30,7 @@ import theSorcerer.cards.DynamicCard;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.DynamicEvent;
 import theSorcerer.events.ElementalCreaturesEvent;
+import theSorcerer.events.FlashingCaveEvent;
 import theSorcerer.glows.ElementGlow;
 import theSorcerer.potions.*;
 import theSorcerer.relics.*;
@@ -343,15 +346,19 @@ public class KirbyDeeMod implements
         // deffo take a look at that basemod wiki link as well, as it explains things very in-depth
         // btw if you don't provide event type, normal is assumed by default
 
-        // Create a new event builder
-        // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
-        AddEventParams eventParams = new AddEventParams.Builder(DynamicEvent.getID(ElementalCreaturesEvent.class), ElementalCreaturesEvent.class) // for this specific event
-            .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
-            .playerClass(TheSorcerer.Enums.THE_SORCERER) // Character specific event
-            .create();
-
         // Add the event
-        BaseMod.addEvent(eventParams);
+        BaseMod.addEvent(
+                new AddEventParams.Builder(DynamicEvent.getID(ElementalCreaturesEvent.class), ElementalCreaturesEvent.class) // for this specific event
+                        .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
+                        .playerClass(TheSorcerer.Enums.THE_SORCERER) // Character specific event
+                        .create()
+        );
+        BaseMod.addEvent(
+                new AddEventParams.Builder(DynamicEvent.getID(FlashingCaveEvent.class), FlashingCaveEvent.class)
+                        .dungeonIDs(Exordium.ID, TheBeyond.ID)
+                        .playerClass(TheSorcerer.Enums.THE_SORCERER)
+                        .create()
+        );
 
         // =============== Glow =================
         CardBorderGlowManager.addGlowInfo(new ElementGlow());

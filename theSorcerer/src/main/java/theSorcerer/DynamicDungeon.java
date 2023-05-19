@@ -139,6 +139,10 @@ public class DynamicDungeon {
         }
     }
 
+    public static boolean canMakeCardFlashback(final AbstractCard card) {
+        return !isFlashbackCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+    }
+
     public static void makeCardFlashback(final AbstractCard card) {
         if (!isFlashbackCard(card)) {
             makeCard(card, new FlashbackMod());
@@ -631,6 +635,11 @@ public class DynamicDungeon {
                 .filter(elementPredicate)
                 .collect(Collectors.toList());
         return elementCards.get(AbstractDungeon.cardRandomRng.random(elementCards.size() - 1));
+    }
+
+    public static void modifyCardInDeck(final AbstractCard card) {
+        int index = AbstractDungeon.player.masterDeck.group.indexOf(card);
+        AbstractDungeon.player.masterDeck.group.set(index, card.makeStatEquivalentCopy());
     }
 
 

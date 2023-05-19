@@ -7,7 +7,7 @@ public class UnplayableMod extends AbstractCardModifier {
 
     public static final String ID = "Unplayable";
 
-    private static final String AUTO_DESCRIPTION =  ID + " NL ";
+    private static final String AUTO_DESCRIPTION =  ID + ". NL ";
 
     @Override
     public boolean canPlayCard(AbstractCard card) {

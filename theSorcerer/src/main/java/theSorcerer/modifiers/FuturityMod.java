@@ -7,7 +7,7 @@ public class FuturityMod extends AbstractCardModifier {
 
     public static final String ID = "thesorcerer:Futurity";
 
-    private static final String FUTURITY_DESCRIPTION = " NL " + ID;
+    private static final String FUTURITY_DESCRIPTION = " NL " + ID + ".";
 
     @Override
     public String identifier(AbstractCard card) {

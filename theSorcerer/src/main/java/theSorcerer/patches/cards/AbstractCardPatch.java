@@ -42,15 +42,19 @@ public class AbstractCardPatch {
             if (inBottleEnergy.get(result) || arcane.get(result)) {
                 DynamicDungeon.makeCardArcane(result);
             }
+            fire.set(result, fire.get(self));
             if (fire.get(result)) {
                 DynamicDungeon.makeCardFire(result);
             }
+            ice.set(result, ice.get(self));
             if (ice.get(result)) {
                 DynamicDungeon.makeCardIce(result);
             }
+            flashback.set(result, flashback.get(self));
             if (flashback.get(result)) {
                 DynamicDungeon.makeCardFlashback(result);
             }
+            futurity.set(result, futurity.get(self));
             if (futurity.get(result)) {
                 DynamicDungeon.makeCardFuturity(result);
             }

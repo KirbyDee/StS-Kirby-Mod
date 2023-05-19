@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.modifiers.CardModifier;
+import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.screens.select.GridCardSelectScreenPatch;
 
 import java.util.function.Consumer;
@@ -18,7 +20,7 @@ public class ElementalCreaturesEvent extends DynamicEvent {
 
     private final int damage;
 
-    private Consumer<AbstractCard> applyElementToCard;
+    private CardModifier cardModifier;
     
     private CurrentScreen screen = CurrentScreen.INTRO;
 
@@ -68,13 +70,13 @@ public class ElementalCreaturesEvent extends DynamicEvent {
 
     private void initialScreen(final int buttonPressed) {
         switch (buttonPressed) {
-            case 0:
+            case 0: // fight
                 this.imageEventText.updateBodyText(this.descriptions[1]);
                 this.imageEventText.updateDialogOption(0, this.options[6] + this.damage + this.options[7]);
                 this.imageEventText.clearRemainingOptions();
                 this.screen = CurrentScreen.FIGHT;
                 return;
-            case 1:
+            case 1: // hide
                 this.imageEventText.loadImage(getImagePath(2));
                 if (Settings.AMBIANCE_ON) {
                     CardCrawlGame.music.fadeOutTempBGM();
@@ -88,7 +90,7 @@ public class ElementalCreaturesEvent extends DynamicEvent {
                 this.imageEventText.updateDialogOption(2, this.options[5]);
                 this.screen = CurrentScreen.MORPHOSE;
                 return;
-            case 2:
+            case 2: // leave
             default:
                 this.imageEventText.updateBodyText(this.descriptions[3]);
                 this.imageEventText.updateDialogOption(0, this.options[2]);
@@ -132,10 +134,12 @@ public class ElementalCreaturesEvent extends DynamicEvent {
     }
 
     private void firemorphose() {
+        this.cardModifier = CardModifier.FIRE;
         elementmorphose(this.options[8], DynamicDungeon::canMakeCardFire, DynamicDungeon::makeCardFire);
     }
 
     private void icemorphose() {
+        this.cardModifier = CardModifier.ICE;
         elementmorphose(this.options[9], DynamicDungeon::canMakeCardIce, DynamicDungeon::makeCardIce);
     }
 
@@ -145,7 +149,6 @@ public class ElementalCreaturesEvent extends DynamicEvent {
             final Predicate<AbstractCard> canMakeElementCard,
             final Consumer<AbstractCard> applyElementToCard
     ) {
-        this.applyElementToCard = applyElementToCard;
         GridCardSelectScreenPatch.open(
                 DynamicDungeon.filterCardGroupBy(
                         AbstractDungeon.player.masterDeck,
@@ -159,17 +162,21 @@ public class ElementalCreaturesEvent extends DynamicEvent {
                 false,
                 applyElementToCard
         );
-
-        AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck, 1, this.options[2], false, false, false, false);
     }
 
     @Override
     public void update() {
         super.update();
-        if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && this.applyElementToCard != null) {
-            AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0).makeStatEquivalentCopy();
-            this.applyElementToCard.accept(c);
-            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
+        if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && this.cardModifier != null) {
+            AbstractCard card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+            if (this.cardModifier == CardModifier.FIRE) {
+                AbstractCardPatch.fire.set(card, true);
+            }
+            else if (this.cardModifier == CardModifier.ICE) {
+                AbstractCardPatch.ice.set(card, true);
+            }
+            DynamicDungeon.modifyCardInDeck(card);
+            AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy()));
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }

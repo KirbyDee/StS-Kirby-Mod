@@ -25,6 +25,7 @@ public class CustomSoundMaster {
         long startTime = System.currentTimeMillis();
         Settings.SOUND_VOLUME = Settings.soundPref.getFloat("Sound Volume", 0.5F);
         this.map.put("SHEEP", this.load("STS_SFX_Sheep.ogg"));
+        this.map.put("CAVE_DRIPPING", this.load("STS_SFX_CaveDripping.ogg"));
         LOG.info("Sound Effect Volume: " + Settings.SOUND_VOLUME);
         LOG.info("Loaded " + this.map.size() + " Sound Effects");
         LOG.info("SFX load time: " + (System.currentTimeMillis() - startTime) + "ms");

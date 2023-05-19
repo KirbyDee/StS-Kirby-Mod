@@ -24,4 +24,19 @@ public class CardGroupPatch {
             }
         }
     }
+
+    // TODO issues at startup
+//    @SpirePatch(clz = CardGroup.class, method = "getGroupWithoutBottledCards")
+//    public static class GetGroupWithoutBottledCardsPatch {
+//
+//        public static CardGroup Postfix(CardGroup __retVal, CardGroup self, CardGroup group) {
+//            CardGroup retVal = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+//            for (AbstractCard card : __retVal.group) {
+//                if (!AbstractCardPatch.inBottleGhost.get(card) && !AbstractCardPatch.inBottleEnergy.get(card)) {
+//                    retVal.addToTop(card);
+//                }
+//            }
+//            return retVal;
+//        }
+//    }
 }

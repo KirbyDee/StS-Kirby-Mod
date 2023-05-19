@@ -9,7 +9,7 @@ public class ElementAffinityMod extends AbstractCardModifier implements Alternat
 
     public static final String ID = "thesorcerer:Elementcost";
 
-    private static final String ELEMENTCOST_DESCRIPTION = ID + " NL ";
+    private static final String ELEMENTCOST_DESCRIPTION = ID + ". NL ";
 
     @Override
     public int getAlternateResource(AbstractCard card) {

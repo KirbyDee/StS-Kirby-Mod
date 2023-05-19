@@ -18,12 +18,12 @@ public class GridCardSelectScreenUpdatePatch {
             @ByRef String[] ___tipMsg,
             @ByRef String[] ___lastTip
     ) {
-        Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forElementMorphoseField.get(self);
-        if (applyElementToCard != null) {
+        Consumer<AbstractCard> applyModificationToCard = GridCardSelectScreenPatch.forModifyCardConsumer.get(self);
+        if (applyModificationToCard != null) {
             ((AbstractCard)___hoveredCard[0]).untip();
             self.confirmScreenUp = true;
             self.upgradePreviewCard = ((AbstractCard)___hoveredCard[0]).makeStatEquivalentCopy();
-            applyElementToCard.accept(self.upgradePreviewCard);
+            applyModificationToCard.accept(self.upgradePreviewCard);
             self.upgradePreviewCard.drawScale = 0.875F;
             ((AbstractCard)___hoveredCard[0]).stopGlowing();
             self.selectedCards.clear();
@@ -49,8 +49,8 @@ public class GridCardSelectScreenUpdatePatch {
     public static void updatePatch2(
             GridCardSelectScreen self
     ) {
-        Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forElementMorphoseField.get(self);
-        if (applyElementToCard != null) {
+        Consumer<AbstractCard> applyModificationToCard = GridCardSelectScreenPatch.forModifyCardConsumer.get(self);
+        if (applyModificationToCard != null) {
             self.upgradePreviewCard.update();
         }
     }

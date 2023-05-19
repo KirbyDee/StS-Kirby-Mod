@@ -20,5 +20,28 @@
       "Select a Card to change to #yFire.",
       "Select a Card to change to #yIce."
     ]
+  },
+  "theSorcerer:FlashingCaveEvent": {
+    "NAME": "Flashing Cave",
+    "DESCRIPTIONS": [
+      "You stumble upon an entrance of a cave lit by torches. A #b~cold~ wind breezes from inside.",
+      "Taking all your courage you take steps inside and venture further and further into the cave... stumped by the enormous stalactites hanging from the ceiling you just hear the echo of water drops splashing on the floor. NL NL #b~drip~ NL #b~drip~ NL #y~clank~ NL NL Seems like in the dark you also lost some #yGold ... NL NL But at last you find yourself before huge rounded stairs enclosing a waterfall.",
+      "Spiraling down the stairs you find your way forward is blocked by junction. You shortly catch your breath and decide to go forward...",
+      "At the bottom of it all you are greeted by a bewitched sleeve unearthing from the ground.",
+      "At the bottom of it all you find a ladder reaching high up, higher than you can even see. NL After climbing for a very long time, you find yourself again outside... just next to the entrance of the cave. NL NL Seems like the cave journey hasn't paid of very much.",
+      "You choose better not to enter the cave and walk away.",
+      "You grab the sleeve. A power runs through your deck as you have never felt before! NL You leave the cave from where you came from.",
+      "You are scared and decide to better not take this gift... NL You leave the cave from where you came from."
+    ],
+    "OPTIONS": [
+      "[Enter]",
+      "[Leave]",
+      "[Continue] #rLose #r",
+      " #yGold",
+      "[To the Left]",
+      "[To the Right]",
+      "[Pick Up] #gGive #ga #gcard #gin #gyour #gdeck #yFlashback.",
+      "Select a Card to give #yFlashback."
+    ]
   }
 }

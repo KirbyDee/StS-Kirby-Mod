@@ -18,7 +18,7 @@ public abstract class ElementMod extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return identifier(card) + " NL " + rawDescription;
+        return identifier(card) + ". NL " + rawDescription;
     }
 
     @Override

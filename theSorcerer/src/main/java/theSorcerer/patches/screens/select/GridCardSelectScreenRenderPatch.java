@@ -29,13 +29,13 @@ public class GridCardSelectScreenRenderPatch {
             @ByRef float[] ___arrowScale3,
             @ByRef String[] ___tipMsg
     ) {
-        Consumer<AbstractCard> applyElementToCard = GridCardSelectScreenPatch.forElementMorphoseField.get(self);
-        if (self.upgradePreviewCard == null || applyElementToCard == null) {
+        Consumer<AbstractCard> applyModificationToCard = GridCardSelectScreenPatch.forModifyCardConsumer.get(self);
+        if (self.upgradePreviewCard == null || applyModificationToCard == null) {
             return SpireReturn.Continue();
         }
 
         renderArrows(sb, ___arrowTimer, ___arrowScale1, ___arrowScale2, ___arrowScale3);
-        applyElementToCard.accept(self.upgradePreviewCard);
+        applyModificationToCard.accept(self.upgradePreviewCard);
         ((AbstractCard)___hoveredCard[0]).current_x = (float)Settings.WIDTH * 0.36F;
         ((AbstractCard)___hoveredCard[0]).current_y = (float)Settings.HEIGHT / 2.0F;
         ((AbstractCard)___hoveredCard[0]).target_x = (float)Settings.WIDTH * 0.36F;
