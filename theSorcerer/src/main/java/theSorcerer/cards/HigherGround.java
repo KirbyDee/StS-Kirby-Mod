@@ -1,13 +1,11 @@
 package theSorcerer.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
-import theSorcerer.modifiers.ElementAffinityMod;
 
-public class Expend extends SorcererCard {
+public class HigherGround extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
@@ -15,9 +13,9 @@ public class Expend extends SorcererCard {
     private static final int UPGRADE_DRAW_CARDS = 1;
     // --- VALUES END ---
 
-    public Expend() {
+    public HigherGround() {
         super(
-                DynamicCard.InfoBuilder(Expend.class)
+                DynamicCard.InfoBuilder(HigherGround.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)

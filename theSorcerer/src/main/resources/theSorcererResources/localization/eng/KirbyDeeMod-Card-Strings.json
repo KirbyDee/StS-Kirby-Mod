@@ -225,8 +225,8 @@
     "NAME": "Explosion",
     "DESCRIPTION": "Deal damage equal to targets thesorcerer:Ablaze stacks to all enemies."
   },
-  "theSorcerer:Implosion": {
-    "NAME": "Implosion",
+  "theSorcerer:Shatter": {
+    "NAME": "Shatter",
     "DESCRIPTION": "Apply weak equal to targets thesorcerer:Frozen stacks to all enemies."
   },
   "theSorcerer:Harmony": {
@@ -366,8 +366,8 @@
     "NAME": "Arctic Shell",
     "DESCRIPTION": "Gain !B! block. NL Can only be played if you are thesorcerer:Chilled."
   },
-  "theSorcerer:Expend": {
-    "NAME": "Expend",
+  "theSorcerer:HigherGround": {
+    "NAME": "Higher Ground",
     "DESCRIPTION": "Draw !M! card."
   },
   "theSorcerer:AwingShout": {

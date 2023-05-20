@@ -8,13 +8,13 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.debuff.FrozenPower;
 
-public class ImplosionAction extends AbstractGameAction {
+public class ShatterAction extends AbstractGameAction {
 
     private final AbstractPlayer player;
 
     private final AbstractMonster monster;
 
-    public ImplosionAction(
+    public ShatterAction(
             AbstractPlayer player,
             AbstractMonster monster
     ) {

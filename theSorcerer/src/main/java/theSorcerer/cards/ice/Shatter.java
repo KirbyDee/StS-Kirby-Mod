@@ -3,18 +3,18 @@ package theSorcerer.cards.ice;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.actions.ImplosionAction;
+import theSorcerer.actions.ShatterAction;
 import theSorcerer.cards.DynamicCard;
 
-public class Implosion extends SorcererIceCard {
+public class Shatter extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     // --- VALUES END ---
 
-    public Implosion() {
+    public Shatter() {
         super(
-                DynamicCard.InfoBuilder(Implosion.class)
+                DynamicCard.InfoBuilder(Shatter.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
@@ -25,7 +25,7 @@ public class Implosion extends SorcererIceCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new ImplosionAction(
+                new ShatterAction(
                         player,
                         monster
                 )
