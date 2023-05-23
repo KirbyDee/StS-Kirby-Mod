@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
 
-public class CalculatedRisk extends SorcererCard {
+public class Ambush extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 3;
@@ -18,9 +18,9 @@ public class CalculatedRisk extends SorcererCard {
     private static final int UPGRADE_BLOCK = 5;
     // --- VALUES END ---
 
-    public CalculatedRisk() {
+    public Ambush() {
         super(
-                DynamicCard.InfoBuilder(CalculatedRisk.class)
+                DynamicCard.InfoBuilder(Ambush.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)

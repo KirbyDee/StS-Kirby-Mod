@@ -3,7 +3,7 @@ package theSorcerer.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import theSorcerer.DynamicDungeon;
 
-public class RethinkingAction extends AbstractGameAction {
+public class ElementalPathAction extends AbstractGameAction {
 
     @Override
     public void update() {

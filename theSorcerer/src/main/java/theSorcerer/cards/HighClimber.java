@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.CardCostIncreaseAction;
 
-public class Tradeoff extends SorcererCard {
+public class HighClimber extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -19,9 +19,9 @@ public class Tradeoff extends SorcererCard {
     private static final int UPGRADE_ENERGY_GAIN = 1;
     // --- VALUES END ---
 
-    public Tradeoff() {
+    public HighClimber() {
         super(
-                DynamicCard.InfoBuilder(Tradeoff.class)
+                DynamicCard.InfoBuilder(HighClimber.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)

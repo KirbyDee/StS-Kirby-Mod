@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
 
-public class HigherGround extends SorcererCard {
+public class HighGround extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
@@ -13,9 +13,9 @@ public class HigherGround extends SorcererCard {
     private static final int UPGRADE_DRAW_CARDS = 1;
     // --- VALUES END ---
 
-    public HigherGround() {
+    public HighGround() {
         super(
-                DynamicCard.InfoBuilder(HigherGround.class)
+                DynamicCard.InfoBuilder(HighGround.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)

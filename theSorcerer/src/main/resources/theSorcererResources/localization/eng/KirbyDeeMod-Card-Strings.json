@@ -51,8 +51,8 @@
     "NAME": "Crystalize",
     "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat."
   },
-  "theSorcerer:Tradeoff": {
-    "NAME": "Tradeoff",
+  "theSorcerer:HighClimber": {
+    "NAME": "High Climber",
     "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E].",
     "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E] [E]."
   },
@@ -135,8 +135,8 @@
   },
   "theSorcerer:Renounce": {
     "NAME": "Renounce",
-    "DESCRIPTION": "Lose all your thesorcerer:Elemental_Affinities. NL Gain [E] and draw 1 card for each thesorcerer:Elemental_Affinities lost that way. NL Become thesorcerer:Elementless.",
-    "UPGRADE_DESCRIPTION": "Lose all your thesorcerer:Elemental_Affinities. NL Gain [E] and draw 1 card for each thesorcerer:Elemental_Affinities lost that way."
+    "DESCRIPTION": "Gain [E] for each thesorcerer:Heated spent. NL Draw 1 card for each thesorcerer:Chilled spent.",
+    "UPGRADE_DESCRIPTION": "Gain [E] and draw 1 card for each thesorcerer:Elemental_Affinities spent."
   },
   "theSorcerer:OneWithNothing": {
     "NAME": "One With Nothing",
@@ -217,8 +217,8 @@
       "I have to be NL #rElementless."
     ]
   },
-  "theSorcerer:Rethinking": {
-    "NAME": "Rethinking",
+  "theSorcerer:ElementalPath": {
+    "NAME": "Elemental Path",
     "DESCRIPTION": "Switch your current thesorcerer:Elemental_Affinities to the opposite thesorcerer:Elemental_Affinities."
   },
   "theSorcerer:Explosion": {
@@ -344,13 +344,12 @@
     "NAME": "Singularity",
     "DESCRIPTION": "Deal !D! damage to a random enemy for each thesorcerer:Arcane card you played this combat. NL (Played !M! thesorcerer:Arcane card(s).)"
   },
-  "theSorcerer:MagicSmoke": {
-    "NAME": "Magic Smoke",
-    "DESCRIPTION": "Deal !D! damage. NL Add a random thesorcerer:Elemental_Card from your draw pile into your hand. NL It costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Choose an thesorcerer:Elemental_Card from your draw pile and add it into your hand. NL It costs 0 this turn."
+  "theSorcerer:ElementalDie": {
+    "NAME": "Elemental Die",
+    "DESCRIPTION": "Add a random thesorcerer:Elemental_Card from your draw pile into your hand. NL It costs 0 this turn."
   },
-  "theSorcerer:CalculatedRisk": {
-    "NAME": "Calculated Risk",
+  "theSorcerer:Ambush": {
+    "NAME": "Ambush",
     "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Become thesorcerer:Elementless."
   },
   "theSorcerer:ResourceManagement": {
@@ -366,8 +365,8 @@
     "NAME": "Arctic Shell",
     "DESCRIPTION": "Gain !B! block. NL Can only be played if you are thesorcerer:Chilled."
   },
-  "theSorcerer:HigherGround": {
-    "NAME": "Higher Ground",
+  "theSorcerer:HighGround": {
+    "NAME": "High Ground",
     "DESCRIPTION": "Draw !M! card."
   },
   "theSorcerer:AwingShout": {

@@ -2,36 +2,36 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.actions.RethinkingAction;
-import theSorcerer.modifiers.CardModifier;
+import theSorcerer.actions.ElementalDieAction;
 
-public class Rethinking extends SorcererCard {
+public class ElementalDie extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int CARDS_TO_PUT_IN_HAND = 1;
     // --- VALUES END ---
 
-    public Rethinking() {
+    public ElementalDie() {
         super(
-                DynamicCard.InfoBuilder(Rethinking.class)
+                DynamicCard.InfoBuilder(ElementalDie.class)
                         .cost(COST)
                         .type(CardType.SKILL)
-                        .rarity(CardRarity.RARE)
-                        .target(CardTarget.SELF)
-                        .modifiers(CardModifier.EXHAUST)
+                        .rarity(CardRarity.UNCOMMON)
         );
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new RethinkingAction()
+                new ElementalDieAction(
+                        CARDS_TO_PUT_IN_HAND
+                )
         );
     }
 
     @Override
-    protected void upgradeValues() {
+    public void upgradeValues() {
         upgradeBaseCost(UPGRADE_COST);
     }
 }

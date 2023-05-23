@@ -8,7 +8,7 @@ import theSorcerer.modifiers.CardModifier;
 public class Renounce extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 0;
+    private static final int COST = -1;
     private static final int CARD_AMOUNT_DRAW = 1;
     private static final int ENERGY_GAIN = 1;
     // --- VALUES END ---
@@ -21,24 +21,24 @@ public class Renounce extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .magicNumber(CARD_AMOUNT_DRAW)
                         .secondMagicNumber(ENERGY_GAIN)
-                        .modifiers(CardModifier.EXHAUST)
+                        .modifiers(CardModifier.EXHAUST, CardModifier.ELEMENTCOST)
         );
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        int amount = DynamicDungeon.getElementAmount();
+        int heatedAmount = DynamicDungeon.getHeatedAmount();
+        int chilledAmount = DynamicDungeon.getChilledAmount();
+        if (this.upgraded) {
+            heatedAmount = DynamicDungeon.getElementAmount();
+            chilledAmount = heatedAmount;
+        }
 
-        // draw cards
-        DynamicDungeon.drawCard(this.magicNumber * amount);
-
-        // gain energy
-        DynamicDungeon.gainEnergy(this.magicNumber * amount);
-
-        // lose all elements
-        DynamicDungeon.loseAllElements();
-
-        // apply elementless
-        DynamicDungeon.applyElementless();
+        if (heatedAmount > 0) {
+            DynamicDungeon.gainEnergy(this.magicNumber * heatedAmount);
+        }
+        if (chilledAmount > 0) {
+            DynamicDungeon.drawCard(this.magicNumber * chilledAmount);
+        }
     }
 }

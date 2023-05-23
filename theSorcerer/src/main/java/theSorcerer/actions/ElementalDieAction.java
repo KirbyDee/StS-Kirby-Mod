@@ -7,28 +7,19 @@ import theSorcerer.DynamicDungeon;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MagicSmokeAction extends DrawPileCardChooseAction {
+public class ElementalDieAction extends DrawPileCardChooseAction {
 
-    private final boolean upgraded;
-
-    public MagicSmokeAction(
-            int amount,
-            boolean upgraded
+    public ElementalDieAction(
+            int amount
     ) {
         super(amount);
-        this.upgraded = upgraded;
         this.actionType = ActionType.DRAW;
     }
 
     @Override
     public void update() {
-        if (this.upgraded) {
-            super.update();
-        }
-        else {
-            moveRandomElementCardsToHand();
-            this.isDone = true;
-        }
+        moveRandomElementCardsToHand();
+        this.isDone = true;
     }
 
     private void moveRandomElementCardsToHand() {

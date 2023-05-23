@@ -1,11 +1,9 @@
 package theSorcerer.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
-import theSorcerer.modifiers.ElementAffinityMod;
 
 public class ResourceManagement extends SorcererCard {
 

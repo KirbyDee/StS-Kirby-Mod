@@ -7,7 +7,7 @@ import basemod.cardmods.InnateMod;
 import basemod.cardmods.RetainMod;
 
 public enum CardModifier {
-    ELEMENTCOST(new ElementAffinityMod()),
+    ELEMENTCOST(new ElementalCostMod()),
     ARCANE(new ArcaneMod()),
     FIRE(new FireMod()),
     ICE(new IceMod()),
