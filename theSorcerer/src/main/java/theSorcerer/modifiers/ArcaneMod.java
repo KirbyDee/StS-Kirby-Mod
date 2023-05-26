@@ -42,17 +42,12 @@ public class ArcaneMod extends ElementMod {
     }
 
     @Override
-    protected boolean checkInvalidSwitch() {
-        return false;
-    }
-
-    @Override
-    protected void applyElementPower(AbstractCard card) {
+    protected void applyElementPower(final int amount) {
         if (DynamicDungeon.isHeated()) {
-            DynamicDungeon.applyHeated(card.costForTurn);
+            DynamicDungeon.applyHeated(amount);
         }
         else if (DynamicDungeon.isChilled()) {
-            DynamicDungeon.applyChilled(card.costForTurn);
+            DynamicDungeon.applyChilled(amount);
         }
     }
 }

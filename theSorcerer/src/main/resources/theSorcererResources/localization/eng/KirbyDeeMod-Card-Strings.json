@@ -51,8 +51,8 @@
     "NAME": "Crystalize",
     "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat."
   },
-  "theSorcerer:HighClimber": {
-    "NAME": "High Climber",
+  "theSorcerer:HighGround": {
+    "NAME": "High Ground",
     "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E].",
     "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E] [E]."
   },
@@ -119,11 +119,13 @@
   },
   "theSorcerer:IceArrow": {
     "NAME": "Ice Arrow",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Ice *Charm into your draw pile."
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Ice *Charm into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add a *Ice *Charm+ into your draw pile."
   },
   "theSorcerer:FieryBulwark": {
     "NAME": "Fiery Bulwark",
-    "DESCRIPTION": "Gain !B! Block. NL Add a *Fire *Charm into your draw pile."
+    "DESCRIPTION": "Gain !B! Block. NL Add a *Fire *Charm into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Add a *Fire *Charm+ into your draw pile."
   },
   "theSorcerer:FrozenTomb": {
     "NAME": "Frozen Tomb",
@@ -274,7 +276,7 @@
   },
   "theSorcerer:ImprudentPunches": {
     "NAME": "Imprudent Punches",
-    "DESCRIPTION": "Deal !D! damage to a random enemy for each time you became thesorcerer:Elementless. NL (Elementless count: !M!.)"
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each time you became thesorcerer:Elementless this combat. NL (Elementless count: !M!.)"
   },
   "theSorcerer:Meditation": {
     "NAME": "Meditation",
@@ -321,8 +323,8 @@
     "NAME": "Chrono-Blast",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Take an extra turn after this one. NL End your turn."
   },
-  "theSorcerer:SelfFulfillingProphecy": {
-    "NAME": "Fulfilling Prophecy",
+  "theSorcerer:Prophecy": {
+    "NAME": "Prophecy",
     "DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! card.",
     "UPGRADE_DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! cards."
   },
@@ -352,11 +354,6 @@
     "NAME": "Ambush",
     "DESCRIPTION": "Deal !D! damage to ALL enemies and gain !B! Block. NL Become thesorcerer:Elementless."
   },
-  "theSorcerer:ResourceManagement": {
-    "NAME": "Resource Management",
-    "DESCRIPTION": "Gain [E].",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E]."
-  },
   "theSorcerer:Combustion": {
     "NAME": "Combustion",
     "DESCRIPTION": "Deal !D! damage. NL Can only be played if you are thesorcerer:Heated."
@@ -364,10 +361,6 @@
   "theSorcerer:ArcticShell": {
     "NAME": "Arctic Shell",
     "DESCRIPTION": "Gain !B! block. NL Can only be played if you are thesorcerer:Chilled."
-  },
-  "theSorcerer:HighGround": {
-    "NAME": "High Ground",
-    "DESCRIPTION": "Draw !M! card."
   },
   "theSorcerer:AwingShout": {
     "NAME": "Awing Shout",
@@ -381,5 +374,13 @@
   "theSorcerer:AngerManagement": {
     "NAME": "Anger Management",
     "DESCRIPTION": "ALL enemies lose !M! strength this turn. NL If this card is thesorcerer:Futurified become thesorcerer:Elementless."
+  },
+  "theSorcerer:ColdFeet": {
+    "NAME": "Cold Feet",
+    "DESCRIPTION": "At the start of your turn, if this card is in your discard pile, gain thesorcerer:Chilled equal to its cost."
+  },
+  "theSorcerer:WarmHands": {
+    "NAME": "Warm Hands",
+    "DESCRIPTION": "At the start of your turn, if this card is in your discard pile, gain thesorcerer:Heated equal to its cost."
   }
 }

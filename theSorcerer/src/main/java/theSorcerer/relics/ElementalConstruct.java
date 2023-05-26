@@ -1,16 +1,10 @@
 package theSorcerer.relics;
 
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.watcher.ChooseOneAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.special.FireConstruct;
 import theSorcerer.cards.special.IceConstruct;
-import theSorcerer.powers.buff.ChilledPower;
-import theSorcerer.powers.buff.HeatedPower;
-import theSorcerer.powers.debuff.AblazePower;
-import theSorcerer.powers.debuff.FrozenPower;
 
 import java.util.ArrayList;
 
@@ -28,12 +22,6 @@ public class ElementalConstruct extends DynamicRelic {
     protected void initializeTips() {
         super.initializeTips();
         addTip("Fire", "Ice");
-        addTip(
-                HeatedPower.class,
-                ChilledPower.class,
-                AblazePower.class,
-                FrozenPower.class
-        );
     }
 
     @Override

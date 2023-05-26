@@ -3,13 +3,13 @@ package theSorcerer.actions;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theSorcerer.DynamicDungeon;
 
-public class SelfFulfillingProphecyAction extends HandCardChooseAction {
+public class ProphecyAction extends HandCardChooseAction {
 
     // --- VALUES START ---
     private final static String TEXT = "give Futurity and put to bottom of your draw pile."; // TODOO
     // --- VALUES END ---
 
-    public SelfFulfillingProphecyAction(int amount) {
+    public ProphecyAction(int amount) {
         super(amount);
         this.actionType = ActionType.CARD_MANIPULATION;
     }

@@ -3,9 +3,9 @@ package theSorcerer.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.actions.SelfFulfillingProphecyAction;
+import theSorcerer.actions.ProphecyAction;
 
-public class SelfFulfillingProphecy extends SorcererCard {
+public class Prophecy extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -14,9 +14,9 @@ public class SelfFulfillingProphecy extends SorcererCard {
     private static final int CARDS_TO_DRAW = 1;
     // --- VALUES END ---
 
-    public SelfFulfillingProphecy() {
+    public Prophecy() {
         super(
-                DynamicCard.InfoBuilder(SelfFulfillingProphecy.class)
+                DynamicCard.InfoBuilder(Prophecy.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.COMMON)
@@ -28,7 +28,7 @@ public class SelfFulfillingProphecy extends SorcererCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new SelfFulfillingProphecyAction(
+                new ProphecyAction(
                         this.magicNumber
                 )
         );

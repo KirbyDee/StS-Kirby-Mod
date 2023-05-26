@@ -35,6 +35,9 @@ public abstract class DynamicAmountPower extends SelfRemovablePower {
         if (this.amount >= 999) {
             this.amount = 999;
         }
+        if (this.amount <= 0) {
+            this.amount = 0;
+        }
         this.removeIfZero = removeIfZero;
     }
 
@@ -49,6 +52,22 @@ public abstract class DynamicAmountPower extends SelfRemovablePower {
 
         if (this.amount > 999) {
             this.amount = 999;
+        }
+
+        updateDescription();
+    }
+
+    @Override
+    public void reducePower(int reduceAmount) {
+        LOG.info("Redcuce power " + this.ID + " by " + reduceAmount);
+        this.fontScale = 8.0F;
+        this.amount -= reduceAmount;
+        if (this.amount < 0) {
+            this.amount = 0;
+        }
+
+        if (this.removeIfZero && this.amount == 0) {
+            removeSelf();
         }
 
         updateDescription();

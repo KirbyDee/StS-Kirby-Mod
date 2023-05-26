@@ -237,7 +237,7 @@ public abstract class DynamicCard extends CustomCard {
         this.tags.addAll(info.tags);
 
         // add card modifiers
-        info.modifiers.forEach(a -> DynamicDungeon.makeCard(this, a));
+        info.modifiers.forEach(a -> DynamicDungeon.addModifierToCard(this, a));
 
         // init values
         this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;

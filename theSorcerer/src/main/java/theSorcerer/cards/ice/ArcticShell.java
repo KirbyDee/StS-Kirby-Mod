@@ -1,7 +1,6 @@
 package theSorcerer.cards.ice;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
@@ -27,8 +26,8 @@ public class ArcticShell extends SorcererIceCard {
     }
 
     @Override
-    public boolean canPlay(AbstractCard card) {
-        return DynamicDungeon.isChilled();
+    public boolean canUse(AbstractPlayer player, AbstractMonster monster) {
+        return super.canUse(player, monster) && DynamicDungeon.isChilled();
     }
 
     @Override

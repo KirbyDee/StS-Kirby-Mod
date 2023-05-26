@@ -14,7 +14,6 @@ public class UnseenHelper extends SorcererCard {
 
     private static final Logger LOG = LogManager.getLogger(UnseenHelper.class.getName());
 
-
     // --- VALUES START ---
     private static final int ENERGY_GAIN = 1;
     // --- VALUES END ---

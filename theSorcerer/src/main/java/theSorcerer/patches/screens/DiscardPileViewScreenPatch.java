@@ -50,7 +50,7 @@ public class DiscardPileViewScreenPatch {
             AbstractDungeon.closeCurrentScreen();
 
             // trigger on flashback
-            // TODO move to FlashbackMod? but how?
+            // TODOO move to FlashbackMod? but how?
             DynamicDungeon.triggerOnFlashback(card);
 
             // trigger flash

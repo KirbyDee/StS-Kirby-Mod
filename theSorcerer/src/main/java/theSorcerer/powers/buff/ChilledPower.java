@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.debuff.FrozenPower;
 
 public class ChilledPower extends ElementPower<DexterityPower> {
@@ -35,11 +34,6 @@ public class ChilledPower extends ElementPower<DexterityPower> {
     }
 
     @Override
-    protected CardModifier getElementLoseModifier() {
-        return CardModifier.FIRE;
-    }
-
-    @Override
     public AbstractPower makeCopy() {
         return new ChilledPower(this.owner, this.amount);
     }
@@ -47,7 +41,7 @@ public class ChilledPower extends ElementPower<DexterityPower> {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         // have to fully block an attack (currentBlock is the block after the attack happened)
-        if (this.owner.currentBlock >= 0 && this.amount > 0) {
+        if (this.owner.currentBlock >= 0 && damageAmount <= 0) {
             LOG.info("Fully blocked attack, apply Frozen amount " + this.amount);
             addToTop(
                     new ApplyPowerAction(

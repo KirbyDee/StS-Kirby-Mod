@@ -3,9 +3,7 @@ package theSorcerer.modifiers;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.powers.buff.ChilledPower;
 
 public class FireMod extends ElementMod {
 
@@ -28,12 +26,7 @@ public class FireMod extends ElementMod {
     }
 
     @Override
-    protected boolean checkInvalidSwitch() {
-        return DynamicDungeon.hasPower(AbstractDungeon.player, ChilledPower.class);
-    }
-
-    @Override
-    protected void applyElementPower(AbstractCard card) {
-        DynamicDungeon.applyHeated(card.costForTurn);
+    protected void applyElementPower(final int amount) {
+        DynamicDungeon.applyHeated(amount);
     }
 }

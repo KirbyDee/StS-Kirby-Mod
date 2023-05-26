@@ -7,7 +7,6 @@ import basemod.cardmods.InnateMod;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -23,18 +22,17 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.actions.ChilledPowerApplyAction;
 import theSorcerer.actions.ElementLoseAction;
+import theSorcerer.actions.HeatedPowerApplyAction;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.modifiers.*;
 import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.modifiers.CardModifier;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.SelfRemovablePower;
 import theSorcerer.powers.buff.ChilledPower;
-import theSorcerer.powers.buff.ElementPower;
 import theSorcerer.powers.buff.HeatedPower;
 import theSorcerer.powers.buff.PresenceOfMindPower;
 import theSorcerer.powers.debuff.AblazePower;
@@ -135,7 +133,7 @@ public class DynamicDungeon {
 
     public static void makeCardFuturity(final AbstractCard card) {
         if (!isFuturityCard(card)) {
-            makeCard(card, new FuturityMod());
+            addModifierToCard(card, new FuturityMod());
         }
     }
 
@@ -145,7 +143,7 @@ public class DynamicDungeon {
 
     public static void makeCardFlashback(final AbstractCard card) {
         if (!isFlashbackCard(card)) {
-            makeCard(card, new FlashbackMod());
+            addModifierToCard(card, new FlashbackMod());
         }
     }
 
@@ -155,7 +153,7 @@ public class DynamicDungeon {
 
     public static void makeCardFire(final AbstractCard card) {
         if (!isArcaneCard(card) && !isFireCard(card)) {
-            makeCard(card, new FireMod());
+            addModifierToCard(card, new FireMod());
         }
     }
 
@@ -165,7 +163,7 @@ public class DynamicDungeon {
 
     public static void makeCardIce(final AbstractCard card) {
         if (!isArcaneCard(card) && !isIceCard(card)) {
-            makeCard(card, new IceMod());
+            addModifierToCard(card, new IceMod());
         }
     }
 
@@ -175,64 +173,71 @@ public class DynamicDungeon {
 
     public static void makeCardArcane(final AbstractCard card) {
         if (!isArcaneCard(card)) {
-            makeCard(card, new ArcaneMod());
+            addModifierToCard(card, new ArcaneMod());
         }
     }
 
     public static void makeCardEntomb(final AbstractCard card) {
         if (!isEntombCard(card)) {
-            makeCard(card, new EntombMod());
+            addModifierToCard(card, new EntombMod());
         }
     }
 
     public static void makeCardInnate(final AbstractCard card) {
         if (!isInnateCard(card)) {
-            makeCard(card, new InnateMod());
+            addModifierToCard(card, new InnateMod());
         }
     }
 
     public static void makeCardAuto(final AbstractCard card) {
         if (!isAutoCard(card)) {
-            makeCard(card, new AutoMod());
+            addModifierToCard(card, new AutoMod());
         }
     }
 
     public static void makeCardUnplayable(final AbstractCard card) {
         if (!isUnplayableCard(card)) {
-            makeCard(card, new UnplayableMod());
+            addModifierToCard(card, new UnplayableMod());
         }
     }
 
     public static void makeCardEthereal(final AbstractCard card) {
         if (!isEtherealCard(card)) {
-            makeCard(card, new EtherealMod());
+            addModifierToCard(card, new EtherealMod());
         }
     }
 
     public static void makeCardRetain(final AbstractCard card) {
         if (!isRetainCard(card)) {
-            makeCard(card, new RetainMod());
+            addModifierToCard(card, new RetainMod());
         }
     }
 
     public static void makeCardExhaust(final AbstractCard card) {
         if (!isExhaustCard(card)) {
-            makeCard(card, new ExhaustMod());
+            addModifierToCard(card, new ExhaustMod());
         }
     }
 
-    public static void makeCard(
+    public static void addModifierToCard(
             final AbstractCard card,
             final CardModifier cardModifier
     ) {
-        makeCard(card, cardModifier.cardMod);
+        addModifierToCard(card, cardModifier.cardMod);
     }
 
-    private static void makeCard(
+    public static void addModifierToCard(
             final AbstractCard card,
             final AbstractCardModifier cardModifier
     ) {
         CardModifierManager.addModifier(card, cardModifier);
+    }
+
+    public static void removeModifierFromCard(
+            final AbstractCard card,
+            final CardModifier cardModifier
+    ) {
+        CardModifierManager.removeModifiersById(card, cardModifier.cardMod.identifier(card), true);
     }
 
 
@@ -258,22 +263,25 @@ public class DynamicDungeon {
         );
     }
 
-    public static void applyElementless() {
+    public static boolean applyElementless() {
         LOG.info("Trying to apply Elementless");
         AbstractPlayer player = AbstractDungeon.player;
         if (player.hasRelic(DynamicRelic.getID(ElementalMaster.class))) {
             LOG.info("Player has ElementMaster, cannot apply Elementless");
             AbstractRelic relic = player.getRelic(DynamicRelic.getID(ElementalMaster.class));
             triggerRelic(relic);
+            return false;
         }
         else {
-            addToBot(
+            loseElements();
+            addToTop(
                     new ApplyPowerAction(
                             player,
                             player,
                             new ElementlessPower(player)
                     )
             );
+            return true;
         }
     }
 
@@ -300,20 +308,22 @@ public class DynamicDungeon {
 
     public static void applyHeated(final int amount) {
         int realAmount = getAdaptedElementalAffinityAmount(amount);
-        increaseElementPower(new HeatedPower(AbstractDungeon.player, realAmount), realAmount);
-        addToTop(
-                new VFXAction(
+        addToBot(
+                new HeatedPowerApplyAction(
                         AbstractDungeon.player,
-                        new InflameEffect(AbstractDungeon.player),
-                        0.25F
+                        realAmount
                 )
         );
     }
 
     public static void applyChilled(final int amount) {
         int realAmount = getAdaptedElementalAffinityAmount(amount);
-        increaseElementPower(new ChilledPower(AbstractDungeon.player, realAmount), realAmount);
-        // TODOO: frost effect
+        addToBot(
+                new ChilledPowerApplyAction(
+                        AbstractDungeon.player,
+                        realAmount
+                )
+        );
     }
 
     private static int getAdaptedElementalAffinityAmount(final int amount) {
@@ -341,19 +351,6 @@ public class DynamicDungeon {
 
     public static boolean hasPresenceOfMind() {
         return hasPower(AbstractDungeon.player, PresenceOfMindPower.class);
-    }
-
-    public static void increaseElementPower(final ElementPower<?> elementPower, final int amount) {
-        runIfNotElementless(() ->
-                addToBot(
-                        new ApplyPowerAction(
-                                AbstractDungeon.player,
-                                AbstractDungeon.player,
-                                elementPower,
-                                amount
-                        )
-                )
-        );
     }
 
     public static boolean isHeated() {
@@ -409,12 +406,30 @@ public class DynamicDungeon {
         return amount;
     }
 
+    public static void loseHeated() {
+        loseHeated(getHeatedAmount());
+    }
+
+
     public static void loseHeated(final int amount) {
         loseElements(DynamicPower.getID(HeatedPower.class), amount);
     }
 
+    public static void loseChilled() {
+        loseChilled(getChilledAmount());
+    }
+
     public static void loseChilled(final int amount) {
         loseElements(DynamicPower.getID(ChilledPower.class), amount);
+    }
+
+    public static void loseElements() {
+        if (isChilled()) {
+            loseChilled();
+        }
+        else if (isHeated()) {
+            loseHeated();
+        }
     }
 
     public static void loseElements(final int amount) {

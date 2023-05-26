@@ -50,7 +50,7 @@ public class DrawPileViewScreenPatch {
             AbstractDungeon.player.hand.applyPowers();
 
             // trigger on futurity
-            // TODO move to FuturityMod? but how?
+            // TODOO  move to FuturityMod? but how?
             DynamicDungeon.triggerOnFuturity(card);
 
             // trigger flash

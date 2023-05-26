@@ -2,7 +2,6 @@ package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,8 +28,8 @@ public class Combustion extends SorcererFireCard {
     }
 
     @Override
-    public boolean canPlay(AbstractCard card) {
-        return DynamicDungeon.isHeated();
+    public boolean canUse(AbstractPlayer player, AbstractMonster monster) {
+        return super.canUse(player, monster) && DynamicDungeon.isHeated();
     }
 
     @Override

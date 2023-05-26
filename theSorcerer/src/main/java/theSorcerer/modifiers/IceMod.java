@@ -2,14 +2,8 @@ package theSorcerer.modifiers;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.patches.cards.AbstractCardPatch;
-import theSorcerer.powers.buff.HeatedPower;
 
 public class IceMod extends ElementMod {
 
@@ -32,12 +26,7 @@ public class IceMod extends ElementMod {
     }
 
     @Override
-    protected boolean checkInvalidSwitch() {
-        return DynamicDungeon.hasPower(AbstractDungeon.player, HeatedPower.class);
-    }
-
-    @Override
-    protected void applyElementPower(AbstractCard card) {
-        DynamicDungeon.applyChilled(card.costForTurn);
+    protected void applyElementPower(final int amount) {
+        DynamicDungeon.applyChilled(amount);
     }
 }

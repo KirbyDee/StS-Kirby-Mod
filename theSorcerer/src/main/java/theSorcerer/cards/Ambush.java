@@ -23,7 +23,7 @@ public class Ambush extends SorcererCard {
                 DynamicCard.InfoBuilder(Ambush.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
-                        .rarity(CardRarity.UNCOMMON)
+                        .rarity(CardRarity.RARE)
                         .target(CardTarget.ALL_ENEMY)
                         .damage(DAMAGE)
                         .block(BLOCK)
