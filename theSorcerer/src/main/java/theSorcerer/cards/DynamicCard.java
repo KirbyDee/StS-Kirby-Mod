@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.KirbyDeeMod;
 import theSorcerer.modifiers.CardModifier;
+import theSorcerer.util.ElementAmount;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -310,6 +311,8 @@ public abstract class DynamicCard extends CustomCard {
     public void triggerOnFuturity() {}
 
     public void triggerOnElementless() {}
+
+    public void triggerOnElementCost(final ElementAmount elementAmountSpend) {}
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {

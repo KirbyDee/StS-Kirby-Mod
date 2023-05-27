@@ -2,13 +2,15 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.util.ElementAmount;
 
 public class ElementalPathAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        int elementAmount = DynamicDungeon.getElementAmount();
-        if (elementAmount > 0) {
+        final ElementAmount elementAmount = DynamicDungeon.getElementAmount();
+
+        if (elementAmount.hasAmount()) {
             switchElements(elementAmount);
         }
 
@@ -16,13 +18,13 @@ public class ElementalPathAction extends AbstractGameAction {
         this.actionType = ActionType.SPECIAL;
     }
 
-    private void switchElements(final int elementAmount) {
+    private void switchElements(final ElementAmount elementAmount) {
         DynamicDungeon.loseAllElements();
-        if (DynamicDungeon.isHeated()) {
-            DynamicDungeon.applyChilled(elementAmount);
+        if (elementAmount.isHeated()) {
+            DynamicDungeon.applyChilled(elementAmount.getHeated());
         }
-        else if (DynamicDungeon.isChilled()) {
-            DynamicDungeon.applyHeated(elementAmount);
+        else if (elementAmount.isChilled()) {
+            DynamicDungeon.applyHeated(elementAmount.getChilled());
         }
     }
 }

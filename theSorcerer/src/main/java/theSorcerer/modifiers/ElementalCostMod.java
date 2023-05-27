@@ -3,11 +3,15 @@ package theSorcerer.modifiers;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.interfaces.AlternateCardCostModifier;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CtBehavior;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.cards.DynamicCard;
+import theSorcerer.util.ElementAmount;
 
 import static theSorcerer.modifiers.CardModifier.ELEMENTCOST;
 
@@ -17,9 +21,15 @@ public class ElementalCostMod extends AbstractCardModifier implements AlternateC
 
     private static final String ELEMENTCOST_DESCRIPTION = ID + ". NL ";
 
+    private boolean elementCostCardPlayed = false;
+
     @Override
     public int getAlternateResource(AbstractCard card) {
-        return DynamicDungeon.getElementAmount();
+        return DynamicDungeon.getElementAmount().getAmount();
+    }
+
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        this.elementCostCardPlayed = true;
     }
 
     @Override
@@ -32,19 +42,40 @@ public class ElementalCostMod extends AbstractCardModifier implements AlternateC
         return true;
     }
 
-    // TODOO: use patch to set element amount and use it in use of the card
     @Override
     public int spendAlternateCost(AbstractCard card, int costToSpend) {
-        int resource = getAlternateResource(card);
+        final ElementAmount elementAmount = DynamicDungeon.getElementAmount();
+        final int resource = elementAmount.getAmount();
         if (resource > costToSpend) {
-            DynamicDungeon.loseElements(costToSpend);
+            loseElements(card, elementAmount, costToSpend);
             costToSpend = 0;
         }
         else if (resource > 0) {
-            DynamicDungeon.loseElements(resource);
+            loseElements(card, elementAmount, resource);
             costToSpend -= resource;
         }
         return costToSpend;
+    }
+
+    private void loseElements(
+            final AbstractCard card,
+            final ElementAmount currentElementAmount,
+            final int costToSpend
+    ) {
+        if (!this.elementCostCardPlayed) {
+            return;
+        }
+        this.elementCostCardPlayed = false;
+
+        DynamicDungeon.loseElements(costToSpend);
+        if (card instanceof DynamicCard) {
+            ((DynamicCard) card).triggerOnElementCost(
+                    new ElementAmount(
+                            currentElementAmount.isHeated() ? costToSpend : 0,
+                            currentElementAmount.isChilled() ? costToSpend : 0
+                    )
+            );
+        }
     }
 
     @Override

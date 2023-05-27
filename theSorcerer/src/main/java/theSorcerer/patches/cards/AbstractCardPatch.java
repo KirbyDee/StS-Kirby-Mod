@@ -39,6 +39,7 @@ public class AbstractCardPatch {
         ) {
             inBottleGhost.set(result, inBottleGhost.get(self));
             inBottleEnergy.set(result, inBottleEnergy.get(self));
+            arcane.set(result, arcane.get(self));
             if (inBottleEnergy.get(result) || arcane.get(result)) {
                 DynamicDungeon.makeCardArcane(result);
             }

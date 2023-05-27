@@ -11,8 +11,8 @@ public class ArcaneComets extends SorcererArcaneCard {
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int DAMAGE = 2;
-    private static final int UPGRADE_DAMAGE = 1;
     private static final int DAMAGE_TIMES = 4;
+    private static final int UPGRADE_DAMAGE_TIMES = 1;
     // --- VALUES END ---
 
     public ArcaneComets() {
@@ -40,6 +40,6 @@ public class ArcaneComets extends SorcererArcaneCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeDamage(UPGRADE_DAMAGE);
+        upgradeMagicNumber(UPGRADE_DAMAGE_TIMES);
     }
 }

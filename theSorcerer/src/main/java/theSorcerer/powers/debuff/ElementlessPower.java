@@ -29,7 +29,7 @@ public class ElementlessPower extends DynamicReducePerTurnPower {
 
     @Override
     public void onInitialApplication() {
-        triggerOnElementless();
+        DynamicDungeon.triggerOnElementless();
     }
 
     @Override

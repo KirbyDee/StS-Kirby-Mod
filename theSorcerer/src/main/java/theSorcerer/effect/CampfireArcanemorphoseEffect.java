@@ -38,7 +38,7 @@ public class CampfireArcanemorphoseEffect extends AbstractGameEffect {
     }
 
 
-    // TODO beautify
+    // TODOO beautify
     @Override
     public void update() {
         if (!AbstractDungeon.isScreenUp) {
@@ -52,12 +52,12 @@ public class CampfireArcanemorphoseEffect extends AbstractGameEffect {
 
             while(var1.hasNext()) {
                 AbstractCard c = (AbstractCard)var1.next();
-                AbstractDungeon.effectsQueue.add(new UpgradeShineEffect((float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                 CardCrawlGame.metricData.addCampfireChoiceData("ARCANE", c.getMetricID());
                 AbstractCardPatch.arcane.set(c, true);
                 DynamicDungeon.modifyCardInDeck(c);
                 DynamicDungeon.withRelicDo(TreeOfLife.class, AbstractRelic::flash);
                 AbstractDungeon.effectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy()));
+                AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
             }
 
             AbstractDungeon.gridSelectScreen.selectedCards.clear();

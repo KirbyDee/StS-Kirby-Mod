@@ -12,7 +12,7 @@ public class Brawl extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 0;
-    private static final int DAMAGE = 5;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
     // --- VALUES END ---
 
@@ -42,6 +42,7 @@ public class Brawl extends SorcererCard {
     public void triggerOnElementless() {
         if (AbstractDungeon.player.discardPile.group.contains(this)) {
             addToBot(new DiscardToHandAction(this));
+            superFlash();
         }
     }
 

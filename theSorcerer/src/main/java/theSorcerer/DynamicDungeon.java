@@ -1,5 +1,6 @@
 package theSorcerer;
 
+import basemod.Pair;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.cardmods.ExhaustMod;
@@ -42,6 +43,7 @@ import theSorcerer.relics.DynamicRelic;
 import theSorcerer.relics.ElementalMaster;
 import theSorcerer.relics.ElementalPets;
 import theSorcerer.relics.ProtectingGloves;
+import theSorcerer.util.ElementAmount;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -398,12 +400,8 @@ public class DynamicDungeon {
         return amount;
     }
 
-    public static int getElementAmount() {
-        int amount = DynamicDungeon.getHeatedAmount();
-        if (amount <= 0) {
-            amount = DynamicDungeon.getChilledAmount();
-        }
-        return amount;
+    public static ElementAmount getElementAmount() {
+        return new ElementAmount(getHeatedAmount(), getChilledAmount());
     }
 
     public static void loseHeated() {

@@ -156,6 +156,10 @@ public class KirbyDeeMod implements
     public static String makeEventPath(String resourcePath) {
         return getModID() + "Resources/images/events/" + resourcePath;
     }
+
+    public static String makeUiPath(String resourcePath) {
+        return getModID() + "Resources/images/ui/" + resourcePath;
+    }
     
     // =============== /MAKE IMAGE PATHS/ =================
     
