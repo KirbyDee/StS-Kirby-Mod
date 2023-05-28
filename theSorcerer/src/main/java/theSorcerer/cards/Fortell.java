@@ -1,16 +1,20 @@
 package theSorcerer.cards;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BlurPower;
 import theSorcerer.modifiers.CardModifier;
 
 public class Fortell extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int TURNS_NO_LOSE_BLOCK = 1;
     // --- VALUES END ---
 
     public Fortell() {
@@ -21,6 +25,7 @@ public class Fortell extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
                         .block(BLOCK)
+                        .magicNumber(TURNS_NO_LOSE_BLOCK)
                         .modifiers(CardModifier.FUTURITY)
         );
     }
@@ -32,6 +37,19 @@ public class Fortell extends SorcererCard {
                         player,
                         player,
                         this.block
+                )
+        );
+    }
+
+    @Override
+    public void triggerOnFuturity() {
+        superFlash();
+        addToBot(
+                new ApplyPowerAction(
+                        AbstractDungeon.player,
+                        AbstractDungeon.player,
+                        new BlurPower(AbstractDungeon.player, this.magicNumber),
+                        this.magicNumber
                 )
         );
     }

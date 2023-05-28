@@ -285,7 +285,7 @@
   },
   "theSorcerer:Fortell": {
     "NAME": "Fortell",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block. NL If this card is thesorcerer:Futurified, Block will not removed at the start of your next turn."
   },
   "theSorcerer:UndecidedChoice": {
     "NAME": "Undecided Choice",
