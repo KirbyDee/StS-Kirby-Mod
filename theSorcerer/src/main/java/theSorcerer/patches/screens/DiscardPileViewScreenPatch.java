@@ -1,8 +1,5 @@
 package theSorcerer.patches.screens;
 
-import basemod.cardmods.EtherealMod;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -11,8 +8,6 @@ import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.modifiers.FlashbackMod;
-import theSorcerer.modifiers.FuturityMod;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -55,7 +50,6 @@ public class DiscardPileViewScreenPatch {
             AbstractDungeon.closeCurrentScreen();
 
             // trigger on flashback
-            // TODOO move to FlashbackMod? but how?
             DynamicDungeon.triggerOnFlashback(card);
 
             // trigger flash

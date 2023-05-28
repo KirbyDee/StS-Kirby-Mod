@@ -16,13 +16,9 @@ public class AbstractPileViewScreenPatch {
             Predicate<AbstractCard> filter,
             Consumer<AbstractCard> consumer
     ) {
-        if (AbstractDungeon.player.hand.size() > 10) {
-            AbstractDungeon.player.createHandIsFullDialog();
-            return;
-        }
-
         cardGroup.group
                 .stream()
+                .filter(AbstractPileViewScreenPatch::checkHandSize)
                 .filter(filter)
                 .filter(AbstractPileViewScreenPatch::duringPlayerTurnAndGlow)
                 .filter(AbstractPileViewScreenPatch::isHovered)
@@ -31,7 +27,17 @@ public class AbstractPileViewScreenPatch {
                 .ifPresent(consumer);
     }
 
-    public static boolean duringPlayerTurnAndGlow(AbstractCard card) {
+    private static boolean checkHandSize(final AbstractCard card) {
+        if (AbstractDungeon.player.hand.size() < AbstractDungeon.player.gameHandSize) {
+            return true;
+        }
+        if (card.isGlowing) {
+            card.stopGlowing();
+        }
+        return false;
+    }
+
+    private static boolean duringPlayerTurnAndGlow(AbstractCard card) {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.actionManager.turnHasEnded) {
             if (!card.isGlowing) {
                 card.beginGlowing();
