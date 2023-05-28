@@ -24,7 +24,9 @@ public class SiphonAction extends DiscardPileCardChooseAction {
     @Override
     protected void onCardChosen(AbstractCard card) {
         AbstractDungeon.player.discardPile.moveToExhaustPile(card);
-        DynamicDungeon.gainEnergy(card.costForTurn);
+        if (card.costForTurn > 0) {
+            DynamicDungeon.gainEnergy(card.costForTurn);
+        }
     }
 
     @Override

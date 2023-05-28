@@ -10,8 +10,8 @@ public class ArcaneProtection extends SorcererArcaneCard {
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int BLOCK = 2;
-    private static final int UPGRADE_BLOCK = 1;
     private static final int BLOCK_TIMES = 4;
+    private static final int UPGRADE_BLOCK_TIMES = 1;
     // --- VALUES END ---
 
     public ArcaneProtection() {
@@ -40,6 +40,6 @@ public class ArcaneProtection extends SorcererArcaneCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBlock(UPGRADE_BLOCK);
+        upgradeMagicNumber(UPGRADE_BLOCK_TIMES);
     }
 }

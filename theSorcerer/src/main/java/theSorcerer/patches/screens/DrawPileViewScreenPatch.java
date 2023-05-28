@@ -19,7 +19,11 @@ public class DrawPileViewScreenPatch {
     private static final Logger LOG = LogManager.getLogger(DrawPileViewScreenPatch.class.getName());
 
     private static boolean isFuturity(AbstractCard card) {
-        return CardModifierManager.hasModifier(card, FuturityMod.ID);
+        boolean isFuturity = DynamicDungeon.isFuturityCard(card);
+        if (!isFuturity && card.isGlowing) {
+            card.stopGlowing();
+        }
+        return isFuturity;
     }
 
     @SpirePatch(clz = DrawPileViewScreen.class, method = "update")

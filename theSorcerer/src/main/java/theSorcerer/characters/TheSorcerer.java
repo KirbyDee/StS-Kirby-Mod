@@ -179,7 +179,6 @@ public class TheSorcerer extends CustomPlayer {
 
         // TODOO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
         // TODOO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
-        // TODOO: dar pile fucked up if I do flashback or something similar?
 
         return retVal;
     }

@@ -29,15 +29,16 @@ public class DiscardedDefenseAction extends HandCardChooseAction {
 
     @Override
     protected void onCardChosen(AbstractCard card) {
-        AbstractDungeon.player.hand.moveToDiscardPile(card);
-        GameActionManager.incrementDiscard(false);
+        this.player.hand.moveToDiscardPile(card);
         card.triggerOnManualDiscard();
+        GameActionManager.incrementDiscard(false);
     }
 
     @Override
     protected void onActionDone() {
+        super.onActionDone();
         for (int i = 0; i < GameActionManager.totalDiscardedThisTurn; i++) {
-            addToBot(new GainBlockAction(player, player, this.block));
+            addToBot(new GainBlockAction(this.player, this.player, this.block));
             addToBot(new WaitAction(0.125F));
         }
     }

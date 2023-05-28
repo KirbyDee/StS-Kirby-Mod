@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.FlashbackMod;
+import theSorcerer.modifiers.FuturityMod;
 
 @SpirePatch(clz = DiscardPileViewScreen.class, method = SpirePatch.CLASS)
 public class DiscardPileViewScreenPatch {
@@ -19,7 +20,11 @@ public class DiscardPileViewScreenPatch {
     private static final Logger LOG = LogManager.getLogger(DiscardPileViewScreenPatch.class.getName());
 
     private static boolean isFlashback(AbstractCard card) {
-        return CardModifierManager.hasModifier(card, FlashbackMod.ID);
+        boolean isFlashback = DynamicDungeon.isFlashbackCard(card);
+        if (!isFlashback && card.isGlowing) {
+            card.stopGlowing();
+        }
+        return isFlashback;
     }
 
     @SpirePatch(clz = DiscardPileViewScreen.class, method = "update")
