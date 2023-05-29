@@ -26,8 +26,8 @@ public class CardCostIncreaseAction extends HandCardChooseAction {
 
     @Override
     protected void onCardChosen(AbstractCard card) {
-        card.modifyCostForCombat(this.costIncrease);
-        this.player.hand.addToTop(card);
+        card.setCostForTurn(card.costForTurn + this.costIncrease);
+        addBackToHand(card);
     }
 
     @Override

@@ -87,11 +87,26 @@ public abstract class HandCardChooseAction extends CardChooseAction {
         return AbstractDungeon.handCardSelectScreen.selectedCards.group;
     }
 
+    protected void addBackToHand(final AbstractCard card) {
+        if (!this.playerCouldNotChoose) {
+            this.player.hand.addToTop(card);
+        }
+    }
+
     @Override
     protected void onActionDone() {
+        this.player.hand.refreshHandLayout();
+    }
+
+    @Override
+    protected void onCardsChosen() {
+        super.onCardsChosen();
+        afterCardsChosenPerView();
+    }
+
+    private void afterCardsChosenPerView() {
         AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
         AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
         this.cannotBeChosen.forEach(this.player.hand::addToTop);
-        this.player.hand.refreshHandLayout();
     }
 }

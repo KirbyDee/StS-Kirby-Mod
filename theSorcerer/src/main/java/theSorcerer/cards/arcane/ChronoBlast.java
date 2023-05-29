@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
-import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.modifiers.CardModifier;
 
@@ -22,6 +21,7 @@ public class ChronoBlast extends SorcererArcaneCard {
 
     // --- VALUES START ---
     private static final int COST = 6;
+    private static final int UPGRADE_COST = 5;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_DAMAGE = 6;
     // --- VALUES END ---
@@ -84,6 +84,6 @@ public class ChronoBlast extends SorcererArcaneCard {
     @Override
     public void upgradeValues() {
         upgradeDamage(UPGRADE_DAMAGE);
-        DynamicDungeon.makeCardFuturity(this);
+        upgradeBaseCost(UPGRADE_COST);
     }
 }

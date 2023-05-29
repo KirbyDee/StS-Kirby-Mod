@@ -35,11 +35,12 @@ public class Renounce extends SorcererCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        if (this.elementAmountSpend.isHeated() || (this.upgraded && this.elementAmountSpend.hasAmount())) {
+        if (this.elementAmountSpend.hasAmount()) {
             DynamicDungeon.gainEnergy(this.magicNumber * this.elementAmountSpend.getAmount());
-        }
-        if (this.elementAmountSpend.isChilled() || (this.upgraded && this.elementAmountSpend.hasAmount())) {
             DynamicDungeon.drawCard(this.magicNumber * this.elementAmountSpend.getAmount());
+        }
+        if (!this.upgraded) {
+            DynamicDungeon.applyElementless();
         }
 
         this.elementAmountSpend = ElementAmount.empty();

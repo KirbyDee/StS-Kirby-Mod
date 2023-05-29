@@ -22,7 +22,6 @@ public class Dispell extends SorcererIceCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
-                        .modifiers(CardModifier.EXHAUST)
                         .magicNumber(POWERS_TO_REMOVE)
         );
     }

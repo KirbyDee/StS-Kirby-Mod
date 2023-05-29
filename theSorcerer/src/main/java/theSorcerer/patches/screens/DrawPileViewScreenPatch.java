@@ -1,8 +1,5 @@
 package theSorcerer.patches.screens;
 
-import basemod.cardmods.EtherealMod;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -11,7 +8,6 @@ import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.modifiers.FuturityMod;
 
 @SpirePatch(clz = DrawPileViewScreen.class, method = SpirePatch.CLASS)
 public class DrawPileViewScreenPatch {

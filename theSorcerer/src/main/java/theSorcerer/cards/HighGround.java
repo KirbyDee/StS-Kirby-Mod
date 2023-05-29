@@ -15,7 +15,7 @@ public class HighGround extends SorcererCard {
     private static final int CARD_AMOUNT_TO_INCREASE = 1;
     private static final int CARD_COST_INCREASE = 1;
     private static final int UPGRADE_CARD_COST_INCREASE = 1;
-    private static final int ENERGY_GAIN = 1;
+    private static final int ENERGY_GAIN = 2;
     private static final int UPGRADE_ENERGY_GAIN = 1;
     // --- VALUES END ---
 

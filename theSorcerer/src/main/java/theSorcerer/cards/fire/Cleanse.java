@@ -22,7 +22,6 @@ public class Cleanse extends SorcererFireCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
-                        .modifiers(CardModifier.EXHAUST)
                         .magicNumber(POWERS_TO_REMOVE)
         );
     }

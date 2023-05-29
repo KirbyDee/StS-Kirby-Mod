@@ -9,8 +9,8 @@ import theSorcerer.powers.buff.InnerFocusPower;
 public class InnerFocus extends SorcererArcaneCard {
 
     // --- VALUES START ---
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
+    private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
     private static final int ENERGY_GAIN = 1;
     // --- VALUES END ---
 

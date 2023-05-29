@@ -46,8 +46,7 @@ public class ShatterAction extends AbstractGameAction {
                                 this.player,
                                 new WeakPower(m, amount, false),
                                 amount,
-                                true,
-                                AbstractGameAction.AttackEffect.NONE
+                                true
                         )
                 )
         );

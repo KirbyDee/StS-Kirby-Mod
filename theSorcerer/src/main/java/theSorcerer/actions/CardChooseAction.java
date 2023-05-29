@@ -23,6 +23,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
     protected final ArrayList<AbstractCard> cannotBeChosen = new ArrayList<>();
     protected final CardGroup cardGroup;
     protected final boolean anyNumber;
+    protected boolean playerCouldNotChoose;
     // --- VALUES END ---
 
     public CardChooseAction(
@@ -56,18 +57,19 @@ public abstract class CardChooseAction extends AbstractGameAction {
             }
 
             // if no cards are left -> nothing to do
-            if (this.cannotBeChosen.size() == this.cardGroup.group.size()) {
-                LOG.info("No cards to choose from -> nop");
+            if (this.cannotBeChosen.size() == this.cardGroup.group.size() || (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount)) {
+                LOG.info("Not enough cards to choose from -> nop");
                 this.isDone = true;
                 return;
             }
 
-            // if we less or equal this.amount cards, take them directly without choosing
-            if (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount) {
+            // if we have the exact number of cards that are needed, choose them automatically
+            if (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() == this.amount) {
                 choseOnlyCardsPossible();
                 return;
             }
 
+            // else let the player choose
             prepareCardGroup();
             showCardSelectionScreen();
             tickDuration();
@@ -101,6 +103,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
     }
 
     private void choseOnlyCardsPossible() {
+        this.playerCouldNotChoose = true;
         List<AbstractCard> cards = this.cardGroup.group
                 .stream()
                 .filter(this::canBeChosen)
@@ -109,16 +112,16 @@ public abstract class CardChooseAction extends AbstractGameAction {
         onCardsChosen(cards.stream());
     }
 
-    private void onCardsChosen() {
+    protected void onCardsChosen() {
         onCardsChosen(getSelectedCards().stream());
-        onActionDone();
     }
 
     protected void onCardsChosen(Stream<AbstractCard> cards) {
-        this.isDone = true;
         cards
                 .peek(c -> LOG.debug("Card chosen: " + c.name))
                 .forEach(this::onCardChosen);
+        onActionDone();
+        this.isDone = true;
     }
 
     protected boolean curseCanBeChosen() {
@@ -141,5 +144,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
 
     protected abstract ArrayList<AbstractCard> getSelectedCards();
 
-    protected void onActionDone() {}
+    protected void onActionDone() {
+
+    }
 }

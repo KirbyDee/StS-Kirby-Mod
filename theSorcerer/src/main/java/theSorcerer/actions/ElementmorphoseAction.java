@@ -59,7 +59,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
         card.applyPowers();
 
         // add back to hand
-        this.player.hand.addToTop(card);
+        addBackToHand(card);
     }
 
     @Override

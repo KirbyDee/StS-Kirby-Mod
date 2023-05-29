@@ -105,10 +105,10 @@
     "NAME": "Elemental Amulet",
     "DESCRIPTIONS": [
       "At the start of your next turn, add either #b",
-      " *Fire *Charm or *Ice *Charm into your hand, depending on the #yElemental #yAffinities you end up this turn.",
+      " #yFire #yCharm or #yIce #yCharm into your hand, depending on the #yElemental #yAffinities you end up this turn.",
       "At the start of each turn, add #b",
-      " #Fire #yCharm into your hand.",
-      " #Ice #yCharm into your hand."
+      " #yFire #yCharm into your hand.",
+      " #yIce #yCharm into your hand."
     ]
   },
   "theSorcerer:IceAgePower": {

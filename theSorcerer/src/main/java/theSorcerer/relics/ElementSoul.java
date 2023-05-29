@@ -1,6 +1,5 @@
 package theSorcerer.relics;
 
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.ElementSoulAction;
@@ -8,7 +7,8 @@ import theSorcerer.actions.ElementSoulAction;
 import java.util.function.Function;
 
 public abstract class ElementSoul extends DynamicRelic {
-    private static final int ELEMENT_AMOUNT = 3;
+
+    protected static final int ELEMENT_AMOUNT = 3;
 
     public ElementSoul(
             Class<? extends ElementSoul> thisClazz

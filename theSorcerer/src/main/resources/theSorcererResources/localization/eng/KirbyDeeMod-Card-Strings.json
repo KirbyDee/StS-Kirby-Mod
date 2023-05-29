@@ -53,8 +53,8 @@
   },
   "theSorcerer:HighGround": {
     "NAME": "High Ground",
-    "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E].",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for the rest of combat. NL Gain [E] [E]."
+    "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for this turn. NL Gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for this turn. NL Gain [E] [E] [E]."
   },
   "theSorcerer:DiscardedDefense": {
     "NAME": "Discarded Defense",
@@ -137,7 +137,7 @@
   },
   "theSorcerer:Renounce": {
     "NAME": "Renounce",
-    "DESCRIPTION": "Gain [E] for each thesorcerer:Heated spent. NL Draw 1 card for each thesorcerer:Chilled spent.",
+    "DESCRIPTION": "Gain [E] and draw 1 card for each thesorcerer:Elemental_Affinities spent. NL Become thesorcerer:Elementless.",
     "UPGRADE_DESCRIPTION": "Gain [E] and draw 1 card for each thesorcerer:Elemental_Affinities spent."
   },
   "theSorcerer:OneWithNothing": {
@@ -157,7 +157,7 @@
   "theSorcerer:Cleanse": {
     "NAME": "Cleanse",
     "DESCRIPTION": "Remove !M! random debuff from yourself. (If the debuff has stacks, remove 1 stack instead.)",
-    "UPGRADE_DESCRIPTION": "Remove !M! random debuffs from yourself. NL (If the debuffs has stacks, remove 1 stack instead.)"
+    "UPGRADE_DESCRIPTION": "Remove !M! random debuffs from yourself. NL (If the debuffs have stacks, remove 1 stack instead.)"
   },
   "theSorcerer:Melt": {
     "NAME": "Melt",

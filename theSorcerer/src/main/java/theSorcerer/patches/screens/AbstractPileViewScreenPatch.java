@@ -28,7 +28,7 @@ public class AbstractPileViewScreenPatch {
     }
 
     private static boolean checkHandSize(final AbstractCard card) {
-        if (AbstractDungeon.player.hand.size() < AbstractDungeon.player.gameHandSize) {
+        if (AbstractDungeon.player.hand.size() < 10) {
             return true;
         }
         if (card.isGlowing) {

@@ -9,7 +9,7 @@ import theSorcerer.modifiers.CardModifier;
 public class Decay extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 4;
     // --- VALUES END ---

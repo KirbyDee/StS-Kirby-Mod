@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.debuff.AblazePower;
 import theSorcerer.powers.debuff.FrozenPower;
 
@@ -30,7 +31,7 @@ public class BagOfIce extends DynamicRelic {
 
     @Override
     public void atBattleStart() {
-        flash();
+        DynamicDungeon.triggerRelic(this);
         AbstractDungeon.getCurrRoom().monsters.monsters
                 .forEach(this::applyElementDebuffs);
     }

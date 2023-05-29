@@ -23,8 +23,13 @@ public class PulsatingBladeAction extends HandCardChooseAction {
     }
 
     @Override
+    protected boolean canBeChosen(final AbstractCard card) {
+        return card.costForTurn >= 0 &&
+                super.canBeChosen(card);
+    }
+
+    @Override
     protected void onCardsChosen(Stream<AbstractCard> cardStream) {
-        this.isDone = true;
         List<AbstractCard> cards = cardStream.collect(Collectors.toList());
         AbstractCard card1 = cards.get(0);
         AbstractCard card2 = cards.get(1);
@@ -34,11 +39,14 @@ public class PulsatingBladeAction extends HandCardChooseAction {
 
         card1.superFlash();
         card1.applyPowers();
-        this.player.hand.addToTop(card1);
+        addBackToHand(card1);
 
         card2.superFlash();
         card2.applyPowers();
-        this.player.hand.addToTop(card2);
+        addBackToHand(card2);
+
+        onActionDone();
+        this.isDone = true;
     }
 
     @Override

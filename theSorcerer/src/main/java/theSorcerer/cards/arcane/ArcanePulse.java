@@ -19,7 +19,7 @@ public class ArcanePulse extends SorcererArcaneCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
-                        .modifiers(CardModifier.EXHAUST, CardModifier.ETHEREAL)
+                        .modifiers(CardModifier.EXHAUST)
         );
     }
 
