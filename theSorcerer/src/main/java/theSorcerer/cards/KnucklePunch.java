@@ -5,49 +5,46 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.powers.debuff.ElementlessPower;
 
-public class LostKnowledge extends SorcererCard {
+public class KnucklePunch extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int DAMAGE = 12;
-    private static final int UPGRADE_DAMAGE = 3;
-    private static final int ELEMENTLESS_DAMAGE = 16;
-    private static final int UPGRADE_ELEMENTLESS_DAMAGE = 20;
+    private static final int DAMAGE = 10;
+    private static final int UPGRADE_DAMAGE = 4;
+    private static final int ELEMENTLESS_FACTOR = 2;
     // --- VALUES END ---
 
-    public LostKnowledge() {
+    public KnucklePunch() {
         super(
-                DynamicCard.InfoBuilder(LostKnowledge.class)
+                DynamicCard.InfoBuilder(KnucklePunch.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
-                        .magicNumber(ELEMENTLESS_DAMAGE)
+                        .magicNumber(ELEMENTLESS_FACTOR)
         );
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        int d = this.damage;
-        AbstractGameAction.AttackEffect effect = AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
-        if(DynamicDungeon.hasElementless()) {
-            d = this.magicNumber;
-            effect = AbstractGameAction.AttackEffect.SLASH_HEAVY;
+        int times = 1;
+        if (DynamicDungeon.hasElementless()) {
+            times = ELEMENTLESS_FACTOR;
         }
 
-        addToBot(
-                new DamageAction(
-                        abstractMonster,
-                        new DamageInfo(abstractMonster, d, this.damageTypeForTurn),
-                        effect
-                )
-        );
+        for (int i = 0; i < times; i++) {
+            addToBot(
+                    new DamageAction(
+                            abstractMonster,
+                            new DamageInfo(abstractMonster, this.damage, this.damageTypeForTurn),
+                            AbstractGameAction.AttackEffect.BLUNT_HEAVY
+                    )
+            );
+        }
     }
 
     public void triggerOnGlowCheck() {
@@ -62,6 +59,5 @@ public class LostKnowledge extends SorcererCard {
     @Override
     protected void upgradeValues() {
         upgradeDamage(UPGRADE_DAMAGE);
-        upgradeMagicNumber(UPGRADE_ELEMENTLESS_DAMAGE);
     }
 }

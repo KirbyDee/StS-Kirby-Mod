@@ -21,7 +21,7 @@ public class LastResort extends SorcererCard {
     private static final int VULNERABLE = 1;
     private static final int UPGRADE_VULNERABLE = 1;
     private static final int VULNERABLE_ELEMENTLESS = 2;
-    private static final int UPGRADE_VULNERABLE_ELEMENTLESS = 1;
+    private static final int UPGRADE_VULNERABLE_ELEMENTLESS = 2;
     // --- VALUES END ---
 
     public LastResort() {

@@ -101,9 +101,9 @@
       " cards."
     ]
   },
-  "theSorcerer:LostKnowledge": {
-    "NAME": "Lost Knowledge",
-    "DESCRIPTION": "Deal !D! damage. NL If you are thesorcerer:Elementless, deal !M! damage instead."
+  "theSorcerer:KnucklePunch": {
+    "NAME": "Knuckle Punch",
+    "DESCRIPTION": "Deal !D! damage. NL If you are thesorcerer:Elementless, deal damage twice."
   },
   "theSorcerer:LastResort": {
     "NAME": "Last Resort",
@@ -274,8 +274,8 @@
     "NAME": "Brawl",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you become thesorcerer:Elementless, return this card from the discard pile to your hand."
   },
-  "theSorcerer:ImprudentPunches": {
-    "NAME": "Imprudent Punches",
+  "theSorcerer:BruteForce": {
+    "NAME": "Brute Force",
     "DESCRIPTION": "Deal !D! damage to a random enemy for each time you became thesorcerer:Elementless this combat. NL (Elementless count: !M!.)"
   },
   "theSorcerer:Meditation": {
@@ -325,8 +325,7 @@
   },
   "theSorcerer:Prophecy": {
     "NAME": "Prophecy",
-    "DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! card.",
-    "UPGRADE_DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! cards."
+    "DESCRIPTION": "Give target card theSorcerer:Futurity and put it to the bottom of your draw pile. NL Draw !theSorcerer:MM! card."
   },
   "theSorcerer:Siphon": {
     "NAME": "Siphon",
@@ -368,8 +367,8 @@
   },
   "theSorcerer:DangerousTempo": {
     "NAME": "Dangerous Tempo",
-    "DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E].",
-    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E] [E]."
+    "DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E]. NL Become thesorcerer:Elementless.",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E]."
   },
   "theSorcerer:AngerManagement": {
     "NAME": "Anger Management",

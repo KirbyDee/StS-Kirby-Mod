@@ -51,7 +51,7 @@
       " additional ",
       "card",
       "cards",
-      "next turn."
+      " next turn."
     ]
   },
   "theSorcerer:FrostShockPower": {
@@ -122,7 +122,7 @@
   "theSorcerer:AwingShoutPower": {
     "NAME": "Awing Shout",
     "DESCRIPTIONS": [
-      "Whenever you become thesorcerer:Elementless, apply #b",
+      "Whenever you become #yElementless, apply #b",
       " Weak and Vulnerable to ALL enemies."
     ]
   }

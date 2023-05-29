@@ -11,7 +11,7 @@ public class ForgottenConduit extends SorcererCard {
 
     // --- VALUES START ---
     private static final int ENERGY_GAIN = 2;
-    private static final int DISCARD_NUMBER = 1;
+    private static final int EXHAUST_NUMBER = 1;
     // --- VALUES END ---
 
     public ForgottenConduit() {
@@ -21,6 +21,7 @@ public class ForgottenConduit extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.NONE)
                         .magicNumber(ENERGY_GAIN)
+                        .secondMagicNumber(EXHAUST_NUMBER)
                         .modifiers(CardModifier.UNPLAYABLE, CardModifier.FLASHBACK)
         );
     }
@@ -38,7 +39,7 @@ public class ForgottenConduit extends SorcererCard {
                 new ExhaustAction(
                         AbstractDungeon.player,
                         AbstractDungeon.player,
-                        DISCARD_NUMBER,
+                        this.secondMagicNumber,
                         !this.upgraded
                 )
         );

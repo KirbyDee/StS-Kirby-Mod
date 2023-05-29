@@ -57,7 +57,7 @@ public abstract class CardChooseAction extends AbstractGameAction {
             }
 
             // if no cards are left -> nothing to do
-            if (this.cannotBeChosen.size() == this.cardGroup.group.size() || (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() <= this.amount)) {
+            if (this.cannotBeChosen.size() == this.cardGroup.group.size() || (!this.anyNumber && this.cardGroup.group.size() - this.cannotBeChosen.size() < this.amount)) {
                 LOG.info("Not enough cards to choose from -> nop");
                 this.isDone = true;
                 return;

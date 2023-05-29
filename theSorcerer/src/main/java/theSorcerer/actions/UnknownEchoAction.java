@@ -15,9 +15,16 @@ public class UnknownEchoAction extends HandCardChooseAction {
     }
 
     @Override
+    protected boolean canBeChosen(final AbstractCard card) {
+        return true;
+    }
+
+    @Override
     protected void onCardChosen(AbstractCard card) {
         this.player.hand.moveToDeck(card, false);
-        DynamicDungeon.gainEnergy(card.costForTurn);
+        if (card.costForTurn > 0) {
+            DynamicDungeon.gainEnergy(card.costForTurn);
+        }
     }
 
     @Override

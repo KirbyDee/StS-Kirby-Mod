@@ -59,8 +59,8 @@ public class TheSorcerer extends CustomPlayer {
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
-    public static final int STARTING_HP = 75;
-    public static final int MAX_HP = 75;
+    public static final int STARTING_HP = 78;
+    public static final int MAX_HP = 78;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
@@ -179,9 +179,6 @@ public class TheSorcerer extends CustomPlayer {
 
         // TODOO: effect -> addToTop(new VFXAction(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect)));
         // TODOO: SoundMaster -> addToTop(new SFXAction("ORB_DARK_EVOKE", 0.1F));
-
-        // TODOO: discard pile still fucked:
-        // TODOO: possible causes: CrystalArmour
 
         return retVal;
     }
