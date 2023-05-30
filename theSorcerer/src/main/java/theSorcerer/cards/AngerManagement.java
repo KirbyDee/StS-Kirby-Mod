@@ -18,7 +18,7 @@ public class AngerManagement extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int STRENGTH_LOSS = 8;
+    private static final int STRENGTH_LOSS = 6;
     private static final int UPGRADE_STRENGTH_LOSS = 2;
     // --- VALUES END ---
 

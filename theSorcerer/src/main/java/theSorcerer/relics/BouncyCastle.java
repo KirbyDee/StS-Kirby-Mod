@@ -1,6 +1,5 @@
 package theSorcerer.relics;
 
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
 
@@ -19,11 +18,11 @@ public class BouncyCastle extends DynamicRelic {
     @Override
     protected void initializeTips() {
         super.initializeTips();
-        addTip("Flashback");
+        addTip("Futurity");
     }
 
     @Override
-    public void triggerOnFlashback() {
+    public void triggerOnFuturity() {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             DynamicDungeon.triggerRelic(this);
             DynamicDungeon.drawCard(DRAW_AMOUNT);

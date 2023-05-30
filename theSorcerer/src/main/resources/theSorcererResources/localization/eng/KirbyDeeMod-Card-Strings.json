@@ -285,7 +285,7 @@
   },
   "theSorcerer:Fortell": {
     "NAME": "Fortell",
-    "DESCRIPTION": "Gain !B! Block. NL If this card is thesorcerer:Futurified, Block will not removed at the start of your next turn."
+    "DESCRIPTION": "Gain !B! Block. NL If this card is thesorcerer:Futurified, gain !M! Dexterity."
   },
   "theSorcerer:UndecidedChoice": {
     "NAME": "Undecided Choice",
@@ -315,9 +315,9 @@
     "NAME": "Elemental Amulet",
     "DESCRIPTION": "At the start of each turn, add either a *Fire *Charm or *Ice *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
   },
-  "theSorcerer:Misdirection": {
-    "NAME": "Misdirection",
-    "DESCRIPTION": "Deal !D! damage. NL Target will then change its intent."
+  "theSorcerer:RecurringStrike": {
+    "NAME": "RepeatingStrike",
+    "DESCRIPTION": "Deal !D! damage. NL If this card is thesorcerer:Flashbacked, gain !M! Strength."
   },
   "theSorcerer:ChronoBlast": {
     "NAME": "Chrono-Blast",

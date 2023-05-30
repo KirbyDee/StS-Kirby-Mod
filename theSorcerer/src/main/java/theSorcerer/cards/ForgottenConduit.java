@@ -31,6 +31,8 @@ public class ForgottenConduit extends SorcererCard {
 
     @Override
     public void triggerOnFlashback() {
+        superFlash();
+
         // exhaust card
         AbstractDungeon.player.hand.moveToExhaustPile(this);
 

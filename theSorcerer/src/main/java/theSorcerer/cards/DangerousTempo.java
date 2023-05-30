@@ -9,7 +9,7 @@ import theSorcerer.modifiers.CardModifier;
 public class DangerousTempo extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int DRAW_CARD_AMOUNT = 3;
+    private static final int DRAW_CARD_AMOUNT = 2;
     private static final int UPGRADE_DRAW_CARD_AMOUNT = 1;
     private static final int ENERGY_GAIN = 2;
     // --- VALUES END ---
@@ -31,6 +31,7 @@ public class DangerousTempo extends SorcererCard {
 
     @Override
     public void triggerOnFuturity() {
+        superFlash();
         AbstractDungeon.player.hand.moveToExhaustPile(this);
         addToBot(
                 new DangerousTempoAction(

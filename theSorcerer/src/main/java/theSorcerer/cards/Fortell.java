@@ -5,16 +5,17 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BlurPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import theSorcerer.modifiers.CardModifier;
 
 public class Fortell extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int TURNS_NO_LOSE_BLOCK = 1;
+    private static final int DEXTERITY_GAIN = 1;
+    private static final int UPGRADE_DEXTERITY_GAIN = 1;
     // --- VALUES END ---
 
     public Fortell() {
@@ -25,7 +26,7 @@ public class Fortell extends SorcererCard {
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
                         .block(BLOCK)
-                        .magicNumber(TURNS_NO_LOSE_BLOCK)
+                        .magicNumber(DEXTERITY_GAIN)
                         .modifiers(CardModifier.FUTURITY)
         );
     }
@@ -48,7 +49,7 @@ public class Fortell extends SorcererCard {
                 new ApplyPowerAction(
                         AbstractDungeon.player,
                         AbstractDungeon.player,
-                        new BlurPower(AbstractDungeon.player, this.magicNumber),
+                        new DexterityPower(AbstractDungeon.player, this.magicNumber),
                         this.magicNumber
                 )
         );
@@ -57,5 +58,6 @@ public class Fortell extends SorcererCard {
     @Override
     protected void upgradeValues() {
         upgradeBlock(UPGRADE_PLUS_BLOCK);
+        upgradeMagicNumber(UPGRADE_DEXTERITY_GAIN);
     }
 }

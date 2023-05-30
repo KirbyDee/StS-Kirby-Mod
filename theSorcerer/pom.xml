@@ -6,7 +6,7 @@
     <groupId>kirbydeemod</groupId>
     <artifactId>KirbyDeeMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>KirbyDee Mod</name>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
     <description>A default base to start your own mod from.</description>
 
     <properties>
