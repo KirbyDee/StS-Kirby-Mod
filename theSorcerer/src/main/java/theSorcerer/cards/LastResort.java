@@ -33,6 +33,7 @@ public class LastResort extends SorcererCard {
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
                         .magicNumber(VULNERABLE)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .secondMagicNumber(VULNERABLE_ELEMENTLESS)
         );
     }

@@ -3,45 +3,89 @@
     "NAME": "Elemental Creatures",
     "DESCRIPTIONS": [
       "As you wander aimlessly, you stumble upon 2 elemental creatures. NL One looks a lot like a living #rFlame whereas the other like a living #bIcicle !",
-      "A fierce fight evolves! NL ... NL ... NL After some blows back and forth, the elemental creatures retreat in fear but not after giving you something in return...",
+      "A fierce fight evolves! NL ... NL ... NL After some blows back and forth, the elemental creatures retreat in fear but not after dropping some gold...",
       "After a while, the elemental creatures realize that they are being watched. NL They come over to you with no ill intent. NL On the contrary... they seem to be keen to help you out!",
       "You ignore the elemental creatures, confident in your choice.",
-      "You reach out with your hands and touch the creature... you feel its power!"
+      "You reach out with your hands and touch the creature... you feel its power!",
+      "You touch both the elemental creatures as they come very close to you. Seems like they do not want to leave your side anymore!",
+      "After the elemental creatures sensed your mastery of elements, they flee in fear. NL For some reason they leave behind some gold!"
     ],
     "OPTIONS": [
       "[Fight]",
       "[Hide]",
       "[Leave]",
-      "[Touch #rFlame ] #gChange #ga #gcard #gin #gyour #gdeck #gto #gbecome #yFire.",
-      "[Touch #bIcicle ] #gChange #ga #gcard #gin #gyour #gdeck #gto #gbecome #yIce.",
+      "[Touch #rFlame ] #gChange #ga #gcard #gto #gbecome #yFire.",
+      "[Touch #bIcicle ] #gChange #ga #gcard #gto #gbecome #yIce.",
       "[Ignore]",
       "[Leave] #rTake #r",
-      " #rDamage.",
-      "Select a Card to change to #yFire.",
-      "Select a Card to change to #yIce."
+      " #rDamage. #gGain #g",
+      "Select a Card to change to Fire.",
+      "Select a Card to change to Ice.",
+      "[Befriend] #gGain #yElemental #yPets",
+      "[Locked] Requires: Elemental Master",
+      "[Locked] You already have Elemental Pets",
+      "[Leave] #gGain #g",
+      " #yGold."
     ]
   },
   "theSorcerer:FlashingCaveEvent": {
     "NAME": "Flashing Cave",
     "DESCRIPTIONS": [
       "You stumble upon an entrance of a cave lit by torches. A #b~cold~ wind breezes from inside.",
-      "Taking all your courage you take steps inside and venture further and further into the cave... stumped by the enormous stalactites hanging from the ceiling you just hear the echo of water drops splashing on the floor. NL NL #b~drip~ NL #b~drip~ NL #y~clank~ NL NL Seems like in the dark you also lost some #yGold ... NL NL But at last you find yourself before huge rounded stairs enclosing a waterfall.",
+      "Taking all your courage you take steps inside and venture further and further into the cave... stumped by the enormous stalactites hanging from the ceiling you just hear the echo of water drops splashing on the floor. NL NL #b~drip~ NL #b~drip~ NL #y~clank~ NL NL Seems like in the dark you also lost some #yGold ...",
       "Spiraling down the stairs you find your way forward is blocked by junction. You shortly catch your breath and decide to go forward...",
       "At the bottom of it all you are greeted by a bewitched sleeve unearthing from the ground.",
-      "At the bottom of it all you find a ladder reaching high up, higher than you can even see. NL After climbing for a very long time, you find yourself again outside... just next to the entrance of the cave. NL NL Seems like the cave journey hasn't paid of very much.",
+      "At the bottom of it all you find a ladder reaching high up, higher than you can even see. NL After climbing for a very long time, you find yourself again outside... just next to the entrance of the cave. NL NL Right next to the cave entrance you actually see something shining.",
       "You choose better not to enter the cave and walk away.",
       "You grab the sleeve. A power runs through your deck as you have never felt before! NL You leave the cave from where you came from.",
-      "You are scared and decide to better not take this gift... NL You leave the cave from where you came from."
+      "You are scared and decide to better not take this gift... NL You leave the cave from where you came from.",
+      "You pick up the relic and move on.",
+      "You ignore the relic and just walk away.",
+      "You pick up your lost gold, one by one. While doing so, you actually find some additional gold on the way! Seems like someone else got lost in these caves already..."
     ],
     "OPTIONS": [
       "[Enter]",
       "[Leave]",
       "[Continue] #rLose #r",
-      " #yGold",
+      " #yGold.",
       "[To the Left]",
       "[To the Right]",
       "[Pick Up] #gGive #ga #gcard #gin #gyour #gdeck #yFlashback.",
-      "Select a Card to give #yFlashback."
+      "Select a Card to give Flashback.",
+      "[Pick Up] #gObtain #ga #gRelic.",
+      "[Return] Pick up your lost gold and #ggain #gan #gadditional #g"
+    ]
+  },
+  "theSorcerer:ElementalBazarEvent": {
+    "NAME": "Elemental Bazar",
+    "DESCRIPTIONS": [
+      "You enter a strangely looking bazar, everything reeks burnt, yet also chills go down your spine by the cold you feel. NL As you are inspecting some goods, you are interrupted by the shop keeper: NL NL \" ~Hello~ ~my~ ~fellow~ ~friend!~ \"",
+      "\"May I interest you in something?\"",
+      "You turn around and leave the bazar without buying anything. From afar you can still hear the shop keeper scream out loud: NL \" @GET@ @LOST@ @you@ @window@ @shopper!@ \"",
+      "You distract the shop keeper swiftly, and take some of his money! NL You run fast out of the shop, but you hear the shop keeper scream out a curse: NL \" #r@CURSE@ #r@YOU!!!@ #r@YOU@ #r@WILL@ #r@NEVER@ #r@WIELD@ #r@ANY@ #r@MAGIC@ #r@AGAIN@ #r@SORCERER!!!@ #r@UNTIL@ #r@THE@ #r@DAY@ #r@I@ #r@DIE!@ \". NL NL ... you feel elementless ...",
+      "\"Thank you my sage!\" NL You turn around and leave the bazar.",
+      "\" ~Oh~ ... ~oh!!~ What precious relic are you in possession here?\" NL \"Would you be willing to trade?\"",
+      "\" ~Good!~ ~Very~ ~gooooood!~ \" NL You leave the bazar."
+    ],
+    "OPTIONS": [
+      "[Buy] #gChoose #g1 #gof #g5 #yElemental #yCards #gto #gadd #gto #gyour #gdeck. Costs #y",
+      "[Modify] #gChange #ga #gcard #gto #ggain #yElementcost. Costs #y",
+      "[Upgrade] #gUpgrade #ga #gcard. Costs #y",
+      "[Locked] Requires: #yBurning #ySoul or #yFreezing #ySoul",
+      "[Show Burning Soul]",
+      "[Show Freezing Soul]",
+      "[Trade] #rLose #yBurning #ySoul, #ggain #g2 #grandom #grare #grelics.",
+      "[Trade] #rLose #yFreezing #ySoul, #ggain #g2 #grandom #grare #grelics.",
+      "[Steal] #gGain #g",
+      " #rBecome #rCursed #r- #rElementaldysphoria.",
+      " #yGold.",
+      " #pON #pSALE",
+      "[Leave]",
+      "[Back]",
+      "Add an Elemental Card to your deck.",
+      "Modify a card in your deck to have #yElementcost.",
+      "Choose a card to upgrade",
+      "[Continue]"
     ]
   }
 }

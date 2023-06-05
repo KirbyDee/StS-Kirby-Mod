@@ -16,6 +16,7 @@ public class OneWithNothing extends SorcererCard {
                 DynamicCard.InfoBuilder(OneWithNothing.class)
                         .cost(COST)
                         .type(CardType.SKILL)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .rarity(CardRarity.COMMON)
         );
     }

@@ -6,12 +6,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.screens.select.GridCardSelectScreenPatch;
+import theSorcerer.relics.ElementalMaster;
+import theSorcerer.relics.ElementalPets;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -21,6 +24,8 @@ public class ElementalCreaturesEvent extends DynamicEvent {
     private final int damage;
 
     private CardModifier cardModifier;
+
+    private final int goldGain;
     
     private CurrentScreen screen = CurrentScreen.INTRO;
 
@@ -29,9 +34,11 @@ public class ElementalCreaturesEvent extends DynamicEvent {
 
         if (AbstractDungeon.ascensionLevel >= 15) {
             this.damage = (int)((float)AbstractDungeon.player.maxHealth * 0.35F);
+            this.goldGain = AbstractDungeon.miscRng.random(20, 50);
         }
         else {
             this.damage = (int)((float)AbstractDungeon.player.maxHealth * 0.25F);
+            this.goldGain = AbstractDungeon.miscRng.random(35, 75);
         }
     }
 
@@ -59,6 +66,9 @@ public class ElementalCreaturesEvent extends DynamicEvent {
             case FIGHT:
                 fightScreen();
                 break;
+            case FLEE:
+                fleeScreen();
+                break;
             case MORPHOSE:
                 elementmorphoseScreen(buttonPressed);
                 break;
@@ -71,10 +81,18 @@ public class ElementalCreaturesEvent extends DynamicEvent {
     private void initialScreen(final int buttonPressed) {
         switch (buttonPressed) {
             case 0: // fight
-                this.imageEventText.updateBodyText(this.descriptions[1]);
-                this.imageEventText.updateDialogOption(0, this.options[6] + this.damage + this.options[7]);
+                String description = this.descriptions[1];
+                String option = this.options[6] + this.damage + this.options[7] + this.goldGain + this.options[14];
+                CurrentScreen nextScreen = CurrentScreen.FIGHT;
+                if (DynamicDungeon.hasRelic(ElementalMaster.class)) {
+                    description = this.descriptions[6];
+                    option = this.options[13] + this.goldGain + this.options[14];
+                    nextScreen = CurrentScreen.FLEE;
+                }
+                this.imageEventText.updateBodyText(description);
+                this.imageEventText.updateDialogOption(0, option);
                 this.imageEventText.clearRemainingOptions();
-                this.screen = CurrentScreen.FIGHT;
+                this.screen = nextScreen;
                 return;
             case 1: // hide
                 this.imageEventText.loadImage(getImagePath(2));
@@ -87,7 +105,18 @@ public class ElementalCreaturesEvent extends DynamicEvent {
                 this.imageEventText.updateBodyText(this.descriptions[2]);
                 this.imageEventText.updateDialogOption(0, this.options[3], !canMakeCardFire);
                 this.imageEventText.updateDialogOption(1, this.options[4], !canMakeCardIce);
-                this.imageEventText.updateDialogOption(2, this.options[5]);
+                String befriendOption = this.options[11];
+                boolean canClick = true;
+                if (DynamicDungeon.hasRelic(ElementalMaster.class)) {
+                    befriendOption = this.options[10];
+                    canClick = false;
+                }
+                if (DynamicDungeon.hasRelic(ElementalPets.class)) {
+                    befriendOption = this.options[12];
+                    canClick = true;
+                }
+                this.imageEventText.updateDialogOption(2, befriendOption, canClick);
+                this.imageEventText.updateDialogOption(3, this.options[5]);
                 this.screen = CurrentScreen.MORPHOSE;
                 return;
             case 2: // leave
@@ -103,6 +132,16 @@ public class ElementalCreaturesEvent extends DynamicEvent {
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, false);
         CardCrawlGame.sound.play("BLUNT_FAST");
         AbstractDungeon.player.damage(new DamageInfo(null, this.damage));
+        AbstractDungeon.effectList.add(new RainingGoldEffect(this.goldGain));
+        AbstractDungeon.player.gainGold(this.goldGain);
+        this.imageEventText.updateDialogOption(0, this.options[2]);
+        this.imageEventText.clearRemainingOptions();
+        this.screen = CurrentScreen.COMPLETE;
+    }
+
+    private void fleeScreen() {
+        AbstractDungeon.effectList.add(new RainingGoldEffect(this.goldGain));
+        AbstractDungeon.player.gainGold(this.goldGain);
         this.imageEventText.updateDialogOption(0, this.options[2]);
         this.imageEventText.clearRemainingOptions();
         this.screen = CurrentScreen.COMPLETE;
@@ -124,7 +163,14 @@ public class ElementalCreaturesEvent extends DynamicEvent {
                 icemorphose();
                 this.screen = CurrentScreen.COMPLETE;
                 return;
-            case 2: // ignore
+            case 2: // befriend
+                this.imageEventText.updateBodyText(this.descriptions[5]);
+                this.imageEventText.updateDialogOption(0, this.options[2]);
+                this.imageEventText.clearRemainingOptions();
+                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), new ElementalPets());
+                this.screen = CurrentScreen.COMPLETE;
+                return;
+            case 3: // ignore
             default:
                 this.imageEventText.updateBodyText(this.descriptions[3]);
                 this.imageEventText.updateDialogOption(0, this.options[2]);
@@ -158,7 +204,7 @@ public class ElementalCreaturesEvent extends DynamicEvent {
                 text,
                 false,
                 false,
-                true,
+                false,
                 false,
                 applyElementToCard
         );
@@ -186,6 +232,7 @@ public class ElementalCreaturesEvent extends DynamicEvent {
         INTRO,
         FIGHT,
         MORPHOSE,
+        FLEE,
         COMPLETE;
     }
 }

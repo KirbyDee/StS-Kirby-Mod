@@ -22,6 +22,7 @@ public class UnknownEcho extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(CARDS_TO_DRAW)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .secondMagicNumber(CARDS_TO_PUT_ON_DECK)
         );
     }

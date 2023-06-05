@@ -25,6 +25,7 @@ public class KnucklePunch extends SorcererCard {
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .magicNumber(ELEMENTLESS_FACTOR)
         );
     }

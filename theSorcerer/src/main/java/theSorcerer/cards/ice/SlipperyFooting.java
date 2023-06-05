@@ -27,7 +27,7 @@ public class SlipperyFooting extends SorcererIceCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        AbstractCard c = DynamicDungeon.returnRandomIceCardInCombat().makeCopy();
+        AbstractCard c = DynamicDungeon.returnRandomIceCard().makeCopy();
         addToBot(
                 new MakeTempCardInHandAction(
                         c,

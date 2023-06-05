@@ -12,7 +12,7 @@ public class Fortell extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 7;
+    private static final int BLOCK = 6;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int DEXTERITY_GAIN = 1;
     private static final int UPGRADE_DEXTERITY_GAIN = 1;

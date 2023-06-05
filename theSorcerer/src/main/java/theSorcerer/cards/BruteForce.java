@@ -24,6 +24,7 @@ public class BruteForce extends SorcererCard {
                         .rarity(CardRarity.RARE)
                         .damage(DAMAGE)
                         .modifiers(CardModifier.EXHAUST)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .magicNumber(ELEMENTLESS_TIMES)
         );
     }

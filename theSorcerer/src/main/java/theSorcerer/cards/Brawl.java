@@ -23,6 +23,7 @@ public class Brawl extends SorcererCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ENEMY)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .damage(DAMAGE)
         );
     }

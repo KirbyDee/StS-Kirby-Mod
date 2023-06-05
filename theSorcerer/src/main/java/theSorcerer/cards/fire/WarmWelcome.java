@@ -27,7 +27,7 @@ public class WarmWelcome extends SorcererFireCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        AbstractCard c = DynamicDungeon.returnRandomFireCardInCombat().makeCopy();
+        AbstractCard c = DynamicDungeon.returnRandomFireCard().makeCopy();
         addToBot(
                 new MakeTempCardInHandAction(
                         c,

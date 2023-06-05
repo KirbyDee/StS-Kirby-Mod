@@ -7,7 +7,7 @@ public class ElementalPets extends DynamicRelic {
     public ElementalPets() {
         super(
                 ElementalPets.class,
-                RelicTier.RARE,
+                RelicTier.SPECIAL,
                 LandingSound.MAGICAL
         );
     }

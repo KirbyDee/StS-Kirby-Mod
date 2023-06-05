@@ -26,6 +26,7 @@ public class UndecidedChoice extends SorcererCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.ENEMY)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .damage(DAMAGE)
                         .block(BLOCK)
         );

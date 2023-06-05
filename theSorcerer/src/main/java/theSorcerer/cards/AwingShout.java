@@ -20,6 +20,7 @@ public class AwingShout extends SorcererCard {
                         .cost(COST)
                         .type(CardType.POWER)
                         .rarity(CardRarity.RARE)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .magicNumber(WEAK_VULNERABILITY_AMOUNT)
         );
     }

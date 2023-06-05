@@ -94,5 +94,12 @@
     "DESCRIPTIONS": [
       "You are able to play #yArcane cards without #yElemental #yAffinities, but in doing so, it does not increase your #yElemental #yAffinity."
     ]
+  },
+  "theSorcerer:GameController": {
+    "NAME": "Game Controller",
+    "FLAVOR": "Up, Up, Down, Down, Left, Right, Left, Right, B, A",
+    "DESCRIPTIONS": [
+      "Whenever you become #yElementless, a random card in your hand costs #b0 that turn."
+    ]
   }
 }

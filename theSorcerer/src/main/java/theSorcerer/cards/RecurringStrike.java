@@ -14,7 +14,7 @@ public class RecurringStrike extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 7;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int STRENGTH_AMOUNT = 1;
     private static final int UPGRADE_STRENGTH_AMOUNT = 1;

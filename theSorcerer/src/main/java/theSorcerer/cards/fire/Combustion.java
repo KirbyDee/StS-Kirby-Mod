@@ -12,8 +12,10 @@ public class Combustion extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int ENERGY_GAIN = 1;
+    public boolean glowCheckTriggered = false;
     // --- VALUES END ---
 
     public Combustion() {
@@ -23,13 +25,9 @@ public class Combustion extends SorcererFireCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ENEMY)
+                        .magicNumber(ENERGY_GAIN)
                         .damage(DAMAGE)
         );
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer player, AbstractMonster monster) {
-        return super.canUse(player, monster) && DynamicDungeon.isHeated();
     }
 
     @Override
@@ -41,7 +39,15 @@ public class Combustion extends SorcererFireCard {
                         AbstractGameAction.AttackEffect.FIRE
                 )
         );
-        DynamicDungeon.drawCard(this.magicNumber);
+
+        if (this.glowCheckTriggered) {
+            DynamicDungeon.gainEnergy(this.magicNumber);
+        }
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        this.glowCheckTriggered = DynamicDungeon.isLastCardPlayed(DynamicDungeon::isFireCard);
     }
 
     @Override

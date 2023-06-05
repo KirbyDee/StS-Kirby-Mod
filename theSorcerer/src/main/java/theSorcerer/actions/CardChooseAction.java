@@ -50,6 +50,11 @@ public abstract class CardChooseAction extends AbstractGameAction {
     public void update() {
         // init: either no card can be chosen, only 1 or the player chooses one
         if (this.duration == Settings.ACTION_DUR_FAST) {
+            if (isActionNotNeeded()) {
+                this.isDone = true;
+                return;
+            }
+
             // get all the cards which cannot be chosen
             gatherCannotBeChosen();
             if (this.anyNumber) {
@@ -83,6 +88,10 @@ public abstract class CardChooseAction extends AbstractGameAction {
 
         // tick -> go into next step
         tickDuration();
+    }
+
+    protected boolean isActionNotNeeded() {
+        return false;
     }
 
     private boolean cannotBeChosen(final AbstractCard card) {

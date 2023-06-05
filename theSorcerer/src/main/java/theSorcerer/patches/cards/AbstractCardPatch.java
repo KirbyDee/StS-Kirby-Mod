@@ -28,6 +28,8 @@ public class AbstractCardPatch {
 
     public static SpireField<Boolean> flashback = new SpireField<>(() -> false);
 
+    public static SpireField<Boolean> elementalCost = new SpireField<>(() -> false);
+
     private static final PowerStrings ELEMENTLESS_STRINGS = CardCrawlGame.languagePack.getPowerStrings(DynamicPower.getID(ElementlessPower.class));
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
@@ -58,6 +60,10 @@ public class AbstractCardPatch {
             futurity.set(result, futurity.get(self));
             if (futurity.get(result)) {
                 DynamicDungeon.makeCardFuturity(result);
+            }
+            elementalCost.set(result, elementalCost.get(self));
+            if (elementalCost.get(result)) {
+                DynamicDungeon.makeCardElementCost(result);
             }
 
             return result;

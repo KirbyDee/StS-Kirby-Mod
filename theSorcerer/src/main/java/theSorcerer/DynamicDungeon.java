@@ -1,6 +1,5 @@
 package theSorcerer;
 
-import basemod.Pair;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.EtherealMod;
 import basemod.cardmods.ExhaustMod;
@@ -48,7 +47,6 @@ import theSorcerer.util.ElementAmount;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class DynamicDungeon {
 
@@ -87,6 +85,10 @@ public class DynamicDungeon {
 
     public static boolean canPlayArcane() {
         return hasRelic(ProtectingGloves.class) || DynamicDungeon.isHeatedOrChillder();
+    }
+
+    public static boolean isElementCostCard(final AbstractCard card) {
+        return cardHasModifier(card, CardModifier.ELEMENTCOST);
     }
 
     public static boolean isFuturityCard(final AbstractCard card) {
@@ -178,6 +180,17 @@ public class DynamicDungeon {
             addModifierToCard(card, new ArcaneMod());
         }
     }
+
+    public static boolean canMakeCardElementCost(final AbstractCard card) {
+        return !isElementCostCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+    }
+
+    public static void makeCardElementCost(final AbstractCard card) {
+        if (!isElementCostCard(card)) {
+            addModifierToCard(card, new ElementalCostMod());
+        }
+    }
+
 
     public static void makeCardEntomb(final AbstractCard card) {
         if (!isEntombCard(card)) {
@@ -507,6 +520,12 @@ public class DynamicDungeon {
                 Optional.empty();
     }
 
+    public static boolean isLastCardPlayed(final Predicate<AbstractCard> predicate) {
+        return getLastCardPlayed()
+                .filter(predicate)
+                .isPresent();
+    }
+
     public static boolean hasPower(final AbstractCreature creature, final Class<? extends DynamicPower> thisClazz) {
         return creature.hasPower(DynamicPower.getID(thisClazz));
     }
@@ -516,6 +535,10 @@ public class DynamicDungeon {
         if (hasPower(creature, thisClazz)) {
             powerConsumer.accept((P) creature.getPower(DynamicPower.getID(thisClazz)));
         }
+    }
+
+    public static boolean hasAnyRelic(final Class<? extends DynamicRelic>... thisClazz) {
+        return Arrays.stream(thisClazz).anyMatch(DynamicDungeon::hasRelic);
     }
 
     public static boolean hasRelic(final Class<? extends DynamicRelic> thisClazz) {
@@ -628,26 +651,41 @@ public class DynamicDungeon {
         );
     }
 
-    public static DynamicCard returnRandomFireCardInCombat() {
-        return returnRandomElementCardInCombat(DynamicDungeon::isOriginalFireCard);
+    public static AbstractCard returnRandomFireCard() {
+        return returnRandomCard(DynamicDungeon::isOriginalFireCard);
     }
 
-    public static DynamicCard returnRandomIceCardInCombat() {
-        return returnRandomElementCardInCombat(DynamicDungeon::isOriginalIceCard);
+    public static AbstractCard returnRandomIceCard() {
+        return returnRandomCard(DynamicDungeon::isOriginalIceCard);
     }
 
-    private static DynamicCard returnRandomElementCardInCombat(final Predicate<DynamicCard> elementPredicate) {
+    public static AbstractCard returnRandomCard(final Predicate<DynamicCard> predicate) {
+        return allSorcererCards(predicate).getRandomCard(true);
+    }
+
+    public static CardGroup returnRandomCards(final int amount, final Predicate<DynamicCard> predicate) {
+        final CardGroup cardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        allSorcererCards(predicate)
+                .group
+                .stream()
+                .limit(amount)
+                .forEach(cardGroup::addToRandomSpot);
+        return cardGroup;
+    }
+
+    public static CardGroup allSorcererCards(final Predicate<DynamicCard> predicate) {
+        final CardGroup cardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         Set<AbstractCard> cards = new HashSet<>();
         cards.addAll(AbstractDungeon.srcCommonCardPool.group);
         cards.addAll(AbstractDungeon.srcUncommonCardPool.group);
         cards.addAll(AbstractDungeon.srcRareCardPool.group);
-
-        List<DynamicCard> elementCards = cards.stream()
+        cards
+                .stream()
                 .filter(DynamicCard.class::isInstance)
                 .map(DynamicCard.class::cast)
-                .filter(elementPredicate)
-                .collect(Collectors.toList());
-        return elementCards.get(AbstractDungeon.cardRandomRng.random(elementCards.size() - 1));
+                .filter(predicate)
+                .forEach(cardGroup::addToRandomSpot);
+        return cardGroup;
     }
 
     public static void modifyCardInDeck(final AbstractCard card) {

@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.dungeons.TheEnding;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.cards.DynamicCard;
 import theSorcerer.characters.TheSorcerer;
 import theSorcerer.events.DynamicEvent;
+import theSorcerer.events.ElementalBazarEvent;
 import theSorcerer.events.ElementalCreaturesEvent;
 import theSorcerer.events.FlashingCaveEvent;
 import theSorcerer.glows.ElementGlow;
@@ -364,6 +366,13 @@ public class KirbyDeeMod implements
                         .create()
         );
 
+        BaseMod.addEvent(
+                new AddEventParams.Builder(DynamicEvent.getID(ElementalBazarEvent.class), ElementalBazarEvent.class)
+                        .dungeonIDs(Exordium.ID, TheCity.ID, TheBeyond.ID, TheEnding.ID)
+                        .playerClass(TheSorcerer.Enums.THE_SORCERER)
+                        .create()
+        );
+
         // =============== Glow =================
         CardBorderGlowManager.addGlowInfo(new ElementGlow());
 
@@ -454,6 +463,7 @@ public class KirbyDeeMod implements
         BaseMod.addRelicToCustomPool(new ElementalPets(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new TreeOfLife(), TheSorcerer.Enums.COLOR_YELLOW);
         BaseMod.addRelicToCustomPool(new ProtectingGloves(), TheSorcerer.Enums.COLOR_YELLOW);
+        BaseMod.addRelicToCustomPool(new GameController(), TheSorcerer.Enums.COLOR_YELLOW);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
 //        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -473,6 +483,7 @@ public class KirbyDeeMod implements
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ElementalPets.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(TreeOfLife.class));
         UnlockTracker.markRelicAsSeen(DynamicRelic.getID(ProtectingGloves.class));
+        UnlockTracker.markRelicAsSeen(DynamicRelic.getID(GameController.class));
         // TODOO: which ones do we unlock?
         logger.info("Done adding relics!");
     }

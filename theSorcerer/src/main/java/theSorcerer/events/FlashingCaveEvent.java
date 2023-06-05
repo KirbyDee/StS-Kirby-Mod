@@ -4,14 +4,16 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.actions.CustomSFXAction;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.patches.screens.select.GridCardSelectScreenPatch;
 
 public class FlashingCaveEvent extends DynamicEvent {
+
+    private final int goldGain;
 
     private int goldLoss;
 
@@ -21,9 +23,12 @@ public class FlashingCaveEvent extends DynamicEvent {
         super(FlashingCaveEvent.class);
 
         if (AbstractDungeon.ascensionLevel >= 15) {
-            this.goldLoss = AbstractDungeon.miscRng.random(35, 75);
-        } else {
-            this.goldLoss = AbstractDungeon.miscRng.random(20, 50);
+            this.goldLoss = AbstractDungeon.miscRng.random(25, 50);
+            this.goldGain = AbstractDungeon.miscRng.random(5, 10);
+        }
+        else {
+            this.goldLoss = AbstractDungeon.miscRng.random(10, 30);
+            this.goldGain = AbstractDungeon.miscRng.random(10, 20);
         }
 
         if (this.goldLoss > AbstractDungeon.player.gold) {
@@ -52,13 +57,16 @@ public class FlashingCaveEvent extends DynamicEvent {
                 entranceScreen(buttonPressed);
                 break;
             case SPIRAL_STAIRS:
-                spiralStairsScreen();
+                spiralStairsScreen(buttonPressed);
                 break;
             case FORK:
                 forkScreen();
                 break;
             case FLASHBACK_CARD:
                 flashbackCardScreen(buttonPressed);
+                break;
+            case RELIC:
+                relicScreen(buttonPressed);
                 break;
             case COMPLETE:
                 openMap();
@@ -71,7 +79,7 @@ public class FlashingCaveEvent extends DynamicEvent {
                 this.imageEventText.loadImage(getImagePath(2));
                 this.imageEventText.updateBodyText(this.descriptions[1]);
                 this.imageEventText.updateDialogOption(0, this.options[2] + this.goldLoss + this.options[3]);
-                this.imageEventText.clearRemainingOptions();
+                this.imageEventText.updateDialogOption(1, this.options[9] + this.goldGain + this.options[3]);
                 this.screen = CurrentScreen.SPIRAL_STAIRS;
                 return;
             case 1: // leave
@@ -83,16 +91,30 @@ public class FlashingCaveEvent extends DynamicEvent {
         }
     }
 
-    private void spiralStairsScreen() {
-        this.imageEventText.loadImage(getImagePath(3));
-        this.imageEventText.updateBodyText(this.descriptions[2]);
-        AbstractDungeon.player.loseGold(this.goldLoss);
-        if (Settings.AMBIANCE_ON) {
-            CardCrawlGame.sound.play("GOLD_JINGLE");
+    private void spiralStairsScreen(final int buttonPressed) {
+        switch (buttonPressed) {
+            case 0: // continue - lose gold
+                this.imageEventText.loadImage(getImagePath(3));
+                this.imageEventText.updateBodyText(this.descriptions[2]);
+                AbstractDungeon.player.loseGold(this.goldLoss);
+                if (Settings.AMBIANCE_ON) {
+                    CardCrawlGame.sound.play("GOLD_JINGLE");
+                }
+                this.imageEventText.updateDialogOption(0, this.options[4]);
+                this.imageEventText.updateDialogOption(1, this.options[5]);
+                this.screen = CurrentScreen.FORK;
+                return;
+            case 1: // leave
+            default:
+                AbstractDungeon.player.gainGold(this.goldGain);
+                if (Settings.AMBIANCE_ON) {
+                    CardCrawlGame.sound.play("GOLD_JINGLE");
+                }
+                this.imageEventText.updateBodyText(this.descriptions[10]);
+                this.imageEventText.updateDialogOption(0, this.options[1]);
+                this.imageEventText.clearRemainingOptions();
+                this.screen = CurrentScreen.COMPLETE;
         }
-        this.imageEventText.updateDialogOption(0, this.options[4]);
-        this.imageEventText.updateDialogOption(1, this.options[5]);
-        this.screen = CurrentScreen.FORK;
     }
 
     private void forkScreen() {
@@ -115,9 +137,9 @@ public class FlashingCaveEvent extends DynamicEvent {
             default:
                 this.imageEventText.loadImage(getImagePath(4));
                 this.imageEventText.updateBodyText(this.descriptions[4]);
-                this.imageEventText.updateDialogOption(0, this.options[1]);
-                this.imageEventText.clearRemainingOptions();
-                this.screen = CurrentScreen.COMPLETE;
+                this.imageEventText.updateDialogOption(0, this.options[8]);
+                this.imageEventText.updateDialogOption(1, this.options[1]);
+                this.screen = CurrentScreen.RELIC;
         }
     }
 
@@ -139,6 +161,25 @@ public class FlashingCaveEvent extends DynamicEvent {
         }
     }
 
+    private void relicScreen(final int buttonPressed) {
+        switch (buttonPressed) {
+            case 0: // pick up relic
+                this.imageEventText.updateBodyText(this.descriptions[8]);
+                this.imageEventText.updateDialogOption(0, this.options[1]);
+                this.imageEventText.clearRemainingOptions();
+                AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
+                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
+                this.screen = CurrentScreen.COMPLETE;
+                return;
+            case 1: // leave
+            default:
+                this.imageEventText.updateBodyText(this.descriptions[9]);
+                this.imageEventText.updateDialogOption(0, this.options[1]);
+                this.imageEventText.clearRemainingOptions();
+                this.screen = CurrentScreen.COMPLETE;
+        }
+    }
+
     private void flashback() {
         GridCardSelectScreenPatch.open(
                 DynamicDungeon.filterCardGroupBy(
@@ -149,7 +190,7 @@ public class FlashingCaveEvent extends DynamicEvent {
                 this.options[7],
                 false,
                 false,
-                true,
+                false,
                 false,
                 DynamicDungeon::makeCardFlashback
         );
@@ -173,6 +214,7 @@ public class FlashingCaveEvent extends DynamicEvent {
         SPIRAL_STAIRS,
         FORK,
         FLASHBACK_CARD,
+        RELIC,
         COMPLETE
     }
 }

@@ -20,6 +20,7 @@ public class UneducatedGuess extends SorcererCard {
                         .type(CardType.POWER)
                         .rarity(CardRarity.UNCOMMON)
                         .target(CardTarget.SELF)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .magicNumber(DRAW_CARD_NEXT_TURN)
         );
     }

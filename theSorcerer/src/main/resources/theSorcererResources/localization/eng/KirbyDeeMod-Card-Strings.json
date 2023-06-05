@@ -53,8 +53,8 @@
   },
   "theSorcerer:HighGround": {
     "NAME": "High Ground",
-    "DESCRIPTION": "Draw !M! card. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for this turn. NL Gain [E] [E].",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card. Increase that cards cost by !theSorcerer:MM! for this turn. NL Gain [E] [E] [E]."
+    "DESCRIPTION": "Draw !M! cards. NL Choose 1 card in your discard pile. Increase that cards cost by !theSorcerer:MM! this combat. NL Gain [E].",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Choose 1 card in your discard pile. Increase that cards cost by !theSorcerer:MM! this combat. NL Gain [E] [E]."
   },
   "theSorcerer:DiscardedDefense": {
     "NAME": "Discarded Defense",
@@ -355,11 +355,11 @@
   },
   "theSorcerer:Combustion": {
     "NAME": "Combustion",
-    "DESCRIPTION": "Deal !D! damage. NL Can only be played if you are thesorcerer:Heated."
+    "DESCRIPTION": "Deal !D! damage. NL If the previous card played was a thesorcerer:Fire card, gain [E]."
   },
   "theSorcerer:ArcticShell": {
     "NAME": "Arctic Shell",
-    "DESCRIPTION": "Gain !B! block. NL Can only be played if you are thesorcerer:Chilled."
+    "DESCRIPTION": "Gain !B! block. NL If the previous card played was an thesorcerer:Ice card, draw !M! card."
   },
   "theSorcerer:AwingShout": {
     "NAME": "Awing Shout",
@@ -381,5 +381,9 @@
   "theSorcerer:WarmHands": {
     "NAME": "Warm Hands",
     "DESCRIPTION": "At the start of your turn, if this card is in your discard pile, gain thesorcerer:Heated equal to its cost."
+  },
+  "theSorcerer:Elementaldysphoria": {
+    "NAME": "Elementaldysphoria",
+    "DESCRIPTION": "Become thesorcerer:Elementless."
   }
 }

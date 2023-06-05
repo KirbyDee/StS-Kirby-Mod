@@ -22,6 +22,7 @@ public class Frostbite extends DynamicCard {
                 DynamicCard.InfoBuilder(Frostbite.class)
                         .type(CardType.STATUS)
                         .rarity(CardRarity.COMMON)
+                        .color(CardColor.COLORLESS)
                         .magicNumber(DAMAGE)
                         .modifiers(CardModifier.UNPLAYABLE)
                         .build()

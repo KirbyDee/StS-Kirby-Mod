@@ -18,6 +18,16 @@ public class PulsatingBladeAction extends HandCardChooseAction {
     }
 
     @Override
+    protected boolean isActionNotNeeded() {
+        return this.cardGroup.group
+                .stream()
+                .filter(this::canBeChosen)
+                .map(c -> c.costForTurn)
+                .distinct()
+                .count() == 1;
+    }
+
+    @Override
     protected void onCardChosen(AbstractCard card) {
         // NOP
     }

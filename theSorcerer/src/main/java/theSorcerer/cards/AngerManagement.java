@@ -29,6 +29,7 @@ public class AngerManagement extends SorcererCard {
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
                         .magicNumber(STRENGTH_LOSS)
+                        .tags(SorcererCardTags.ELEMENTLESS)
                         .modifiers(CardModifier.FUTURITY)
         );
     }
