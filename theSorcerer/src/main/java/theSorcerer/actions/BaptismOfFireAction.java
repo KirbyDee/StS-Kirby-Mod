@@ -5,10 +5,13 @@ import theSorcerer.modifiers.CardModifier;
 
 public class BaptismOfFireAction extends ElementmorphoseAction {
 
-    public BaptismOfFireAction() {
+    public BaptismOfFireAction(
+            boolean upgraded
+    ) {
         super(
                 CardModifier.FIRE,
-                DynamicDungeon::makeCardFire
+                DynamicDungeon::makeCardFire,
+                upgraded
         );
     }
 }

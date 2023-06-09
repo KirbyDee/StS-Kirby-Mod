@@ -41,15 +41,18 @@
   },
   "theSorcerer:Elementmorphose": {
     "NAME": "Elementmorphose",
-    "DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose a card in your hand for the rest of combat."
+    "DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose a card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "thesorcerer:Firemorphose or thesorcerer:Icemorphose ALL cards in your hand for the rest of combat."
   },
   "theSorcerer:BaptismOfFire": {
     "NAME": "Baptism of Fire",
-    "DESCRIPTION": "thesorcerer:Firemorphose a card in your hand for the rest of combat."
+    "DESCRIPTION": "thesorcerer:Firemorphose a card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "thesorcerer:Firemorphose ALL cards in your hand for the rest of combat."
   },
   "theSorcerer:Crystalize": {
     "NAME": "Crystalize",
-    "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat."
+    "DESCRIPTION": "thesorcerer:Icemorphose a card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "thesorcerer:Icemorphose ALL cards in your hand for the rest of combat."
   },
   "theSorcerer:HighGround": {
     "NAME": "High Ground",
@@ -229,7 +232,7 @@
   },
   "theSorcerer:Shatter": {
     "NAME": "Shatter",
-    "DESCRIPTION": "Apply weak equal to targets thesorcerer:Frozen stacks to all enemies."
+    "DESCRIPTION": "Apply Weak and Vulnerable equal to targets thesorcerer:Frozen stacks to all enemies."
   },
   "theSorcerer:Harmony": {
     "NAME": "Harmony",
@@ -245,7 +248,7 @@
   },
   "theSorcerer:ElementalStorm": {
     "NAME": "Elemental Storm",
-    "DESCRIPTION": "Whenever you play an thesorcerer:Elemental_Card this turn, apply !M! Weak and Vulnerable to ALL enemies."
+    "DESCRIPTION": "Whenever you play an thesorcerer:Elemental_Card this turn, deal !M! damage to ALL enemies and gain !M! Block."
   },
   "theSorcerer:CollateralDamage": {
     "NAME": "Collateral Damage",

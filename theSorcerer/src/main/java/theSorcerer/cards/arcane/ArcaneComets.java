@@ -1,9 +1,8 @@
 package theSorcerer.cards.arcane;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.actions.ArcaneCometsAction;
 import theSorcerer.cards.DynamicCard;
 
 public class ArcaneComets extends SorcererArcaneCard {
@@ -29,13 +28,16 @@ public class ArcaneComets extends SorcererArcaneCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         for (int i = 0; i < this.magicNumber; ++i) {
-            addToBot(
-                    new AttackDamageRandomEnemyAction(
-                            this,
-                            AbstractGameAction.AttackEffect.LIGHTNING
-                    )
-            );
+            comet(monster);
         }
+    }
+
+    private void comet(final AbstractMonster monster) {
+        addToBot(
+                new ArcaneCometsAction(
+                        this
+                )
+        );
     }
 
     @Override

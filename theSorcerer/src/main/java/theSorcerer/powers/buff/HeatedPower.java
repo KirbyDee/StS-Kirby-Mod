@@ -48,7 +48,8 @@ public class HeatedPower extends ElementPower<StrengthPower> {
                 info.owner == this.owner &&
                 info.type == DamageInfo.DamageType.NORMAL &&
                 this.amount > 0 &&
-                damageAmount > 0) {
+                damageAmount > 0
+        ) {
             LOG.info("Inflicting damage to target with attack, apply Ablaze amount " + this.amount);
             addToTop(
                     new ApplyPowerAction(

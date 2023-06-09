@@ -9,8 +9,9 @@ import theSorcerer.cards.DynamicCard;
 public class Congeal extends SorcererIceCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int BLOCK_MULTIPLIER = 3;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
+    private static final int BLOCK_MULTIPLIER = 4;
     // --- VALUES END ---
 
     public Congeal() {
@@ -45,6 +46,6 @@ public class Congeal extends SorcererIceCard {
 
     @Override
     protected void upgradeValues() {
-        DynamicDungeon.makeCardFlashback(this);
+        upgradeBaseCost(UPGRADE_COST);
     }
 }

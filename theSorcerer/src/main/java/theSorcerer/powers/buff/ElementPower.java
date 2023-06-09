@@ -69,12 +69,6 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
         removeSelf();
     }
 
-    @Override
-    public void removeSelf() {
-        reducePowerToZero();
-        super.removeSelf();
-    }
-
     public void reducePowerToZero() {
         reducePower(this.ID, this.amount);
         reducePower(getExtraPowerId(), this.amount);

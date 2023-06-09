@@ -22,6 +22,6 @@ public class Crystalize extends SorcererSpecialCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new CrystalizeAction());
+        addToBot(new CrystalizeAction(this.upgraded));
     }
 }

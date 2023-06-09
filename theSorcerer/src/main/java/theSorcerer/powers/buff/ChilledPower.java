@@ -41,7 +41,12 @@ public class ChilledPower extends ElementPower<DexterityPower> {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         // have to fully block an attack (currentBlock is the block after the attack happened)
-        if (this.owner.currentBlock >= 0 && damageAmount <= 0) {
+        if (this.owner.currentBlock >= 0 &&
+                info.owner != this.owner &&
+                info.type == DamageInfo.DamageType.NORMAL &&
+                this.amount > 0 &&
+                damageAmount <= 0
+        ) {
             LOG.info("Fully blocked attack, apply Frozen amount " + this.amount);
             addToTop(
                     new ApplyPowerAction(

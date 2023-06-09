@@ -10,7 +10,7 @@ public class ElementalStorm extends SorcererCard {
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int WEAK_VULNERABLE_AMOUNT = 1;
+    private static final int DAMAGE_BLOCK = 3;
     // --- VALUES END ---
 
     public ElementalStorm() {
@@ -19,7 +19,7 @@ public class ElementalStorm extends SorcererCard {
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.UNCOMMON)
-                        .magicNumber(WEAK_VULNERABLE_AMOUNT)
+                        .magicNumber(DAMAGE_BLOCK)
         );
     }
 

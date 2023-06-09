@@ -1,6 +1,7 @@
 package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import org.apache.commons.lang3.StringUtils;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
@@ -16,16 +17,34 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     private final static int CARDS_TO_CHOOSE = 1;
     private final CardModifier elementToMetamorph;
     private final Consumer<AbstractCard> applyElementToCard;
+    private final boolean upgraded;
     // --- VALUES END ---
 
     public ElementmorphoseAction(
-            final CardModifier elementToMetamorph,
-            final Consumer<AbstractCard> applyElementToCard
+            CardModifier elementToMetamorph,
+            Consumer<AbstractCard> applyElementToCard,
+            boolean upgraded
     ) {
         super(CARDS_TO_CHOOSE, false, false, false, false);
         this.elementToMetamorph = elementToMetamorph;
         this.applyElementToCard = applyElementToCard;
+        this.upgraded = upgraded;
         this.actionType = ActionType.CARD_MANIPULATION;
+    }
+
+
+    @Override
+    public void update() {
+        if (this.duration == Settings.ACTION_DUR_FAST && this.upgraded) {
+            this.cardGroup.group
+                    .stream()
+                    .filter(this::canBeChosen)
+                    .forEach(this::onCardChosen);
+
+            this.isDone = true;
+            return;
+        }
+        super.update();
     }
 
     @Override
@@ -59,7 +78,9 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
         card.applyPowers();
 
         // add back to hand
-        addBackToHand(card);
+        if (!this.upgraded) {
+            addBackToHand(card);
+        }
     }
 
     @Override

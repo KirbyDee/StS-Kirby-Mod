@@ -11,8 +11,9 @@ import theSorcerer.cards.DynamicCard;
 public class Melt extends SorcererFireCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int DAMAGE_MULTIPLIER = 3;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
+    private static final int DAMAGE_MULTIPLIER = 4;
     // --- VALUES END ---
 
     public Melt() {
@@ -47,6 +48,6 @@ public class Melt extends SorcererFireCard {
 
     @Override
     protected void upgradeValues() {
-        DynamicDungeon.makeCardFlashback(this);
+        upgradeBaseCost(UPGRADE_COST);
     }
 }

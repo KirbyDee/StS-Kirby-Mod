@@ -21,6 +21,6 @@ public class BaptismOfFire extends SorcererSpecialCard {
 
     @Override
     public void onChoseThisOption() {
-        addToBot(new BaptismOfFireAction());
+        addToBot(new BaptismOfFireAction(this.upgraded));
     }
 }

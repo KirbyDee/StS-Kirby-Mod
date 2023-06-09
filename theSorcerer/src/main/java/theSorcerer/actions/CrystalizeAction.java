@@ -5,10 +5,13 @@ import theSorcerer.modifiers.CardModifier;
 
 public class CrystalizeAction extends ElementmorphoseAction {
 
-    public CrystalizeAction() {
+    public CrystalizeAction(
+            boolean upgraded
+    ) {
         super(
                 CardModifier.ICE,
-                DynamicDungeon::makeCardIce
+                DynamicDungeon::makeCardIce,
+                upgraded
         );
     }
 }

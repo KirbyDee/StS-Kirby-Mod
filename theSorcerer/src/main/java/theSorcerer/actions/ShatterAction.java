@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.debuff.FrozenPower;
@@ -39,15 +40,37 @@ public class ShatterAction extends AbstractGameAction {
             return;
         }
 
-        DynamicDungeon.withAllMonstersDo(m ->
-                addToBot(
-                        new ApplyPowerAction(
-                                m,
-                                this.player,
-                                new WeakPower(m, amount, false),
-                                amount,
-                                true
-                        )
+        DynamicDungeon.withAllMonstersDo(this::applyWeakAndVulnerable);
+    }
+
+    private void applyWeakAndVulnerable(AbstractMonster monster) {
+        // weak
+        addToBot(
+                new ApplyPowerAction(
+                        monster,
+                        this.player,
+                        new WeakPower(
+                                monster,
+                                this.amount,
+                                false
+                        ),
+                        this.amount,
+                        true
+                )
+        );
+
+        // vulnerable
+        addToBot(
+                new ApplyPowerAction(
+                        monster,
+                        this.player,
+                        new VulnerablePower(
+                                monster,
+                                this.amount,
+                                false
+                        ),
+                        this.amount,
+                        true
                 )
         );
     }
