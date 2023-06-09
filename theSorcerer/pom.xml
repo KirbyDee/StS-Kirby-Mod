@@ -6,8 +6,17 @@
     <groupId>kirbydeemod</groupId>
     <artifactId>KirbyDeeMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>KirbyDee Mod</name>
-    <version>0.9.5</version>
-    <description>A default base to start your own mod from.</description>
+    <version>0.9.6</version>
+    <description>
+A sorcerer from another dimension.
+
+The Sorcerer is a custom class which can cast fire or ice spells in sequence to gain even more power.
+
+Features of the class:
+- 75 cards
+- 13 new class relics
+- 5 new class potions
+    </description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

@@ -69,7 +69,7 @@
   },
   "theSorcerer:PastEmbrace": {
     "NAME": "Past Embrace",
-    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, gain [E]."
+    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw !M! card."
   },
   "theSorcerer:Infernophoenix": {
     "NAME": "Infernophoenix",
@@ -304,7 +304,7 @@
   },
   "theSorcerer:InnerFocus": {
     "NAME": "Inner Focus",
-    "DESCRIPTION": "If you have thesorcerer:Presence_Of_Mind at the start of your turn, gain [E] ."
+    "DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, gain [E] ."
   },
   "theSorcerer:FireCharm": {
     "NAME": "Fire Charm",

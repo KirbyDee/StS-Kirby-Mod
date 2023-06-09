@@ -552,6 +552,14 @@ public class DynamicDungeon {
         }
     }
 
+    public static void triggerOnPresenceOfMind() {
+        triggerOnSpecific(
+                DynamicCard::triggerOnPresenceOfMind,
+                DynamicPower::triggerOnPresenceOfMind,
+                DynamicRelic::triggerOnPresenceOfMind
+        );
+    }
+
     public static void triggerOnElementless() {
         triggerOnSpecific(
                 DynamicCard::triggerOnElementless,

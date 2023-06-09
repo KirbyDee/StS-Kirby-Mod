@@ -5,7 +5,7 @@ import theSorcerer.DynamicDungeon;
 
 public class BouncyCastle extends DynamicRelic {
 
-    private static final int DRAW_AMOUNT = 1;
+    private static final int ENERGY_AMOUNT = 1;
 
     public BouncyCastle() {
         super(
@@ -25,12 +25,12 @@ public class BouncyCastle extends DynamicRelic {
     public void triggerOnFuturity() {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             DynamicDungeon.triggerRelic(this);
-            DynamicDungeon.drawCard(DRAW_AMOUNT);
+            DynamicDungeon.gainEnergy(ENERGY_AMOUNT);
         }
     }
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + DRAW_AMOUNT + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 }

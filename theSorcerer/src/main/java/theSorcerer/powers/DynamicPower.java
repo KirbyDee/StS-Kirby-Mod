@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.util.ElementAmount;
 import theSorcerer.util.TextureLoader;
 
 import static theSorcerer.KirbyDeeMod.makePowerPath;
@@ -54,6 +55,8 @@ public abstract class DynamicPower extends AbstractPower implements CloneablePow
     public void triggerOnFuturity() {}
 
     public void triggerOnElementless() {}
+
+    public void triggerOnPresenceOfMind() {}
 
     public static String getID(final Class<? extends DynamicPower> thisClazz) {
         return DynamicDungeon.makeID(thisClazz);

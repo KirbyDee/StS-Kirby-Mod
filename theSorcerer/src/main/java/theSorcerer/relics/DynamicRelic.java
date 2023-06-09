@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.relics.PeacePipe;
 import com.megacrit.cardcrawl.relics.Shovel;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.DynamicPower;
+import theSorcerer.util.ElementAmount;
 import theSorcerer.util.TextureLoader;
 
 import java.util.Arrays;
@@ -80,6 +81,8 @@ public abstract class DynamicRelic extends CustomRelic {
     public void triggerOnFuturity() {}
 
     public void triggerOnElementless() {}
+
+    public void triggerOnPresenceOfMind() {}
 
     @SafeVarargs
     protected final void addTip(final Class<? extends DynamicPower>... powerClass) {

@@ -69,8 +69,7 @@
     "NAME": "Bouncy Castle",
     "FLAVOR": "Wohoooo!! Feel the height!",
     "DESCRIPTIONS": [
-      "Whenever you #yFuturify a card, draw #b",
-      " card."
+      "Whenever you #yFuturify a card, gain [E] ."
     ]
   },
   "theSorcerer:ElementalPets": {

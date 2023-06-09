@@ -23,6 +23,11 @@ public class PresenceOfMindPower extends SelfRemovablePower {
     }
 
     @Override
+    public void onInitialApplication() {
+        DynamicDungeon.triggerOnPresenceOfMind();
+    }
+
+    @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         flash();
         if (!DynamicDungeon.isArcaneCard(card)) {

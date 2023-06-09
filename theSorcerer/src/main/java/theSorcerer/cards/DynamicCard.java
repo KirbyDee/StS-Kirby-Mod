@@ -312,6 +312,8 @@ public abstract class DynamicCard extends CustomCard {
 
     public void triggerOnElementless() {}
 
+    public void triggerOnPresenceOfMind() {}
+
     public void triggerOnElementCost(final ElementAmount elementAmountSpend) {}
 
     @Override

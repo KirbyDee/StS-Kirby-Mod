@@ -3,8 +3,9 @@ package theSorcerer.powers.buff;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.DynamicDungeon;
+import theSorcerer.powers.DynamicAmountPower;
 
-public class InnerFocusPower extends StartOfTurnPower {
+public class InnerFocusPower extends DynamicAmountPower {
 
     public InnerFocusPower(
             final AbstractCreature owner,
@@ -13,13 +14,14 @@ public class InnerFocusPower extends StartOfTurnPower {
         super(
                 InnerFocusPower.class,
                 owner,
-                PresenceOfMindPower.class,
                 amount
         );
+
+        updateDescription();
     }
 
     @Override
-    protected void applyPower() {
+    public void triggerOnPresenceOfMind() {
         DynamicDungeon.gainEnergy(this.amount);
     }
 
@@ -31,6 +33,11 @@ public class InnerFocusPower extends StartOfTurnPower {
     @Override
     public AbstractPower makeCopy() {
         return new InnerFocusPower(this.owner, this.amount);
+    }
+
+    @Override
+    public PowerType getPowerType() {
+        return PowerType.BUFF;
     }
 }
 

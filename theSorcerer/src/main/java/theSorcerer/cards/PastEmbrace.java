@@ -10,7 +10,7 @@ public class PastEmbrace extends SorcererCard {
     // --- VALUES START ---
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
-    private static final int ENERGY_GAIN = 1;
+    private static final int DRAW_CARD = 1;
     // --- VALUES END ---
 
     public PastEmbrace() {
@@ -19,7 +19,7 @@ public class PastEmbrace extends SorcererCard {
                         .cost(COST)
                         .type(CardType.POWER)
                         .rarity(CardRarity.UNCOMMON)
-                        .magicNumber(ENERGY_GAIN)
+                        .magicNumber(DRAW_CARD)
         );
     }
 

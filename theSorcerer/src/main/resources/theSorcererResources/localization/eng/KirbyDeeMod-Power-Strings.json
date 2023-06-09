@@ -26,10 +26,9 @@
   "theSorcerer:PastEmbracePower": {
     "NAME": "Past Embrace",
     "DESCRIPTIONS": [
-      "Whenever a card is #yFlashbacked, gain [E] ",
-      ".",
-      "#b",
-      " times."
+      "Whenever a card is #yFlashbacked, draw #b",
+      " card.",
+      " cards."
     ]
   },
   "theSorcerer:InfernophoenixPower": {
@@ -95,7 +94,7 @@
   "theSorcerer:InnerFocusPower": {
     "NAME": "Inner Focus",
     "DESCRIPTIONS": [
-      "If you have #yPresence #yOf #yMind at the start of your turn, gain [E] ",
+      "Whenever you gain #yPresence #yOf #yMind, gain [E] ",
       "#b",
       " times.",
       "."
