@@ -157,6 +157,9 @@ public class DynamicDungeon {
 
     public static void makeCardFire(final AbstractCard card) {
         if (!isArcaneCard(card) && !isFireCard(card)) {
+            if (card instanceof DynamicCard) {
+                ((DynamicCard) card).triggerOnMakeFire();
+            }
             addModifierToCard(card, new FireMod());
         }
     }
@@ -167,6 +170,9 @@ public class DynamicDungeon {
 
     public static void makeCardIce(final AbstractCard card) {
         if (!isArcaneCard(card) && !isIceCard(card)) {
+            if (card instanceof DynamicCard) {
+                ((DynamicCard) card).triggerOnMakeIce();
+            }
             addModifierToCard(card, new IceMod());
         }
     }

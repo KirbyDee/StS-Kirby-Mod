@@ -1,4 +1,4 @@
-package theSorcerer.cards.ice;
+package theSorcerer.cards.fire;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -6,9 +6,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.fire.FireDefend;
+import theSorcerer.cards.ice.IceDefend;
+import theSorcerer.cards.ice.SorcererIceCard;
 
-public class IceDefend extends SorcererIceCard {
+public class FireDefend extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -16,9 +17,9 @@ public class IceDefend extends SorcererIceCard {
     private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 
-    public IceDefend() {
+    public FireDefend() {
         super(
-                DynamicCard.InfoBuilder(IceDefend.class)
+                DynamicCard.InfoBuilder(FireDefend.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.BASIC)

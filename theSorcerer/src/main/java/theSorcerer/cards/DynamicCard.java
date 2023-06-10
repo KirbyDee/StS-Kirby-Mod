@@ -316,6 +316,10 @@ public abstract class DynamicCard extends CustomCard {
 
     public void triggerOnElementCost(final ElementAmount elementAmountSpend) {}
 
+    public void triggerOnMakeFire() {}
+
+    public void triggerOnMakeIce() {}
+
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         DynamicCard card = (DynamicCard) super.makeStatEquivalentCopy();

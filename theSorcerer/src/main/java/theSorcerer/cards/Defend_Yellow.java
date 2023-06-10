@@ -1,8 +1,11 @@
 package theSorcerer.cards;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.cards.fire.FireDefend;
+import theSorcerer.cards.ice.IceDefend;
 
 public class Defend_Yellow extends SorcererCard {
 
@@ -32,6 +35,20 @@ public class Defend_Yellow extends SorcererCard {
                         this.block
                 )
         );
+    }
+
+    @Override
+    public void triggerOnMakeFire() {
+        CustomCard fireStrike = new FireDefend();
+        this.name = fireStrike.name;
+        this.loadCardImage(fireStrike.textureImg);
+    }
+
+    @Override
+    public void triggerOnMakeIce() {
+        CustomCard iceStrike = new IceDefend();
+        this.name = iceStrike.name;
+        this.loadCardImage(iceStrike.textureImg);
     }
 
     public void upgradeValues() {

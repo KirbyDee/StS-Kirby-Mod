@@ -1,5 +1,6 @@
 package theSorcerer.cards.fire;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.ice.IceStrike;
 import theSorcerer.effect.FireParticleEffect;
 
 public class FireStrike extends SorcererFireCard {
@@ -54,6 +56,20 @@ public class FireStrike extends SorcererFireCard {
                 addToBot(new VFXAction(new FireParticleEffect(monster.hb.cX, monster.hb.cY - 40.0F * Settings.scale), 0.3F));
             }
         }
+    }
+
+    @Override
+    public void triggerOnMakeFire() {
+        CustomCard fireStrike = new FireStrike();
+        this.name = fireStrike.name;
+        this.loadCardImage(fireStrike.textureImg);
+    }
+
+    @Override
+    public void triggerOnMakeIce() {
+        CustomCard iceStrike = new IceStrike();
+        this.name = iceStrike.name;
+        this.loadCardImage(iceStrike.textureImg);
     }
 
     @Override

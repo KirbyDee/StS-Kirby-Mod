@@ -1,35 +1,40 @@
-package theSorcerer.cards;
+package theSorcerer.cards.ice;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.fire.FireStrike;
-import theSorcerer.cards.ice.IceStrike;
+import theSorcerer.effect.FireParticleEffect;
 
-public class Strike_Yellow extends SorcererCard {
+public class IceStrike extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int DAMAGE = 6;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final int UPGRADE_PLUS_DMG = 3;
     // --- VALUES END ---
 
-    public Strike_Yellow() {
+    public IceStrike() {
         super(
-                DynamicCard.InfoBuilder(Strike_Yellow.class)
+                DynamicCard.InfoBuilder(IceStrike.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.BASIC)
                         .target(CardTarget.ENEMY)
-                        .tags(CardTags.STARTER_STRIKE, CardTags.STRIKE)
+                        .tags(CardTags.STRIKE)
                         .damage(DAMAGE)
         );
     }
 
+    @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
+        // damage
         addToBot(
                 new DamageAction(
                         monster,
@@ -41,6 +46,16 @@ public class Strike_Yellow extends SorcererCard {
                         AbstractGameAction.AttackEffect.BLUNT_LIGHT
                 )
         );
+
+        // effect
+        if (monster != null) {
+            if (Settings.FAST_MODE) {
+                addToBot(new VFXAction(new FireParticleEffect(monster.hb.cX, monster.hb.cY - 40.0F * Settings.scale), 0.1F));
+            }
+            else {
+                addToBot(new VFXAction(new FireParticleEffect(monster.hb.cX, monster.hb.cY - 40.0F * Settings.scale), 0.3F));
+            }
+        }
     }
 
     @Override
@@ -57,7 +72,8 @@ public class Strike_Yellow extends SorcererCard {
         this.loadCardImage(iceStrike.textureImg);
     }
 
-    public void upgradeValues() {
-        upgradeDamage(UPGRADE_DAMAGE);
+    @Override
+    protected void upgradeValues() {
+        upgradeDamage(UPGRADE_PLUS_DMG);
     }
 }
