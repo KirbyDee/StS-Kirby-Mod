@@ -1,6 +1,7 @@
 package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.powers.buff.ChilledPower;
 import theSorcerer.powers.buff.ElementPower;
@@ -30,5 +31,6 @@ public class ChilledPowerApplyAction extends ElementPowerApplyAction {
     @Override
     protected void showVFX(AbstractCreature owner) {
         // TODOO
+        CardCrawlGame.sound.play("ORB_FROST_CHANNEL", 0.1F);
     }
 }

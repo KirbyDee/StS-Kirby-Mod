@@ -27,6 +27,7 @@ public class AbstractPileViewScreenPatch {
                 .ifPresent(consumer);
     }
 
+    // TODO master deck view hovered card shows wrong bottled icon
     private static boolean checkHandSize(final AbstractCard card) {
         if (AbstractDungeon.player.hand.size() < 10) { // TODO: dynamic number?
             return true;

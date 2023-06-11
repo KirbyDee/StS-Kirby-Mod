@@ -15,12 +15,20 @@
     "NAME": "Ice Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "theSorcerer:ArcaneStrike": {
+    "NAME": "Arcane Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
   "theSorcerer:IceDefend": {
     "NAME": "Ice Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:FireDefend": {
     "NAME": "Fire Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "theSorcerer:ArcaneDefend": {
+    "NAME": "Arcane Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
   "theSorcerer:Scorch": {

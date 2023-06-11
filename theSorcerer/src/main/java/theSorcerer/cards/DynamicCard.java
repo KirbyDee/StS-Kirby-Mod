@@ -320,6 +320,8 @@ public abstract class DynamicCard extends CustomCard {
 
     public void triggerOnMakeIce() {}
 
+    public void triggerOnMakeArcane() {}
+
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         DynamicCard card = (DynamicCard) super.makeStatEquivalentCopy();

@@ -1,4 +1,4 @@
-package theSorcerer.cards.ice;
+package theSorcerer.cards.arcane;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -9,11 +9,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.arcane.ArcaneStrike;
 import theSorcerer.cards.fire.FireStrike;
+import theSorcerer.cards.fire.SorcererFireCard;
+import theSorcerer.cards.ice.IceStrike;
 import theSorcerer.effect.FireParticleEffect;
 
-public class IceStrike extends SorcererIceCard {
+public class ArcaneStrike extends SorcererArcaneCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -21,9 +22,9 @@ public class IceStrike extends SorcererIceCard {
     private static final int UPGRADE_PLUS_DMG = 3;
     // --- VALUES END ---
 
-    public IceStrike() {
+    public ArcaneStrike() {
         super(
-                DynamicCard.InfoBuilder(IceStrike.class)
+                DynamicCard.InfoBuilder(ArcaneStrike.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.BASIC)

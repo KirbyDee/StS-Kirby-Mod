@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.arcane.ArcaneDefend;
 import theSorcerer.cards.fire.FireDefend;
 
 public class IceDefend extends SorcererIceCard {
@@ -37,22 +38,26 @@ public class IceDefend extends SorcererIceCard {
                         this.block
                 )
         );
-
-        CardCrawlGame.sound.play("ORB_FROST_CHANNEL", 0.1F);
     }
 
     @Override
     public void triggerOnMakeFire() {
-        CustomCard fireStrike = new FireDefend();
-        this.name = fireStrike.name;
-        this.loadCardImage(fireStrike.textureImg);
+        triggerOnMorphose(new FireDefend());
     }
 
     @Override
     public void triggerOnMakeIce() {
-        CustomCard iceStrike = new IceDefend();
-        this.name = iceStrike.name;
-        this.loadCardImage(iceStrike.textureImg);
+        triggerOnMorphose(new IceDefend());
+    }
+
+    @Override
+    public void triggerOnMakeArcane() {
+        triggerOnMorphose(new ArcaneDefend());
+    }
+
+    private void triggerOnMorphose(final CustomCard defend) {
+        this.name = defend.name;
+        this.loadCardImage(defend.textureImg);
     }
 
     @Override

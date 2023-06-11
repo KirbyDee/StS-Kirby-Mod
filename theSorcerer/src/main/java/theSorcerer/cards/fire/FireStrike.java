@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.arcane.ArcaneStrike;
 import theSorcerer.cards.ice.IceStrike;
 import theSorcerer.effect.FireParticleEffect;
 
@@ -60,16 +61,22 @@ public class FireStrike extends SorcererFireCard {
 
     @Override
     public void triggerOnMakeFire() {
-        CustomCard fireStrike = new FireStrike();
-        this.name = fireStrike.name;
-        this.loadCardImage(fireStrike.textureImg);
+        triggerOnMorphose(new FireStrike());
     }
 
     @Override
     public void triggerOnMakeIce() {
-        CustomCard iceStrike = new IceStrike();
-        this.name = iceStrike.name;
-        this.loadCardImage(iceStrike.textureImg);
+        triggerOnMorphose(new IceStrike());
+    }
+
+    @Override
+    public void triggerOnMakeArcane() {
+        triggerOnMorphose(new ArcaneStrike());
+    }
+
+    private void triggerOnMorphose(final CustomCard strike) {
+        this.name = strike.name;
+        this.loadCardImage(strike.textureImg);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package theSorcerer;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.abstracts.CustomCard;
 import basemod.cardmods.EtherealMod;
 import basemod.cardmods.ExhaustMod;
 import basemod.cardmods.InnateMod;
@@ -27,7 +28,10 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ChilledPowerApplyAction;
 import theSorcerer.actions.ElementLoseAction;
 import theSorcerer.actions.HeatedPowerApplyAction;
+import theSorcerer.cards.Defend_Yellow;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.Strike_Yellow;
+import theSorcerer.cards.fire.FireStrike;
 import theSorcerer.modifiers.*;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.powers.DynamicPower;
@@ -183,6 +187,9 @@ public class DynamicDungeon {
 
     public static void makeCardArcane(final AbstractCard card) {
         if (!isArcaneCard(card)) {
+            if (card instanceof DynamicCard) {
+                ((DynamicCard) card).triggerOnMakeArcane();
+            }
             addModifierToCard(card, new ArcaneMod());
         }
     }

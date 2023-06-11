@@ -1,24 +1,25 @@
-package theSorcerer.cards;
+package theSorcerer.cards.arcane;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theSorcerer.cards.arcane.ArcaneDefend;
+import theSorcerer.cards.DynamicCard;
 import theSorcerer.cards.fire.FireDefend;
 import theSorcerer.cards.ice.IceDefend;
 
-public class Defend_Yellow extends SorcererCard {
+public class ArcaneDefend extends SorcererArcaneCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int BLOCK = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 
-    public Defend_Yellow() {
+    public ArcaneDefend() {
         super(
-                DynamicCard.InfoBuilder(Defend_Yellow.class)
+                DynamicCard.InfoBuilder(ArcaneDefend.class)
                         .cost(COST)
                         .type(CardType.SKILL)
                         .rarity(CardRarity.BASIC)
@@ -28,6 +29,7 @@ public class Defend_Yellow extends SorcererCard {
         );
     }
 
+    @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
                 new GainBlockAction(
@@ -58,7 +60,8 @@ public class Defend_Yellow extends SorcererCard {
         this.loadCardImage(defend.textureImg);
     }
 
-    public void upgradeValues() {
-        upgradeBlock(UPGRADE_BLOCK);
+    @Override
+    protected void upgradeValues() {
+        upgradeBlock(UPGRADE_PLUS_BLOCK);
     }
 }

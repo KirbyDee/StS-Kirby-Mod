@@ -3,13 +3,12 @@ package theSorcerer.cards.fire;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.arcane.ArcaneDefend;
 import theSorcerer.cards.ice.IceDefend;
-import theSorcerer.cards.ice.SorcererIceCard;
 
-public class FireDefend extends SorcererIceCard {
+public class FireDefend extends SorcererFireCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -38,22 +37,26 @@ public class FireDefend extends SorcererIceCard {
                         this.block
                 )
         );
-
-        CardCrawlGame.sound.play("ORB_FROST_CHANNEL", 0.1F);
     }
 
     @Override
     public void triggerOnMakeFire() {
-        CustomCard fireStrike = new FireDefend();
-        this.name = fireStrike.name;
-        this.loadCardImage(fireStrike.textureImg);
+        triggerOnMorphose(new FireDefend());
     }
 
     @Override
     public void triggerOnMakeIce() {
-        CustomCard iceStrike = new IceDefend();
-        this.name = iceStrike.name;
-        this.loadCardImage(iceStrike.textureImg);
+        triggerOnMorphose(new IceDefend());
+    }
+
+    @Override
+    public void triggerOnMakeArcane() {
+        triggerOnMorphose(new ArcaneDefend());
+    }
+
+    private void triggerOnMorphose(final CustomCard defend) {
+        this.name = defend.name;
+        this.loadCardImage(defend.textureImg);
     }
 
     @Override
