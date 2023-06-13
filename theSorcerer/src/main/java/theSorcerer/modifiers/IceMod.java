@@ -19,7 +19,6 @@ public class IceMod extends ElementMod {
         return new IceMod();
     }
 
-
     public void onInitialApplication(AbstractCard card) {
         CardModifierManager.removeModifiersById(card, FireMod.ID, true);
         CardModifierManager.removeModifiersById(card, ArcaneMod.ID, true);

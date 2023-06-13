@@ -19,7 +19,8 @@ public enum CardModifier {
     ENTOMB(new EntombMod()),
     EXHAUST(new ExhaustMod()),
     FUTURITY(new FuturityMod()),
-    FLASHBACK(new FlashbackMod());
+    FLASHBACK(new FlashbackMod()),
+    COPYCAT(new CopyCatMod());
 
     public final AbstractCardModifier cardMod;
 

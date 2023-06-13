@@ -28,10 +28,7 @@ import org.apache.logging.log4j.Logger;
 import theSorcerer.actions.ChilledPowerApplyAction;
 import theSorcerer.actions.ElementLoseAction;
 import theSorcerer.actions.HeatedPowerApplyAction;
-import theSorcerer.cards.Defend_Yellow;
 import theSorcerer.cards.DynamicCard;
-import theSorcerer.cards.Strike_Yellow;
-import theSorcerer.cards.fire.FireStrike;
 import theSorcerer.modifiers.*;
 import theSorcerer.patches.cards.AbstractCardPatch;
 import theSorcerer.powers.DynamicPower;
@@ -129,6 +126,10 @@ public class DynamicDungeon {
 
     public static boolean isRetainCard(final AbstractCard card) {
         return cardHasModifier(card, CardModifier.RETAIN);
+    }
+
+    public static boolean isCopycatCard(final AbstractCard card) {
+        return cardHasModifier(card, CardModifier.COPYCAT);
     }
 
     public static boolean isExhaustCard(final AbstractCard card) {
@@ -258,7 +259,9 @@ public class DynamicDungeon {
             final AbstractCard card,
             final AbstractCardModifier cardModifier
     ) {
-        CardModifierManager.addModifier(card, cardModifier);
+        if (!CardModifierManager.hasModifier(card, cardModifier.identifier(card))) {
+            CardModifierManager.addModifier(card, cardModifier);
+        }
     }
 
     public static void removeModifierFromCard(
@@ -712,6 +715,21 @@ public class DynamicDungeon {
     public static void modifyCardInDeck(final AbstractCard card) {
         int index = AbstractDungeon.player.masterDeck.group.indexOf(card);
         AbstractDungeon.player.masterDeck.group.set(index, card.makeStatEquivalentCopy());
+    }
+
+    public static CustomCard getCopyOfRandomCardInDeck() {
+        final CardGroup cardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        AbstractDungeon.player.masterDeck.group
+                .stream()
+                .filter(CustomCard.class::isInstance)
+                .map(CustomCard.class::cast)
+                .filter(c -> !c.tags.contains(AbstractCard.CardTags.STARTER_DEFEND))
+                .filter(c -> !c.tags.contains(AbstractCard.CardTags.STARTER_STRIKE))
+                .forEach(cardGroup::addToRandomSpot);
+        AbstractCard card = cardGroup.getRandomCard(true);
+        return card != null ?
+                (CustomCard) card.makeStatEquivalentCopy() :
+                null;
     }
 
 

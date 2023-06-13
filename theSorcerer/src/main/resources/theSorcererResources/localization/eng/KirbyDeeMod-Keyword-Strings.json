@@ -169,5 +169,21 @@
       "elementcost"
     ],
     "DESCRIPTION": "This card can be cast for less energy at a cost of #yElemental #yAffinities."
+  },
+  {
+    "PROPER_NAME": "Copycat",
+    "NAMES": [
+      "Copycat",
+      "copycat"
+    ],
+    "DESCRIPTION": "#yRetain. NL NL When #yretained, transforms into a random card from your deck (except #yStarter #yStrike and #yStarter #yDefend ). NL NL When transformed due to #yCopycat, upgrade it automatically."
+  },
+  {
+    "PROPER_NAME": "Copycat+",
+    "NAMES": [
+      "Copycat+",
+      "copycat+"
+    ],
+    "DESCRIPTION": "#yRetain. NL NL When #yretained, transforms into a random card from your deck (except #yStarter #yStrike and #yStarter #yDefend ). NL NL When transformed due to #yCopycat+, upgrade it automatically. NL It costs 0 this turn."
   }
 ]

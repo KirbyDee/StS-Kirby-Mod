@@ -11,7 +11,7 @@ public class Singularity extends SorcererCard {
     // --- VALUES START ---
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 8;
     private static final int ELEMENTAL_CARDS_PLAYED = 0;
     // --- VALUES END ---
 

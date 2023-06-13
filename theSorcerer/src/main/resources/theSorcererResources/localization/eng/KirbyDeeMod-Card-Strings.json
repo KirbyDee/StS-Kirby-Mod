@@ -238,9 +238,9 @@
       "I have to be NL #rElementless."
     ]
   },
-  "theSorcerer:ElementalPath": {
-    "NAME": "Elemental Path",
-    "DESCRIPTION": "Switch your current thesorcerer:Elemental_Affinities to the opposite thesorcerer:Elemental_Affinities."
+  "theSorcerer:Wormhole": {
+    "NAME": "Wormhole",
+    "DESCRIPTION": ""
   },
   "theSorcerer:Explosion": {
     "NAME": "Explosion",
