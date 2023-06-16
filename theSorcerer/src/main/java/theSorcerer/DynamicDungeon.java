@@ -129,7 +129,7 @@ public class DynamicDungeon {
     }
 
     public static boolean isCopycatCard(final AbstractCard card) {
-        return cardHasModifier(card, CardModifier.COPYCAT);
+        return cardHasModifier(card, CardModifier.COPYCAT) || cardHasModifier(card, CardModifier.COPYCAT_PLUS) ;
     }
 
     public static boolean isExhaustCard(final AbstractCard card) {
@@ -717,14 +717,14 @@ public class DynamicDungeon {
         AbstractDungeon.player.masterDeck.group.set(index, card.makeStatEquivalentCopy());
     }
 
-    public static CustomCard getCopyOfRandomCardInDeck() {
+    public static CustomCard getCopyOfRandomCardInDeck(final Predicate<AbstractCard> predicate) {
         final CardGroup cardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         AbstractDungeon.player.masterDeck.group
                 .stream()
                 .filter(CustomCard.class::isInstance)
                 .map(CustomCard.class::cast)
-                .filter(c -> !c.tags.contains(AbstractCard.CardTags.STARTER_DEFEND))
-                .filter(c -> !c.tags.contains(AbstractCard.CardTags.STARTER_STRIKE))
+                .filter(predicate)
+                .filter(c -> !DynamicDungeon.isCopycatCard(c))
                 .forEach(cardGroup::addToRandomSpot);
         AbstractCard card = cardGroup.getRandomCard(true);
         return card != null ?

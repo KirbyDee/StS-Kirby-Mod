@@ -5,7 +5,6 @@ import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.eventUtil.AddEventParams;
-import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -33,7 +32,6 @@ import theSorcerer.events.DynamicEvent;
 import theSorcerer.events.ElementalBazarEvent;
 import theSorcerer.events.ElementalCreaturesEvent;
 import theSorcerer.events.FlashingCaveEvent;
-import theSorcerer.glows.ElementGlow;
 import theSorcerer.potions.*;
 import theSorcerer.relics.*;
 import theSorcerer.util.IDCheckDontTouchPls;
@@ -374,7 +372,6 @@ public class KirbyDeeMod implements
         );
 
         // =============== Glow =================
-        CardBorderGlowManager.addGlowInfo(new ElementGlow());
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");

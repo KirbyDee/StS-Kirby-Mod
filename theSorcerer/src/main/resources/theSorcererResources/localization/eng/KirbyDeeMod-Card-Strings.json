@@ -166,7 +166,7 @@
   "theSorcerer:ArcanePulse": {
     "NAME": "Arcane Pulse",
     "DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to it.",
-    "UPGRADE_DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to all enemies."
+    "UPGRADE_DESCRIPTION": "If the enemy intends to attack, deal the same amount of damage to ALL enemies."
   },
   "theSorcerer:Dispell": {
     "NAME": "Dispell",
@@ -244,11 +244,11 @@
   },
   "theSorcerer:Explosion": {
     "NAME": "Explosion",
-    "DESCRIPTION": "Deal damage equal to targets thesorcerer:Ablaze stacks to all enemies."
+    "DESCRIPTION": "Deal damage equal to targets thesorcerer:Ablaze stacks to ALL enemies."
   },
   "theSorcerer:Shatter": {
     "NAME": "Shatter",
-    "DESCRIPTION": "Apply Weak and Vulnerable equal to targets thesorcerer:Frozen stacks to all enemies."
+    "DESCRIPTION": "Apply Weak and Vulnerable equal to targets thesorcerer:Frozen stacks to ALL enemies."
   },
   "theSorcerer:Harmony": {
     "NAME": "Harmony",
@@ -335,7 +335,7 @@
     "DESCRIPTION": "At the start of each turn, add either a *Fire *Charm or *Ice *Charm into your hand depending on the theSorcerer:Elemental_Affinities you ended up last turn."
   },
   "theSorcerer:RecurringStrike": {
-    "NAME": "RepeatingStrike",
+    "NAME": "Repeating Strike",
     "DESCRIPTION": "Deal !D! damage. NL If this card is thesorcerer:Flashbacked, gain !M! Strength."
   },
   "theSorcerer:ChronoBlast": {
@@ -351,8 +351,8 @@
     "DESCRIPTION": "Exhaust a card in your discard pile. NL Gain [E] equal to its cost.",
     "UPGRADE_DESCRIPTION": "Exhaust any number of cards in your discard pile. NL Gain [E] equal to their combined cost."
   },
-  "theSorcerer:InsightfulAttack": {
-    "NAME": "Insightful Attack",
+  "theSorcerer:InsightfulStrike": {
+    "NAME": "Insightful Strike",
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL If the card drawn is an thesorcerer:Elemental_Card draw an additional card."
   },
   "theSorcerer:IceAge": {

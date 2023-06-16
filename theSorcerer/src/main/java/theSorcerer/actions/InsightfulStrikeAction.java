@@ -2,13 +2,12 @@ package theSorcerer.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import theSorcerer.DynamicDungeon;
 
-public class InsightfulAttackAction extends AbstractGameAction {
+public class InsightfulStrikeAction extends AbstractGameAction {
 
-    public InsightfulAttackAction(
+    public InsightfulStrikeAction(
             int amount
     ) {
         this.amount = amount;

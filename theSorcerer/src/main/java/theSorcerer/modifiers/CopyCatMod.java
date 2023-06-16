@@ -1,30 +1,39 @@
 package theSorcerer.modifiers;
 
-import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class CopyCatMod extends AbstractCardModifier {
+public abstract class CopyCatMod extends RetainMod {
 
-    public static final String ID = "thesorcerer:Copycat";
-
-    @Override
-    public String identifier(AbstractCard card) {
-        return ID;
-    }
+    private boolean copycat = false;
 
     public void onInitialApplication(AbstractCard card) {
+        super.onInitialApplication(card);
         CardModifierManager.removeModifiersById(card, RetainMod.ID, true);
     }
 
     @Override
-    public AbstractCardModifier makeCopy() {
-        return new CopyCatMod();
+    public Color getGlow(AbstractCard card) {
+        return Color.VIOLET.cpy();
     }
 
     @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return ID + (card.upgraded ? "+" : "") + ". NL " + rawDescription;
+    public void onDrawn(AbstractCard card) {
+        this.copycat = true;
+    }
+
+    @Override
+    public void onRetained(AbstractCard card) {
+        this.copycat = true;
+    }
+
+    public boolean isCopycat() {
+        return this.copycat;
+    }
+
+    public void setCopycat(boolean copycat) {
+        this.copycat = copycat;
     }
 }

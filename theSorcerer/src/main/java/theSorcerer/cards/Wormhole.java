@@ -2,6 +2,7 @@ package theSorcerer.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
 
 public class Wormhole extends SorcererCard {
@@ -22,5 +23,10 @@ public class Wormhole extends SorcererCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {}
+
+    @Override
+    public void upgradeValues() {
+        DynamicDungeon.addModifierToCard(this, CardModifier.COPYCAT_PLUS);
+    }
 
 }

@@ -3,59 +3,62 @@ package theSorcerer.actions;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.modifiers.CardModifier;
 
-import java.util.Iterator;
-
 public class CopycatCardsAction extends AbstractGameAction {
 
-    private final CardGroup group;
+    private final AbstractCard card;
 
-    public CopycatCardsAction(CardGroup group) {
+    public CopycatCardsAction(AbstractCard card) {
         setValues(AbstractDungeon.player, this.source, -1);
-        this.group = group;
+        this.card = card;
     }
 
     public void update() {
+        updateCard();
         this.isDone = true;
-        Iterator<AbstractCard> c = this.group.group.iterator();
+    }
 
-        while(true) {
-            AbstractCard e;
-            do {
-                if (!c.hasNext()) {
-                    AbstractDungeon.player.hand.refreshHandLayout();
-                    return;
-                }
+    private AbstractCard copycatToHand(final AbstractCard card) {
+        final AbstractCard copycatCard = createCopycat(card);
+        copycatCard.superFlash();
+        copycatCard.onRetained();
+        CardCrawlGame.sound.play("POWER_MANTRA", 0.1f);
+        return copycatCard;
+    }
 
-                e = c.next();
-            } while (!DynamicDungeon.isCopycatCard(e));
-
-            final AbstractCard copycatCard = createCopycat(e);
-            AbstractDungeon.player.hand.addToTop(copycatCard);
-            copycatCard.superFlash();
-            c.remove();
+    private void updateCard() {
+        if (!DynamicDungeon.isCopycatCard(this.card)) {
+            return;
         }
+
+        final AbstractCard copyCard = copycatToHand(this.card);
+        AbstractDungeon.player.hand.group.set(AbstractDungeon.player.hand.group.indexOf(this.card), copyCard);
     }
 
     private AbstractCard createCopycat(final AbstractCard card) {
-        // get random card in deck (but no strike, defend)
-        CustomCard copyCard = DynamicDungeon.getCopyOfRandomCardInDeck();
+        // get random card in deck (but no strike, defend if upgraded)
+        CustomCard copyCard = DynamicDungeon.getCopyOfRandomCardInDeck(
+                card.upgraded ?
+                        c -> !c.tags.contains(AbstractCard.CardTags.STARTER_DEFEND) && !c.tags.contains(AbstractCard.CardTags.STARTER_STRIKE) :
+                        c -> true
+        );
         if (copyCard == null) {
             return card;
         }
 
-        // make it retain / copycat
-        DynamicDungeon.addModifierToCard(copyCard, CardModifier.COPYCAT);
-
-        // if upgraded
-        copyCard.upgrade();
-        if (card.upgraded) {
-            copyCard.costForTurn = 0;
+        // make it copycat
+        if (DynamicDungeon.cardHasModifier(card, CardModifier.COPYCAT_PLUS)) {
+            DynamicDungeon.addModifierToCard(copyCard, CardModifier.COPYCAT_PLUS);
+            copyCard.upgrade();
         }
+        else {
+            DynamicDungeon.addModifierToCard(copyCard, CardModifier.COPYCAT);
+        }
+        copyCard.costForTurn = 0;
         return copyCard;
     }
 }

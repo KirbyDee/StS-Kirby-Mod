@@ -50,7 +50,7 @@ public class RandomPowerRemoveAction extends AbstractGameAction {
 
     private void removePower(final AbstractPower power) {
         power.flash();
-        CardCrawlGame.sound.play("JAW_WORM_DEATH"); // TODOO: different sound
+        CardCrawlGame.sound.play("ORB_DARK_EVOKE", 0.1f);
         addToBot(new WaitAction(0.25F));
         if (this.amount <= 0) {
             addToBot(

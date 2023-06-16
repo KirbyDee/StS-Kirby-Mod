@@ -176,7 +176,7 @@
       "Copycat",
       "copycat"
     ],
-    "DESCRIPTION": "#yRetain. NL NL When #yretained, transforms into a random card from your deck (except #yStarter #yStrike and #yStarter #yDefend ). NL NL When transformed due to #yCopycat, upgrade it automatically."
+    "DESCRIPTION": "#yRetain. NL NL When drawn or #yRetained, transforms into a random card from your deck (except another #yCopycat / #yCopycat+ card) and keeps #yCopycat. NL NL When transformed due to #yCopycat, it costs 0."
   },
   {
     "PROPER_NAME": "Copycat+",
@@ -184,6 +184,6 @@
       "Copycat+",
       "copycat+"
     ],
-    "DESCRIPTION": "#yRetain. NL NL When #yretained, transforms into a random card from your deck (except #yStarter #yStrike and #yStarter #yDefend ). NL NL When transformed due to #yCopycat+, upgrade it automatically. NL It costs 0 this turn."
+    "DESCRIPTION": "#yRetain. NL NL When drawn or #yRetained, transforms into a random card from your deck (except #yStarter #yStrike, #yStarter #yDefend or another #yCopycat / #yCopycat+ card) and keeps #yCopycat+. NL NL When transformed due to #yCopycat+, upgrade it automatically and it costs 0."
   }
 ]

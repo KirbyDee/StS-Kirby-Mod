@@ -1,6 +1,7 @@
 package theSorcerer.cards.ice;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
@@ -13,7 +14,7 @@ public class ArcticShell extends SorcererIceCard {
     private static final int BLOCK = 8;
     private static final int UPGRADE_BLOCK = 3;
     private static final int DRAW_CARD = 1;
-    public boolean glowCheckTriggered = false;
+    public boolean lastCardPlayedIsFire = false;
     // --- VALUES END ---
 
     public ArcticShell() {
@@ -29,8 +30,8 @@ public class ArcticShell extends SorcererIceCard {
     }
 
     @Override
-    public void triggerOnGlowCheck() {
-        this.glowCheckTriggered = DynamicDungeon.isLastCardPlayed(DynamicDungeon::isIceCard);
+    public void triggerOnCardPlayed(AbstractCard card) {
+        this.lastCardPlayedIsFire = DynamicDungeon.isIceCard(card);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class ArcticShell extends SorcererIceCard {
                 )
         );
 
-        if (this.glowCheckTriggered) {
+        if (this.lastCardPlayedIsFire) {
             DynamicDungeon.drawCard(this.magicNumber);
         }
     }

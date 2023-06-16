@@ -20,7 +20,8 @@ public enum CardModifier {
     EXHAUST(new ExhaustMod()),
     FUTURITY(new FuturityMod()),
     FLASHBACK(new FlashbackMod()),
-    COPYCAT(new CopyCatMod());
+    COPYCAT(new CopyCatNormalMod()),
+    COPYCAT_PLUS(new CopyCatUpgradedMod());
 
     public final AbstractCardModifier cardMod;
 

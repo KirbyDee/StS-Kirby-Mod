@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
-import theSorcerer.actions.InsightfulAttackAction;
+import theSorcerer.actions.InsightfulStrikeAction;
 
-public class InsightfulAttack extends SorcererCard {
+public class InsightfulStrike extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
@@ -19,11 +19,12 @@ public class InsightfulAttack extends SorcererCard {
     private static final int DRAW_ADDITIONAL_CARDS = 1;
     // --- VALUES END ---
 
-    public InsightfulAttack() {
+    public InsightfulStrike() {
         super(
-                DynamicCard.InfoBuilder(InsightfulAttack.class)
+                DynamicCard.InfoBuilder(InsightfulStrike.class)
                         .cost(COST)
                         .type(CardType.ATTACK)
+                        .tags(CardTags.STRIKE)
                         .rarity(CardRarity.COMMON)
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
@@ -42,7 +43,7 @@ public class InsightfulAttack extends SorcererCard {
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
                 )
         );
-        DynamicDungeon.drawCard(this.magicNumber, new InsightfulAttackAction(this.secondMagicNumber));
+        DynamicDungeon.drawCard(this.magicNumber, new InsightfulStrikeAction(this.secondMagicNumber));
         addToBot(new WaitAction(0.5F));
     }
 

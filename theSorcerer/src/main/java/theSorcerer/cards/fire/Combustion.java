@@ -2,6 +2,7 @@ package theSorcerer.cards.fire;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,7 +16,7 @@ public class Combustion extends SorcererFireCard {
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 4;
     private static final int ENERGY_GAIN = 1;
-    public boolean glowCheckTriggered = false;
+    public boolean lastCardPlayedIsFire = false;
     // --- VALUES END ---
 
     public Combustion() {
@@ -40,14 +41,13 @@ public class Combustion extends SorcererFireCard {
                 )
         );
 
-        if (this.glowCheckTriggered) {
+        if (this.lastCardPlayedIsFire) {
             DynamicDungeon.gainEnergy(this.magicNumber);
         }
     }
 
-    @Override
-    public void triggerOnGlowCheck() {
-        this.glowCheckTriggered = DynamicDungeon.isLastCardPlayed(DynamicDungeon::isFireCard);
+    public void triggerOnCardPlayed(AbstractCard card) {
+        this.lastCardPlayedIsFire = DynamicDungeon.isFireCard(card);
     }
 
     @Override

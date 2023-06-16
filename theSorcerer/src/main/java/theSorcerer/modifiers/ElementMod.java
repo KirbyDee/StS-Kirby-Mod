@@ -1,12 +1,15 @@
 package theSorcerer.modifiers;
 
 import basemod.abstracts.AbstractCardModifier;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theSorcerer.DynamicDungeon;
+import theSorcerer.cards.fire.Combustion;
 import theSorcerer.patches.characters.AbstractPlayerPatch;
 
 public abstract class ElementMod extends AbstractCardModifier {
@@ -17,6 +20,15 @@ public abstract class ElementMod extends AbstractCardModifier {
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return identifier(card) + ". NL " + rawDescription;
     }
+
+    @Override
+    public Color getGlow(AbstractCard card) {
+        return !DynamicDungeon.hasElementless() ?
+                getElementColor(card) :
+                null;
+    }
+
+    protected abstract Color getElementColor(final AbstractCard card);
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {

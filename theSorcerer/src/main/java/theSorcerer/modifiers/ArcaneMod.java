@@ -2,6 +2,7 @@ package theSorcerer.modifiers;
 
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -25,6 +26,16 @@ public class ArcaneMod extends ElementMod {
         return new ArcaneMod();
     }
 
+    @Override
+    public Color getElementColor(AbstractCard card) {
+        if (DynamicDungeon.isHeated()) {
+            return Color.SCARLET.cpy();
+        }
+        else if (DynamicDungeon.isChilled()) {
+            return Color.NAVY.cpy();
+        }
+        return Color.WHITE.cpy();
+    }
 
     public void onInitialApplication(AbstractCard card) {
         CardModifierManager.removeModifiersById(card, FireMod.ID, true);
