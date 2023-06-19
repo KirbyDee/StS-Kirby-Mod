@@ -10,9 +10,9 @@ import theSorcerer.powers.buff.CollateralDamagePower;
 public class CollateralDamage extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 3;
-    private static final int PERCENT_DAMAGE = 10;
-    private static final int UPGRADE_PERCENT_DAMAGE = 5;
+    private static final int COST = 2;
+    private static final int PERCENT_DAMAGE = 20;
+    private static final int UPGRADE_PERCENT_DAMAGE = 10;
     // --- VALUES END ---
 
     public CollateralDamage() {

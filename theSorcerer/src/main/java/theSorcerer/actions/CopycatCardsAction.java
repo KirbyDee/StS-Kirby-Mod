@@ -58,7 +58,10 @@ public class CopycatCardsAction extends AbstractGameAction {
         else {
             DynamicDungeon.addModifierToCard(copyCard, CardModifier.COPYCAT);
         }
-        copyCard.costForTurn = 0;
+
+        if (copyCard.cost >= 0) {
+            copyCard.costForTurn = 0;
+        }
         return copyCard;
     }
 }

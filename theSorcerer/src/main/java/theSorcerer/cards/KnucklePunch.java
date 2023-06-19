@@ -41,7 +41,7 @@ public class KnucklePunch extends SorcererCard {
             addToBot(
                     new DamageAction(
                             abstractMonster,
-                            new DamageInfo(abstractMonster, this.damage, this.damageTypeForTurn),
+                            new DamageInfo(abstractPlayer, this.damage, this.damageTypeForTurn),
                             AbstractGameAction.AttackEffect.BLUNT_HEAVY
                     )
             );

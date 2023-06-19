@@ -8,9 +8,9 @@ import theSorcerer.powers.buff.UneducatedGuessPower;
 public class UneducatedGuess extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int COST = 1;
     private static final int DRAW_CARD_NEXT_TURN = 1;
+    private static final int UPGRADED_RAW_CARD_NEXT_TURN = 1;
     // --- VALUES END ---
 
     public UneducatedGuess() {
@@ -39,7 +39,7 @@ public class UneducatedGuess extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADED_RAW_CARD_NEXT_TURN);
     }
 
 }

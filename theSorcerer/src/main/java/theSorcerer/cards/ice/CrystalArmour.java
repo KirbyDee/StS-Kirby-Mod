@@ -11,7 +11,7 @@ public class CrystalArmour extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     // --- VALUES END ---
 

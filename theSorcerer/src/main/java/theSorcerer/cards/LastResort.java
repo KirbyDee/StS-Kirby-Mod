@@ -50,7 +50,7 @@ public class LastResort extends SorcererCard {
                 new DamageAction(
                         monster,
                         new DamageInfo(
-                                monster,
+                                player,
                                 this.damage,
                                 this.damageTypeForTurn
                         ),

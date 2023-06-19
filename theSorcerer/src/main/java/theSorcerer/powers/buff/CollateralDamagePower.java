@@ -36,18 +36,26 @@ public class CollateralDamagePower extends DynamicAmountPower {
             int damageAmount,
             AbstractCreature target
     ) {
+        LOG.info("COLLATERAL: onAttack");
+        LOG.info("target: " + target);
+        LOG.info("info.owner: " + info.owner);
+        LOG.info("this.owner: " + this.owner);
+        LOG.info("info.type: " + info.type);
+        LOG.info("this.amount: " + this.amount);
+        LOG.info("damageAmount: " + damageAmount);
         if (target != info.owner &&
                 target instanceof AbstractMonster &&
                 info.owner == this.owner &&
                 info.type == DamageInfo.DamageType.NORMAL &&
                 this.amount > 0 &&
                 damageAmount > 0) {
+            LOG.info("COLLATERAL: inside!");
             collateralDamage((AbstractMonster) target, computeCollateralDamage(damageAmount));
         }
     }
 
     private int computeCollateralDamage(final int damage) {
-        return Math.round(damage * this.amount / 100f);
+        return Math.round((float) damage * (float) this.amount / 100f);
     }
 
     private void collateralDamage(

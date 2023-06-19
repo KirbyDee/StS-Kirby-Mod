@@ -26,6 +26,7 @@ public class Wormhole extends SorcererCard {
 
     @Override
     public void upgradeValues() {
+        DynamicDungeon.removeModifierFromCard(this, CardModifier.COPYCAT);
         DynamicDungeon.addModifierToCard(this, CardModifier.COPYCAT_PLUS);
     }
 
