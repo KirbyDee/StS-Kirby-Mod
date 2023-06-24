@@ -64,6 +64,9 @@ public class CollateralDamagePower extends DynamicAmountPower {
     ) {
         LOG.info("Inflicting damage to target with attack, deal damage to all enemies except targeted one: " + damage);
         List<AbstractMonster> monsters = AbstractDungeon.getCurrRoom().monsters.monsters;
+        if (monsters.size() <= 1) {
+            return;
+        }
         int[] multiDamage = new int[monsters.size()];
         for (int i = 0; i < monsters.size(); i++) {
             AbstractMonster monster = monsters.get(i);
@@ -73,7 +76,6 @@ public class CollateralDamagePower extends DynamicAmountPower {
             }
             multiDamage[i] = damage;
         }
-
 
         flash();
         addToBot(

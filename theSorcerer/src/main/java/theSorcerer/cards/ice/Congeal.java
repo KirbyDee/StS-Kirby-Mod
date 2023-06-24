@@ -1,27 +1,30 @@
 package theSorcerer.cards.ice;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.cards.DynamicCard;
+import theSorcerer.cards.fire.Melt;
 
 public class Congeal extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int BLOCK_MULTIPLIER = 4;
+    private static final int DAMAGE_MULTIPLIER = 4;
     // --- VALUES END ---
 
     public Congeal() {
         super(
                 DynamicCard.InfoBuilder(Congeal.class)
                         .cost(COST)
-                        .type(CardType.SKILL)
+                        .type(CardType.ATTACK)
                         .rarity(CardRarity.COMMON)
-                        .target(CardTarget.SELF)
-                        .magicNumber(BLOCK_MULTIPLIER)
+                        .target(CardTarget.ENEMY)
+                        .magicNumber(DAMAGE_MULTIPLIER)
                         .secondMagicNumber(0)
         );
     }
@@ -29,10 +32,10 @@ public class Congeal extends SorcererIceCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         addToBot(
-                new GainBlockAction(
-                        player,
-                        player,
-                        this.secondMagicNumber
+                new DamageAction(
+                        monster,
+                        new DamageInfo(player, this.secondMagicNumber, this.damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.NONE
                 )
         );
     }

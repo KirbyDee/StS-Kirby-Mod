@@ -184,7 +184,7 @@
   },
   "theSorcerer:Congeal": {
     "NAME": "Congeal",
-    "DESCRIPTION": "Gain Block equal to !M! times your thesorcerer:Heated. NL (Gain !theSorcerer:MM! Block.)"
+    "DESCRIPTION": "Deal damage equal to !M! times your thesorcerer:Heated. NL (Deal !theSorcerer:MM! damage.)"
   },
   "theSorcerer:Fireball": {
     "NAME": "Fireball",
@@ -391,7 +391,7 @@
   },
   "theSorcerer:AngerManagement": {
     "NAME": "Anger Management",
-    "DESCRIPTION": "ALL enemies lose !M! strength this turn. NL If this card is thesorcerer:Futurified become thesorcerer:Elementless."
+    "DESCRIPTION": "ALL enemies lose !M! strength this turn. NL If this card is thesorcerer:Futurified, become thesorcerer:Elementless."
   },
   "theSorcerer:ColdFeet": {
     "NAME": "Cold Feet",

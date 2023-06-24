@@ -6,7 +6,7 @@
     <groupId>kirbydeemod</groupId>
     <artifactId>KirbyDeeMod</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>KirbyDee Mod</name>
-    <version>0.9.9</version>
+    <version>0.9.11</version>
     <description>
 A sorcerer from another dimension.
 
