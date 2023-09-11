@@ -31,6 +31,7 @@ public class Decay extends SorcererCard {
         addToBot(
                 new DecayAction(
                         monster,
+                        this.upgraded,
                         new DamageInfo(
                                 player,
                                 this.damage,

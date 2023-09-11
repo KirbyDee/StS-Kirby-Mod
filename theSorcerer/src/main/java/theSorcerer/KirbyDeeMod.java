@@ -115,17 +115,14 @@ public class KirbyDeeMod implements
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/bg_power.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theSorcererResources/images/1024/card_orb.png";
     
-    // Character assets // TODOO
-    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/TheSorcererButton.png";// TODOO
-    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/TheSorcererPortraitBG.png";// TODOO
-    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/theSorcerer/shoulder.png";// TODOO
-    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/theSorcerer/shoulder2.png";// TODOO
-    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/theSorcerer/corpse.png";// TODOO
-    public static final String BADGE_IMAGE = "theSorcererResources/images/Badge.png";// TODOO
-    
-    // Atlas and JSON files for the Animations
-    public static final String THE_SORCERER_SKELETON_ATLAS = "theSorcererResources/images/char/theSorcerer/skeleton.atlas";// TODOO
-    public static final String THE_SORCERER_SKELETON_JSON = "theSorcererResources/images/char/theSorcerer/skeleton.json";// TODOO
+    // Character assets
+    private static final String THE_SORCERER_BUTTON = "theSorcererResources/images/charSelect/TheSorcererButton.png";
+    private static final String THE_SORCERER_PORTRAIT = "theSorcererResources/images/charSelect/TheSorcererPortraitBG.png";
+    public static final String THE_SORCERER_SHOULDER_1 = "theSorcererResources/images/char/theSorcerer/shoulder.png";
+    public static final String THE_SORCERER_SHOULDER_2 = "theSorcererResources/images/char/theSorcerer/shoulder2.png";
+    public static final String THE_SORCERER_CORPSE = "theSorcererResources/images/char/theSorcerer/corpse.png";
+    public static final String BADGE_IMAGE = "theSorcererResources/images/Badge.png";
+    public static final String THE_SORCERER_IMAGE = "theSorcererResources/images/char/theSorcerer/sorcerer.png";
     
     // =============== MAKE IMAGE PATHS =================
 

@@ -35,7 +35,7 @@ public class ShatterAction extends AbstractGameAction {
     }
 
     private void withFrozen(final FrozenPower power) {
-        final int amount = power.amount;
+        this.amount = power.amount;
         if (amount <= 0) {
             return;
         }

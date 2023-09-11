@@ -100,33 +100,21 @@ public class TheSorcerer extends CustomPlayer {
 
     public TheSorcerer(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theSorcererResources/images/char/theSorcerer/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "theSorcererResources/images/char/theSorcerer/Spriter/theSorcererAnimation.scml"));
+                "theSorcererResources/images/char/theSorcerer/orb/vfx.png",
+                null,
+                (String) null
+        );
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
-        initializeClass(null, // required call to load textures and setup energy/loadout.
-                // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+        initializeClass(THE_SORCERER_IMAGE, // required call to load textures and setup energy/loadout
                 THE_SORCERER_SHOULDER_2, // campfire pose
                 THE_SORCERER_SHOULDER_1, // another campfire pose
                 THE_SORCERER_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
-
-
-        // =============== ANIMATIONS =================  
-
-        loadAnimation(
-                THE_SORCERER_SKELETON_ATLAS,
-                THE_SORCERER_SKELETON_JSON,
-                1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-
-        // =============== /ANIMATIONS/ =================
 
 
         // =============== TEXT BUBBLE LOCATION =================

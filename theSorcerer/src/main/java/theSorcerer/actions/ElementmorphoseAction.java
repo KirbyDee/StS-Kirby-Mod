@@ -51,7 +51,7 @@ public abstract class ElementmorphoseAction extends HandCardChooseAction {
     protected boolean canBeChosen(final AbstractCard card) {
         return !DynamicDungeon.cardHasModifier(card, this.elementToMetamorph) &&
                 !DynamicDungeon.isArcaneCard(card) &&
-                card.costForTurn >= 0 &&
+                card.costForTurn >= -1 &&
                 super.canBeChosen(card);
     }
 
