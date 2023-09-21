@@ -22,12 +22,12 @@ public class InnerFocusPower extends DynamicAmountPower {
 
     @Override
     public void triggerOnPresenceOfMind() {
-        DynamicDungeon.gainEnergy(this.amount);
+        DynamicDungeon.drawCard(this.amount);
     }
 
     @Override
     public void updateDescription() {
-        this.description = this.descriptions[0] + (this.amount > 1 ? (this.descriptions[1] + this.amount + this.descriptions[2]) : this.descriptions[3]);
+        this.description = descriptions[0] + this.amount + (this.amount == 1 ? descriptions[2] : descriptions[3]);
     }
 
     @Override

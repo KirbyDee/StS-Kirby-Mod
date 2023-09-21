@@ -12,6 +12,7 @@ public class ForgottenConduit extends SorcererCard {
     // --- VALUES START ---
     private static final int ENERGY_GAIN = 2;
     private static final int EXHAUST_NUMBER = 1;
+    private static final int DRAW_CARD = 1;
     // --- VALUES END ---
 
     public ForgottenConduit() {
@@ -22,6 +23,7 @@ public class ForgottenConduit extends SorcererCard {
                         .target(CardTarget.NONE)
                         .magicNumber(ENERGY_GAIN)
                         .secondMagicNumber(EXHAUST_NUMBER)
+                        .thirdMagicNumber(DRAW_CARD)
                         .modifiers(CardModifier.UNPLAYABLE, CardModifier.FLASHBACK)
         );
     }
@@ -46,7 +48,10 @@ public class ForgottenConduit extends SorcererCard {
                 )
         );
 
-        // gain 2(3) energy
+        // gain 2 energy
         DynamicDungeon.gainEnergy(this.magicNumber);
+
+        // draw 1 card
+        DynamicDungeon.drawCard(this.thirdMagicNumber);
     }
 }

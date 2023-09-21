@@ -14,8 +14,10 @@ public class KnucklePunch extends SorcererCard {
     private static final int COST = 2;
     private static final int DAMAGE = 10;
     private static final int UPGRADE_DAMAGE = 4;
+    private static final int BASE_TIMES = 1;
     private static final int ELEMENTLESS_FACTOR = 2;
     // --- VALUES END ---
+    private int times;
 
     public KnucklePunch() {
         super(
@@ -26,18 +28,15 @@ public class KnucklePunch extends SorcererCard {
                         .target(CardTarget.ENEMY)
                         .damage(DAMAGE)
                         .tags(SorcererCardTags.ELEMENTLESS)
-                        .magicNumber(ELEMENTLESS_FACTOR)
+                        .magicNumber(BASE_TIMES)
+                        .secondMagicNumber(ELEMENTLESS_FACTOR)
         );
+        this.times = this.magicNumber;
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        int times = 1;
-        if (DynamicDungeon.hasElementless()) {
-            times = ELEMENTLESS_FACTOR;
-        }
-
-        for (int i = 0; i < times; i++) {
+        for (int i = 0; i < this.times; i++) {
             addToBot(
                     new DamageAction(
                             abstractMonster,
@@ -46,6 +45,21 @@ public class KnucklePunch extends SorcererCard {
                     )
             );
         }
+    }
+
+    @Override
+    public void triggerIfElementless() {
+        triggerOnElementless();
+    }
+
+    @Override
+    public void triggerOnElementless() {
+        this.times = this.secondMagicNumber;
+    }
+
+    @Override
+    public void triggerOnNotElementlessAnymore() {
+        this.times = this.magicNumber;
     }
 
     public void triggerOnGlowCheck() {

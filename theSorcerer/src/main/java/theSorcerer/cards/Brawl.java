@@ -47,7 +47,6 @@ public class Brawl extends SorcererCard {
         }
     }
 
-
     @Override
     protected void upgradeValues() {
         upgradeDamage(UPGRADE_DAMAGE);

@@ -97,8 +97,8 @@
   },
   "theSorcerer:ForgottenConduit": {
     "NAME": "Forgotten Conduit",
-    "DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and 1 other card at random. NL Gain [E] [E].",
-    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and 1 other card. NL Gain [E] [E]."
+    "DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !M! other card at random. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !M! other card. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E]."
   },
   "theSorcerer:BuriedAlive": {
     "NAME": "Buried Alive",
@@ -320,7 +320,7 @@
   },
   "theSorcerer:InnerFocus": {
     "NAME": "Inner Focus",
-    "DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, gain [E] ."
+    "DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, draw !M! card."
   },
   "theSorcerer:FireCharm": {
     "NAME": "Fire Charm",

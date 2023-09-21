@@ -7,10 +7,14 @@ import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.SmokePuffEffect;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.monsters.special.Sheep;
 import theSorcerer.powers.debuff.PolymorphPower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReplaceMonsterAction extends AbstractGameAction {
 
@@ -32,10 +36,14 @@ public class ReplaceMonsterAction extends AbstractGameAction {
     }
 
     @Override
-    public void update() {addToBot(new WaitAction(0.25F));
+    public void update() {
+        addToBot(new WaitAction(0.25F));
         int index = AbstractDungeon.getCurrRoom().monsters.monsters.indexOf(this.fromMonster);
         AbstractDungeon.getCurrRoom().monsters.monsters.remove(index);
         AbstractDungeon.getCurrRoom().monsters.addMonster(index, this.toMonster);
+        for (AbstractPower power : this.fromMonster.powers) {
+            power.owner = toMonster;
+        }
         if (newMonster) {
             this.toMonster.powers.addAll(this.fromMonster.powers);
             this.toMonster.setMove((byte) 0, AbstractMonster.Intent.UNKNOWN);

@@ -241,7 +241,7 @@ public abstract class DynamicCard extends CustomCard {
         info.modifiers.forEach(a -> DynamicDungeon.addModifierToCard(this, a));
 
         // init values
-        this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.NONE;
+        this.isMultiDamage = this.type == CardType.ATTACK && this.target == CardTarget.ALL_ENEMY;
 
         // description
         resetAttributes();
@@ -306,11 +306,25 @@ public abstract class DynamicCard extends CustomCard {
 
     protected void upgradeValues() {}
 
+    @Override
+    public void applyPowers() {
+        if (DynamicDungeon.hasElementless()) {
+            triggerIfElementless();
+        }
+        else {
+            triggerOnNotElementlessAnymore();
+        }
+    }
+
     public void triggerOnFlashback() {}
 
     public void triggerOnFuturity() {}
 
     public void triggerOnElementless() {}
+
+    public void triggerOnNotElementlessAnymore() {}
+
+    public void triggerIfElementless() {}
 
     public void triggerOnPresenceOfMind() {}
 

@@ -11,7 +11,7 @@ public class BruteForce extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 3;
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 8;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int ELEMENTLESS_TIMES = 0;
     // --- VALUES END ---

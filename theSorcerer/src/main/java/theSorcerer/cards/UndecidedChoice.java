@@ -60,8 +60,19 @@ public class UndecidedChoice extends SorcererCard {
     }
 
     @Override
+    public void triggerIfElementless() {
+        triggerOnElementless();
+    }
+
+    @Override
     public void triggerOnElementless() {
         setCostForTurn(0);
+    }
+
+    @Override
+    public void triggerOnNotElementlessAnymore() {
+        setCostForTurn(this.cost);
+        this.isCostModifiedForTurn = false;
     }
 
     @Override

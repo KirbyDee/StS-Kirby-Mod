@@ -11,7 +11,7 @@ public class InnerFocus extends SorcererArcaneCard {
     // --- VALUES START ---
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
-    private static final int ENERGY_GAIN = 1;
+    private static final int DRAW_CARD = 1;
     // --- VALUES END ---
 
     public InnerFocus() {
@@ -20,7 +20,7 @@ public class InnerFocus extends SorcererArcaneCard {
                         .cost(COST)
                         .type(CardType.POWER)
                         .rarity(CardRarity.RARE)
-                        .magicNumber(ENERGY_GAIN)
+                        .magicNumber(DRAW_CARD)
         );
     }
 

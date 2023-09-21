@@ -4,15 +4,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theSorcerer.actions.SingularityAction;
+import theSorcerer.cards.arcane.SorcererArcaneCard;
 import theSorcerer.patches.characters.AbstractPlayerPatch;
 
-public class Singularity extends SorcererCard {
+public class Singularity extends SorcererArcaneCard {
 
     // --- VALUES START ---
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
-    private static final int DAMAGE = 8;
-    private static final int ELEMENTAL_CARDS_PLAYED = 0;
+    private static final int COST = 2;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_DAMAGE = 3;
+    private static final int ARCANE_CARDS_PLAYED = 0;
     // --- VALUES END ---
 
     public Singularity() {
@@ -22,7 +23,7 @@ public class Singularity extends SorcererCard {
                         .type(CardType.ATTACK)
                         .rarity(CardRarity.RARE)
                         .damage(DAMAGE)
-                        .magicNumber(ELEMENTAL_CARDS_PLAYED)
+                        .magicNumber(ARCANE_CARDS_PLAYED)
         );
     }
 
@@ -44,6 +45,6 @@ public class Singularity extends SorcererCard {
 
     @Override
     public void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeDamage(UPGRADE_DAMAGE);
     }
 }

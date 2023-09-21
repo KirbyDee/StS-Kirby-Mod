@@ -49,7 +49,7 @@ public class BagOfIce extends DynamicRelic {
                         new AblazePower(
                                 monster,
                                 DEBUFF_AMOUNT,
-                                true
+                                false
                         ),
                         DEBUFF_AMOUNT
                 )
@@ -61,7 +61,7 @@ public class BagOfIce extends DynamicRelic {
                         new FrozenPower(
                                 monster,
                                 DEBUFF_AMOUNT,
-                                true
+                                false
                         ),
                         DEBUFF_AMOUNT
                 )

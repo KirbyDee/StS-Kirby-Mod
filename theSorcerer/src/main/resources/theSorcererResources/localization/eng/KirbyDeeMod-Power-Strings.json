@@ -94,10 +94,9 @@
   "theSorcerer:InnerFocusPower": {
     "NAME": "Inner Focus",
     "DESCRIPTIONS": [
-      "Whenever you gain #yPresence #yOf #yMind, gain [E] ",
-      "#b",
-      " times.",
-      "."
+      "Whenever you gain #yPresence #yOf #yMind, draw #b",
+      " card.",
+      " cards."
     ]
   },
   "theSorcerer:ElementalAmuletPower": {

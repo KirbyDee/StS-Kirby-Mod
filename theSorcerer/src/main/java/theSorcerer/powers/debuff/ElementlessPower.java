@@ -39,6 +39,12 @@ public class ElementlessPower extends DynamicReducePerTurnPower {
     }
 
     @Override
+    public void removeSelf() {
+        super.removeSelf();
+        DynamicDungeon.triggerOnNotElementlessAnymore();
+    }
+
+    @Override
     public void updateDescription() {
         description = this.descriptions[0];
     }

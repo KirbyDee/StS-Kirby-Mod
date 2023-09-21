@@ -584,6 +584,14 @@ public class DynamicDungeon {
         );
     }
 
+    public static void triggerOnNotElementlessAnymore() {
+        triggerOnSpecific(
+                DynamicCard::triggerOnNotElementlessAnymore,
+                null,
+                null
+        );
+    }
+
     public static void triggerOnFlashback(final AbstractCard card) {
         triggerOnSpecific(
                 card,
@@ -621,7 +629,7 @@ public class DynamicDungeon {
             final Consumer<DynamicPower> powerConsumer,
             final Consumer<DynamicRelic> relicConsumer
     ) {
-        if (card == null) {
+        if (card == null && cardConsumer != null) {
             triggerCardsOnSpecific(AbstractDungeon.player.hand, cardConsumer);
             triggerCardsOnSpecific(AbstractDungeon.player.drawPile, cardConsumer);
             triggerCardsOnSpecific(AbstractDungeon.player.discardPile, cardConsumer);
@@ -630,8 +638,12 @@ public class DynamicDungeon {
         if (card instanceof DynamicCard) {
             cardConsumer.accept((DynamicCard) card);
         }
-        triggerPowersOnSpecific(powerConsumer);
-        triggerRelicsOnSpecific(relicConsumer);
+        if (powerConsumer != null) {
+            triggerPowersOnSpecific(powerConsumer);
+        }
+        if (relicConsumer != null) {
+            triggerRelicsOnSpecific(relicConsumer);
+        }
     }
 
     private static void triggerCardsOnSpecific(
