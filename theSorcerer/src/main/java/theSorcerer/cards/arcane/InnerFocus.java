@@ -10,8 +10,8 @@ public class InnerFocus extends SorcererArcaneCard {
 
     // --- VALUES START ---
     private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
     private static final int DRAW_CARD = 1;
+    private static final int UPGRADE_DRAW_CARD = 1;
     // --- VALUES END ---
 
     public InnerFocus() {
@@ -38,7 +38,7 @@ public class InnerFocus extends SorcererArcaneCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADE_DRAW_CARD);
     }
 
 }

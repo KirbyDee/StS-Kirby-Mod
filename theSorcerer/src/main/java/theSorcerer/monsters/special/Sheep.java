@@ -9,12 +9,14 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theSorcerer.DynamicDungeon;
 import theSorcerer.actions.CustomSFXAction;
 import theSorcerer.monsters.SorcererEnemyType;
 import theSorcerer.powers.DynamicPower;
 import theSorcerer.powers.debuff.PolymorphPower;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class Sheep extends AbstractMonster {
@@ -84,7 +86,9 @@ public class Sheep extends AbstractMonster {
 
     private void onDamage() {
         addToTop(getBaa());
-        getPower(DynamicPower.getID(PolymorphPower.class)).onSpecificTrigger();
+        Optional.of(DynamicPower.getID(PolymorphPower.class))
+                .map(this::getPower)
+                .ifPresent(AbstractPower::onSpecificTrigger);
     }
 
     @Override

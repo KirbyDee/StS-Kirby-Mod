@@ -30,6 +30,11 @@ public class SiphonAction extends DiscardPileCardChooseAction {
     }
 
     @Override
+    protected boolean canBeChosen(final AbstractCard card) {
+        return true;
+    }
+
+    @Override
     protected String getChooseText() {
         String text = TEXTS[0];
         if (this.anyNumber) {

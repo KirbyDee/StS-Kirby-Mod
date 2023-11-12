@@ -29,11 +29,6 @@ public class ChilledPower extends ElementPower<DexterityPower> {
     }
 
     @Override
-    protected String getExtraPowerId() {
-        return DexterityPower.POWER_ID;
-    }
-
-    @Override
     public AbstractPower makeCopy() {
         return new ChilledPower(this.owner, this.amount);
     }

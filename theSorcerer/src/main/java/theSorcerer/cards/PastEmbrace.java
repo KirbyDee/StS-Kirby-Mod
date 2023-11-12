@@ -8,9 +8,9 @@ import theSorcerer.powers.buff.PastEmbracePower;
 public class PastEmbrace extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
+    private static final int COST = 2;
     private static final int DRAW_CARD = 1;
+    private static final int UPGRADE_DRAW_CARD = 1;
     // --- VALUES END ---
 
     public PastEmbrace() {
@@ -37,6 +37,6 @@ public class PastEmbrace extends SorcererCard {
 
     @Override
     protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADE_DRAW_CARD);
     }
 }

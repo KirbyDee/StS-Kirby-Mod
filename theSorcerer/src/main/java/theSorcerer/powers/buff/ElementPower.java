@@ -52,7 +52,7 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
     @Override
     public void reducePower(int reduceAmount) {
         super.reducePower(reduceAmount);
-        reducePower(getExtraPowerId(), reduceAmount);
+        reduceExtraPower(reduceAmount);
         updateDescription();
     }
 
@@ -71,15 +71,15 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
 
     public void reducePowerToZero() {
         reducePower(this.ID, this.amount);
-        reducePower(getExtraPowerId(), this.amount);
+        reduceExtraPower(this.amount);
     }
 
     private void reducePower(final String powerId, final int amount) {
         if (amount <= 0) {
             return;
         }
-
         LOG.info("Reduce " + powerId + " by  " + amount);
+
         addToTop(
                 new ReducePowerAction(
                         this.owner,
@@ -90,7 +90,19 @@ public abstract class ElementPower<E extends AbstractPower> extends DynamicAmoun
         );
     }
 
-    protected abstract String getExtraPowerId();
+    private void reduceExtraPower(final int amount) {
+        if (amount <= 0) {
+            return;
+        }
+
+        addToTop(
+                new ApplyPowerAction(
+                        this.owner,
+                        this.owner,
+                        createExtraPower(-amount),
+                        -amount)
+        );
+    }
 
     @Override
     public void updateDescription() {

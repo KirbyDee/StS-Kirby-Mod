@@ -40,7 +40,7 @@ public class PresenceOfMindPower extends SelfRemovablePower {
         }
 
         // X-cost card gives back their cost
-        else if (card.costForTurn == -1) {
+        else if (card.costForTurn == -1 && EnergyPanel.getCurrentEnergy() > 0) {
             DynamicDungeon.gainEnergy(EnergyPanel.getCurrentEnergy());
         }
     }

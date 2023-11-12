@@ -10,7 +10,7 @@ public class ElementalStorm extends SorcererCard {
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int DAMAGE_BLOCK = 3;
+    private static final int DAMAGE_BLOCK = 2;
     // --- VALUES END ---
 
     public ElementalStorm() {

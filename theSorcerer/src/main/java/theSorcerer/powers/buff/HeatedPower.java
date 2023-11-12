@@ -29,11 +29,6 @@ public class HeatedPower extends ElementPower<StrengthPower> {
     }
 
     @Override
-    protected String getExtraPowerId() {
-        return StrengthPower.POWER_ID;
-    }
-
-    @Override
     public AbstractPower makeCopy() {
         return new HeatedPower(this.owner, this.amount);
     }

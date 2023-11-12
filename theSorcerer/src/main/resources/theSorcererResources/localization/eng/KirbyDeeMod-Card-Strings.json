@@ -81,11 +81,13 @@
   },
   "theSorcerer:WellPrepared": {
     "NAME": "Well Prepared",
-    "DESCRIPTION": "Draw !M! cards."
+    "DESCRIPTION": "Draw !M! cards. NL You cannot draw additional cards this turn.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards."
   },
   "theSorcerer:PastEmbrace": {
     "NAME": "Past Embrace",
-    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw !M! card."
+    "DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever a card is thesorcerer:Flashbacked, draw !M! cards."
   },
   "theSorcerer:Infernophoenix": {
     "NAME": "Infernophoenix",
@@ -320,7 +322,8 @@
   },
   "theSorcerer:InnerFocus": {
     "NAME": "Inner Focus",
-    "DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, draw !M! card."
+    "DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever you gain thesorcerer:Presence_Of_Mind, draw !M! cards."
   },
   "theSorcerer:FireCharm": {
     "NAME": "Fire Charm",

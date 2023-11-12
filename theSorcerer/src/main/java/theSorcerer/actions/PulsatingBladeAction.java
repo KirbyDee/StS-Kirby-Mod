@@ -34,8 +34,7 @@ public class PulsatingBladeAction extends HandCardChooseAction {
 
     @Override
     protected boolean canBeChosen(final AbstractCard card) {
-        return card.costForTurn >= 0 &&
-                super.canBeChosen(card);
+        return card.costForTurn >= 0;
     }
 
     @Override
