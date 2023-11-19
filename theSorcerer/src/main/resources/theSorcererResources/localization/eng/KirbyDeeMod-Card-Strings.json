@@ -99,8 +99,8 @@
   },
   "theSorcerer:ForgottenConduit": {
     "NAME": "Forgotten Conduit",
-    "DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !M! other card at random. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E].",
-    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !M! other card. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E]."
+    "DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !theSorcerer:MM! other card at random. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E].",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Flashbacked, exhaust this and !theSorcerer:MM! other card. NL Draw !theSorcerer:MMM! card. NL Gain [E] [E]."
   },
   "theSorcerer:BuriedAlive": {
     "NAME": "Buried Alive",
