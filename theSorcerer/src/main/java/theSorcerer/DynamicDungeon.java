@@ -157,7 +157,7 @@ public class DynamicDungeon {
     }
 
     public static boolean canMakeCardFire(final AbstractCard card) {
-        return !isFireCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+        return !isFireCard(card) && !isArcaneCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
     }
 
     public static void makeCardFire(final AbstractCard card) {
@@ -170,7 +170,7 @@ public class DynamicDungeon {
     }
 
     public static boolean canMakeCardIce(final AbstractCard card) {
-        return !isIceCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
+        return !isIceCard(card) && !isArcaneCard(card) && card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE;
     }
 
     public static void makeCardIce(final AbstractCard card) {
