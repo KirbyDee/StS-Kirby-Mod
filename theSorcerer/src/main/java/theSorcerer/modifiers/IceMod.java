@@ -23,7 +23,7 @@ public class IceMod extends ElementMod {
 
     @Override
     public Color getElementColor(AbstractCard card) {
-        if (card instanceof ArcticShell && ((ArcticShell) card).lastCardPlayedIsFire) {
+        if (card instanceof ArcticShell && ((ArcticShell) card).lastCardPlayedIsIce) {
             return Color.GOLD.cpy();
         }
         return Color.NAVY.cpy();

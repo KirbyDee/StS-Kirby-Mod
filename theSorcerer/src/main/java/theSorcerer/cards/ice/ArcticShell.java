@@ -11,10 +11,10 @@ public class ArcticShell extends SorcererIceCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 6;
     private static final int UPGRADE_BLOCK = 3;
     private static final int DRAW_CARD = 1;
-    public boolean lastCardPlayedIsFire = false;
+    public boolean lastCardPlayedIsIce = false;
     // --- VALUES END ---
 
     public ArcticShell() {
@@ -31,7 +31,7 @@ public class ArcticShell extends SorcererIceCard {
 
     @Override
     public void triggerOnCardPlayed(AbstractCard card) {
-        this.lastCardPlayedIsFire = DynamicDungeon.isIceCard(card);
+        this.lastCardPlayedIsIce = DynamicDungeon.isIceCard(card);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ArcticShell extends SorcererIceCard {
                 )
         );
 
-        if (this.lastCardPlayedIsFire) {
+        if (this.lastCardPlayedIsIce) {
             DynamicDungeon.drawCard(this.magicNumber);
         }
     }

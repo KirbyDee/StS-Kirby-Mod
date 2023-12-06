@@ -27,7 +27,7 @@ public class InnerFocusPower extends DynamicAmountPower {
 
     @Override
     public void updateDescription() {
-        this.description = descriptions[0] + this.amount + (this.amount == 1 ? descriptions[2] : descriptions[3]);
+        this.description = descriptions[0] + this.amount + (this.amount == 1 ? descriptions[1] : descriptions[2]);
     }
 
     @Override

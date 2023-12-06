@@ -14,7 +14,7 @@ public class Combustion extends SorcererFireCard {
     // --- VALUES START ---
     private static final int COST = 1;
     private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int ENERGY_GAIN = 1;
     public boolean lastCardPlayedIsFire = false;
     // --- VALUES END ---
