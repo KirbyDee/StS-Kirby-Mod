@@ -9,9 +9,8 @@ import theSorcerer.modifiers.CardModifier;
 public class DangerousTempo extends SorcererCard {
 
     // --- VALUES START ---
-    private static final int DRAW_CARD_AMOUNT = 2;
-    private static final int UPGRADE_DRAW_CARD_AMOUNT = 1;
-    private static final int ENERGY_GAIN = 2;
+    private static final int DRAW_CARD_AMOUNT = 1;
+    private static final int ENERGY_GAIN = 1;
     // --- VALUES END ---
 
     public DangerousTempo() {
@@ -40,10 +39,5 @@ public class DangerousTempo extends SorcererCard {
                         this.upgraded
                 )
         );
-    }
-
-    @Override
-    public void upgradeValues() {
-        upgradeMagicNumber(UPGRADE_DRAW_CARD_AMOUNT);
     }
 }

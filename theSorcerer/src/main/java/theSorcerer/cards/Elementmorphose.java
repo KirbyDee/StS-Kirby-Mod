@@ -14,7 +14,6 @@ public class Elementmorphose extends SorcererCard {
 
     // --- VALUES START ---
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
     // --- VALUES END ---
 
     public Elementmorphose() {
@@ -38,10 +37,5 @@ public class Elementmorphose extends SorcererCard {
         }
 
         addToBot(new ChooseOneAction(choices));
-    }
-
-    @Override
-    protected void upgradeValues() {
-        upgradeBaseCost(UPGRADE_COST);
     }
 }

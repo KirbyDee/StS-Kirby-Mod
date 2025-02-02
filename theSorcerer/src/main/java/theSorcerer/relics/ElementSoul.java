@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public abstract class ElementSoul extends DynamicRelic {
 
-    protected static final int ELEMENT_AMOUNT = 3;
+    protected static final int ELEMENT_AMOUNT = 2;
 
     public ElementSoul(
             Class<? extends ElementSoul> thisClazz

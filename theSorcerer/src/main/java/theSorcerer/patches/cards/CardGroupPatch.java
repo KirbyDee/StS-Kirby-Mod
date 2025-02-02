@@ -14,14 +14,34 @@ public class CardGroupPatch {
     public static class AddToHandPatch {
 
         public static void Postfix(CardGroup self, AbstractCard c) {
-            if (DynamicDungeon.isAutoCard(c)) {
-                AbstractDungeon.actionManager.addToBottom(
-                        new AutoUseCardAction(
-                                AbstractDungeon.player,
-                                c
-                        )
-                );
-            }
+            toHand(c);
+        }
+    }
+
+    @SpirePatch(clz = CardGroup.class, method = "moveToHand", paramtypez={AbstractCard.class})
+    public static class MoveToHandPatch {
+
+        public static void Postfix(CardGroup self, AbstractCard c) {
+            toHand(c);
+        }
+    }
+
+    @SpirePatch(clz = CardGroup.class, method = "moveToHand", paramtypez={AbstractCard.class, CardGroup.class})
+    public static class MoveToHand2Patch {
+
+        public static void Postfix(CardGroup self, AbstractCard c, CardGroup g) {
+            toHand(c);
+        }
+    }
+
+    private static void toHand(final AbstractCard c) {
+        if (DynamicDungeon.isAutoCard(c)) {
+            AbstractDungeon.actionManager.addToBottom(
+                    new AutoUseCardAction(
+                            AbstractDungeon.player,
+                            c
+                    )
+            );
         }
     }
 }

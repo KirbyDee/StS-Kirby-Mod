@@ -389,8 +389,8 @@
   },
   "theSorcerer:DangerousTempo": {
     "NAME": "Dangerous Tempo",
-    "DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E]. NL Become thesorcerer:Elementless.",
-    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! cards and gain [E] [E]."
+    "DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! card and gain [E]. NL Become thesorcerer:Elementless.",
+    "UPGRADE_DESCRIPTION": "If this card is thesorcerer:Futurified, exhaust this and your discard pile. NL Draw !M! card and gain [E]."
   },
   "theSorcerer:AngerManagement": {
     "NAME": "Anger Management",
